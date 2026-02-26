@@ -63,13 +63,13 @@ class QRCheckIn {
         return `
             <div style="margin: 2rem 0; padding: 1.5rem; background: white; border: 2px solid #3b82f6; border-radius: 1rem; text-align: center;">
                 <div style="font-weight: 700; font-size: 1.25rem; color: #1e40af; margin-bottom: 1rem;">
-                    📱 Mobile Check-In QR Code
+                    Mobile Check-In QR Code
                 </div>
                 <div style="margin: 1.5rem 0;">
                     <img src="${qrDataURL}" alt="Check-in QR Code" style="max-width: 250px; height: auto; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
                 </div>
                 <div style="font-size: 0.875rem; color: #4b5563; margin-top: 1rem; line-height: 1.6;">
-                    <strong>📍 For Event Day:</strong><br>
+                    <strong>For Event Day:</strong><br>
                     Save or screenshot this QR code and present it at check-in.<br>
                     Event organizers will scan it for fast entry.
                 </div>
@@ -196,7 +196,7 @@ class QRCheckIn {
     generateCheckInInterfaceHTML(eventId) {
         return `
             <div class="check-in-interface" style="padding: 2rem; background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <h2 style="color: #1e40af; margin-bottom: 1.5rem;">📱 Event Check-In</h2>
+                <h2 style="color: #1e40af; margin-bottom: 1.5rem;">Event Check-In</h2>
 
                 <!-- Manual Check-in -->
                 <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f0f9ff; border-radius: 0.5rem;">
@@ -209,7 +209,7 @@ class QRCheckIn {
                         <button onclick="window.qrCheckIn.manualCheckIn('${eventId}')"
                                 class="btn"
                                 style="padding: 0.75rem 1.5rem;">
-                            ✅ Check In
+                            Check In
                         </button>
                     </div>
                 </div>
@@ -239,7 +239,7 @@ class QRCheckIn {
     async manualCheckIn(eventId) {
         const input = document.getElementById('manual-checkin-id');
         if (!input || !input.value.trim()) {
-            showToast('❌ Please enter an RSVP ID or check-in token', 'error');
+            showToast('Please enter an RSVP ID or check-in token', 'error');
             return;
         }
 
@@ -248,7 +248,7 @@ class QRCheckIn {
         // Try to find RSVP in local storage
         const event = window.events ? window.events[eventId] : null;
         if (!event) {
-            showToast('❌ Event not found', 'error');
+            showToast('Event not found', 'error');
             return;
         }
 
@@ -256,7 +256,7 @@ class QRCheckIn {
         const existingCheckIn = this.getCheckInStatus(eventId, identifier);
         if (existingCheckIn) {
             const checkInTime = new Date(existingCheckIn.checkInTime).toLocaleTimeString();
-            showToast(`⚠️ Already checked in at ${checkInTime}`, 'error');
+            showToast(`Already checked in at ${checkInTime}`, 'error');
             return;
         }
 
@@ -264,11 +264,11 @@ class QRCheckIn {
         const result = await this.checkInRSVP(eventId, identifier, identifier);
 
         if (result.success) {
-            showToast('✅ Check-in successful!', 'success');
+            showToast('Check-in successful!', 'success');
             input.value = '';
             this.refreshCheckInStats(eventId);
         } else {
-            showToast(`❌ Check-in failed: ${result.error}`, 'error');
+            showToast(`Check-in failed: ${result.error}`, 'error');
         }
     }
 
@@ -301,7 +301,7 @@ class QRCheckIn {
                     <div style="padding: 1rem; margin-bottom: 0.5rem; background: #f9fafb; border-left: 4px solid #10b981; border-radius: 0.5rem;">
                         <div style="font-weight: 600;">RSVP ID: ${window.utils.escapeHTML(checkIn.rsvpId.substring(0, 8))}...</div>
                         <div style="font-size: 0.875rem; color: #6b7280; margin-top: 0.25rem;">
-                            ✅ ${new Date(checkIn.checkInTime).toLocaleString()}
+                            ${new Date(checkIn.checkInTime).toLocaleString()}
                         </div>
                     </div>
                 `).join(''));

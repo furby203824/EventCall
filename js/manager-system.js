@@ -283,7 +283,7 @@ function addCustomQuestion(questionData = null) {
     const optionsHTML = questionOptions.map((opt, idx) =>
         `<div class="question-option-item">
             <input type="text" class="question-option-input" placeholder="Option ${idx + 1}" value="${window.utils.escapeHTML(opt)}">
-            <button type="button" class="btn-small btn-danger" onclick="removeQuestionOption(this)">✕</button>
+            <button type="button" class="btn-small btn-danger" onclick="removeQuestionOption(this)"></button>
         </div>`
     ).join('');
 
@@ -291,12 +291,12 @@ function addCustomQuestion(questionData = null) {
         <div class="question-header">
             <input type="text" placeholder="Enter your question..." class="custom-question-input" value="${window.utils.escapeHTML(questionText)}">
             <select class="question-type-select" onchange="handleQuestionTypeChange(this)">
-                <option value="text" ${questionType === 'text' ? 'selected' : ''}>📝 Text</option>
-                <option value="choice" ${questionType === 'choice' ? 'selected' : ''}>☑️ Multiple Choice</option>
-                <option value="date" ${questionType === 'date' ? 'selected' : ''}>📅 Date</option>
-                <option value="datetime" ${questionType === 'datetime' ? 'selected' : ''}>🕐 Date & Time</option>
+                <option value="text" ${questionType === 'text' ? 'selected' : ''}>Text</option>
+                <option value="choice" ${questionType === 'choice' ? 'selected' : ''}>Multiple Choice</option>
+                <option value="date" ${questionType === 'date' ? 'selected' : ''}>Date</option>
+                <option value="datetime" ${questionType === 'datetime' ? 'selected' : ''}>Date & Time</option>
             </select>
-            <button type="button" class="btn btn-danger" onclick="removeCustomQuestion(this)">🗑️</button>
+            <button type="button" class="btn btn-danger" onclick="removeCustomQuestion(this)"></button>
         </div>
         <div class="question-options-container" style="display: ${questionType === 'choice' ? 'block' : 'none'}">
             <div class="question-options-list">${optionsHTML}</div>
@@ -344,7 +344,7 @@ function addQuestionOption(button) {
     optionItem.className = 'question-option-item';
     optionItem.innerHTML = `
         <input type="text" class="question-option-input" placeholder="Option ${optionCount + 1}">
-        <button type="button" class="btn-small btn-danger" onclick="removeQuestionOption(this)">✕</button>
+        <button type="button" class="btn-small btn-danger" onclick="removeQuestionOption(this)"></button>
     `;
     optionsList.appendChild(optionItem);
 }
@@ -426,12 +426,12 @@ function isUserAuthenticated() {
  */
 async function syncWithGitHub() {
     if (syncInProgress) {
-        showToast('⏳ Refresh already in progress...', 'error');
+        showToast('Refresh already in progress...', 'error');
         return;
     }
 
     if (!isUserAuthenticated()) {
-        showToast('🔒 Please login to refresh data', 'error');
+        showToast('Please login to refresh data', 'error');
         return;
     }
 
@@ -445,26 +445,26 @@ async function syncWithGitHub() {
             btn.disabled = true;
         });
 
-        showToast('🔄 Refreshing data from backend...', 'success');
+        showToast('Refreshing data from backend...', 'success');
 
         // Reload data
         await loadManagerData();
         
-        showToast('✅ Data refreshed successfully!', 'success');
+        showToast('Data refreshed successfully!', 'success');
         
         // Clear pending count as we are now real-time
         updateDashboardSyncStatus(0);
 
     } catch (error) {
         console.error('Refresh failed:', error);
-        showToast('❌ Refresh failed: ' + error.message, 'error');
+        showToast('Refresh failed: ' + error.message, 'error');
     } finally {
         syncInProgress = false;
         
         // Reset button state
         const syncButtons = document.querySelectorAll('[onclick*="syncWithGitHub"]');
         syncButtons.forEach(btn => {
-            btn.textContent = '🔄 Refresh Data';
+            btn.textContent = 'Refresh Data';
             btn.disabled = false;
         });
     }
@@ -507,10 +507,10 @@ function updateDashboardSyncStatus(pendingCount) {
         // Keep inline onclick; escape dynamic pieces
         syncBanner.innerHTML = `
             <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-                <span style="font-size: 1.2rem;">📬</span>
+                <span style="font-size: 1.2rem;"></span>
                 <span>${window.utils.escapeHTML(String(pendingCount))} new RSVP${pendingCount > 1 ? 's' : ''} ready to sync!</span>
                 <button class="btn" onclick="syncWithGitHub()" style="margin-left: 1rem; padding: 0.5rem 1rem; font-size: 0.875rem;">
-                    🔄 Sync Now
+                    Sync Now
                 </button>
             </div>
         `;
@@ -831,7 +831,7 @@ async function deleteEvent(eventId) {
         const ownerUsername = currentUser && currentUser.username;
         const eventOwnerMatches = ownerUsername && (event.createdBy === ownerUsername || event.createdByUsername === ownerUsername);
         if (!currentUser || !eventOwnerMatches) {
-            showToast('❌ You can only delete your own events', 'error');
+            showToast('You can only delete your own events', 'error');
             return;
         }
 
@@ -842,7 +842,7 @@ async function deleteEvent(eventId) {
         if (window.events) delete window.events[eventId];
         if (window.responses) delete window.responses[eventId];
         
-        showToast('🗑️ Event deleted successfully', 'success');
+        showToast('Event deleted successfully', 'success');
         
         await loadManagerData();
         
@@ -928,7 +928,7 @@ function renderDashboard() {
         activeEventsList.innerHTML = ``;
         pastEventsList.innerHTML = `
             <div class="empty-state">
-                <div class="empty-state-icon">📁</div>
+                <div class="empty-state-icon"></div>
                 <h3>No Past Events</h3>
                 <p>Past events will appear here</p>
             </div>
@@ -967,16 +967,16 @@ function renderDashboard() {
     if (activeTab === 'active-events' && activeEvents.length === 0) {
         emptyStateContainer.innerHTML = `
             <div class="empty-state">
-                <div class="empty-state-icon">📅</div>
+                <div class="empty-state-icon"></div>
                 <h3>No Active Events</h3>
                 <p>Create a new event to get started</p>
-                <button class="btn btn-primary" onclick="showPage('create')">➕ Create Event</button>
+                <button class="btn btn-primary" onclick="showPage('create')">Create Event</button>
             </div>
         `;
     } else if (activeTab === 'past-events' && pastEvents.length === 0) {
         emptyStateContainer.innerHTML = `
             <div class="empty-state">
-                <div class="empty-state-icon">📁</div>
+                <div class="empty-state-icon"></div>
                 <h3>No Past Events</h3>
                 <p>Your past events will appear here</p>
             </div>
@@ -1012,14 +1012,14 @@ function updateEventList(container, events, isPast, listType) {
         }
         const emptyHtml = listType === 'active' ? `
             <div class="empty-state">
-                <div class="empty-state-icon">📅</div>
+                <div class="empty-state-icon"></div>
                 <h3>No Active Events</h3>
                 <p>Create a new event to get started</p>
-                <button class="btn btn-primary" onclick="showPage('create')">➕ Create Event</button>
+                <button class="btn btn-primary" onclick="showPage('create')">Create Event</button>
             </div>
         ` : `
             <div class="empty-state">
-                <div class="empty-state-icon">📁</div>
+                <div class="empty-state-icon"></div>
                 <h3>No Past Events</h3>
                 <p>Completed events will appear here</p>
             </div>
@@ -1141,7 +1141,7 @@ function updateLoadMoreButton(container, listType, shown, total) {
 
         const button = document.createElement('button');
         button.className = 'btn btn-secondary';
-        button.textContent = `📋 Load More Events (${total - shown} remaining)`;
+        button.textContent = `Load More Events (${total - shown} remaining)`;
 
         // Attach event listener instead of using inline onclick (security best practice)
         const handler = () => loadMoreEvents(listType);
@@ -1155,7 +1155,7 @@ function updateLoadMoreButton(container, listType, shown, total) {
         // Update existing button text
         const btn = existingBtn.querySelector('button');
         if (btn) {
-            btn.textContent = `📋 Load More Events (${total - shown} remaining)`;
+            btn.textContent = `Load More Events (${total - shown} remaining)`;
         }
     }
 }
@@ -1192,14 +1192,14 @@ function createEventCardElement(event, isPast) {
             <div class="event-cover-wrapper">
                 <img src="${sanitizeURL(event.coverImage)}" alt="${h(event.title)}" class="event-cover">
                 <div class="event-badge ${isPast ? 'badge-past' : 'badge-active'}">
-                    ${isPast ? '🔴 Past' : '🟢 Active'}
+                    ${isPast ? 'Past' : 'Active'}
                 </div>
             </div>
         ` : `
             <div class="event-cover-placeholder">
-                <div class="placeholder-icon">🎖️</div>
+                <div class="placeholder-icon"></div>
                 <div class="event-badge ${isPast ? 'badge-past' : 'badge-active'}">
-                    ${isPast ? '🔴 Past' : '🟢 Active'}
+                    ${isPast ? 'Past' : 'Active'}
                 </div>
             </div>
         `}
@@ -1209,32 +1209,32 @@ function createEventCardElement(event, isPast) {
 
             <div class="event-meta-v2">
                 <div class="meta-item">
-                    <span class="meta-icon">📅</span>
+                    <span class="meta-icon"></span>
                     <span class="meta-text">${formatDate(event.date)}</span>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-icon">⏰</span>
+                    <span class="meta-icon"></span>
                     <span class="meta-text">${formatTime(event.time)}</span>
                 </div>
                 <div class="meta-item">
-                    <span class="meta-icon">📍</span>
+                    <span class="meta-icon"></span>
                     <span class="meta-text">${h(event.location)}</span>
                 </div>
             </div>
 
             <div class="rsvp-stats-v2">
                 <div class="stat-box stat-attending">
-                    <div class="stat-icon">✅</div>
+                    <div class="stat-icon"></div>
                     <div class="stat-number">${stats.attending}</div>
                     <div class="stat-label">Attending</div>
                 </div>
                 <div class="stat-box stat-declined">
-                    <div class="stat-icon">❌</div>
+                    <div class="stat-icon"></div>
                     <div class="stat-number">${stats.notAttending}</div>
                     <div class="stat-label">Declined</div>
                 </div>
                 <div class="stat-box stat-headcount">
-                    <div class="stat-icon">👥</div>
+                    <div class="stat-icon"></div>
                     <div class="stat-number">${stats.totalHeadcount}</div>
                     <div class="stat-label">Total</div>
                     ${event.allowGuests ? `
@@ -1247,20 +1247,20 @@ function createEventCardElement(event, isPast) {
 
             <div class="event-actions-v2">
                 <button class="btn-primary-action" data-action="manage">
-                    📊 Manage Event
+                    Manage Event
                 </button>
                 <div class="quick-actions-row">
                     <button class="btn-quick" data-action="copy" title="Copy Invite Link">
-                        🔗 Copy Link
+                        Copy Link
                     </button>
                     <button class="btn-quick" data-action="duplicate" title="Duplicate Event">
-                        📋 Duplicate
+                        Duplicate
                     </button>
                     <button class="btn-quick" data-action="export" title="Export Data">
-                        📤 Export
+                        Export
                     </button>
                     <button class="btn-quick btn-danger-quick" data-action="delete" title="Delete Event">
-                        🗑️ Delete
+                        Delete
                     </button>
                 </div>
             </div>
@@ -1363,14 +1363,14 @@ function renderEventCard(event, isPast) {
                 <div class="event-cover-wrapper">
                     <img src="${sanitizeURL(event.coverImage)}" alt="${h(event.title)}" class="event-cover">
                     <div class="event-badge ${isPast ? 'badge-past' : 'badge-active'}">
-                        ${isPast ? '🔴 Past' : '🟢 Active'}
+                        ${isPast ? 'Past' : 'Active'}
                     </div>
                 </div>
             ` : `
                 <div class="event-cover-placeholder">
-                    <div class="placeholder-icon">🎖️</div>
+                    <div class="placeholder-icon"></div>
                     <div class="event-badge ${isPast ? 'badge-past' : 'badge-active'}">
-                        ${isPast ? '🔴 Past' : '🟢 Active'}
+                        ${isPast ? 'Past' : 'Active'}
                     </div>
                 </div>
             `}
@@ -1380,32 +1380,32 @@ function renderEventCard(event, isPast) {
                 
                 <div class="event-meta-v2">
                     <div class="meta-item">
-                        <span class="meta-icon">📅</span>
+                        <span class="meta-icon"></span>
                         <span class="meta-text">${formatDate(event.date)}</span>
                     </div>
                     <div class="meta-item">
-                        <span class="meta-icon">⏰</span>
+                        <span class="meta-icon"></span>
                         <span class="meta-text">${formatTime(event.time)}</span>
                     </div>
                     <div class="meta-item">
-                        <span class="meta-icon">📍</span>
+                        <span class="meta-icon"></span>
                         <span class="meta-text">${h(event.location)}</span>
                     </div>
                 </div>
                 
                 <div class="rsvp-stats-v2">
                     <div class="stat-box stat-attending">
-                        <div class="stat-icon">✅</div>
+                        <div class="stat-icon"></div>
                         <div class="stat-number">${stats.attending}</div>
                         <div class="stat-label">Attending</div>
                     </div>
                     <div class="stat-box stat-declined">
-                        <div class="stat-icon">❌</div>
+                        <div class="stat-icon"></div>
                         <div class="stat-number">${stats.notAttending}</div>
                         <div class="stat-label">Declined</div>
                     </div>
                     <div class="stat-box stat-headcount">
-                        <div class="stat-icon">👥</div>
+                        <div class="stat-icon"></div>
                         <div class="stat-number">${stats.totalHeadcount}</div>
                         <div class="stat-label">Total</div>
                         ${event.allowGuests ? `
@@ -1418,17 +1418,17 @@ function renderEventCard(event, isPast) {
                 
                 <div class="event-actions-v2">
                     <button class="btn-primary-action" onclick="handleManageClick(event, '${event.id}')">
-                        📊 Manage Event
+                        Manage Event
                     </button>
                     <div class="quick-actions-row">
                         <button class="btn-quick" onclick="handleActionClick(event, () => copyInviteLink('${event.id}'))" title="Copy Invite Link">
-                            🔗 Copy Link
+                            Copy Link
                         </button>
                         <button class="btn-quick" onclick="handleActionClick(event, () => exportEventData('${event.id}'))" title="Export Data">
-                            📤 Export
+                            Export
                         </button>
                         <button class="btn-quick btn-danger-quick" onclick="handleActionClick(event, () => deleteEvent('${event.id}'))" title="Delete Event">
-                            🗑️ Delete
+                            Delete
                         </button>
                     </div>
                 </div>
@@ -1723,7 +1723,7 @@ async function handleEventSubmit(e) {
                     // Optionally use sanitized URL
                     baseData.location = check.sanitized;
                 } catch (e2) {
-                    showToast('❌ Failed to validate event location URL', 'error');
+                    showToast('Failed to validate event location URL', 'error');
                     throw e2;
                 }
             }
@@ -1792,13 +1792,13 @@ async function handleEventSubmit(e) {
                 try {
                     const urlCheck = await window.validation.validateURL(eventData.location, { requireHTTPS: false, verifyDNS: false });
                     if (!urlCheck.valid) {
-                        showToast(`❌ Invalid event location URL: ${urlCheck.errors.join(', ')}`, 'error');
+                        showToast(`Invalid event location URL: ${urlCheck.errors.join(', ')}`, 'error');
                         throw new Error('Event location URL failed validation');
                     }
                     // Use sanitized URL
                     eventData.location = urlCheck.sanitized;
                 } catch (e) {
-                    showToast('❌ Failed to validate event location URL', 'error');
+                    showToast('Failed to validate event location URL', 'error');
                     throw e;
                 }
             }
@@ -1884,7 +1884,7 @@ async function handleEventSubmit(e) {
         console.log('📸 [CREATE] Stored event coverImage:', mergedEvent.coverImage || '(none)');
         window.events[eventData.id] = mergedEvent;
 
-        showToast('🎖️ Event deployed successfully!', 'success');
+        showToast('Event deployed successfully!', 'success');
 
         // Clear autosave draft
         if (window.clearEventFormDraft) {
@@ -1941,7 +1941,7 @@ async function handleEventSubmit(e) {
             window.errorHandler.handleError(error, 'Event Creation');
         } else {
             console.error('Failed to save event:', error);
-            showToast(`❌ Failed to save event: ${error.message}`, 'error');
+            showToast(`Failed to save event: ${error.message}`, 'error');
         }
     } finally {
         // Always reset button state
@@ -2190,19 +2190,19 @@ async function handleImageFile(file, coverPreview, coverUpload, coverImageUrlInp
     if (window.validation && typeof window.validation.validateImageUpload === 'function') {
         const check = await window.validation.validateImageUpload(file);
         if (!check.valid) {
-            showToast('❌ ' + (check.errors.join('\n') || 'File validation failed'), 'error');
+            showToast('' + (check.errors.join('\n') || 'File validation failed'), 'error');
             return;
         }
     } else {
         // Fallback: minimal checks
         const maxSize = 5 * 1024 * 1024; // 5MB
         if (file.size > maxSize) {
-            showToast('❌ Image too large. Maximum size is 5MB', 'error');
+            showToast('Image too large. Maximum size is 5MB', 'error');
             return;
         }
         const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
         if (!allowedTypes.includes(file.type)) {
-            showToast('❌ Invalid file type. Please use JPEG, PNG, GIF, or WebP', 'error');
+            showToast('Invalid file type. Please use JPEG, PNG, GIF, or WebP', 'error');
             return;
         }
     }
@@ -2258,11 +2258,11 @@ async function handleImageFile(file, coverPreview, coverUpload, coverImageUrlInp
                 imageUrl = String(uploadResult.url || '');
                 if (uploadResult && uploadResult.supabase && uploadResult.supabase.attempted) {
                     if (uploadResult.supabase.updated && uploadResult.supabase.verified) {
-                        showToast('✅ Image synced to Supabase', 'success');
+                        showToast('Image synced to Supabase', 'success');
                     } else if (uploadResult.supabase.error) {
-                        showToast('⚠️ Supabase update failed: ' + uploadResult.supabase.error, 'warning');
+                        showToast('Supabase update failed: ' + uploadResult.supabase.error, 'warning');
                     } else {
-                        showToast('⚠️ Supabase update not verified', 'warning');
+                        showToast('Supabase update not verified', 'warning');
                     }
                 }
             } catch (e) {
@@ -2282,14 +2282,14 @@ async function handleImageFile(file, coverPreview, coverUpload, coverImageUrlInp
                 if (window.BackendAPI && window.BackendAPI.updateEvent) {
                     await window.BackendAPI.updateEvent(eventIdForUpload, { coverImageUrl: imageUrl });
                     console.log('📸 [UPLOAD] Cover image saved successfully');
-                    showToast('✅ Cover image saved', 'success');
+                    showToast('Cover image saved', 'success');
                 }
                 if (window.events && window.events[eventIdForUpload]) {
                     window.events[eventIdForUpload] = { ...window.events[eventIdForUpload], coverImage: imageUrl };
                 }
             } catch (e) {
                 console.warn('Fallback Supabase save failed:', e);
-                showToast('⚠️ Fallback save failed: ' + e.message, 'warning');
+                showToast('Fallback save failed: ' + e.message, 'warning');
             }
         }
 
@@ -2301,14 +2301,14 @@ async function handleImageFile(file, coverPreview, coverUpload, coverImageUrlInp
         // Update upload area text (preserve file input)
         if (spinner && spinner.parentNode) spinner.remove();
         if (textElement) {
-            textElement.textContent = '✅ Image uploaded! Click or drag to change';
+            textElement.textContent = 'Image uploaded! Click or drag to change';
         }
 
-        showToast('📷 Cover image uploaded successfully!', 'success');
+        showToast('Cover image uploaded successfully!', 'success');
 
     } catch (error) {
         console.error('Image upload failed:', error);
-        showToast('❌ Failed to upload image: ' + error.message, 'error');
+        showToast('Failed to upload image: ' + error.message, 'error');
 
         // Reset upload area (preserve file input)
         if (spinner && spinner.parentNode) spinner.remove();

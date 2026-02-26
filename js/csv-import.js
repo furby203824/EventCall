@@ -133,7 +133,7 @@ class CSVImporter {
     generatePreviewHTML(stats) {
         return `
             <div style="padding: 2rem; background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <h2 style="margin-bottom: 1.5rem; color: #1e40af;">📊 CSV Import Preview</h2>
+                <h2 style="margin-bottom: 1.5rem; color: #1e40af;">CSV Import Preview</h2>
 
                 <!-- Statistics -->
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
@@ -153,7 +153,7 @@ class CSVImporter {
 
                 ${this.errorRows.length > 0 ? `
                     <div style="margin-bottom: 2rem; padding: 1rem; background: #fef2f2; border-left: 4px solid #dc2626; border-radius: 0.5rem;">
-                        <strong style="color: #991b1b;">⚠️ Errors Found:</strong>
+                        <strong style="color: #991b1b;">Errors Found:</strong>
                         <div style="max-height: 200px; overflow-y: auto; margin-top: 0.75rem;">
                             ${this.errorRows.map(error => `
                                 <div style="padding: 0.75rem; margin-bottom: 0.5rem; background: white; border-radius: 0.5rem; font-size: 0.875rem;">
@@ -185,7 +185,7 @@ class CSVImporter {
                                         <td style="padding: 0.75rem;">${row.name}</td>
                                         <td style="padding: 0.75rem;">${row.email}</td>
                                         <td style="padding: 0.75rem;">${row.phone || '-'}</td>
-                                        <td style="padding: 0.75rem; text-align: center;">${row.attending ? '✅' : '❌'}</td>
+                                        <td style="padding: 0.75rem; text-align: center;">${row.attending ? '' : ''}</td>
                                         <td style="padding: 0.75rem;">${row.rank || '-'}</td>
                                     </tr>
                                 `).join('')}
@@ -203,17 +203,17 @@ class CSVImporter {
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     ${stats.valid > 0 ? `
                         <button onclick="window.csvImporter.importGuests()" class="btn" style="background: #16a34a;">
-                            ✅ Import ${stats.valid} Valid ${stats.valid === 1 ? 'Guest' : 'Guests'}
+                            Import ${stats.valid} Valid ${stats.valid === 1 ? 'Guest' : 'Guests'}
                         </button>
                     ` : ''}
                     <button onclick="window.csvImporter.cancelImport()" class="btn" style="background: #6b7280;">
-                        ❌ Cancel
+                        Cancel
                     </button>
                 </div>
 
                 <!-- CSV Format Help -->
                 <div style="margin-top: 2rem; padding: 1rem; background: #f0f9ff; border-radius: 0.5rem; font-size: 0.875rem;">
-                    <strong>📋 CSV Format Requirements:</strong><br>
+                    <strong>CSV Format Requirements:</strong><br>
                     <div style="margin-top: 0.5rem; color: #4b5563;">
                         Required columns: <code>Name</code>, <code>Email</code><br>
                         Optional columns: <code>Phone</code>, <code>Attending</code> (Yes/No), <code>Rank</code>, <code>Unit</code>, <code>Branch</code>, <code>DietaryRestrictions</code>, <code>AllergyDetails</code>, <code>Reason</code>, <code>GuestCount</code>
@@ -228,11 +228,11 @@ class CSVImporter {
      */
     async importGuests() {
         if (this.validRows.length === 0) {
-            showToast('❌ No valid guests to import', 'error');
+            showToast('No valid guests to import', 'error');
             return;
         }
 
-        showToast(`⏳ Importing ${this.validRows.length} guests...`, 'success');
+        showToast(`Importing ${this.validRows.length} guests...`, 'success');
 
         // Store in secure session storage (dev); production submits to backend
         this.validRows.forEach(rsvpData => {
@@ -268,7 +268,7 @@ class CSVImporter {
             }
         });
 
-        showToast(`✅ Successfully imported ${this.validRows.length} guests!`, 'success');
+        showToast(`Successfully imported ${this.validRows.length} guests!`, 'success');
 
         // Redirect to manage page
         setTimeout(() => {
@@ -301,7 +301,7 @@ class CSVImporter {
         return `
             <div style="margin: 1.5rem 0; padding: 1rem; background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 0.5rem;">
                 <div style="font-weight: 600; margin-bottom: 0.5rem; color: #92400e;">
-                    📥 Bulk Import Guests
+                    Bulk Import Guests
                 </div>
                 <div style="font-size: 0.875rem; color: #78350f; margin-bottom: 1rem;">
                     Upload a CSV file to import multiple guests at once.
@@ -315,7 +315,7 @@ class CSVImporter {
                         class="btn"
                         onclick="document.getElementById('csv-import-file').click()"
                         style="background: #f59e0b;">
-                    📤 Upload CSV File
+                    Upload CSV File
                 </button>
                 <a href="#" onclick="window.csvImporter.downloadTemplate(); return false;" style="margin-left: 1rem; color: #0284c7; text-decoration: underline; font-size: 0.875rem;">
                     Download CSV Template
@@ -332,7 +332,7 @@ class CSVImporter {
         if (!file) return;
 
         try {
-            showToast('⏳ Parsing CSV file...', 'success');
+            showToast('Parsing CSV file...', 'success');
 
             const result = await this.parseCSV(file);
             const stats = this.validateCSVData(result, eventId);
@@ -343,11 +343,11 @@ class CSVImporter {
                 previewContainer.innerHTML = this.generatePreviewHTML(stats);
             }
 
-            showToast(`✅ Found ${stats.valid} valid entries`, 'success');
+            showToast(`Found ${stats.valid} valid entries`, 'success');
 
         } catch (error) {
             console.error('CSV parsing failed:', error);
-            showToast(`❌ Failed to parse CSV: ${error.message}`, 'error');
+            showToast(`Failed to parse CSV: ${error.message}`, 'error');
         }
 
         // Clear file input
@@ -373,24 +373,24 @@ Bob Johnson,bob@example.com,555-0102,No,,,Civilian,,,Personal conflict,0`;
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
 
-        showToast('📥 Template downloaded', 'success');
+        showToast('Template downloaded', 'success');
     }
 
     async handleRosterUpload(evt, eventId) {
         const file = evt.target.files[0];
         if (!file) return;
         try {
-            showToast('⏳ Parsing roster CSV...', 'info');
+            showToast('Parsing roster CSV...', 'info');
             const result = await this.parseCSV(file);
             const stats = this.validateRosterCSV(result);
             const preview = document.getElementById('roster-import-preview');
             if (preview) {
                 preview.innerHTML = this.generateRosterPreviewHTML(stats, eventId);
             }
-            showToast(`✅ Roster: ${stats.valid} valid, ${stats.invalid} errors`, 'success');
+            showToast(`Roster: ${stats.valid} valid, ${stats.invalid} errors`, 'success');
         } catch (err) {
             console.error('Roster CSV parsing failed:', err);
-            showToast(`❌ Failed to parse roster CSV: ${err.message}`, 'error');
+            showToast(`Failed to parse roster CSV: ${err.message}`, 'error');
         }
         evt.target.value = '';
     }
@@ -419,16 +419,16 @@ Bob Johnson,bob@example.com,555-0102,No,,,Civilian,,,Personal conflict,0`;
     generateRosterPreviewHTML(stats, eventId) {
         return `
             <div style="padding: 1rem; background: #1e293b; border-radius: 0.5rem; margin: 1rem 0;">
-                <div style="color:#5C4E4E; font-weight:700; margin-bottom:0.5rem;">📋 Invite Roster Preview</div>
+                <div style="color:#5C4E4E; font-weight:700; margin-bottom:0.5rem;">Invite Roster Preview</div>
                 <div style="color:#e2e8f0; font-size:0.9rem;">${stats.valid} valid • ${stats.invalid} errors • ${stats.total} total</div>
-                ${stats.valid ? `<button class="btn-action" style="margin-top:0.75rem;" onclick="window.csvImporter.importRoster('${eventId}')">✅ Save ${stats.valid} to roster</button>` : ''}
+                ${stats.valid ? `<button class="btn-action" style="margin-top:0.75rem;" onclick="window.csvImporter.importRoster('${eventId}')">${icon('check')} Save ${stats.valid} to roster</button>` : ''}
             </div>
         `;
     }
 
     importRoster(eventId) {
         if (!this.validRosterRows.length) {
-            showToast('❌ No valid roster entries to save', 'error');
+            showToast('No valid roster entries to save', 'error');
             return;
         }
         const key = `eventcall_invite_roster_${eventId}`;
@@ -439,10 +439,10 @@ Bob Johnson,bob@example.com,555-0102,No,,,Civilian,,,Personal conflict,0`;
             } else {
                 localStorage.setItem(key, JSON.stringify(this.validRosterRows));
             }
-            showToast(`✅ Saved ${this.validRosterRows.length} invitees to roster`, 'success');
+            showToast(`Saved ${this.validRosterRows.length} invitees to roster`, 'success');
         } catch (e) {
             console.error('Failed to save roster:', e);
-            showToast('❌ Failed to save roster', 'error');
+            showToast('Failed to save roster', 'error');
             return;
         }
         const preview = document.getElementById('roster-import-preview');

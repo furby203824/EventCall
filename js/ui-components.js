@@ -39,7 +39,7 @@ function loadInviteContentDirect() {
     if (!event) {
         document.getElementById('invite-content').innerHTML = window.utils.sanitizeHTML(`
             <div style="text-align: center; padding: 3rem; color: #ef4444;">
-                <h2>❌ Event Not Found</h2>
+                <h2>Event Not Found</h2>
                 <p>This invite link may be invalid or the event may have been deleted.</p>
             </div>
         `);
@@ -99,7 +99,7 @@ function createEnvelopeInviteHTML(event, eventId) {
                         </div>
                     ` : `
                         <div class="envelope-stamp">
-                            <div class="envelope-stamp-placeholder">✉️</div>
+                            <div class="envelope-stamp-placeholder"></div>
                         </div>
                     `}
                 </div>
@@ -107,7 +107,7 @@ function createEnvelopeInviteHTML(event, eventId) {
                 <!-- The Card (hidden inside, expands when opened) -->
                 <div class="envelope-card">
                     <!-- Close button -->
-                    <button class="envelope-close-btn" onclick="event.stopPropagation(); document.getElementById('envelope-container').classList.remove('open');" aria-label="Close invitation">✕</button>
+                    <button class="envelope-close-btn" onclick="event.stopPropagation(); document.getElementById('envelope-container').classList.remove('open');" aria-label="Close invitation"></button>
 
                     <!-- Left Side: Photo -->
                     <div class="envelope-card-photo">
@@ -115,7 +115,7 @@ function createEnvelopeInviteHTML(event, eventId) {
                             <img src="${escapeHTML(event.coverImage)}" alt="Event Photo">
                         ` : `
                             <div class="envelope-card-photo-placeholder">
-                                <span class="placeholder-icon">🎉</span>
+                                <span class="placeholder-icon"></span>
                                 <span class="placeholder-text">You're Invited</span>
                             </div>
                         `}
@@ -129,11 +129,11 @@ function createEnvelopeInviteHTML(event, eventId) {
                         <div class="envelope-details">
                             ${event.description ? `<p>${escapeHTMLPreserveNewlines(event.description)}</p>` : ''}
 
-                            <strong>📅 ${formatDate(event.date)}</strong>
-                            <p>🕐 ${formatTime(event.time)}</p>
+                            <strong>${formatDate(event.date)}</strong>
+                            <p>${formatTime(event.time)}</p>
 
                             ${event.location ? `
-                                <strong>📍 Location</strong>
+                                <strong>Location</strong>
                                 <p>${escapeHTML(event.location)}</p>
                             ` : ''}
 
@@ -178,7 +178,7 @@ function createEnvelopeEventDetailsHTML(eventDetails) {
 
     const detailsHTML = validDetails.map(detail => `
         <div class="detail-item detail-item--custom">
-            <span class="detail-icon">📌</span>
+            <span class="detail-icon"></span>
             <span class="detail-label">${escapeHTML(detail.label)}</span>
             <span class="detail-value">${escapeHTMLPreserveNewlines(detail.value)}</span>
         </div>
@@ -204,7 +204,7 @@ function createEnvelopeRSVPFormHTML(event, eventId) {
                 <div class="form-progress-header">
                     <div class="form-progress-label-group">
                         <span class="form-progress-label">Form Progress</span>
-                        <span id="autosave-indicator" class="autosave-indicator">✓ Saved</span>
+                        <span id="autosave-indicator" class="autosave-indicator">${icon('check', 16)} Saved</span>
                     </div>
                     <span id="form-progress-text" class="form-progress-text">0%</span>
                 </div>
@@ -220,11 +220,11 @@ function createEnvelopeRSVPFormHTML(event, eventId) {
                     <div class="envelope-attending-options">
                         <label class="envelope-radio-option">
                             <input type="radio" name="attending" value="true" required id="attending-yes">
-                            <span class="envelope-radio-text">✅ Yes, I'll be there!</span>
+                            <span class="envelope-radio-text">Yes, I'll be there!</span>
                         </label>
                         <label class="envelope-radio-option">
                             <input type="radio" name="attending" value="false" required id="attending-no">
-                            <span class="envelope-radio-text">❌ Can't make it</span>
+                            <span class="envelope-radio-text">Can't make it</span>
                         </label>
                     </div>
                 </div>
@@ -292,11 +292,11 @@ function createEnvelopeRSVPFormHTML(event, eventId) {
                 </div>
 
                 <div class="form-group" id="start-over-container" style="display: none; text-align: center;">
-                    <button type="button" id="rsvp-start-over" class="envelope-btn envelope-btn--secondary">🔄 Clear Form</button>
+                    <button type="button" id="rsvp-start-over" class="envelope-btn envelope-btn--secondary">Clear Form</button>
                 </div>
 
                 <div id="submit-container" style="display: none; text-align: center; margin-top: 1.5rem;">
-                    <button type="submit" class="envelope-btn envelope-btn--primary">📝 Submit RSVP</button>
+                    <button type="submit" class="envelope-btn envelope-btn--primary">Submit RSVP</button>
                 </div>
             </form>
         </div>
@@ -373,19 +373,19 @@ function createInviteWithoutImageHTML(event, eventId) {
             <h1 class="invite-title">${escapeHTML(event.title)}</h1>
             <div class="invite-details">
                 <div class="invite-detail">
-                    <strong>📅 Date:</strong> ${formatDate(event.date)}
+                    <strong>Date:</strong> ${formatDate(event.date)}
                 </div>
                 <div class="invite-detail">
-                    <strong>🕐 Time:</strong> ${formatTime(event.time)}
+                    <strong>Time:</strong> ${formatTime(event.time)}
                 </div>
                 ${event.location ? `
                     <div class="invite-detail">
-                        <strong>📍 Location:</strong> ${escapeHTML(event.location)}
+                        <strong>Location:</strong> ${escapeHTML(event.location)}
                     </div>
                 ` : ''}
                 ${event.description ? `
                     <div class="invite-detail">
-                        <strong>📝 Details:</strong> ${escapeHTML(event.description)}
+                        <strong>Details:</strong> ${escapeHTML(event.description)}
                     </div>
                 ` : ''}
                 ${createEventDetailsHTML(event.eventDetails)}
@@ -496,7 +496,7 @@ function createMilitaryFieldsHTML(templateType = 'classic') {
         return `
             <details class="${detailsClass}">
                 <summary class="${summaryClass}">
-                    🎖️ Military Information <span ${labelOptionalClass}>(Optional - Click to expand)</span>
+                    Military Information <span ${labelOptionalClass}>(Optional - Click to expand)</span>
                 </summary>
 
                 <div class="form-group">
@@ -525,7 +525,7 @@ function createMilitaryFieldsHTML(templateType = 'classic') {
     return `
         <details style="margin: 1.5rem 0; padding: 1rem; background: #f8fafc; border-left: 3px solid #cbd5e1; border-radius: 0.5rem;">
             <summary style="font-weight: 500; margin-bottom: 0.75rem; color: #475569; cursor: pointer; list-style-position: outside;">
-                🎖️ Military Information <span ${labelOptionalClass}>(Optional - Click to expand)</span>
+                Military Information <span ${labelOptionalClass}>(Optional - Click to expand)</span>
             </summary>
 
             <div class="form-group" style="margin-bottom: 1rem; margin-top: 1rem;">
@@ -564,7 +564,7 @@ function createRSVPFormHTML(event, eventId) {
                 <div class="form-progress-header">
                     <div class="form-progress-label-group">
                         <span class="form-progress-label">Form Progress</span>
-                        <span id="autosave-indicator" class="autosave-indicator">✓ Saved</span>
+                        <span id="autosave-indicator" class="autosave-indicator">${icon('check', 16)} Saved</span>
                     </div>
                     <span id="form-progress-text" class="form-progress-text">0%</span>
                 </div>
@@ -580,11 +580,11 @@ function createRSVPFormHTML(event, eventId) {
                     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                         <label class="rsvp-radio-option" style="flex: 1; min-width: 140px;">
                             <input type="radio" name="attending" value="true" required id="attending-yes">
-                            <span>✅ Yes, I'll be there!</span>
+                            <span>Yes, I'll be there!</span>
                         </label>
                         <label class="rsvp-radio-option" style="flex: 1; min-width: 140px;">
                             <input type="radio" name="attending" value="false" required id="attending-no">
-                            <span>❌ Can't make it</span>
+                            <span>Can't make it</span>
                         </label>
                     </div>
                 </div>
@@ -652,11 +652,11 @@ function createRSVPFormHTML(event, eventId) {
                 </div>
 
                 <div class="form-group" id="start-over-container" style="display: none; text-align: center;">
-                  <button type="button" id="rsvp-start-over" class="btn btn-secondary">🔄 Clear Form</button>
+                  <button type="button" id="rsvp-start-over" class="btn btn-secondary">Clear Form</button>
                 </div>
 
                 <div id="submit-container" style="display: none; text-align: center; margin-top: 1.5rem;">
-                    <button type="submit" class="btn btn-gold">📝 Submit RSVP</button>
+                    <button type="submit" class="btn btn-gold">Submit RSVP</button>
                 </div>
             </form>
         </div>
@@ -682,41 +682,41 @@ function createEventDetailsHTML(eventDetails) {
 
     // Map field labels to appropriate icons
     const fieldIcons = {
-        'honoree name': '🎖️',
-        'retiree name': '🎖️',
-        'recipient': '🎖️',
-        'rank': '⭐',
-        'current rank': '⭐',
-        'new rank': '⭐',
-        'retiring rank': '⭐',
-        'promoted by': '👔',
-        'promoter': '👔',
-        'years of service': '📅',
-        'service dates': '📅',
-        'outgoing': '👤',
-        'incoming': '👤',
-        'commander': '👔',
-        'officer': '👔',
-        'chaplain': '⛪',
-        'unit': '🪖',
-        'venue': '🏛️',
-        'location': '📍',
-        'reception': '🍽️',
-        'dress code': '👔',
-        'uniform': '🎖️',
-        'price': '💵',
-        'cost': '💵',
-        'ticket': '🎫',
-        'speaker': '🎤',
-        'instructor': '👨‍🏫',
-        'topic': '📚',
-        'training': '🎯',
-        'activities': '🎉',
-        'food': '🍔',
-        'parking': '🅿️',
-        'award': '🏅',
-        'formation': '📋',
-        'type': '📝'
+        'honoree name': '',
+        'retiree name': '',
+        'recipient': '',
+        'rank': '',
+        'current rank': '',
+        'new rank': '',
+        'retiring rank': '',
+        'promoted by': icon('user'),
+        'promoter': icon('user'),
+        'years of service': '',
+        'service dates': '',
+        'outgoing': '',
+        'incoming': '',
+        'commander': icon('user'),
+        'officer': icon('user'),
+        'chaplain': icon('building'),
+        'unit': icon('shield'),
+        'venue': icon('building'),
+        'location': '',
+        'reception': '',
+        'dress code': icon('user'),
+        'uniform': '',
+        'price': '',
+        'cost': '',
+        'ticket': '',
+        'speaker': '',
+        'instructor': icon('user'),
+        'topic': '',
+        'training': '',
+        'activities': '',
+        'food': icon('utensils'),
+        'parking': icon('pin'),
+        'award': '',
+        'formation': '',
+        'type': ''
     };
 
     // Get icon for field based on label keywords
@@ -727,7 +727,7 @@ function createEventDetailsHTML(eventDetails) {
                 return icon;
             }
         }
-        return '📌'; // Default icon
+        return ''; // Default icon
     };
 
     const detailsHTML = validDetails.map(detail => `
@@ -743,7 +743,7 @@ function createEventDetailsHTML(eventDetails) {
     return `
         <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid #e5e7eb;">
             <div style="font-weight: 700; color: #5C4E4E; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                <span>ℹ️</span>
+                <span></span>
                 <span>Event Details</span>
             </div>
             ${detailsHTML}
@@ -1252,14 +1252,14 @@ function createPastEventHTML(event) {
                 <h1 class="invite-title" style="color: #6b7280;">${event.title}</h1>
                 <div class="invite-details">
                     <div class="invite-detail">
-                        <strong>📅 Date:</strong> ${formatDate(event.date)}
+                        <strong>Date:</strong> ${formatDate(event.date)}
                     </div>
                     <div class="invite-detail">
-                        <strong>🕐 Time:</strong> ${formatTime(event.time)}
+                        <strong>Time:</strong> ${formatTime(event.time)}
                     </div>
                     ${event.location ? `
                         <div class="invite-detail">
-                            <strong>📍 Location:</strong> ${event.location}
+                            <strong>Location:</strong> ${event.location}
                         </div>
                     ` : ''}
                 </div>
@@ -1289,27 +1289,27 @@ function createInviteWithImageHTML(event, eventId) {
             <h1 class="invite-title-main">${escapeHTML(event.title)}</h1>
             <div class="invite-details">
                 <div class="invite-detail">
-                    <strong>📅 Date:</strong> ${formatDate(event.date)}
+                    <strong>Date:</strong> ${formatDate(event.date)}
                 </div>
                 <div class="invite-detail">
-                    <strong>🕐 Time:</strong> ${formatTime(event.time)}
+                    <strong>Time:</strong> ${formatTime(event.time)}
                 </div>
                 ${event.location ? `
                     <div class="invite-detail">
-                        <strong>📍 Location:</strong> ${escapeHTML(event.location)}
+                        <strong>Location:</strong> ${escapeHTML(event.location)}
                         <div style="margin-top: 0.5rem;">
                             <a href="https://maps.google.com/?q=${encodeURIComponent(event.location)}"
                                target="_blank"
                                class="btn"
                                style="display: inline-block; padding: 0.5rem 1rem; font-size: 0.875rem; text-decoration: none;">
-                                🗺️ Get Directions
+                                Get Directions
                             </a>
                         </div>
                     </div>
                 ` : ''}
                 ${event.description ? `
                     <div class="invite-detail">
-                        <strong>📝 Details:</strong> ${escapeHTML(event.description)}
+                        <strong>Details:</strong> ${escapeHTML(event.description)}
                     </div>
                 ` : ''}
                 ${createEventDetailsHTML(event.eventDetails)}
@@ -1450,19 +1450,19 @@ window.initEnvelopeAnimation = initEnvelopeAnimation;
 function createRSVPSettingsHTML(event) {
     const badges = [];
     if (event.askReason) {
-        badges.push(`<span style="display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .6rem;border-radius:999px;background:#e0f2fe;color:#0c4a6e;border:1px solid #7dd3fc;">💬 Ask why attending</span>`);
+        badges.push(`<span style="display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .6rem;border-radius:999px;background:#e0f2fe;color:#0c4a6e;border:1px solid #7dd3fc;">${icon('message-sq')} Ask why attending</span>`);
     }
     if (event.allowGuests) {
-        badges.push(`<span style="display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .6rem;border-radius:999px;background:#f0fdf4;color:#064e3b;border:1px solid #86efac;">👥 Allow additional guests</span>`);
+        badges.push(`<span style="display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .6rem;border-radius:999px;background:#f0fdf4;color:#064e3b;border:1px solid #86efac;">${icon('users')} Allow additional guests</span>`);
     }
     if (event.requiresMealChoice) {
-        badges.push(`<span style="display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .6rem;border-radius:999px;background:#fff7ed;color:#7c2d12;border:1px solid #fdba74;">🍽️ Meal/dietary choices required</span>`);
+        badges.push(`<span style="display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .6rem;border-radius:999px;background:#fff7ed;color:#7c2d12;border:1px solid #fdba74;">${icon('utensils')} Meal/dietary choices required</span>`);
     }
     if (badges.length === 0) return '';
     return `
         <div style="margin-top:1rem;">
             <div style="font-weight:700;color:#000000;font-size:1rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;">
-                <span>⚙️</span><span>RSVP Settings</span>
+                <span></span><span>RSVP Settings</span>
             </div>
             <div style="display:flex;gap:.5rem;flex-wrap:wrap;">${badges.join(' ')}</div>
         </div>

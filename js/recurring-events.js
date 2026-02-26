@@ -26,7 +26,7 @@ class RecurringEvents {
             <div class="form-group">
                 <label>
                     <input type="checkbox" id="is-recurring" onchange="window.recurringEvents.toggleRecurringOptions()">
-                    🔄 Make this a recurring event
+                    Make this a recurring event
                 </label>
             </div>
 
@@ -56,7 +56,7 @@ class RecurringEvents {
                 </div>
 
                 <div style="margin-top: 1rem; padding: 0.75rem; background: #fffbeb; border-radius: 0.5rem; font-size: 0.875rem;">
-                    <strong>📅 Note:</strong> The system will create instances of this event based on your recurrence settings. Each instance can be managed independently.
+                    <strong>Note:</strong> The system will create instances of this event based on your recurrence settings. Each instance can be managed independently.
                 </div>
             </div>
         `;
@@ -208,7 +208,7 @@ class RecurringEvents {
             const frequency = this.frequencies[event.recurrence.frequency];
             return `
                 <span style="display: inline-block; padding: 0.25rem 0.5rem; background: #dbeafe; color: #1e40af; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600; margin-left: 0.5rem;">
-                    🔄 ${frequency ? frequency.label : 'Recurring'}
+                    ${frequency ? frequency.label : 'Recurring'}
                 </span>
             `;
         }
@@ -216,7 +216,7 @@ class RecurringEvents {
         if (event.isRecurringInstance) {
             return `
                 <span style="display: inline-block; padding: 0.25rem 0.5rem; background: #e0e7ff; color: #4f46e5; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600; margin-left: 0.5rem;">
-                    🔗 Instance #${event.instanceNumber || '?'}
+                    Instance #${event.instanceNumber || '?'}
                 </span>
             `;
         }

@@ -37,7 +37,7 @@
     errorEl.id = errId;
     errorEl.setAttribute('role','alert');
     errorEl.setAttribute('aria-live','polite');
-    errorEl.innerHTML = window.utils ? window.utils.sanitizeHTML(`❌ <span>${window.utils.escapeHTML(msg)}</span>`) : `❌ ${msg}`;
+    errorEl.innerHTML = window.utils ? window.utils.sanitizeHTML(`${icon('x')} <span>${window.utils.escapeHTML(msg)}</span>`) : `${icon('x')} ${msg}`;
     field.setAttribute('aria-invalid','true');
     field.setAttribute('aria-describedby', errId);
     field.classList.remove('is-valid');
@@ -345,7 +345,7 @@
         font-size: 14px; z-index: 1000; opacity: 0; transition: opacity 0.3s ease;
         box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       `;
-      indicator.textContent = '✓ Draft saved';
+      indicator.textContent = 'Draft saved';
       document.body.appendChild(indicator);
     }
     if (indicator.fadeTimeout) clearTimeout(indicator.fadeTimeout);
@@ -384,7 +384,7 @@
       recoveryBanner.className = 'draft-recovery-banner';
       recoveryBanner.innerHTML = `
         <div class="draft-recovery-banner__content">
-          <span class="draft-recovery-banner__icon">📝</span>
+          <span class="draft-recovery-banner__icon"></span>
           <div>
             <div class="draft-recovery-banner__title">Draft found</div>
             <div class="draft-recovery-banner__subtitle">You have an unsaved event from earlier</div>

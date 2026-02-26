@@ -171,7 +171,7 @@ class RSVPHandler {
             text-align: center;
             border: 2px solid #fcd34d;
         `;
-        banner.innerHTML = window.utils.sanitizeHTML('✏️ <strong>Edit Mode:</strong> You are updating your existing RSVP');
+        banner.innerHTML = window.utils.sanitizeHTML('<strong>Edit Mode:</strong> You are updating your existing RSVP');
 
         const firstChild = inviteContent.firstChild;
         if (firstChild) {
@@ -183,7 +183,7 @@ class RSVPHandler {
         e.preventDefault();
 
         if (this.submissionInProgress) {
-            showToast('⏳ Submission already in progress...', 'error');
+            showToast('Submission already in progress...', 'error');
             return;
         }
 
@@ -276,20 +276,20 @@ class RSVPHandler {
 
     async submitWithRetry(eventId, rsvpData, attempt = 1) {
         try {
-            showToast(`📤 Submitting RSVP (attempt ${attempt}/${this.maxRetries})...`, 'success');
+            showToast(`Submitting RSVP (attempt ${attempt}/${this.maxRetries})...`, 'success');
             return await this.submitToSecureBackend(eventId, rsvpData);
             
         } catch (error) {
             console.error(`Submission attempt ${attempt} failed:`, error);
             
             if (attempt < this.maxRetries) {
-                showToast(`⚠️ Attempt ${attempt} failed, retrying in ${this.retryDelay/1000} seconds...`, 'error');
+                showToast(`Attempt ${attempt} failed, retrying in ${this.retryDelay/1000} seconds...`, 'error');
                 await new Promise(resolve => setTimeout(resolve, this.retryDelay));
                 return this.submitWithRetry(eventId, rsvpData, attempt + 1);
             } else {
                 try {
                     const localResult = await this.storeLocally(eventId, rsvpData);
-                    showToast('⚠️ Submission failed, saved locally for manual processing', 'error');
+                    showToast('Submission failed, saved locally for manual processing', 'error');
                     return localResult;
                 } catch (localError) {
                     throw new Error(`All submission methods failed. Backend: ${error.message}, Local: ${localError.message}`);
@@ -408,10 +408,10 @@ class RSVPHandler {
         let processingInfo = '';
 
         if (submissionResult.method === 'secure_backend') {
-            statusMessage = `✅ RSVP Successfully Submitted!`;
+            statusMessage = `${icon('check')} RSVP Successfully Submitted!`;
             processingInfo = `
                 <div style="background: #e0f2fe; border-left: 4px solid #0288d1; padding: 1rem; margin: 1rem 0; border-radius: 0.5rem;">
-                    <strong>🔒 Secure Processing:</strong><br>
+                    <strong>Secure Processing:</strong><br>
                     • Your RSVP has been submitted to our secure backend<br>
                     • Processing time: ${submissionResult.estimatedProcessingTime}<br>
                     • Your information is encrypted and protected<br>
@@ -419,12 +419,12 @@ class RSVPHandler {
                 </div>
             `;
         } else {
-            statusMessage = `⚠️ RSVP Saved Locally - Manual Processing Required`;
+            statusMessage = `${icon('warning')} RSVP Saved Locally - Manual Processing Required`;
             statusColor = 'fef3c7';
             borderColor = 'f59e0b';
             processingInfo = `
                 <div style="background: #fff8e1; border-left: 4px solid #ff9800; padding: 1rem; margin: 1rem 0; border-radius: 0.5rem;">
-                    <strong>📋 Manual Processing Required:</strong><br>
+                    <strong>Manual Processing Required:</strong><br>
                     • Submission failed - saved locally<br>
                     • Please contact the event organizer with your RSVP ID: <code>${rsvpData.rsvpId}</code><br>
                     • Organizer can manually sync pending RSVPs from their dashboard
@@ -445,14 +445,14 @@ class RSVPHandler {
 
         document.getElementById('invite-content').innerHTML = window.utils.sanitizeHTML(`
             <div class="rsvp-confirmation">
-                <div class="confirmation-title">🎉 RSVP Submitted Successfully!</div>
+                <div class="confirmation-title">RSVP Submitted Successfully!</div>
                 <div class="confirmation-message">
                     Thank you, <strong>${window.utils.escapeHTML(rsvpData.name)}</strong>! Your RSVP has been recorded.
                 </div>
                 
                 <div class="confirmation-details">
                 <div class="confirmation-status">
-                    <strong>Your Status:</strong> ${rsvpData.attending ? '✅ Attending' : '❌ Not Attending'}
+                    <strong>Your Status:</strong> ${rsvpData.attending ? 'Attending' : 'Not Attending'}
                 </div>
                 
                 ${rsvpData.guestCount > 0 ? `
@@ -469,7 +469,7 @@ class RSVPHandler {
 
                     ${rsvpData.rank || rsvpData.unit || rsvpData.branch ? `
                         <div style="margin-top: 0.75rem; padding: 0.75rem; background: #f0f9ff; border-radius: 0.5rem;">
-                            <strong>🎖️ Military Information:</strong><br>
+                            <strong>Military Information:</strong><br>
                             ${rsvpData.rank ? `<div>Rank: ${rsvpData.rank}</div>` : ''}
                             ${rsvpData.unit ? `<div>Unit: ${rsvpData.unit}</div>` : ''}
                             ${rsvpData.branch ? `<div>Branch: ${rsvpData.branch}</div>` : ''}
@@ -481,14 +481,14 @@ class RSVPHandler {
                     ` : ''}
                     
                     <div style="margin-top: 1rem; padding: 1rem; background: #${statusColor}; border-radius: 0.5rem; border-left: 4px solid #${borderColor};">
-                        <strong>📊 Submission Status:</strong><br>
+                        <strong>Submission Status:</strong><br>
                         ${statusMessage}
                     </div>
                     
                     ${processingInfo}
                     
                     <div style="background: #f0f9ff; border-left: 4px solid #3b82f6; padding: 1rem; margin: 1rem 0; border-radius: 0.5rem;">
-                        <strong>📋 RSVP Details:</strong><br>
+                        <strong>RSVP Details:</strong><br>
                         <strong>RSVP ID:</strong> <code style="background: #e5e7eb; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-family: monospace;">${rsvpData.rsvpId}</code><br>
                         <strong>Validation Hash:</strong> <code style="background: #e5e7eb; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-family: monospace;">${rsvpData.validationHash}</code><br>
                         <strong>Submitted:</strong> ${new Date(rsvpData.timestamp).toLocaleString()}<br>
@@ -501,7 +501,7 @@ class RSVPHandler {
 
                 ${rsvpData.attending ? `
                 <div id="calendar-export-placeholder" class="hidden" style="margin-top: 1.5rem; padding: 1rem; background: #f0f9ff; border-left: 4px solid #3b82f6; border-radius: 0.5rem;">
-                    <strong>📅 Add to Your Calendar</strong><br>
+                    <strong>Add to Your Calendar</strong><br>
                     <div id="calendar-dropdown-container" style="margin-top: 0.75rem;">
                         <!-- Calendar dropdown will be inserted here via JavaScript -->
                     </div>
@@ -509,13 +509,13 @@ class RSVPHandler {
                 ` : ''}
 
                 <div style="margin-top: 2rem; display: flex; gap: 0.5rem; flex-wrap: wrap; justify-content: center;">
-                    <button class="btn" onclick="window.print()">🖨️ Print Receipt</button>
-                    <button class="btn" onclick="window.rsvpHandler.copyEditLink('${rsvpData.rsvpId}', '${rsvpData.editToken}')">✏️ Copy Edit Link</button>
-                    <button class="btn" onclick="window.location.reload()">📝 Submit Another RSVP</button>
+                    <button class="btn" onclick="window.print()">Print Receipt</button>
+                    <button class="btn" onclick="window.rsvpHandler.copyEditLink('${rsvpData.rsvpId}', '${rsvpData.editToken}')">Copy Edit Link</button>
+                    <button class="btn" onclick="window.location.reload()">Submit Another RSVP</button>
                 </div>
 
                 <div style="margin-top: 1.5rem; padding: 1rem; background: #fffbeb; border-left: 4px solid #fbbf24; border-radius: 0.5rem;">
-                    <strong>✏️ Need to make changes?</strong><br>
+                    <strong>Need to make changes?</strong><br>
                     <div style="margin-top: 0.5rem; font-size: 0.875rem;">
                         Save your edit link to update your RSVP later:<br>
                         <code style="background: #fef3c7; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-family: monospace; font-size: 0.75rem; display: inline-block; margin-top: 0.25rem; word-break: break-all;">
@@ -543,12 +543,12 @@ class RSVPHandler {
     showSubmissionError(error) {
         const errorDetails = this.categorizeError(error);
         
-        showToast(`❌ Submission failed: ${errorDetails.userMessage}`, 'error');
+        showToast(`Submission failed: ${errorDetails.userMessage}`, 'error');
         
         document.getElementById('invite-content').innerHTML = window.utils.sanitizeHTML(`
             <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 1rem; padding: 2rem; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
                 <div style="color: #ef4444; font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">
-                    ❌ Submission Failed
+                    Submission Failed
                 </div>
                 
                 <div style="background: #fef2f2; border-left: 4px solid #ef4444; padding: 1rem; margin: 1rem 0; border-radius: 0.5rem; text-align: left;">
@@ -562,7 +562,7 @@ class RSVPHandler {
                 </div>
                 
                 <div style="margin-top: 2rem;">
-                    <button class="btn" onclick="window.location.reload()">🔄 Try Again</button>
+                    <button class="btn" onclick="window.location.reload()">Try Again</button>
                 </div>
             </div>
         `);
@@ -750,12 +750,12 @@ class RSVPHandler {
 
         return `
             <div style="margin: 1.5rem 0; padding: 1rem; background: var(--gray-50); border-radius: 0.5rem;">
-                <strong>📅 Event Summary:</strong><br>
+                <strong>Event Summary:</strong><br>
                 <div style="margin-top: 0.5rem;">
                     <strong>${event.title}</strong><br>
-                    📅 ${formatDate(event.date)} at ${formatTime(event.time)}<br>
-                    ${event.location ? `📍 ${event.location}<br>` : ''}
-                    ${event.description ? `📝 ${event.description}` : ''}
+                    ${formatDate(event.date)} at ${formatTime(event.time)}<br>
+                    ${event.location ? `${icon('pin')} ${event.location}<br>` : ''}
+                    ${event.description ? `${icon('file-text')} ${event.description}` : ''}
                 </div>
             </div>
         `;
@@ -832,7 +832,7 @@ class RSVPHandler {
     async copyEditLink(rsvpId, editToken) {
         const event = getEventFromURL();
         if (!event) {
-            showToast('❌ Event data not found', 'error');
+            showToast('Event data not found', 'error');
             return;
         }
 
@@ -840,7 +840,7 @@ class RSVPHandler {
 
         try {
             await navigator.clipboard.writeText(editURL);
-            showToast('✏️ Edit link copied to clipboard!', 'success');
+            showToast('Edit link copied to clipboard!', 'success');
         } catch (error) {
             // Fallback
             const textarea = document.createElement('textarea');
@@ -851,7 +851,7 @@ class RSVPHandler {
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
-            showToast('✏️ Edit link copied!', 'success');
+            showToast('Edit link copied!', 'success');
         }
     }
 }

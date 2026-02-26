@@ -130,7 +130,7 @@
 
             // Show user-friendly message if toast is available
             if (typeof window !== 'undefined' && window.showToast) {
-              window.showToast(`⏳ Rate limit reached. Waiting ${waitSeconds}s...`, 'error');
+              window.showToast(`Rate limit reached. Waiting ${waitSeconds}s...`, 'error');
             }
 
             await this._wait(waitMs + Math.floor(Math.random()*250));

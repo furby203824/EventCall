@@ -263,7 +263,7 @@ const LoadingStateManager = {
         // Show toast notification
         if (showToast && window.showToast) {
             const message = this._getUserFriendlyMessage(errorObj);
-            window.showToast(`❌ ${message}`, 'error');
+            window.showToast(`${message}`, 'error');
         }
 
         console.error(`❌ ${key} failed:`, errorObj);
@@ -705,7 +705,7 @@ function showPage(pageId, param) {
         // Regular users cannot access admin page
         if (pageId === 'admin') {
             console.log('🚫 Regular user attempting to access admin page - access denied');
-            showToast('❌ Access denied - Admin privileges required', 'error');
+            showToast('Access denied - Admin privileges required', 'error');
             pageId = 'dashboard';
         }
         console.log(`✅ Access granted to ${pageId} for user: ${user?.email}`);
@@ -815,7 +815,7 @@ function resetCreateEventForm() {
     // Reset submit button text
     const submitBtn = document.querySelector('#event-form button[type="submit"]');
     if (submitBtn) {
-        submitBtn.textContent = '🚀 Deploy Event';
+        submitBtn.textContent = 'Deploy Event';
         submitBtn.style.background = '';
     }
 }
@@ -975,7 +975,7 @@ function showUserMenu() {
     const branchEl = document.getElementById('profile-branch');
     const rankEl = document.getElementById('profile-rank');
 
-    if (avatarEl) avatarEl.textContent = window.userAuth.getInitials ? window.userAuth.getInitials() : '👤';
+    if (avatarEl) avatarEl.textContent = window.userAuth.getInitials ? window.userAuth.getInitials() : '';
     
     if (usernameEl) usernameEl.value = user.username || '';
     if (nameEl) nameEl.value = user.name || '';
@@ -1081,13 +1081,13 @@ async function saveUserProfile() {
     const rank = rankEl?.value || '';
 
     if (!name || name.length < 2) {
-        showToast('❌ Please enter a valid name', 'error');
+        showToast('Please enter a valid name', 'error');
         nameEl?.focus();
         return;
     }
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showToast('❌ Please enter a valid email address', 'error');
+        showToast('Please enter a valid email address', 'error');
         emailEl?.focus();
         return;
     }
@@ -1133,16 +1133,16 @@ async function saveUserProfile() {
                             window.userAuth.saveUserToStorage(freshUserData);
                             window.userAuth.currentUser = freshUserData;
                         }
-                        showToast('✅ Profile updated and synced to backend', 'success');
+                        showToast('Profile updated and synced to backend', 'success');
                     } else {
-                        showToast('✅ Profile updated locally (backend sync pending)', 'success');
+                        showToast('Profile updated locally (backend sync pending)', 'success');
                     }
                 } catch (backendError) {
                     // Check if it's a rate limit error
                     if (backendError.message && backendError.message.includes('rate limit')) {
-                        showToast('✅ Profile updated locally (backend rate limited, will sync later)', 'success');
+                        showToast('Profile updated locally (backend rate limited, will sync later)', 'success');
                     } else {
-                        showToast('✅ Profile updated locally (backend sync failed)', 'success');
+                        showToast('Profile updated locally (backend sync failed)', 'success');
                     }
                     console.warn('Backend sync failed:', backendError);
                 }
@@ -1168,15 +1168,15 @@ async function saveUserProfile() {
                         window.userAuth.saveUserToStorage(freshUserData);
                         window.userAuth.currentUser = freshUserData;
                     }
-                    showToast('✅ Profile updated and synced to backend', 'success');
+                    showToast('Profile updated and synced to backend', 'success');
                 } else {
-                    showToast('✅ Profile updated locally (backend sync pending)', 'success');
+                    showToast('Profile updated locally (backend sync pending)', 'success');
                 }
             } catch (backendError) {
                 if (backendError.message && backendError.message.includes('rate limit')) {
-                    showToast('✅ Profile updated locally (backend rate limited, will sync later)', 'success');
+                    showToast('Profile updated locally (backend rate limited, will sync later)', 'success');
                 } else {
-                    showToast('✅ Profile updated locally (backend sync failed)', 'success');
+                    showToast('Profile updated locally (backend sync failed)', 'success');
                 }
                 console.warn('Backend sync failed:', backendError);
             }
@@ -1185,7 +1185,7 @@ async function saveUserProfile() {
         }
     } catch (error) {
         console.error('❌ Profile update UI error:', error);
-        showToast('✅ Profile saved locally', 'success');
+        showToast('Profile saved locally', 'success');
         closeUserProfile();
     }
 }
@@ -1225,7 +1225,7 @@ async function handleProfilePasswordChange(e) {
     e.preventDefault();
 
     if (!window.userAuth || !window.userAuth.isAuthenticated()) {
-        showToast('❌ You must be logged in to change your password', 'error');
+        showToast('You must be logged in to change your password', 'error');
         return;
     }
 
@@ -1236,19 +1236,19 @@ async function handleProfilePasswordChange(e) {
 
     // Validation
     if (!currentPassword) {
-        showToast('❌ Please enter your current password', 'error');
+        showToast('Please enter your current password', 'error');
         document.getElementById('profile-current-password')?.focus();
         return;
     }
 
     if (!newPassword || newPassword.length < 8) {
-        showToast('❌ New password must be at least 8 characters', 'error');
+        showToast('New password must be at least 8 characters', 'error');
         document.getElementById('profile-new-password')?.focus();
         return;
     }
 
     if (newPassword !== confirmPassword) {
-        showToast('❌ New passwords do not match', 'error');
+        showToast('New passwords do not match', 'error');
         document.getElementById('profile-confirm-password')?.focus();
         return;
     }
@@ -1258,7 +1258,7 @@ async function handleProfilePasswordChange(e) {
     const hasLower = /[a-z]/.test(newPassword);
     const hasNumber = /[0-9]/.test(newPassword);
     if (!hasUpper || !hasLower || !hasNumber) {
-        showToast('❌ Password must contain uppercase, lowercase, and number', 'error');
+        showToast('Password must contain uppercase, lowercase, and number', 'error');
         return;
     }
 
@@ -1267,7 +1267,7 @@ async function handleProfilePasswordChange(e) {
     const baseUrl = String(cfg.dispatchURL || '').replace(/\/$/, '');
 
     if (!baseUrl) {
-        showToast('❌ Password change service is unavailable', 'error');
+        showToast('Password change service is unavailable', 'error');
         return;
     }
 
@@ -1291,7 +1291,7 @@ async function handleProfilePasswordChange(e) {
         // Clear the form
         e.target.reset();
 
-        showToast('✅ Password changed successfully!', 'success');
+        showToast('Password changed successfully!', 'success');
     };
 
     try {
@@ -1310,7 +1310,7 @@ async function handleProfilePasswordChange(e) {
         }
     } catch (error) {
         console.error('Password change error:', error);
-        showToast('❌ ' + error.message, 'error');
+        showToast('' + error.message, 'error');
     }
 }
 
@@ -1385,7 +1385,7 @@ async function copyInviteLink(eventId) {
         const success = await copyToClipboard(link);
         
         if (success) {
-            showToast('🔗 Invite link copied to clipboard!', 'success');
+            showToast('Invite link copied to clipboard!', 'success');
         } else {
             prompt('Copy this invite link:', link);
         }
@@ -1479,7 +1479,7 @@ async function copyToClipboard(text) {
  */
 function mailAttendee(email, eventTitle = 'EventCall Event') {
     if (!email) {
-        showToast('❌ No email address available', 'error');
+        showToast('No email address available', 'error');
         return;
     }
     
@@ -1491,7 +1491,7 @@ function mailAttendee(email, eventTitle = 'EventCall Event') {
     window.location.href = mailtoLink;
     
     console.log(`📧 Opening email client for: ${email}`);
-    showToast(`📧 Opening email to ${email}`, 'success');
+    showToast(`Opening email to ${email}`, 'success');
 }
 
 /**
@@ -1511,7 +1511,7 @@ function exportEventData(eventId) {
         const filename = `${generateSafeFilename(event.title)}_rsvps.csv`;
         
         downloadFile(csvContent, filename, 'text/csv');
-        showToast('📊 Data exported successfully!', 'success');
+        showToast('Data exported successfully!', 'success');
         
     } catch (error) {
         console.error('Failed to export data:', error);
@@ -1593,14 +1593,14 @@ function copyEventData(eventId) {
         }
         const tsv = createTSVContent(event, eventResponses);
         copyToClipboard(tsv).then(() => {
-            showToast('📋 TSV copied to clipboard!', 'success');
+            showToast('TSV copied to clipboard!', 'success');
         }).catch(err => {
             console.error('Clipboard copy failed:', err);
-            showToast('❌ Failed to copy TSV', 'error');
+            showToast('Failed to copy TSV', 'error');
         });
     } catch (error) {
         console.error('Failed to copy data:', error);
-        showToast('❌ Failed to copy data', 'error');
+        showToast('Failed to copy data', 'error');
     }
 }
 
@@ -1648,7 +1648,7 @@ async function deleteEvent(eventId) {
         if (ownerId || ownerUsername) {
             const matchesOwner = (ownerId && eventOwner === ownerId) || (ownerUsername && eventOwner === ownerUsername);
             if (!matchesOwner) {
-                showToast('❌ You can only delete your own events', 'error');
+                showToast('You can only delete your own events', 'error');
                 return;
             }
         }
@@ -1670,7 +1670,7 @@ async function deleteEvent(eventId) {
             await window.loadManagerData();
         }
         
-        showToast('🗑️ Event deleted successfully', 'success');
+        showToast('Event deleted successfully', 'success');
 
         // Navigate to dashboard if on manage page
         if (window.location.hash.includes('manage/')) {
@@ -1887,7 +1887,7 @@ async function copyEventDataAsTSV(event, responses) {
     try {
         if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(tsv);
-            showToast('✅ TSV copied to clipboard', 'success');
+            showToast('TSV copied to clipboard', 'success');
             return;
         }
         throw new Error('Clipboard API unavailable');
@@ -1901,10 +1901,10 @@ async function copyEventDataAsTSV(event, responses) {
         textarea.select();
         try {
             document.execCommand('copy');
-            showToast('✅ TSV copied to clipboard', 'success');
+            showToast('TSV copied to clipboard', 'success');
         } catch (err) {
             console.error('Clipboard copy failed:', err);
-            showToast('⚠️ Could not copy TSV. Please copy manually.', 'error');
+            showToast('Could not copy TSV. Please copy manually.', 'error');
         } finally {
             document.body.removeChild(textarea);
         }

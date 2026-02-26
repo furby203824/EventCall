@@ -153,57 +153,57 @@ class ErrorHandler {
 
         // Network errors
         if (errorMsg.includes('fetch') || errorMsg.includes('network') || errorMsg.includes('Failed to fetch')) {
-            return '🌐 Network connection issue. Please check your internet connection and try again.';
+            return 'Network connection issue. Please check your internet connection and try again.';
         }
 
         // Authentication errors
         if (errorMsg.includes('401') || errorMsg.includes('Unauthorized') || errorMsg.includes('authentication')) {
-            return '🔒 Authentication failed. Please log in again with your GitHub token.';
+            return 'Authentication failed. Please log in again with your GitHub token.';
         }
 
         // Permission errors
         if (errorMsg.includes('403') || errorMsg.includes('Forbidden') || errorMsg.includes('permission')) {
-            return '⛔ You don\'t have permission to perform this action. Please check your access rights.';
+            return 'You don\'t have permission to perform this action. Please check your access rights.';
         }
 
         // Not found errors
         if (errorMsg.includes('404') || errorMsg.includes('Not Found')) {
-            return '🔍 Requested resource not found. It may have been deleted or moved.';
+            return 'Requested resource not found. It may have been deleted or moved.';
         }
 
         // Rate limit errors
         if (errorMsg.includes('429') || errorMsg.includes('rate limit')) {
-            return '⏱️ Too many requests. Please wait a moment before trying again.';
+            return 'Too many requests. Please wait a moment before trying again.';
         }
 
         // Server errors
         if (errorMsg.includes('500') || errorMsg.includes('502') || errorMsg.includes('503')) {
-            return '🔧 Server error. Our team has been notified. Please try again later.';
+            return 'Server error. Our team has been notified. Please try again later.';
         }
 
         // File upload errors
         if (context.includes('upload') || context.includes('image')) {
             if (errorMsg.includes('size') || errorMsg.includes('large')) {
-                return '📦 File is too large. Please use an image under 5MB.';
+                return 'File is too large. Please use an image under 5MB.';
             }
             if (errorMsg.includes('type') || errorMsg.includes('format')) {
-                return '📸 Invalid file format. Please use JPEG, PNG, GIF, or WebP images.';
+                return 'Invalid file format. Please use JPEG, PNG, GIF, or WebP images.';
             }
-            return '❌ File upload failed. Please check the file and try again.';
+            return 'File upload failed. Please check the file and try again.';
         }
 
         // Validation errors
         if (context.includes('validation') || errorMsg.includes('invalid') || errorMsg.includes('required')) {
-            return '✏️ Please check your input and ensure all required fields are filled correctly.';
+            return 'Please check your input and ensure all required fields are filled correctly.';
         }
 
         // GitHub API errors
         if (context.includes('GitHub') || errorMsg.includes('GitHub')) {
-            return '🐙 GitHub API error. Please check your token permissions and try again.';
+            return 'GitHub API error. Please check your token permissions and try again.';
         }
 
         // Generic fallback with context
-        return `❌ ${context}: ${errorMsg}. Please try again or contact support if the issue persists.`;
+        return `${icon('x')} ${context}: ${errorMsg}. Please try again or contact support if the issue persists.`;
     }
 
     /**

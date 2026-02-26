@@ -123,7 +123,7 @@ async function displayUserRSVPs() {
         if (rsvps.length === 0) {
             container.innerHTML = `
                 <div style="text-align: center; padding: 3rem; background: rgba(255, 255, 255, 0.05); border-radius: 0.5rem; border: 2px dashed rgba(212, 175, 55, 0.3);">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">📭</div>
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">${icon('mail-open', 48)}</div>
                     <h3 style="margin: 0 0 0.5rem 0; color: #5C4E4E;">No RSVPs Yet</h3>
                     <p style="margin: 0; color: #9ca3af;">Your RSVPs to events will appear here</p>
                 </div>
@@ -158,7 +158,7 @@ async function displayUserRSVPs() {
             : String(error.message).replace(/[<>&"']/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&#39;'}[c]));
         container.innerHTML = `
             <div style="text-align: center; padding: 2rem; background: rgba(239, 68, 68, 0.1); border-radius: 0.5rem; border: 2px solid rgba(239, 68, 68, 0.3);">
-                <strong style="color: #ef4444;">❌ Error loading RSVPs</strong>
+                <strong style="color: #ef4444;">Error loading RSVPs</strong>
                 <p style="margin: 0.5rem 0 0 0; color: #9ca3af;">${safeMessage}</p>
             </div>
         `;
@@ -183,12 +183,12 @@ function createRSVPCard(rsvp, event) {
     const formattedTime = event ? formatTime(event.time) : 'Unknown Time';
 
     const attendingBadge = rsvp.attending
-        ? '<span style="background: #dcfce7; color: #166534; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.875rem; font-weight: 600;">✅ Attending</span>'
-        : '<span style="background: #fef2f2; color: #991b1b; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.875rem; font-weight: 600;">❌ Not Attending</span>';
+        ? '<span style="background: #dcfce7; color: #166534; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.875rem; font-weight: 600;">Attending</span>'
+        : '<span style="background: #fef2f2; color: #991b1b; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.875rem; font-weight: 600;">Not Attending</span>';
 
     const pastBadge = isPast
-        ? '<span style="background: #e5e7eb; color: #6b7280; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.875rem; font-weight: 600;">📅 Past Event</span>'
-        : '<span style="background: #dbeafe; color: #1e40af; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.875rem; font-weight: 600;">📅 Upcoming</span>';
+        ? '<span style="background: #e5e7eb; color: #6b7280; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.875rem; font-weight: 600;">Past Event</span>'
+        : '<span style="background: #dbeafe; color: #1e40af; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.875rem; font-weight: 600;">Upcoming</span>';
 
     return `
         <div class="rsvp-card" style="background: linear-gradient(135deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.8)); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
@@ -200,7 +200,7 @@ function createRSVPCard(rsvp, event) {
                     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
                         ${attendingBadge}
                         ${pastBadge}
-                        ${rsvp.guestCount > 0 ? `<span style="background: #f0f9ff; color: #1e40af; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.875rem; font-weight: 600;">👥 +${rsvp.guestCount} Guest${rsvp.guestCount > 1 ? 's' : ''}</span>` : ''}
+                        ${rsvp.guestCount > 0 ? `<span style="background: #f0f9ff; color: #1e40af; padding: 0.25rem 0.75rem; border-radius: 999px; font-size: 0.875rem; font-weight: 600;">${icon('users')} +${rsvp.guestCount} Guest${rsvp.guestCount > 1 ? 's' : ''}</span>` : ''}
                     </div>
                 </div>
             </div>
@@ -208,12 +208,12 @@ function createRSVPCard(rsvp, event) {
             ${event ? `
                 <div style="display: grid; gap: 0.5rem; margin-bottom: 1rem; color: #9ca3af; font-size: 0.95rem;">
                     <div style="display: flex; align-items: center; gap: 0.5rem;">
-                        <span>📅</span>
+                        <span></span>
                         <span>${formattedDate} at ${formattedTime}</span>
                     </div>
                     ${event.location ? `
                         <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <span>📍</span>
+                            <span></span>
                             <span>${utils.escapeHTML(event.location)}</span>
                         </div>
                     ` : ''}
@@ -227,14 +227,14 @@ function createRSVPCard(rsvp, event) {
                         class="btn btn-primary"
                         style="font-size: 0.875rem; padding: 0.5rem 1rem;"
                     >
-                        ✏️ Edit RSVP
+                        ${icon('edit')} Edit RSVP
                     </button>
                     <button
                         onclick="window.print()"
                         class="btn btn-secondary"
                         style="font-size: 0.875rem; padding: 0.5rem 1rem;"
                     >
-                        🖨️ Print
+                        Print
                     </button>
                     <div class="calendar-dropdown-container" style="position: relative; display: inline-block;">
                         <button
@@ -243,20 +243,20 @@ function createRSVPCard(rsvp, event) {
                             style="font-size: 0.875rem; padding: 0.5rem 1rem;"
                             onclick="toggleRSVPCalendarDropdown('${rsvp.rsvpId}', event)"
                         >
-                            📅 Add to Calendar ▼
+                            Add to Calendar 
                         </button>
                         <div id="calendar-dropdown-${rsvp.rsvpId}" class="calendar-dropdown rsvp-calendar-dropdown-${rsvp.rsvpId}" style="display: none; position: absolute; top: 100%; left: 0; min-width: 200px; background: white; color: #1f2937; border: 1px solid #e5e7eb; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 100; margin-top: 0.25rem;">
                             <button type="button" class="calendar-dropdown-item" style="display: block; width: 100%; padding: 0.75rem 1rem; text-align: left; background: none; border: none; cursor: pointer; font-size: 0.875rem; transition: background 0.2s; color: #1f2937; border-radius: 0.5rem 0.5rem 0 0;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='none'" onclick="openRSVPCalendar('google', '${rsvp.rsvpId}'); closeRSVPCalendarDropdown('${rsvp.rsvpId}')">
-                                📅 Google Calendar
+                                Google Calendar
                             </button>
                             <button type="button" class="calendar-dropdown-item" style="display: block; width: 100%; padding: 0.75rem 1rem; text-align: left; background: none; border: none; cursor: pointer; font-size: 0.875rem; transition: background 0.2s; color: #1f2937;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='none'" onclick="openRSVPCalendar('outlook', '${rsvp.rsvpId}'); closeRSVPCalendarDropdown('${rsvp.rsvpId}')">
-                                📅 Outlook
+                                Outlook
                             </button>
                             <button type="button" class="calendar-dropdown-item" style="display: block; width: 100%; padding: 0.75rem 1rem; text-align: left; background: none; border: none; cursor: pointer; font-size: 0.875rem; transition: background 0.2s; color: #1f2937;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='none'" onclick="openRSVPCalendar('yahoo', '${rsvp.rsvpId}'); closeRSVPCalendarDropdown('${rsvp.rsvpId}')">
-                                📅 Yahoo
+                                Yahoo
                             </button>
                             <button type="button" class="calendar-dropdown-item" style="display: block; width: 100%; padding: 0.75rem 1rem; text-align: left; background: none; border: none; cursor: pointer; font-size: 0.875rem; transition: background 0.2s; color: #1f2937; border-radius: 0 0 0.5rem 0.5rem;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='none'" onclick="downloadRSVPCalendarICS('${rsvp.rsvpId}'); closeRSVPCalendarDropdown('${rsvp.rsvpId}')">
-                                📥 Download ICS
+                                Download ICS
                             </button>
                         </div>
                     </div>
@@ -306,7 +306,7 @@ async function openEditRSVPModal(rsvpId, eventId) {
 
     if (!rsvp) {
         console.error('❌ RSVP not found in window.responses or localStorage');
-        showToast('❌ RSVP not found', 'error');
+        showToast('RSVP not found', 'error');
         return;
     }
 
@@ -322,8 +322,8 @@ async function openEditRSVPModal(rsvpId, eventId) {
         eventInfoEl.innerHTML = `
             <h3 style="margin: 0 0 0.5rem 0; color: #5C4E4E; font-size: 1.1rem;">${window.utils?.escapeHTML(event.title) || event.title}</h3>
             <div style="color: #9ca3af; font-size: 0.9rem;">
-                📅 ${formatDate(event.date)} at ${formatTime(event.time)}
-                ${event.location ? `<br>📍 ${window.utils?.escapeHTML(event.location) || event.location}` : ''}
+                ${formatDate(event.date)} at ${formatTime(event.time)}
+                ${event.location ? `<br>${icon('pin')} ${window.utils?.escapeHTML(event.location) || event.location}` : ''}
             </div>
         `;
     }
@@ -394,7 +394,7 @@ function closeEditRSVPModal() {
  */
 async function saveEditedRSVP() {
     if (!currentEditingRSVP) {
-        showToast('❌ No RSVP being edited', 'error');
+        showToast('No RSVP being edited', 'error');
         return;
     }
 
@@ -411,17 +411,17 @@ async function saveEditedRSVP() {
 
     // Validate
     if (!name || name.length < 2) {
-        showToast('❌ Please enter a valid name', 'error');
+        showToast('Please enter a valid name', 'error');
         return;
     }
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showToast('❌ Please enter a valid email address', 'error');
+        showToast('Please enter a valid email address', 'error');
         return;
     }
 
     if (attending === null) {
-        showToast('❌ Please select if you are attending', 'error');
+        showToast('Please select if you are attending', 'error');
         return;
     }
 
@@ -464,7 +464,7 @@ async function saveEditedRSVP() {
                 }
             }
 
-            showToast('✅ RSVP updated successfully', 'success');
+            showToast('RSVP updated successfully', 'success');
         } else {
             throw new Error('Backend API not available');
         }
@@ -475,7 +475,7 @@ async function saveEditedRSVP() {
 
     } catch (error) {
         console.error('Error saving RSVP:', error);
-        showToast('❌ Error saving RSVP: ' + error.message, 'error');
+        showToast('Error saving RSVP: ' + error.message, 'error');
     }
 }
 
@@ -508,7 +508,7 @@ function openRSVPCalendar(type, rsvpId) {
     if (event && window.calendarExport) {
         window.calendarExport.openCalendar(type, event);
     } else {
-        showToast('❌ Event data not available', 'error');
+        showToast('Event data not available', 'error');
     }
 }
 
@@ -520,7 +520,7 @@ function downloadRSVPCalendarICS(rsvpId) {
     if (event && window.calendarExport) {
         window.calendarExport.downloadICS(event);
     } else {
-        showToast('❌ Event data not available', 'error');
+        showToast('Event data not available', 'error');
     }
 }
 

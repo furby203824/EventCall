@@ -9,7 +9,7 @@ class EventTemplates {
             promotion: {
                 id: 'promotion',
                 name: 'Promotion Ceremony',
-                icon: '🎖️',
+                icon: '',
                 description: 'Celebrate a Marine\'s advancement in rank',
                 defaultTitle: 'Promotion Ceremony',
                 defaultDescription: 'Please join us in celebrating this significant milestone in a Marine\'s career.',
@@ -26,7 +26,7 @@ class EventTemplates {
             retirement: {
                 id: 'retirement',
                 name: 'Retirement Ceremony',
-                icon: '🎖️',
+                icon: '',
                 description: 'Honor a Marine\'s dedicated service',
                 defaultTitle: 'Retirement Ceremony',
                 defaultDescription: 'Please join us in honoring the distinguished career and dedicated service of a fellow Marine.',
@@ -43,7 +43,7 @@ class EventTemplates {
             changeOfCommand: {
                 id: 'changeOfCommand',
                 name: 'Change of Command',
-                icon: '⚓',
+                icon: '',
                 description: 'Transfer of leadership ceremony',
                 defaultTitle: 'Change of Command Ceremony',
                 defaultDescription: 'Join us for the formal transfer of authority and responsibility.',
@@ -60,7 +60,7 @@ class EventTemplates {
             marineCorpsBall: {
                 id: 'marineCorpsBall',
                 name: 'Marine Corps Ball',
-                icon: '🎉',
+                icon: '',
                 description: 'Annual birthday celebration',
                 defaultTitle: 'Marine Corps Birthday Ball',
                 defaultDescription: 'Join us in celebrating the founding of the United States Marine Corps with tradition, camaraderie, and honor.',
@@ -77,7 +77,7 @@ class EventTemplates {
             diningIn: {
                 id: 'diningIn',
                 name: 'Dining In / Dining Out',
-                icon: '🍽️',
+                icon: '',
                 description: 'Formal military dining event',
                 defaultTitle: 'Dining In',
                 defaultDescription: 'You are cordially invited to attend our formal dining event, a time-honored military tradition.',
@@ -94,7 +94,7 @@ class EventTemplates {
             formation: {
                 id: 'formation',
                 name: 'Unit Formation',
-                icon: '📋',
+                icon: '',
                 description: 'Regular unit gathering or inspection',
                 defaultTitle: 'Unit Formation',
                 defaultDescription: 'Mandatory unit formation. All personnel are required to attend unless on approved leave or TDY.',
@@ -110,7 +110,7 @@ class EventTemplates {
             training: {
                 id: 'training',
                 name: 'Training Event',
-                icon: '🎯',
+                icon: '',
                 description: 'Professional development or skills training',
                 defaultTitle: 'Training Event',
                 defaultDescription: 'Professional military education and training session.',
@@ -127,7 +127,7 @@ class EventTemplates {
             familyDay: {
                 id: 'familyDay',
                 name: 'Family Day',
-                icon: '👨‍👩‍👧‍👦',
+                icon: icon('users'),
                 description: 'Family-friendly unit event',
                 defaultTitle: 'Family Day Event',
                 defaultDescription: 'Bring your families to celebrate and build camaraderie outside of duty hours.',
@@ -143,7 +143,7 @@ class EventTemplates {
             memorial: {
                 id: 'memorial',
                 name: 'Memorial Service',
-                icon: '🕊️',
+                icon: icon('sparkles'),
                 description: 'Honor fallen Marines',
                 defaultTitle: 'Memorial Service',
                 defaultDescription: 'We gather to honor and remember those who made the ultimate sacrifice.',
@@ -160,7 +160,7 @@ class EventTemplates {
             awards: {
                 id: 'awards',
                 name: 'Awards Ceremony',
-                icon: '🏅',
+                icon: '',
                 description: 'Recognize outstanding achievement',
                 defaultTitle: 'Awards Ceremony',
                 defaultDescription: 'Join us in recognizing Marines for their exceptional performance and dedication.',
@@ -254,7 +254,7 @@ class EventTemplates {
             window.updateFormProgress();
         }
 
-        showToast(`✅ Applied "${template.name}" template`, 'success');
+        showToast(`Applied "${template.name}" template`, 'success');
         return true;
     }
 
@@ -267,7 +267,7 @@ class EventTemplates {
         return `
             <div class="template-selector" style="margin: 1.5rem 0; padding: 1rem; background: #f0f9ff; border-left: 4px solid #3b82f6; border-radius: 0.5rem;">
                 <div style="font-weight: 600; margin-bottom: 0.75rem; color: #1e40af;">
-                    📋 Event Templates
+                    Event Templates
                 </div>
                 <div style="font-size: 0.875rem; color: #4b5563; margin-bottom: 1rem;">
                     Choose a pre-built template to quickly set up your event:
