@@ -1,27 +1,53 @@
 
-/* Side-by-Side Power User View Styles */
+/* Side-by-Side Power User View Styles
+   Left panel = event card list, Right panel = detail / welcome */
 
 .power-user-view {
     display: flex;
     height: calc(100vh - 60px); /* Full height minus header */
 }
 
+/* Left column – event cards & tabs */
 .power-user-view__list-panel {
-    width: 350px;
-    border-right: 1px solid var(--ux2-gold-dark);
+    width: 45%;
+    min-width: 340px;
+    max-width: 560px;
+    border-right: 1px solid #D9D5D5;
     overflow-y: auto;
     padding: var(--space-4);
-    background-color: var(--ux2-navy-900-rgba-8);
+    background-color: #f9f8f8;
 }
 
+/* Right column – welcome card / event detail */
 .power-user-view__detail-panel {
     flex-grow: 1;
     overflow-y: auto;
     padding: var(--space-4);
-    background-color: var(--ux2-navy-900-rgba-7);
+    background-color: #ffffff;
 }
 
-/* Styles for the event list in the side panel */
+/* On mobile, stack vertically – list on top, detail below */
+@media (max-width: 768px) {
+    .power-user-view {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .power-user-view__list-panel {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        border-right: none;
+        border-bottom: 1px solid #D9D5D5;
+        max-height: 50vh;
+    }
+
+    .power-user-view__detail-panel {
+        min-height: 40vh;
+    }
+}
+
+/* Styles for the event list in the side panel (legacy) */
 .side-panel-event-list {
     display: flex;
     flex-direction: column;
@@ -54,4 +80,10 @@
     display: block;
     font-size: 0.9em;
     color: var(--ux2-text-muted);
+}
+
+/* Event cards in list panel should always be single-column */
+.power-user-view__list-panel .events-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
 }

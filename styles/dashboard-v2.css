@@ -82,12 +82,18 @@ body::before {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     position: relative;
+    cursor: pointer;
 }
 
 .event-card-v2:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 32px rgba(92, 78, 78, 0.2);
     border-color: #5C4E4E;
+}
+
+.event-card-v2.event-card--selected {
+    border-color: #5C4E4E;
+    box-shadow: 0 0 0 3px rgba(92, 78, 78, 0.25);
 }
 
 .event-card-v2.event-past {
@@ -583,21 +589,8 @@ body::before {
 
 .skeleton-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    gap: 1.5rem;
-}
-
-@media (max-width: 1200px) {
-    .skeleton-grid {
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    }
-}
-
-@media (max-width: 768px) {
-    .skeleton-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
+    grid-template-columns: 1fr;
+    gap: 1rem;
 }
 
 .skeleton-card {
