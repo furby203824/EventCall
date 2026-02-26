@@ -7,7 +7,7 @@
     }
     
     .header h1 {
-        font-size: 2.25rem;
+        font-size: 1.85rem;
     }
     
     .response-stats {
@@ -40,27 +40,33 @@
     }
     
     .header {
-        padding: 1rem 0;
+        padding: 1.5rem 0 1.25rem;
     }
-    
+
+    .header-emblem svg {
+        width: 36px;
+        height: 36px;
+    }
+
     .header h1 {
-        font-size: 1.75rem;
-        margin-bottom: 0.25rem;
+        font-size: 1.5rem;
+        letter-spacing: 0.25em;
+        margin-bottom: 0.35rem;
     }
-    
+
     .header .tagline {
-        font-size: 0.875rem;
+        font-size: 0.6rem;
+        letter-spacing: 0.2em;
     }
-    
+
     .semper-branding {
-        font-size: 0.75rem;
-        flex-direction: column;
-        gap: 0.5rem;
+        font-size: 0.55rem;
+        margin-top: 0.75rem;
     }
-    
+
     .semper-branding::before,
     .semper-branding::after {
-        display: none;
+        width: 25px;
     }
     
     .github-status {
@@ -454,7 +460,8 @@
 /* Small Mobile Styles */
 @media (max-width: 480px) {
     .header h1 {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+        letter-spacing: 0.2em;
     }
     
     /* Nav buttons handled by hamburger menu at this size */

@@ -73,12 +73,14 @@ body {
 
 /* Header Styles - COMPACTED TO HALF SIZE */
 .header {
-    background: var(--ux2-navy-900);
+    background: linear-gradient(135deg, #000000 0%, #1a1616 40%, #2a2424 60%, #1a1616 80%, #000000 100%);
     color: white;
-    padding: 0.75rem 0;
-    margin-bottom: 1rem;
+    padding: 2.5rem 0 2rem;
+    margin-bottom: 0;
     position: relative;
     overflow: hidden;
+    text-align: center;
+    border-bottom: 1px solid rgba(152, 134, 134, 0.15);
 }
 
 .header::before {
@@ -88,18 +90,28 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, transparent 30%, var(--ux2-gold-rgba-1) 50%, transparent 70%);
-    animation: shimmer 3s ease-in-out infinite;
+    background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(152, 134, 134, 0.06) 0%, transparent 100%),
+        linear-gradient(45deg, transparent 30%, var(--ux2-gold-rgba-05, rgba(92,78,78,0.05)) 50%, transparent 70%);
+    pointer-events: none;
 }
 
-@keyframes shimmer {
-    0%, 100% { transform: translateX(-100%); }
-    50% { transform: translateX(100%); }
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(152, 134, 134, 0.25), transparent);
 }
 
 .header-content {
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* User button positioned on the right */
@@ -110,21 +122,36 @@ body {
     z-index: 10;
 }
 
+/* Header emblem/seal */
+.header-emblem {
+    margin-bottom: 0.75rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.header:hover .header-emblem {
+    opacity: 0.9;
+}
+
 .header h1 {
     text-align: center;
-    font-size: 1.5rem;
-    font-weight: 900;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    margin-bottom: 0.25rem;
+    font-size: 2.25rem;
+    font-weight: 300;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(209, 208, 208, 0.95);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    margin-bottom: 0.5rem;
 }
 
 .header .tagline {
     text-align: center;
-    font-size: 0.75rem;
-    font-weight: 400;
-    opacity: 0.9;
-    font-style: italic;
-    color: var(--ux2-text-light);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(152, 134, 134, 0.7);
+    font-style: normal;
 }
 
 /* Semper Admin Branding */
@@ -132,26 +159,37 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 0.5rem;
-    font-size: 0.7rem;
-    color: var(--ux2-text-light);
+    margin-top: 1rem;
+    margin-bottom: 0;
+    gap: 0.5rem;
+    font-size: 0.6rem;
+    color: rgba(152, 134, 134, 0.5);
     font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
+.semper-branding__brand {
+    color: rgba(152, 134, 134, 0.65);
+}
+
 .semper-branding:hover {
-    color: #ffffff;
-    transform: scale(1.05);
+    color: rgba(152, 134, 134, 0.8);
+}
+
+.semper-branding:hover .semper-branding__brand {
+    color: rgba(209, 208, 208, 0.9);
 }
 
 .semper-branding::before,
 .semper-branding::after {
     content: '';
-    width: 30px;
+    width: 40px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--ux2-text-light), transparent);
-    margin: 0 0.75rem;
+    background: linear-gradient(90deg, transparent, rgba(152, 134, 134, 0.3), transparent);
+    margin: 0 0.5rem;
 }
 
 .github-status {

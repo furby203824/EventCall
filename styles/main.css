@@ -96,11 +96,11 @@ body {
 
 /* Header Styles - COMPACTED TO HALF SIZE */
 .header {
-    background: linear-gradient(to right, #000000, #5C4E4E);
+    background: linear-gradient(135deg, #000000 0%, #1a1616 40%, #2a2424 60%, #1a1616 80%, #000000 100%);
     color: white;
-    padding: 2rem 0;
+    padding: 2.5rem 0 2rem;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
 }
 
 
@@ -113,15 +113,20 @@ body {
 
 
 .header h1 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     font-weight: 300;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(209, 208, 208, 0.95);
     margin-bottom: 0.5rem;
 }
 
 .header .tagline {
-    font-size: 1rem;
-    font-weight: 300;
-    opacity: 0.8;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(152, 134, 134, 0.7);
 }
 
 
