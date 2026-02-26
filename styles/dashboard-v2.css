@@ -581,6 +581,25 @@ body::before {
     100% { background-position: 200% 0; }
 }
 
+.skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+    .skeleton-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .skeleton-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
 .skeleton-card {
     border-radius: 0.75rem;
     overflow: hidden;

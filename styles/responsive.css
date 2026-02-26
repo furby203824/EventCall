@@ -74,6 +74,11 @@
         display: flex; /* Show hamburger on mobile */
     }
 
+    .main-nav {
+        position: relative;
+        z-index: var(--z-nav-menu, 900);
+    }
+
     .main-nav .nav-container {
         display: flex;
         align-items: center;
@@ -85,13 +90,14 @@
         flex-direction: column;
         position: absolute;
         top: 100%;
-        left: 0;
-        right: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
         background: #ffffff;
         border-bottom: 2px solid #988686;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
         padding: 0.5rem 0;
-        z-index: 900;
+        z-index: var(--z-nav-menu, 900);
         gap: 0;
     }
 
