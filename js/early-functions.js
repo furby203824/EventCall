@@ -826,6 +826,12 @@ function resetCreateEventForm() {
  * @param {string} param - Optional parameter (e.g., eventId for manage/invite pages)
  */
 function showPageContent(pageId, param) {
+    // Intercept 'create' — show inline within dashboard instead of separate page
+    if (pageId === 'create') {
+        showInlineCreateForm();
+        return;
+    }
+
     // Hide all pages
     document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
@@ -871,36 +877,9 @@ function showPageContent(pageId, param) {
     }
     
     // Page-specific initializations
-    if (pageId === 'create') {
-        // Reset form for new event creation (clear any leftover edit state)
-        // Only reset if not in edit mode (editMode should be cleared first)
-        if (!window.eventManager || !window.eventManager.editMode) {
-            resetCreateEventForm();
-        }
-
-        // Initialize template selector
-        if (window.eventTemplates) {
-            const container = document.getElementById('template-selector-container');
-            if (container && !container.hasChildNodes()) {
-                container.innerHTML = window.eventTemplates.generateTemplateSelectorHTML();
-            }
-        }
-
-        // Initialize photo upload handlers
-        if (window.setupPhotoUpload) {
-            window.setupPhotoUpload();
-        }
-
-        // Initialize event form handlers
-        if (window.setupEventForm) {
-            window.setupEventForm();
-        }
-
-        // Update form progress indicator
-        if (typeof window.updateFormProgress === 'function') {
-            window.updateFormProgress();
-        }
-    } else if (pageId === 'dashboard') {
+    if (pageId === 'dashboard') {
+        // Restore welcome card and hide inline form
+        hideInlineCreateForm();
         // Reset dashboard state for clean render after navigation
         if (typeof window.resetDashboardState === 'function') {
             window.resetDashboardState();
@@ -917,6 +896,96 @@ function showPageContent(pageId, param) {
     }
 
     console.log(`📄 Page changed to: ${pageId}`);
+}
+
+/**
+ * Show the create-event form inline within the dashboard page,
+ * replacing the welcome card with a smooth transition.
+ */
+function showInlineCreateForm() {
+    const welcome = document.getElementById('dashboard-welcome');
+    const formContainer = document.getElementById('dashboard-create-form');
+    const createPage = document.getElementById('create');
+
+    if (!formContainer || !createPage) return;
+
+    // Keep the dashboard page active (don't switch to #create)
+    const dashboard = document.getElementById('dashboard');
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    if (dashboard) dashboard.classList.add('active');
+
+    // Move the create-page contents into the dashboard inline container
+    if (!formContainer.hasChildNodes() || formContainer.children.length === 0) {
+        // Move all child nodes from #create into the inline container
+        while (createPage.firstChild) {
+            formContainer.appendChild(createPage.firstChild);
+        }
+    }
+
+    // Hide welcome card, show form
+    if (welcome) {
+        welcome.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+        welcome.style.opacity = '0';
+        welcome.style.transform = 'translateY(-10px)';
+        setTimeout(function () {
+            welcome.style.display = 'none';
+            formContainer.style.display = '';
+            formContainer.style.opacity = '0';
+            formContainer.style.transform = 'translateY(10px)';
+            formContainer.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            // Force reflow
+            void formContainer.offsetWidth;
+            formContainer.style.opacity = '1';
+            formContainer.style.transform = 'translateY(0)';
+        }, 250);
+    } else {
+        formContainer.style.display = '';
+    }
+
+    // Highlight nav button
+    document.querySelectorAll('.nav button').forEach(function (btn) {
+        btn.classList.remove('active');
+    });
+    var navBtn = document.getElementById('nav-create');
+    if (navBtn) navBtn.classList.add('active');
+
+    // Initialize the form (same logic as the old create page handler)
+    if (!window.eventManager || !window.eventManager.editMode) {
+        resetCreateEventForm();
+    }
+    if (window.eventTemplates) {
+        var tplContainer = document.getElementById('template-selector-container');
+        if (tplContainer && !tplContainer.hasChildNodes()) {
+            tplContainer.innerHTML = window.eventTemplates.generateTemplateSelectorHTML();
+        }
+    }
+    if (window.setupPhotoUpload) window.setupPhotoUpload();
+    if (window.setupEventForm) window.setupEventForm();
+    if (typeof window.updateFormProgress === 'function') window.updateFormProgress();
+
+    // Update URL
+    if (window.AppRouter && typeof window.AppRouter.updateURLForPage === 'function') {
+        window.AppRouter.updateURLForPage('create');
+    }
+
+    console.log('📄 Create form loaded inline in dashboard');
+}
+
+/**
+ * Hide the inline create form and restore the welcome card.
+ */
+function hideInlineCreateForm() {
+    var welcome = document.getElementById('dashboard-welcome');
+    var formContainer = document.getElementById('dashboard-create-form');
+
+    if (formContainer) {
+        formContainer.style.display = 'none';
+    }
+    if (welcome) {
+        welcome.style.display = '';
+        welcome.style.opacity = '1';
+        welcome.style.transform = 'translateY(0)';
+    }
 }
 
 /**

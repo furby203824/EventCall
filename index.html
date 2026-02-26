@@ -745,7 +745,7 @@ function verifyDashboardTabs() {
             <div class="power-user-view__detail-panel" id="detail-panel">
         <div id="dashboard" class="page active">
 
-            <div class="welcome-card">
+            <div id="dashboard-welcome" class="welcome-card">
                 <div class="welcome-banner">
                     <div class="welcome-title">
                         <svg class="icon-medal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
@@ -763,7 +763,11 @@ function verifyDashboardTabs() {
                         Notice: This system is not authorized for the storage or processing of PII, CUI, or HIPAA regulated data. All data shown is for demonstration purposes.
                     </div>
                 </div>
+            </div>
 
+            <!-- Inline Create Event Form (replaces welcome card) -->
+            <div id="dashboard-create-form" class="dashboard-create-form" style="display:none;">
+            </div>
 
         </div>
 
