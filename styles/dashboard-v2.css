@@ -571,3 +571,56 @@ body::before {
         border-bottom-color: #5C4E4E !important;
     }
 }
+
+/* ============================================
+   SKELETON LOADING CARDS
+   ============================================ */
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.skeleton-card {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: #E8E7E7;
+    border: 1px solid #D9D5D5;
+}
+
+.skeleton-cover {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 220px;
+    background: linear-gradient(90deg, #E8E7E7 25%, #D9D5D5 50%, #E8E7E7 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-body {
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.skeleton-line {
+    height: 0.875rem;
+    border-radius: 0.25rem;
+    background: linear-gradient(90deg, #D9D5D5 25%, #C9C4C4 50%, #D9D5D5 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-line--title {
+    width: 65%;
+    height: 1.125rem;
+}
+
+.skeleton-line--meta {
+    width: 80%;
+}
+
+.skeleton-line--short {
+    width: 45%;
+}

@@ -251,9 +251,10 @@ input:invalid:not(:focus):not(:placeholder-shown),
    TOUCH TARGET IMPROVEMENTS
    ============================================ */
 
-/* Ensure all interactive elements meet minimum size */
+/* Ensure interactive controls meet minimum touch target size */
 button,
-a,
+a.btn,
+a[role="button"],
 input[type="checkbox"],
 input[type="radio"],
 select {
@@ -265,7 +266,8 @@ select {
 @media (max-width: 768px) {
     button,
     .btn,
-    a.btn {
+    a.btn,
+    a[role="button"] {
         min-height: 48px;
         padding: 0.75rem 1.25rem;
     }

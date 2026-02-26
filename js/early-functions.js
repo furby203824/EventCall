@@ -1329,9 +1329,11 @@ function showToast(message, type = 'success') {
     // Remove existing toasts
     const existingToasts = document.querySelectorAll('.toast');
     existingToasts.forEach(toast => toast.remove());
-    
+
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
+    toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    toast.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
     toast.style.cssText = `
         position: fixed;
         top: 20px;
@@ -1342,7 +1344,7 @@ function showToast(message, type = 'success') {
         font-weight: 600;
         z-index: 10000;
         animation: slideIn 0.3s ease;
-        ${type === 'success' ? 'background: #10b981;' : 'background: #ef4444;'}
+        ${type === 'success' ? 'background: #10b981;' : type === 'warning' ? 'background: #f59e0b;' : 'background: #ef4444;'}
     `;
     toast.textContent = message;
     
