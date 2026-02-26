@@ -713,6 +713,13 @@
      max-width: 80ch;
  }
 
+ .welcome-disclaimer {
+     font-size: 0.75rem;
+     line-height: 1.4;
+     color: #988686;
+     margin-top: 0.5rem;
+ }
+
 
 
 

@@ -656,9 +656,9 @@ function verifyDashboardTabs() {
                 <span class="nav-hamburger__line"></span>
             </button>
             <ul class="nav-links">
-                <li><button type="button" class="nav-link dashboard-tab dashboard-tab--active" data-tab="active-events" onclick="switchDashboardTab('active-events'); closeMobileNav()">🟢 Your Active Events</button></li>
-                <li><button type="button" class="nav-link dashboard-tab" data-tab="past-events" onclick="switchDashboardTab('past-events'); closeMobileNav()">🔴 Your Past Events</button></li>
-                <li><button type="button" class="nav-link dashboard-tab" data-tab="your-rsvps" onclick="switchDashboardTab('your-rsvps'); closeMobileNav()">📝 Your RSVPs</button></li>
+                <li><button type="button" class="nav-link dashboard-tab dashboard-tab--active" data-tab="active-events" onclick="switchDashboardTab('active-events'); closeMobileNav()">Active Events</button></li>
+                <li><button type="button" class="nav-link dashboard-tab" data-tab="past-events" onclick="switchDashboardTab('past-events'); closeMobileNav()">Past Events</button></li>
+                <li><button type="button" class="nav-link dashboard-tab" data-tab="your-rsvps" onclick="switchDashboardTab('your-rsvps'); closeMobileNav()">Your RSVPs</button></li>
                 <li><button id="nav-create" class="nav-link" onclick="showPage('create'); closeMobileNav()">Create Event</button></li>
                 <li><button id="nav-analytics" class="nav-link" onclick="showPage('analytics'); closeMobileNav()">Analytics</button></li>
                 <li><button class="nav-link" onclick="syncWithGitHub(); closeMobileNav()">Sync RSVPs</button></li>
@@ -752,6 +752,13 @@ function verifyDashboardTabs() {
                     </div>
                     <div class="welcome-description">
                         Professional military event management with real-time RSVP tracking. Create events instantly and share invite links for seamless coordination.
+                    </div>
+                    <div class="welcome-disclaimer">
+                        DATA CATEGORY: SYNTHETIC / TEST DATA ONLY &rsaquo; PROTECTION LEVEL: UNSECURED POC
+                    </div>
+                    <div class="welcome-disclaimer">
+                        Notice: This system is not authorized for the storage or processing of PII, CUI, or HIPAA regulated data. All data shown is for demonstration purposes.
+                    </div>
                 </div>
 
 
