@@ -3,12 +3,13 @@
 
 .power-user-view {
     display: flex;
+    flex-direction: row-reverse;
     height: calc(100vh - 60px); /* Full height minus header */
 }
 
 .power-user-view__list-panel {
     width: 350px;
-    border-right: 1px solid var(--ux2-gold-dark);
+    border-left: 1px solid var(--ux2-gold-dark);
     overflow-y: auto;
     padding: var(--space-4);
     background-color: var(--ux2-navy-900-rgba-8);
