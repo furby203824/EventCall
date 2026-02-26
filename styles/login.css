@@ -7,31 +7,34 @@
 #login-page,
 #login-container {
     display: flex;
-    align-items: flex-start; /* Start from top to prevent cutoff */
+    align-items: flex-start;
     justify-content: center;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
+    min-height: 100dvh; /* Dynamic viewport height - adjusts for virtual keyboard */
     background: linear-gradient(135deg,
         #D1D0D0 0%,
         #E8E7E7 50%,
         #D1D0D0 100%
     );
-    z-index: 10000;
+    z-index: var(--z-login);
     overflow-y: auto;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    padding-top: 1rem; /* Ensure content starts below viewport top */
+    -webkit-overflow-scrolling: touch;
+    padding-top: 1rem;
+    padding-bottom: 2rem; /* Extra room at bottom for keyboard */
 }
 
 .login-wrapper {
     min-height: 100vh;
+    min-height: 100dvh; /* Respects virtual keyboard on mobile */
     display: flex;
-    align-items: flex-start; /* Start from top to prevent cutoff */
+    align-items: flex-start;
     justify-content: center;
-    padding: 1rem 2rem 2rem 2rem; /* More top padding */
+    padding: 1rem 2rem 2rem 2rem;
     width: 100%;
 }
 
@@ -323,7 +326,7 @@
     display: none;
     align-items: center;
     justify-content: center;
-    z-index: 10001;
+    z-index: var(--z-login-modal);
     padding: 1rem;
 }
 
@@ -532,7 +535,7 @@
     border-radius: 0.75rem;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
     min-width: 250px;
-    z-index: 99999;
+    z-index: var(--z-profile-menu);
     border: 2px solid #988686;
 }
 
@@ -580,7 +583,7 @@
     color: #D1D0D0;
     border-radius: 2rem;
     cursor: pointer;
-    z-index: 9999;
+    z-index: var(--z-profile-btn);
     border: 2px solid #988686;
     transition: all 0.3s ease;
 }

@@ -17,7 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10000;
+    z-index: var(--z-app-loader);
     opacity: 1;
     visibility: visible;
     /* NO TRANSITION - Show immediately when class removed */

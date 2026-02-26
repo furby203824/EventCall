@@ -17,7 +17,7 @@
     cursor: pointer;
     box-shadow: 0 4px 12px rgba(92, 78, 78, 0.4);
     transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: var(--z-modal-backdrop);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -41,7 +41,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 10000;
+    z-index: var(--z-modal);
     display: none;
     align-items: center;
     justify-content: center;

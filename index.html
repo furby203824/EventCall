@@ -582,6 +582,29 @@ function switchDashboardTab(tab) {
 // Make function globally available
 window.switchDashboardTab = switchDashboardTab;
 
+// Mobile navigation hamburger toggle
+function toggleMobileNav() {
+    const nav = document.querySelector('.main-nav');
+    const overlay = document.querySelector('.nav-overlay');
+    const hamburger = document.querySelector('.nav-hamburger');
+    if (!nav) return;
+    const isOpen = nav.classList.toggle('nav-open');
+    if (overlay) overlay.classList.toggle('nav-overlay--active', isOpen);
+    if (hamburger) hamburger.setAttribute('aria-expanded', isOpen);
+}
+
+function closeMobileNav() {
+    const nav = document.querySelector('.main-nav');
+    const overlay = document.querySelector('.nav-overlay');
+    const hamburger = document.querySelector('.nav-hamburger');
+    if (nav) nav.classList.remove('nav-open');
+    if (overlay) overlay.classList.remove('nav-overlay--active');
+    if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+}
+
+window.toggleMobileNav = toggleMobileNav;
+window.closeMobileNav = closeMobileNav;
+
 // Verify tabs exist when DOM is ready
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', verifyDashboardTabs);
@@ -626,17 +649,23 @@ function verifyDashboardTabs() {
     </div>
 
     <nav class="main-nav nav" style="display: flex;">
-        <div class="container">
+        <div class="container nav-container">
+            <button type="button" class="nav-hamburger" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMobileNav()">
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+                <span class="nav-hamburger__line"></span>
+            </button>
             <ul class="nav-links">
-                <li><button type="button" class="nav-link dashboard-tab dashboard-tab--active" data-tab="active-events" onclick="switchDashboardTab('active-events')">🟢 Your Active Events</button></li>
-                <li><button type="button" class="nav-link dashboard-tab" data-tab="past-events" onclick="switchDashboardTab('past-events')">🔴 Your Past Events</button></li>
-                <li><button type="button" class="nav-link dashboard-tab" data-tab="your-rsvps" onclick="switchDashboardTab('your-rsvps')">📝 Your RSVPs</button></li>
-                <li><button id="nav-create" class="nav-link" onclick="showPage('create')">Create Event</button></li>
-                <li><button id="nav-analytics" class="nav-link" onclick="showPage('analytics')">Analytics</button></li>
-                <li><button class="nav-link" onclick="syncWithGitHub()">Sync RSVPs</button></li>
+                <li><button type="button" class="nav-link dashboard-tab dashboard-tab--active" data-tab="active-events" onclick="switchDashboardTab('active-events'); closeMobileNav()">🟢 Your Active Events</button></li>
+                <li><button type="button" class="nav-link dashboard-tab" data-tab="past-events" onclick="switchDashboardTab('past-events'); closeMobileNav()">🔴 Your Past Events</button></li>
+                <li><button type="button" class="nav-link dashboard-tab" data-tab="your-rsvps" onclick="switchDashboardTab('your-rsvps'); closeMobileNav()">📝 Your RSVPs</button></li>
+                <li><button id="nav-create" class="nav-link" onclick="showPage('create'); closeMobileNav()">Create Event</button></li>
+                <li><button id="nav-analytics" class="nav-link" onclick="showPage('analytics'); closeMobileNav()">Analytics</button></li>
+                <li><button class="nav-link" onclick="syncWithGitHub(); closeMobileNav()">Sync RSVPs</button></li>
             </ul>
         </div>
     </nav>
+    <div class="nav-overlay" onclick="closeMobileNav()"></div>
 
     <div class="container">
                 <main id="main-content" role="main" class="power-user-view">
