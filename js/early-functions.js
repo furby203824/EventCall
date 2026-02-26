@@ -832,6 +832,9 @@ function showPageContent(pageId, param) {
         return;
     }
 
+    // Restore dashboard welcome card if leaving the inline create form
+    hideInlineCreateForm();
+
     // Hide all pages
     document.querySelectorAll('.page').forEach(page => {
         page.classList.remove('active');
@@ -878,8 +881,6 @@ function showPageContent(pageId, param) {
     
     // Page-specific initializations
     if (pageId === 'dashboard') {
-        // Restore welcome card and hide inline form
-        hideInlineCreateForm();
         // Reset dashboard state for clean render after navigation
         if (typeof window.resetDashboardState === 'function') {
             window.resetDashboardState();
