@@ -1923,7 +1923,8 @@ async function handleEventSubmit(e) {
         clearCustomQuestions();
         clearEventDetails();
 
-        // Navigate to dashboard after successful creation
+        // Navigate to the new event's manage view after creation
+        const createdEventId = eventData.id;
         setTimeout(async () => {
             try {
                 if (typeof window.loadManagerData === 'function') {
@@ -1932,9 +1933,9 @@ async function handleEventSubmit(e) {
             } catch (e) {
                 console.warn('Failed to refresh data after save:', e);
             }
-            
+
             if (window.showPage) {
-                window.showPage('dashboard');
+                window.showPage('manage', createdEventId);
             }
         }, 500);
 

@@ -2451,8 +2451,11 @@ Best regards`;
      */
     _toggleRedundantEditButtons(show) {
         const displayStyle = show ? '' : 'none';
-        const backBtn = document.querySelector('#create .btn-back');
-        const cancelBtn = document.querySelector('#create .form-actions .btn-secondary:not(#cancel-edit-btn)');
+        // Form may be inside #dashboard-create-form (inline) or #create
+        const formRoot = document.querySelector('#dashboard-create-form') || document.querySelector('#create');
+        if (!formRoot) return;
+        const backBtn = formRoot.querySelector('.btn-back');
+        const cancelBtn = formRoot.querySelector('.form-actions .btn-secondary:not(#cancel-edit-btn)');
         if (backBtn) backBtn.style.display = displayStyle;
         if (cancelBtn) cancelBtn.style.display = displayStyle;
     }
@@ -2593,7 +2596,9 @@ Best regards`;
         this._toggleRedundantEditButtons(false);
 
         showPage('create');
-        document.querySelector('#create h2').textContent = 'Edit Event';
+        // Title may be inside #dashboard-create-form (inline) or #create
+        const editTitle = document.querySelector('#dashboard-create-form h2') || document.querySelector('#create h2');
+        if (editTitle) editTitle.textContent = 'Edit Event';
         if (window.setupPhotoUpload) {
             const uploadAreaInit = document.getElementById('cover-upload');
             if (uploadAreaInit) {
@@ -2667,7 +2672,8 @@ Best regards`;
     /**
      * Cancel edit mode
      */
-    cancelEdit() {
+    cancelEdit(navigateToEventId) {
+        var eventId = navigateToEventId || (this.currentEvent && this.currentEvent.id) || null;
         this.editMode = false;
         this.currentEvent = null;
 
@@ -2688,13 +2694,16 @@ Best regards`;
         }
 
         // Reset page title
-        document.querySelector('#create h2').textContent = 'Create New Event';
+        const createTitle = document.querySelector('#dashboard-create-form h2') || document.querySelector('#create h2');
+        if (createTitle) createTitle.textContent = 'Create New Event';
 
         // Restore Back button and Cancel button
         this._toggleRedundantEditButtons(true);
 
-        // Use unified navigation
-        if (typeof window.navigateTo === 'function') {
+        // Navigate to event manage view if we have an eventId, otherwise dashboard
+        if (eventId) {
+            showPage('manage', eventId);
+        } else if (typeof window.navigateTo === 'function') {
             window.navigateTo('dashboard');
         } else {
             showPage('dashboard');
@@ -2741,10 +2750,10 @@ Best regards`;
 
             showToast('Event updated successfully!', 'success');
 
-            // Reset edit mode
-            this.cancelEdit();
+            // Reset edit mode and navigate to the updated event's manage view
+            this.cancelEdit(eventData.id);
 
-            // Refresh dashboard
+            // Refresh dashboard data in the background
             renderDashboard();
 
         } catch (error) {
