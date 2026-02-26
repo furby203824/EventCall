@@ -143,9 +143,12 @@ function setupEventFormKeyboardShortcuts() {
         // Only handle Escape key
         if (e.key !== 'Escape') return;
 
-        // Check if we're on the create page
+        // Check if the create form is visible (inline in dashboard or on create page)
+        const inlineForm = document.getElementById('dashboard-create-form');
         const createPage = document.getElementById('create');
-        if (!createPage || !createPage.classList.contains('active')) return;
+        const formVisible = (inlineForm && inlineForm.style.display !== 'none') ||
+                            (createPage && createPage.classList.contains('active'));
+        if (!formVisible) return;
 
         // Don't trigger if a modal is open (let modal handle its own Escape)
         const openModals = document.querySelectorAll('.modal-overlay.is-visible');

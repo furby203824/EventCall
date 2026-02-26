@@ -5,6 +5,11 @@
     flex-shrink: 0;
 }
 
+/* Inline create form (replaces welcome card on dashboard) */
+.dashboard-create-form {
+    animation: fadeSlideIn 0.3s ease forwards;
+}
+
 /*
 ====================================================================================================
     components.css
