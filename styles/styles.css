@@ -159,7 +159,7 @@
 .panel__title { font-weight: 600; margin-bottom: 0.75rem; color: #1e40af; }
 
 /* Profile dropdown */
-.profile-dropdown { position: absolute; top: 3.5rem; right: 1rem; width: 300px; background: white; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 1000; border: 2px solid var(--semper-gold); }
+.profile-dropdown { position: absolute; top: 3.5rem; right: 1rem; width: 300px; background: white; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: var(--z-dropdown); border: 2px solid var(--semper-gold); }
 .profile-dropdown__header { padding: 1rem; background: linear-gradient(135deg, #000000, #5C4E4E); color: #D1D0D0; border-radius: 1rem 1rem 0 0; }
 .profile-dropdown__header-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem; }
 .profile-dropdown__header-email { font-size: 0.85rem; opacity: 0.9; }
@@ -343,4 +343,64 @@ select option {
     background-color: #D1D0D0;
     color: #000000;
     font-weight: 600;
+}
+
+/* Hamburger Menu Button - hidden on desktop */
+.nav-container {
+    position: relative;
+}
+
+.nav-hamburger {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 0.375rem;
+    transition: background-color 0.2s;
+}
+
+.nav-hamburger:hover {
+    background-color: #E8E7E7;
+}
+
+.nav-hamburger__line {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: #5C4E4E;
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger → X animation when open */
+.nav-open .nav-hamburger__line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.nav-open .nav-hamburger__line:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-open .nav-hamburger__line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile nav overlay backdrop */
+.nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 899;
+}
+
+.nav-overlay--active {
+    display: block;
 }

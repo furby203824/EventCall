@@ -54,6 +54,23 @@
     --bp-md: 768px;
     --bp-lg: 1024px;
     --bp-xl: 1280px;
+
+    /* Z-Index Scale - Standardized layering system */
+    --z-base: 1;
+    --z-header: 100;
+    --z-dropdown: 500;
+    --z-sticky: 600;
+    --z-nav-overlay: 899;
+    --z-nav-menu: 900;
+    --z-modal-backdrop: 1000;
+    --z-modal: 1010;
+    --z-toast: 1100;
+    --z-loading: 5000;
+    --z-login: 9000;
+    --z-login-modal: 9010;
+    --z-profile-btn: 9500;
+    --z-profile-menu: 9510;
+    --z-app-loader: 10000;
 }
 
 /* Reset and Base Styles */
@@ -313,7 +330,7 @@ body {
     border-radius: 0.5rem;
     color: white;
     font-weight: 600;
-    z-index: 1000;
+    z-index: var(--z-toast);
     animation: slideIn 0.3s ease;
 }
 
