@@ -274,13 +274,13 @@ class EventTemplates {
                 <div class="template-accordion__body">
                     <div class="template-accordion__grid">
                         ${templates.map(template => `
-                            <button type="button"
-                                    class="template-card"
-                                    onclick="window.eventTemplates.applyTemplate('${template.id}')">
-                                <span class="template-card__icon">${template.icon}</span>
-                                <span class="template-card__name">${template.name}</span>
-                                <span class="template-card__desc">${template.description}</span>
-                            </button>
+                            <div class="template-card" role="button" tabindex="0"
+                                 onclick="window.eventTemplates.applyTemplate('${template.id}')"
+                                 onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+                                <div class="template-card__icon">${template.icon}</div>
+                                <div class="template-card__name">${template.name}</div>
+                                <div class="template-card__desc">${template.description}</div>
+                            </div>
                         `).join('')}
                     </div>
                 </div>
