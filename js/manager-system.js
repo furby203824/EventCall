@@ -905,27 +905,9 @@ function getEventHash(event) {
  */
 
 function renderSidePanelEventList(events) {
-    const listPanel = document.getElementById('list-panel');
-    if (!listPanel) {
-        console.error('Side panel list container not found!');
-        return;
-    }
-
-    if (events.length === 0) {
-        listPanel.innerHTML = '<div class="empty-state"><div class="empty-state__message">No active events.</div></div>';
-        return;
-    }
-
-    const eventListHTML = events.map(event => {
-        return `
-            <a href="#" class="side-panel-event-item" onclick="showEventDetails('''${event.id}'''); return false;">
-                <span class="side-panel-event-item__title">${window.utils.escapeHTML(event.title)}</span>
-                <span class="side-panel-event-item__date">${new Date(event.date).toLocaleDateString()}</span>
-            </a>
-        `;
-    }).join('');
-
-    listPanel.innerHTML = `<div class="side-panel-event-list">${eventListHTML}</div>`;
+    // No-op: event cards are now rendered directly in the list panel
+    // via the tab content containers (active-events-list, past-events-list).
+    // This function is kept as a stub to avoid breaking callers.
 }
 
 function renderDashboard() {
@@ -2532,8 +2514,38 @@ if (_originalRenderDashboard) {
 window.filterEventsBySearch = filterEventsBySearch;
 window.initEventSearch = initEventSearch;
 
+/**
+ * Show event details in the right detail panel (list/detail pattern).
+ * Loads event management view inline without full page navigation.
+ * @param {string} eventId - The event ID to display
+ */
+function showEventDetails(eventId) {
+    const detailPanel = document.getElementById('detail-panel');
+    if (!detailPanel) return;
+
+    // Highlight selected card in list panel
+    document.querySelectorAll('.event-card-v2').forEach(c => c.classList.remove('event-card--selected'));
+    const selectedCard = document.querySelector(`.event-card-v2[data-event-id="${eventId}"]`);
+    if (selectedCard) selectedCard.classList.add('event-card--selected');
+
+    // Use eventManager to render details if available
+    if (window.eventManager && typeof window.eventManager.showEventManagement === 'function') {
+        // Ensure the manage page container is visible inside detail panel
+        const managePage = document.getElementById('manage');
+        const dashboardPage = document.getElementById('dashboard');
+        if (dashboardPage) dashboardPage.classList.remove('active');
+        if (managePage) managePage.classList.add('active');
+        window.eventManager.showEventManagement(eventId);
+    } else {
+        showPage('manage', eventId);
+    }
+}
+
+window.showEventDetails = showEventDetails;
+
 console.log('✅ Enhanced manager system loaded with RSVP sync functionality and username auth support');
 
+// Delegate: clicking "Manage Event" button shows details in right panel
 document.addEventListener('click', function(e) {
     const btn = e.target.closest('[data-action="manage"]');
     if (!btn) return;
@@ -2542,11 +2554,15 @@ document.addEventListener('click', function(e) {
     const card = btn.closest('[data-event-id]');
     const eventId = card ? card.getAttribute('data-event-id') : null;
     if (!eventId) return;
-    if (window.AppRouter && typeof window.AppRouter.navigateToPage === 'function') {
-        window.AppRouter.navigateToPage('manage', eventId);
-    } else if (window.eventManager && typeof window.eventManager.showEventManagement === 'function') {
-        window.eventManager.showEventManagement(eventId);
-    } else {
-        showPage('manage', eventId);
-    }
+    showEventDetails(eventId);
+});
+
+// Delegate: clicking an event card (not a button) selects it
+document.addEventListener('click', function(e) {
+    // Skip if a button or link inside the card was clicked
+    if (e.target.closest('button, a, [data-action]')) return;
+    const card = e.target.closest('.event-card-v2[data-event-id]');
+    if (!card) return;
+    const eventId = card.getAttribute('data-event-id');
+    if (eventId) showEventDetails(eventId);
 });

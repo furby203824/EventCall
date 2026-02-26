@@ -670,12 +670,77 @@ function verifyDashboardTabs() {
     <div class="container">
                 <main id="main-content" role="main" class="power-user-view">
             <div class="power-user-view__list-panel" id="list-panel">
-                <!-- Event list will be populated here by JS -->
+                <!-- Dashboard Empty State Container -->
+                <div id="dashboard-empty-state-container"></div>
+
+                <!-- Active Events Tab Content -->
+                <div id="active-events-tab" class="dashboard-tab-content dashboard-tab-content--active">
+                    <div id="active-events-list">
+                        <div class="skeleton-grid" aria-hidden="true">
+                            <div class="skeleton-card">
+                                <div class="skeleton-cover"></div>
+                                <div class="skeleton-body">
+                                    <div class="skeleton-line skeleton-line--title"></div>
+                                    <div class="skeleton-line skeleton-line--meta"></div>
+                                    <div class="skeleton-line skeleton-line--meta skeleton-line--short"></div>
+                                </div>
+                            </div>
+                            <div class="skeleton-card">
+                                <div class="skeleton-cover"></div>
+                                <div class="skeleton-body">
+                                    <div class="skeleton-line skeleton-line--title"></div>
+                                    <div class="skeleton-line skeleton-line--meta"></div>
+                                    <div class="skeleton-line skeleton-line--meta skeleton-line--short"></div>
+                                </div>
+                            </div>
+                            <div class="skeleton-card">
+                                <div class="skeleton-cover"></div>
+                                <div class="skeleton-body">
+                                    <div class="skeleton-line skeleton-line--title"></div>
+                                    <div class="skeleton-line skeleton-line--meta"></div>
+                                    <div class="skeleton-line skeleton-line--meta skeleton-line--short"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Past Events Tab Content -->
+                <div id="past-events-tab" class="dashboard-tab-content">
+                    <div id="past-events-list">
+                        <div class="skeleton-grid" aria-hidden="true">
+                            <div class="skeleton-card">
+                                <div class="skeleton-cover"></div>
+                                <div class="skeleton-body">
+                                    <div class="skeleton-line skeleton-line--title"></div>
+                                    <div class="skeleton-line skeleton-line--meta"></div>
+                                    <div class="skeleton-line skeleton-line--meta skeleton-line--short"></div>
+                                </div>
+                            </div>
+                            <div class="skeleton-card">
+                                <div class="skeleton-cover"></div>
+                                <div class="skeleton-body">
+                                    <div class="skeleton-line skeleton-line--title"></div>
+                                    <div class="skeleton-line skeleton-line--meta"></div>
+                                    <div class="skeleton-line skeleton-line--meta skeleton-line--short"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Your RSVPs Tab Content -->
+                <div id="your-rsvps-tab" class="dashboard-tab-content">
+                    <div id="user-rsvps-list">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                            Loading your RSVPs...
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="power-user-view__detail-panel" id="detail-panel">
         <div id="dashboard" class="page active">
-
-
 
             <div class="welcome-card">
                 <div class="welcome-banner">
@@ -687,86 +752,15 @@ function verifyDashboardTabs() {
                     </div>
                     <div class="welcome-description">
                         Professional military event management with real-time RSVP tracking. Create events instantly and share invite links for seamless coordination.
-                    <div class="footer-copyright"> 
+                    <div class="footer-copyright">
                         DATA CATEGORY: SYNTHETIC / TEST DATA ONLY › PROTECTION LEVEL: UNSECURED POC
                     </div>
-                    <div class="footer-copyright"> 
+                    <div class="footer-copyright">
                         Notice: This system is not authorized for the storage or processing of PII, CUI, or HIPAA regulated data. All data shown is for demonstration purposes.
                     </div>
                 </div>
 
 
-
-            <!-- Dashboard Empty State Container -->
-            <div id="dashboard-empty-state-container"></div>
-
-
-
-            <!-- Active Events Tab Content -->
-            <div id="active-events-tab" class="dashboard-tab-content dashboard-tab-content--active">
-                <div id="active-events-list">
-                    <div class="skeleton-grid" aria-hidden="true">
-                        <div class="skeleton-card">
-                            <div class="skeleton-cover"></div>
-                            <div class="skeleton-body">
-                                <div class="skeleton-line skeleton-line--title"></div>
-                                <div class="skeleton-line skeleton-line--meta"></div>
-                                <div class="skeleton-line skeleton-line--meta skeleton-line--short"></div>
-                            </div>
-                        </div>
-                        <div class="skeleton-card">
-                            <div class="skeleton-cover"></div>
-                            <div class="skeleton-body">
-                                <div class="skeleton-line skeleton-line--title"></div>
-                                <div class="skeleton-line skeleton-line--meta"></div>
-                                <div class="skeleton-line skeleton-line--meta skeleton-line--short"></div>
-                            </div>
-                        </div>
-                        <div class="skeleton-card">
-                            <div class="skeleton-cover"></div>
-                            <div class="skeleton-body">
-                                <div class="skeleton-line skeleton-line--title"></div>
-                                <div class="skeleton-line skeleton-line--meta"></div>
-                                <div class="skeleton-line skeleton-line--meta skeleton-line--short"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Past Events Tab Content -->
-            <div id="past-events-tab" class="dashboard-tab-content">
-                <div id="past-events-list">
-                    <div class="skeleton-grid" aria-hidden="true">
-                        <div class="skeleton-card">
-                            <div class="skeleton-cover"></div>
-                            <div class="skeleton-body">
-                                <div class="skeleton-line skeleton-line--title"></div>
-                                <div class="skeleton-line skeleton-line--meta"></div>
-                                <div class="skeleton-line skeleton-line--meta skeleton-line--short"></div>
-                            </div>
-                        </div>
-                        <div class="skeleton-card">
-                            <div class="skeleton-cover"></div>
-                            <div class="skeleton-body">
-                                <div class="skeleton-line skeleton-line--title"></div>
-                                <div class="skeleton-line skeleton-line--meta"></div>
-                                <div class="skeleton-line skeleton-line--meta skeleton-line--short"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Your RSVPs Tab Content -->
-            <div id="your-rsvps-tab" class="dashboard-tab-content">
-                <div id="user-rsvps-list">
-                    <div class="loading">
-                        <div class="spinner"></div>
-                        Loading your RSVPs...
-                    </div>
-                </div>
-            </div>
         </div>
 
         <div id="create" class="page">

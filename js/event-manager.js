@@ -197,14 +197,13 @@ class EventManager {
             backBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                // Use unified navigation
-                if (typeof window.navigateTo === 'function') {
-                    window.navigateTo('dashboard');
-                } else if (typeof goToDashboard === 'function') {
-                    goToDashboard();
-                } else if (typeof showPage === 'function') {
-                    showPage('dashboard');
-                }
+                // In list/detail layout: switch detail panel back to welcome view
+                const managePage = document.getElementById('manage');
+                const dashboardPage = document.getElementById('dashboard');
+                if (managePage) managePage.classList.remove('active');
+                if (dashboardPage) dashboardPage.classList.add('active');
+                // Clear card selection
+                document.querySelectorAll('.event-card-v2').forEach(c => c.classList.remove('event-card--selected'));
             }, { once: true });
         }
 
