@@ -119,36 +119,111 @@
     color: var(--ux2-success, #10b981);
 }
 
-/* Template selector */
-.dashboard-create-form .template-selector {
-    background: rgba(59, 130, 246, 0.08) !important;
-    border-left-color: rgba(59, 130, 246, 0.5) !important;
+/* ── Template accordion ── */
+.dashboard-create-form .template-accordion {
+    margin: 1rem 0 1.25rem;
+    border: 1px solid rgba(152, 134, 134, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.dashboard-create-form .template-selector > div:first-child {
-    color: rgba(147, 197, 253, 0.9) !important;
+.dashboard-create-form .template-accordion__toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    color: var(--ux2-text-light, #D1D0D0);
+    cursor: pointer;
+    font-size: 0.875rem;
+    text-align: left;
+    transition: background 0.15s ease;
 }
 
-.dashboard-create-form .template-selector > div:nth-child(2) {
-    color: var(--ux2-text-muted, #988686) !important;
+.dashboard-create-form .template-accordion__toggle:hover {
+    background: rgba(0, 0, 0, 0.3);
 }
 
+.dashboard-create-form .template-accordion__chevron {
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+    color: var(--ux2-text-muted, #988686);
+}
+
+/* Rotate chevron when open */
+.dashboard-create-form .template-accordion--open .template-accordion__chevron {
+    transform: rotate(180deg);
+}
+
+.dashboard-create-form .template-accordion__title {
+    font-weight: 600;
+    color: rgba(147, 197, 253, 0.9);
+}
+
+.dashboard-create-form .template-accordion__hint {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--ux2-text-muted, #988686);
+    opacity: 0.8;
+}
+
+/* Collapsible body */
+.dashboard-create-form .template-accordion__body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+}
+
+.dashboard-create-form .template-accordion--open .template-accordion__body {
+    max-height: 600px; /* enough for all cards */
+}
+
+.dashboard-create-form .template-accordion__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 0.5rem;
+    padding: 0.65rem 0.85rem 0.85rem;
+}
+
+/* Template cards */
 .dashboard-create-form .template-card {
-    background: rgba(0, 0, 0, 0.4) !important;
-    border-color: rgba(152, 134, 134, 0.3) !important;
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem 0.7rem;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(152, 134, 134, 0.2);
+    border-radius: 6px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: inherit;
+    font: inherit;
 }
 
 .dashboard-create-form .template-card:hover {
-    border-color: rgba(59, 130, 246, 0.5) !important;
-    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.15) !important;
+    border-color: rgba(152, 134, 134, 0.5);
+    background: rgba(0, 0, 0, 0.45);
 }
 
-.dashboard-create-form .template-card div:nth-child(2) {
-    color: var(--ux2-text-light, #D1D0D0) !important;
+.dashboard-create-form .template-card__icon {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+    line-height: 1;
 }
 
-.dashboard-create-form .template-card div:nth-child(3) {
-    color: var(--ux2-text-muted, #988686) !important;
+.dashboard-create-form .template-card__name {
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--ux2-text-light, #D1D0D0);
+    margin-bottom: 0.15rem;
+}
+
+.dashboard-create-form .template-card__desc {
+    font-size: 0.7rem;
+    color: var(--ux2-text-muted, #988686);
+    line-height: 1.3;
 }
 
 /* Buttons */

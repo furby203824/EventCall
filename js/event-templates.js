@@ -259,32 +259,30 @@ class EventTemplates {
     }
 
     /**
-     * Generate template selector HTML
+     * Generate template selector HTML (accordion, collapsed by default)
      */
     generateTemplateSelectorHTML() {
         const templates = this.getAllTemplates();
 
         return `
-            <div class="template-selector" style="margin: 1.5rem 0; padding: 1rem; background: #f0f9ff; border-left: 4px solid #3b82f6; border-radius: 0.5rem;">
-                <div style="font-weight: 600; margin-bottom: 0.75rem; color: #1e40af;">
-                    Event Templates
-                </div>
-                <div style="font-size: 0.875rem; color: #4b5563; margin-bottom: 1rem;">
-                    Choose a pre-built template to quickly set up your event:
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem;">
-                    ${templates.map(template => `
-                        <button type="button"
-                                class="template-card"
-                                onclick="window.eventTemplates.applyTemplate('${template.id}')"
-                                style="padding: 1rem; background: white; border: 2px solid #e5e7eb; border-radius: 0.5rem; text-align: left; cursor: pointer; transition: all 0.2s;"
-                                onmouseover="this.style.borderColor='#3b82f6'; this.style.boxShadow='0 4px 6px rgba(59, 130, 246, 0.1)'"
-                                onmouseout="this.style.borderColor='#e5e7eb'; this.style.boxShadow='none'">
-                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">${template.icon}</div>
-                            <div style="font-weight: 600; color: #1f2937; margin-bottom: 0.25rem;">${template.name}</div>
-                            <div style="font-size: 0.75rem; color: #6b7280;">${template.description}</div>
-                        </button>
-                    `).join('')}
+            <div class="template-accordion">
+                <button type="button" class="template-accordion__toggle" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'); this.parentElement.classList.toggle('template-accordion--open');">
+                    <svg class="template-accordion__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <span class="template-accordion__title">Event Templates</span>
+                    <span class="template-accordion__hint">Quick-start from a template</span>
+                </button>
+                <div class="template-accordion__body">
+                    <div class="template-accordion__grid">
+                        ${templates.map(template => `
+                            <button type="button"
+                                    class="template-card"
+                                    onclick="window.eventTemplates.applyTemplate('${template.id}')">
+                                <span class="template-card__icon">${template.icon}</span>
+                                <span class="template-card__name">${template.name}</span>
+                                <span class="template-card__desc">${template.description}</span>
+                            </button>
+                        `).join('')}
+                    </div>
                 </div>
             </div>
         `;
