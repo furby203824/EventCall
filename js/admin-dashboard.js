@@ -754,8 +754,8 @@
                     datasets: [{
                         label: 'Events Created',
                         data: data,
-                        borderColor: '#d4af37',
-                        backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                        borderColor: '#5C4E4E',
+                        backgroundColor: 'rgba(92, 78, 78, 0.1)',
                         tension: 0.4,
                         fill: true
                     }]

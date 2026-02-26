@@ -14,7 +14,7 @@
 
 .seating-config-section h3 {
     margin: 0 0 1rem 0;
-    color: var(--semper-navy, #003366);
+    color: var(--semper-navy, #000000);
     font-size: 1.1rem;
     display: flex;
     align-items: center;
@@ -106,7 +106,7 @@
 .seating-stat-card .stat-value {
     font-size: 2rem;
     font-weight: bold;
-    color: var(--semper-navy, #003366);
+    color: var(--semper-navy, #000000);
     margin: 0.5rem 0;
 }
 
@@ -158,17 +158,17 @@
 }
 
 .table-card:hover {
-    border-color: var(--semper-navy, #003366);
-    box-shadow: 0 4px 12px rgba(0, 51, 102, 0.1);
+    border-color: var(--semper-navy, #000000);
+    box-shadow: 0 4px 12px rgba(92, 78, 78, 0.1);
 }
 
 .table-card.vip-table {
-    border-color: var(--semper-gold, #FFD700);
-    background: linear-gradient(135deg, #fffef7 0%, #ffffff 100%);
+    border-color: var(--semper-gold, #988686);
+    background: linear-gradient(135deg, #f0efef 0%, #ffffff 100%);
 }
 
 .table-card.vip-table .table-header {
-    color: var(--semper-gold, #B8860B);
+    color: var(--semper-gold, #5C4E4E);
 }
 
 .table-card.full {
@@ -188,7 +188,7 @@
 .table-number {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--semper-navy, #003366);
+    color: var(--semper-navy, #000000);
 }
 
 .table-capacity {
@@ -264,7 +264,7 @@
 }
 
 .table-move-select:hover {
-    border-color: var(--semper-navy, #003366);
+    border-color: var(--semper-navy, #000000);
 }
 
 .table-guest-remove {
@@ -300,7 +300,7 @@
 
 .unassigned-section h3 {
     margin: 0 0 1rem 0;
-    color: var(--semper-navy, #003366);
+    color: var(--semper-navy, #000000);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -334,8 +334,8 @@
 }
 
 .unassigned-guest-item:hover {
-    border-color: var(--semper-navy, #003366);
-    box-shadow: 0 2px 8px rgba(0, 51, 102, 0.1);
+    border-color: var(--semper-navy, #000000);
+    box-shadow: 0 2px 8px rgba(92, 78, 78, 0.1);
 }
 
 .unassigned-guest-info {
@@ -369,8 +369,8 @@
 
 .assign-btn {
     padding: 0.5rem 1rem;
-    background: var(--semper-navy, #003366);
-    color: white;
+    background: var(--semper-navy, #000000);
+    color: #D1D0D0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -395,15 +395,15 @@
 }
 
 .seating-empty-state h3 {
-    color: var(--semper-navy, #003366);
+    color: var(--semper-navy, #000000);
     margin-bottom: 0.5rem;
 }
 
 /* Seating Chart in Attendee List */
 .attendee-table-badge {
     display: inline-block;
-    background: var(--semper-navy, #003366);
-    color: white;
+    background: var(--semper-navy, #000000);
+    color: #D1D0D0;
     padding: 0.25rem 0.75rem;
     border-radius: 12px;
     font-size: 0.8rem;
@@ -412,7 +412,7 @@
 }
 
 .attendee-table-badge.vip {
-    background: var(--semper-gold, #B8860B);
+    background: var(--semper-gold, #5C4E4E);
 }
 
 .attendee-table-badge.unassigned {

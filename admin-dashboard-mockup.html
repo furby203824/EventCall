@@ -14,20 +14,20 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #e2e8f0;
+            background: #D1D0D0;
+            color: #5C4E4E;
             min-height: 100vh;
         }
 
         /* Header */
         .admin-header {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            border-bottom: 2px solid #d4af37;
+            background: #ffffff;
+            border-bottom: 2px solid #5C4E4E;
             padding: 1.25rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -42,15 +42,15 @@
         .admin-title {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #d4af37;
+            color: #5C4E4E;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
         .admin-badge {
-            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
-            color: #1a1f2e;
+            background: linear-gradient(135deg, #5C4E4E 0%, #000000 100%);
+            color: #ffffff;
             padding: 0.25rem 0.75rem;
             border-radius: 1rem;
             font-size: 0.75rem;
@@ -65,7 +65,7 @@
         }
 
         .last-updated {
-            color: #94a3b8;
+            color: #988686;
             font-size: 0.875rem;
             display: flex;
             align-items: center;
@@ -86,23 +86,23 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
-            color: #1a1f2e;
+            background: linear-gradient(135deg, #5C4E4E 0%, #000000 100%);
+            color: #ffffff;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 4px 12px rgba(92, 78, 78, 0.4);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: #e2e8f0;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #E8E7E7;
+            color: #5C4E4E;
+            border: 1px solid rgba(92, 78, 78, 0.2);
         }
 
         .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: #D1D0D0;
         }
 
         .notification-bell {
@@ -115,7 +115,7 @@
         }
 
         .notification-bell:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(92, 78, 78, 0.1);
         }
 
         .notification-badge {
@@ -139,26 +139,26 @@
             align-items: center;
             gap: 0.75rem;
             padding: 0.5rem 1rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: #E8E7E7;
             border-radius: 0.5rem;
             cursor: pointer;
             transition: background 0.2s;
         }
 
         .user-menu:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: #D1D0D0;
         }
 
         .user-avatar {
             width: 2.5rem;
             height: 2.5rem;
             border-radius: 50%;
-            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            background: linear-gradient(135deg, #5C4E4E 0%, #000000 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            color: #1a1f2e;
+            color: #ffffff;
             font-size: 1rem;
         }
 
@@ -178,18 +178,18 @@
         }
 
         .kpi-card {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: #ffffff;
             border-radius: 1rem;
             padding: 1.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            border: 2px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 2px solid rgba(92, 78, 78, 0.2);
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .kpi-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
-            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 8px 30px rgba(92, 78, 78, 0.15);
+            border-color: rgba(92, 78, 78, 0.4);
         }
 
         .kpi-icon {
@@ -199,7 +199,7 @@
         }
 
         .kpi-label {
-            color: #94a3b8;
+            color: #988686;
             font-size: 0.875rem;
             font-weight: 600;
             text-transform: uppercase;
@@ -210,7 +210,7 @@
         .kpi-value {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #d4af37;
+            color: #5C4E4E;
             margin-bottom: 0.5rem;
             font-family: 'Courier New', monospace;
         }
@@ -232,17 +232,17 @@
         }
 
         .trend-neutral {
-            color: #94a3b8;
+            color: #988686;
         }
 
         /* Insights Section */
         .insights-section {
-            background: linear-gradient(135deg, #4a5d3f 0%, #3a4a32 100%);
+            background: #E8E7E7;
             border-radius: 1rem;
             padding: 1.5rem;
             margin-bottom: 2rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            border-left: 4px solid #d4af37;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border-left: 4px solid #5C4E4E;
         }
 
         .insights-header {
@@ -252,7 +252,7 @@
             margin-bottom: 1rem;
             font-size: 1.25rem;
             font-weight: 700;
-            color: #d4af37;
+            color: #000000;
         }
 
         .insight-item {
@@ -260,7 +260,7 @@
             align-items: flex-start;
             gap: 0.75rem;
             padding: 0.5rem 0;
-            color: #e2e8f0;
+            color: #5C4E4E;
             font-size: 0.9375rem;
             line-height: 1.6;
         }
@@ -274,11 +274,11 @@
         }
 
         .chart-card {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: #ffffff;
             border-radius: 1rem;
             padding: 1.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            border: 2px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 2px solid rgba(92, 78, 78, 0.2);
         }
 
         .chart-header {
@@ -291,15 +291,15 @@
         .chart-title {
             font-size: 1.125rem;
             font-weight: 700;
-            color: #d4af37;
+            color: #000000;
         }
 
         .chart-filter {
             padding: 0.375rem 0.75rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #E8E7E7;
+            border: 1px solid rgba(92, 78, 78, 0.2);
             border-radius: 0.375rem;
-            color: #e2e8f0;
+            color: #5C4E4E;
             font-size: 0.875rem;
             cursor: pointer;
         }
@@ -315,7 +315,7 @@
             border-radius: 1rem;
             padding: 1.5rem;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-            border: 2px solid rgba(212, 175, 55, 0.2);
+            border: 2px solid rgba(92, 78, 78, 0.2);
             margin-bottom: 2rem;
         }
 
@@ -331,7 +331,7 @@
         .table-title {
             font-size: 1.25rem;
             font-weight: 700;
-            color: #d4af37;
+            color: #5C4E4E;
         }
 
         .table-actions {
@@ -361,18 +361,18 @@
         }
 
         .data-table thead {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(92, 78, 78, 0.1);
         }
 
         .data-table th {
             padding: 1rem;
             text-align: left;
             font-weight: 700;
-            color: #d4af37;
+            color: #5C4E4E;
             font-size: 0.875rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 2px solid rgba(92, 78, 78, 0.3);
         }
 
         .data-table td {
@@ -387,7 +387,7 @@
         }
 
         .data-table tbody tr:hover {
-            background: rgba(212, 175, 55, 0.05);
+            background: rgba(92, 78, 78, 0.05);
         }
 
         .status-badge {
@@ -411,7 +411,7 @@
         .action-btn {
             background: none;
             border: none;
-            color: #d4af37;
+            color: #5C4E4E;
             cursor: pointer;
             font-size: 1rem;
             padding: 0.25rem 0.5rem;
@@ -419,7 +419,7 @@
         }
 
         .action-btn:hover {
-            color: #b8941f;
+            color: #000000;
         }
 
         .pagination {
@@ -500,8 +500,8 @@
         .spinner {
             width: 1.5rem;
             height: 1.5rem;
-            border: 3px solid rgba(212, 175, 55, 0.2);
-            border-top-color: #d4af37;
+            border: 3px solid rgba(92, 78, 78, 0.2);
+            border-top-color: #5C4E4E;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -746,7 +746,7 @@
                 <div class="pagination-info">Showing 1-6 of 247 events</div>
                 <div class="pagination-controls">
                     <button class="btn btn-secondary">← Previous</button>
-                    <button class="btn btn-secondary" style="background: rgba(212, 175, 55, 0.2); color: #d4af37;">1</button>
+                    <button class="btn btn-secondary" style="background: rgba(92, 78, 78, 0.2); color: #5C4E4E;">1</button>
                     <button class="btn btn-secondary">2</button>
                     <button class="btn btn-secondary">3</button>
                     <button class="btn btn-secondary">...</button>
@@ -783,7 +783,7 @@
                 <div class="chart-container" style="display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 1rem;">
                     <canvas id="checkinGaugeChart" style="max-height: 200px;"></canvas>
                     <div style="text-align: center;">
-                        <div style="font-size: 3rem; font-weight: 700; color: #d4af37; font-family: 'Courier New', monospace;">68%</div>
+                        <div style="font-size: 3rem; font-weight: 700; color: #5C4E4E; font-family: 'Courier New', monospace;">68%</div>
                         <div style="color: #94a3b8; font-size: 0.875rem;">Average Check-in Rate</div>
                     </div>
                 </div>
@@ -806,11 +806,11 @@
                 datasets: [{
                     label: 'Events Created',
                     data: [42, 58, 67, 80],
-                    borderColor: '#d4af37',
-                    backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                    borderColor: '#5C4E4E',
+                    backgroundColor: 'rgba(92, 78, 78, 0.1)',
                     tension: 0.4,
                     fill: true,
-                    pointBackgroundColor: '#d4af37',
+                    pointBackgroundColor: '#5C4E4E',
                     pointBorderColor: '#1e293b',
                     pointBorderWidth: 2,
                     pointRadius: 5,
@@ -826,9 +826,9 @@
                     },
                     tooltip: {
                         backgroundColor: '#1e293b',
-                        titleColor: '#d4af37',
+                        titleColor: '#5C4E4E',
                         bodyColor: '#e2e8f0',
-                        borderColor: '#d4af37',
+                        borderColor: '#5C4E4E',
                         borderWidth: 1,
                         padding: 12,
                         displayColors: false
@@ -863,8 +863,8 @@
                     {
                         label: 'Total RSVPs',
                         data: [320, 445, 512, 566],
-                        borderColor: '#d4af37',
-                        backgroundColor: 'rgba(212, 175, 55, 0.1)',
+                        borderColor: '#5C4E4E',
+                        backgroundColor: 'rgba(92, 78, 78, 0.1)',
                         tension: 0.4,
                         fill: true
                     },
@@ -901,9 +901,9 @@
                     },
                     tooltip: {
                         backgroundColor: '#1e293b',
-                        titleColor: '#d4af37',
+                        titleColor: '#5C4E4E',
                         bodyColor: '#e2e8f0',
-                        borderColor: '#d4af37',
+                        borderColor: '#5C4E4E',
                         borderWidth: 1,
                         padding: 12
                     }
@@ -936,7 +936,7 @@
                 datasets: [{
                     data: [35, 45, 28, 22, 18, 67, 32],
                     backgroundColor: [
-                        '#d4af37',
+                        '#5C4E4E',
                         '#22c55e',
                         '#3b82f6',
                         '#8b5cf6',
@@ -966,9 +966,9 @@
                     },
                     tooltip: {
                         backgroundColor: '#1e293b',
-                        titleColor: '#d4af37',
+                        titleColor: '#5C4E4E',
                         bodyColor: '#e2e8f0',
-                        borderColor: '#d4af37',
+                        borderColor: '#5C4E4E',
                         borderWidth: 1,
                         padding: 12
                     }
@@ -1005,9 +1005,9 @@
                     },
                     tooltip: {
                         backgroundColor: '#1e293b',
-                        titleColor: '#d4af37',
+                        titleColor: '#5C4E4E',
                         bodyColor: '#e2e8f0',
-                        borderColor: '#d4af37',
+                        borderColor: '#5C4E4E',
                         borderWidth: 1,
                         padding: 12,
                         displayColors: false

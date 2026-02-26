@@ -39,7 +39,7 @@ class QRCheckIn {
                 width: 300,
                 margin: 2,
                 color: {
-                    dark: '#0f1419',
+                    dark: '#000000',
                     light: '#ffffff'
                 }
             });

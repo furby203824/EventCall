@@ -2,8 +2,8 @@
 
 /* Color Variables for Loader */
 :root {
-    --semper-red-alpha: rgba(196, 30, 58, 0.8);
-    --semper-red-dark: #a51829;
+    --semper-red-alpha: rgba(92, 78, 78, 0.8);
+    --semper-red-dark: #000000;
 }
 
 /* Loader Overlay */
@@ -13,7 +13,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, var(--ux2-navy-800) 0%, var(--primary-color) 100%);
+    background: linear-gradient(135deg, #D1D0D0 0%, #E8E7E7 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,7 +74,7 @@
 
 /* Book Loader Animation */
 .book-loader {
-    background-color: var(--semper-red);
+    background-color: #5C4E4E;
     border-radius: 0.25em;
     box-shadow:
         0 0.25em 0.5em rgba(0, 0, 0, 0.5),
@@ -212,11 +212,11 @@
 @keyframes book-cover {
     from, 5%, 45%, 55%, 95%, to {
         animation-timing-function: ease-out;
-        background-color: var(--semper-red);
+        background-color: #5C4E4E;
     }
     10%, 40%, 60%, 90% {
         animation-timing-function: ease-in;
-        background-color: var(--semper-red-dark);
+        background-color: #000000;
     }
 }
 
