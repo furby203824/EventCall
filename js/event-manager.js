@@ -2150,7 +2150,7 @@ Best regards`;
                 </div>
             </div>
 
-            <div style="overflow-x: auto;">
+            <div class="response-table-wrap">
                 <table class="response-table">
                     <thead>
                         <tr>
@@ -2158,14 +2158,14 @@ Best regards`;
                                 <input type="checkbox" id="select-all-${eventId}" onchange="eventManager.toggleSelectAll('${eventId}')" aria-label="Select all responses">
                             </th>
                             <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
+                            <th data-priority="low">Email</th>
+                            <th data-priority="low">Phone</th>
                             <th>Attending</th>
                             ${event.askReason ? '<th>Reason</th>' : ''}
                             ${event.allowGuests ? '<th>Guests</th>' : ''}
                             ${event.customQuestions ? event.customQuestions.map(q => `<th>${q.question}</th>`).join('') : ''}
                             <th>Submitted</th>
-                            <th>Source</th>
+                            <th data-priority="low">Source</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -2197,8 +2197,8 @@ Best regards`;
                         <input type="checkbox" class="response-checkbox" data-response-index="${index}" onchange="eventManager.updateBulkActions('${eventId}')">
                     </td>
                     <td><strong>${displayName}</strong></td>
-                    <td><a href="mailto:${email}" style="color: var(--semper-red); text-decoration: none;">${email}</a></td>
-                    <td>${phone !== 'N/A' ? `<a href="tel:${phone}" style="color: var(--semper-red); text-decoration: none;">${phone}</a>` : phone}</td>
+                    <td data-priority="low"><a href="mailto:${email}" style="color: var(--semper-red); text-decoration: none;">${email}</a></td>
+                    <td data-priority="low">${phone !== 'N/A' ? `<a href="tel:${phone}" style="color: var(--semper-red); text-decoration: none;">${phone}</a>` : phone}</td>
                     <td class="${response.attending ? 'attending-yes' : 'attending-no'}">
                         ${response.attending ? 'âœ… Yes' : 'âŒ No'}
                     </td>
@@ -2217,7 +2217,7 @@ Best regards`;
                         return `<td style="max-width: 150px; word-wrap: break-word;">${answer}</td>`;
                     }).join('') : ''}
                     <td style="font-size: 0.875rem;">${new Date(response.timestamp).toLocaleString()}</td>
-                    <td style="font-size: 0.875rem;" title="${source}">
+                    <td data-priority="low" style="font-size: 0.875rem;" title="${source}">
                         ${sourceIcon} ${response.issueNumber ? `#${response.issueNumber}` : 'Direct'}
                     </td>
                     <td>
@@ -2289,8 +2289,8 @@ Best regards`;
                         <input type="checkbox" class="response-checkbox" data-response-index="${index}" onchange="eventManager.updateBulkActions('${eventId}')">
                     </td>
                     <td><strong>${displayName}</strong></td>
-                    <td><a href="mailto:${email}" style="color: var(--semper-red); text-decoration: none;">${email}</a></td>
-                    <td>${phone !== 'N/A' ? `<a href="tel:${phone}" style="color: var(--semper-red); text-decoration: none;">${phone}</a>` : phone}</td>
+                    <td data-priority="low"><a href="mailto:${email}" style="color: var(--semper-red); text-decoration: none;">${email}</a></td>
+                    <td data-priority="low">${phone !== 'N/A' ? `<a href="tel:${phone}" style="color: var(--semper-red); text-decoration: none;">${phone}</a>` : phone}</td>
                     <td class="${response.attending ? 'attending-yes' : 'attending-no'}">
                         ${response.attending ? '✅ Yes' : '❌ No'}
                     </td>
@@ -2305,7 +2305,7 @@ Best regards`;
                         return `<td style="max-width: 150px; word-wrap: break-word;">${answer}</td>`;
                     }).join('') : ''}
                     <td style="font-size: 0.875rem;">${new Date(response.timestamp).toLocaleString()}</td>
-                    <td style="font-size: 0.875rem;" title="${source}">
+                    <td data-priority="low" style="font-size: 0.875rem;" title="${source}">
                         ${sourceIcon} ${response.issueNumber ? `#${response.issueNumber}` : 'Direct'}
                     </td>
                     <td>

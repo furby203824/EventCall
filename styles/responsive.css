@@ -273,30 +273,28 @@
         font-size: 0.75rem;
     }
     
-    /* Tables */
-    .response-table {
-        font-size: 0.75rem;
+    /* Tables - Horizontal scroll on mobile instead of hiding columns */
+    .response-table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -0.5rem;
+        padding: 0 0.5rem;
     }
-    
+
+    .response-table {
+        font-size: 0.8rem;
+        min-width: 500px; /* Prevent column crush */
+    }
+
     .response-table th,
     .response-table td {
-        padding: 0.5rem 0.25rem;
+        padding: 0.5rem 0.4rem;
+        white-space: nowrap;
     }
-    
-    /* Hide less important columns on mobile */
-    .response-table th:nth-child(n+4),
-    .response-table td:nth-child(n+4) {
+
+    /* Hide only low-priority columns via data attribute */
+    .response-table [data-priority="low"] {
         display: none;
-    }
-    
-    /* Show only name, attending status, and timestamp on mobile */
-    .response-table th:nth-child(1),
-    .response-table td:nth-child(1),
-    .response-table th:nth-child(4),
-    .response-table td:nth-child(4),
-    .response-table th:last-child,
-    .response-table td:last-child {
-        display: table-cell;
     }
     
     /* RSVP Options */
@@ -458,12 +456,12 @@
     }
     
     .response-table {
-        font-size: 0.625rem;
+        font-size: 0.75rem;
     }
-    
+
     .response-table th,
     .response-table td {
-        padding: 0.25rem;
+        padding: 0.35rem 0.25rem;
     }
     
     /* Stack form elements more compactly */
