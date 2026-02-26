@@ -193,32 +193,21 @@
     padding: 0.75rem 0.85rem 0.85rem;
 }
 
-/* Template cards — full reset + dark theme */
-#create button.template-card {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+/* Template cards */
+#create .template-card {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     padding: 0.75rem 0.85rem;
     background: rgba(0, 0, 0, 0.4);
     border: 1.5px solid rgba(152, 134, 134, 0.25);
     border-radius: 8px;
-    text-align: left;
     cursor: pointer;
     transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
     color: var(--ux2-text-light, #D1D0D0);
-    font-family: inherit;
-    font-size: inherit;
     line-height: 1.4;
-    min-height: auto;
-    min-width: auto;
-    margin: 0;
-    outline: none;
 }
 
-#create button.template-card:hover {
+#create .template-card:hover {
     border-color: rgba(152, 134, 134, 0.55);
     background: rgba(0, 0, 0, 0.5);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
