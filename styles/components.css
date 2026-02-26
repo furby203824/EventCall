@@ -125,25 +125,31 @@
     border: 1px solid rgba(152, 134, 134, 0.2);
     border-radius: 8px;
     overflow: hidden;
+    background: rgba(0, 0, 0, 0.15);
 }
 
 #create .template-accordion__toggle {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     width: 100%;
     padding: 0.65rem 0.85rem;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.25);
     border: none;
+    border-bottom: 1px solid rgba(152, 134, 134, 0.15);
     color: var(--ux2-text-light, #D1D0D0);
     cursor: pointer;
     font-size: 0.875rem;
+    font-family: inherit;
     text-align: left;
     transition: background 0.15s ease;
 }
 
 #create .template-accordion__toggle:hover {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.35);
 }
 
 #create .template-accordion__chevron {
@@ -173,57 +179,71 @@
 #create .template-accordion__body {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.25s ease;
+    transition: max-height 0.3s ease;
 }
 
 #create .template-accordion--open .template-accordion__body {
-    max-height: 600px; /* enough for all cards */
+    max-height: 800px;
 }
 
 #create .template-accordion__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-    gap: 0.5rem;
-    padding: 0.65rem 0.85rem 0.85rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.75rem;
+    padding: 0.75rem 0.85rem 0.85rem;
 }
 
-/* Template cards */
-#create .template-card {
+/* Template cards — full reset + dark theme */
+#create button.template-card {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     display: flex;
     flex-direction: column;
-    padding: 0.6rem 0.7rem;
-    background: rgba(0, 0, 0, 0.35);
-    border: 1px solid rgba(152, 134, 134, 0.2);
-    border-radius: 6px;
+    align-items: flex-start;
+    padding: 0.75rem 0.85rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1.5px solid rgba(152, 134, 134, 0.25);
+    border-radius: 8px;
     text-align: left;
     cursor: pointer;
-    transition: all 0.15s ease;
-    color: inherit;
-    font: inherit;
+    transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    color: var(--ux2-text-light, #D1D0D0);
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1.4;
+    min-height: auto;
+    min-width: auto;
+    margin: 0;
+    outline: none;
 }
 
-#create .template-card:hover {
-    border-color: rgba(152, 134, 134, 0.5);
-    background: rgba(0, 0, 0, 0.45);
+#create button.template-card:hover {
+    border-color: rgba(152, 134, 134, 0.55);
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 #create .template-card__icon {
-    font-size: 1.1rem;
-    margin-bottom: 0.2rem;
+    display: block;
+    font-size: 1.25rem;
+    margin-bottom: 0.35rem;
     line-height: 1;
 }
 
 #create .template-card__name {
+    display: block;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--ux2-text-light, #D1D0D0);
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.2rem;
 }
 
 #create .template-card__desc {
-    font-size: 0.7rem;
+    display: block;
+    font-size: 0.75rem;
     color: var(--ux2-text-muted, #988686);
-    line-height: 1.3;
+    line-height: 1.35;
 }
 
 /* Buttons */
