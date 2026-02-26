@@ -8,6 +8,330 @@
 /* Inline create form (replaces welcome card on dashboard) */
 .dashboard-create-form {
     animation: fadeSlideIn 0.3s ease forwards;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(152, 134, 134, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+/* ── Dark-theme overrides for inline create/edit form ── */
+
+/* Page header text */
+.dashboard-create-form .page-header__title,
+.dashboard-create-form h2 {
+    color: var(--ux2-text-light, #D1D0D0);
+}
+
+.dashboard-create-form .page-header__badge {
+    color: var(--ux2-text-muted, #988686);
+}
+
+/* Form section headers */
+.dashboard-create-form .form-section {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(152, 134, 134, 0.2);
+    border-radius: 8px;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.dashboard-create-form .form-section__header {
+    margin-bottom: 1rem;
+}
+
+.dashboard-create-form .form-section__title {
+    color: var(--ux2-text-light, #D1D0D0);
+}
+
+.dashboard-create-form .form-section__optional {
+    color: var(--ux2-text-muted, #988686);
+}
+
+/* Labels */
+.dashboard-create-form .form-label,
+.dashboard-create-form label {
+    color: rgba(209, 208, 208, 0.9);
+}
+
+/* Inputs, selects, textareas */
+.dashboard-create-form .form-control,
+.dashboard-create-form input[type="text"],
+.dashboard-create-form input[type="date"],
+.dashboard-create-form input[type="time"],
+.dashboard-create-form input[type="number"],
+.dashboard-create-form input[type="url"],
+.dashboard-create-form textarea,
+.dashboard-create-form select {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-color: rgba(152, 134, 134, 0.4);
+    color: var(--ux2-text-light, #D1D0D0);
+}
+
+.dashboard-create-form .form-control:focus,
+.dashboard-create-form input:focus,
+.dashboard-create-form textarea:focus,
+.dashboard-create-form select:focus {
+    border-color: rgba(152, 134, 134, 0.7);
+    box-shadow: 0 0 0 3px rgba(152, 134, 134, 0.15);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-create-form .form-control::placeholder,
+.dashboard-create-form input::placeholder,
+.dashboard-create-form textarea::placeholder {
+    color: rgba(152, 134, 134, 0.7);
+}
+
+/* Help text */
+.dashboard-create-form .form-text,
+.dashboard-create-form .form-help,
+.dashboard-create-form small {
+    color: var(--ux2-text-muted, #988686);
+}
+
+/* Progress bar */
+.dashboard-create-form .form-progress {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.dashboard-create-form .form-progress__status,
+.dashboard-create-form .form-progress__required {
+    color: var(--ux2-text-muted, #988686);
+}
+
+.dashboard-create-form .form-progress__bar {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.dashboard-create-form .form-progress-bar-wrapper {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.dashboard-create-form .form-progress-label {
+    color: var(--ux2-text-muted, #988686);
+}
+
+.dashboard-create-form .form-progress-text {
+    color: var(--ux2-success, #10b981);
+}
+
+/* Template selector */
+.dashboard-create-form .template-selector {
+    background: rgba(59, 130, 246, 0.08) !important;
+    border-left-color: rgba(59, 130, 246, 0.5) !important;
+}
+
+.dashboard-create-form .template-selector > div:first-child {
+    color: rgba(147, 197, 253, 0.9) !important;
+}
+
+.dashboard-create-form .template-selector > div:nth-child(2) {
+    color: var(--ux2-text-muted, #988686) !important;
+}
+
+.dashboard-create-form .template-card {
+    background: rgba(0, 0, 0, 0.4) !important;
+    border-color: rgba(152, 134, 134, 0.3) !important;
+}
+
+.dashboard-create-form .template-card:hover {
+    border-color: rgba(59, 130, 246, 0.5) !important;
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.15) !important;
+}
+
+.dashboard-create-form .template-card div:nth-child(2) {
+    color: var(--ux2-text-light, #D1D0D0) !important;
+}
+
+.dashboard-create-form .template-card div:nth-child(3) {
+    color: var(--ux2-text-muted, #988686) !important;
+}
+
+/* Buttons */
+.dashboard-create-form .btn-back,
+.dashboard-create-form .btn-secondary {
+    color: var(--ux2-text-light, #D1D0D0);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(152, 134, 134, 0.3);
+}
+
+.dashboard-create-form .btn-back:hover,
+.dashboard-create-form .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Cover image upload area */
+.dashboard-create-form .upload-area,
+.dashboard-create-form #cover-upload {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(152, 134, 134, 0.3);
+    color: var(--ux2-text-muted, #988686);
+}
+
+.dashboard-create-form .upload-area p,
+.dashboard-create-form #cover-upload p {
+    color: var(--ux2-text-muted, #988686);
+}
+
+/* Checkbox and toggle labels */
+.dashboard-create-form .form-check-label,
+.dashboard-create-form .toggle-label {
+    color: rgba(209, 208, 208, 0.9);
+}
+
+/* Custom questions section */
+.dashboard-create-form .custom-question-item {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(152, 134, 134, 0.2);
+}
+
+/* Collapsible section toggle */
+.dashboard-create-form .form-section--collapsible .form-section__header {
+    cursor: pointer;
+}
+
+/* Form actions */
+.dashboard-create-form .form-actions {
+    border-top: 1px solid rgba(152, 134, 134, 0.2);
+    padding-top: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+/* Seating chart config */
+.dashboard-create-form .seating-config-section {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(152, 134, 134, 0.2);
+}
+
+.dashboard-create-form .seating-config-section h3 {
+    color: var(--ux2-text-light, #D1D0D0);
+}
+
+.dashboard-create-form .seating-config-toggle {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-create-form .seating-config-toggle label,
+.dashboard-create-form .seating-config-field label {
+    color: rgba(209, 208, 208, 0.9);
+}
+
+.dashboard-create-form .seating-config-field input {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(152, 134, 134, 0.4);
+    color: var(--ux2-text-light, #D1D0D0);
+}
+
+.dashboard-create-form .seating-config-field small {
+    color: var(--ux2-text-muted, #988686);
+}
+
+.dashboard-create-form .seating-config-info {
+    background: rgba(59, 130, 246, 0.08);
+    color: rgba(147, 197, 253, 0.9);
+}
+
+/* Checkbox cards */
+.dashboard-create-form .checkbox-card {
+    background: rgba(0, 0, 0, 0.15);
+    border-color: rgba(152, 134, 134, 0.2);
+}
+
+.dashboard-create-form .checkbox-label span,
+.dashboard-create-form .checkbox-card span {
+    color: rgba(209, 208, 208, 0.9);
+}
+
+/* Invite template options */
+.dashboard-create-form .invite-template-option .template-preview {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(152, 134, 134, 0.3);
+}
+
+.dashboard-create-form .invite-template-option input:checked + .template-preview {
+    border-color: rgba(152, 134, 134, 0.7);
+}
+
+.dashboard-create-form .template-preview__name {
+    color: var(--ux2-text-light, #D1D0D0);
+}
+
+.dashboard-create-form .template-preview__desc {
+    color: var(--ux2-text-muted, #988686);
+}
+
+.dashboard-create-form .template-preview__icon {
+    color: var(--ux2-text-muted, #988686);
+}
+
+/* Form help text */
+.dashboard-create-form .form-help-text {
+    color: var(--ux2-text-muted, #988686);
+}
+
+/* Label optional badge */
+.dashboard-create-form .label-optional {
+    color: var(--ux2-text-muted, #988686);
+}
+
+/* Required field marker */
+.dashboard-create-form label.required::after {
+    color: var(--ux2-danger, #dc2626);
+}
+
+/* Image upload area */
+.dashboard-create-form .image-upload {
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px dashed rgba(152, 134, 134, 0.35);
+    border-radius: 8px;
+}
+
+.dashboard-create-form .image-upload:hover {
+    border-color: rgba(152, 134, 134, 0.55);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.dashboard-create-form .image-upload p {
+    color: var(--ux2-text-muted, #988686);
+}
+
+/* Event details fields from templates */
+.dashboard-create-form .event-details-fields label {
+    color: rgba(209, 208, 208, 0.9);
+}
+
+.dashboard-create-form .event-details-fields input,
+.dashboard-create-form .event-details-fields textarea,
+.dashboard-create-form .event-details-fields select {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(152, 134, 134, 0.4);
+    color: var(--ux2-text-light, #D1D0D0);
+}
+
+/* SVG icons inside form */
+.dashboard-create-form .ec-icon,
+.dashboard-create-form svg {
+    color: var(--ux2-text-muted, #988686);
+}
+
+/* Override focus-within label color for dark bg */
+.dashboard-create-form .form-group:focus-within label {
+    color: rgba(147, 197, 253, 0.9);
+}
+
+/* Custom question add/remove buttons */
+.dashboard-create-form .btn-add-question,
+.dashboard-create-form .btn-remove-question {
+    color: var(--ux2-text-light, #D1D0D0);
+}
+
+/* Form row spacing (for date/time side-by-side) */
+.dashboard-create-form .form-row {
+    gap: 1rem;
 }
 
 /*
