@@ -1,0 +1,337 @@
+/* EventCall - Main CSS Variables and Base Styles */
+
+:root {
+    /* Colors */
+    --primary-color: #1a1a2e;
+    --secondary-color: #c41e3a;
+    --accent-gold: #ffd700;
+    --navy-blue: #0f1419;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+    --text-color: #2c3e50;
+    --text-muted: #6b7280;
+    --bg-color: #ffffff;
+    --bg-secondary: #f8f9fb;
+    --border-color: #d1d5db;
+    --gray-50: #f8f9fb;
+    --gray-100: #f1f3f5;
+    --gray-200: #e5e7eb;
+    --semper-red: #c41e3a;
+    --semper-gold: #ffd700;
+    --semper-navy: #0f1419;
+    --card-bg: #ffffff;
+    --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --input-bg: #ffffff;
+    --input-border: #d1d5db;
+
+    /* Chocolate Truffle Theme Palette */
+    --truffle-dark-brown: #713600;
+    --truffle-caramel: #C05800;
+    --truffle-cream: #FDFBD4;
+    --truffle-darkest: #38240D;
+    /* Spacing scale */
+    --space-0: 0;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-10: 2.5rem;
+    --space-12: 3rem;
+    /* Typography */
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    /* Breakpoints */
+    --bp-sm: 640px;
+    --bp-md: 768px;
+    --bp-lg: 1024px;
+    --bp-xl: 1280px;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--truffle-darkest);
+    color: var(--truffle-cream);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-5);
+}
+
+/* Header Styles - COMPACTED TO HALF SIZE */
+.header {
+    background: linear-gradient(to right, #2c3e50, #fd746c);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+
+
+.header-content {
+    position: relative;
+    z-index: 2;
+}
+
+
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+}
+
+.header .tagline {
+    font-size: 1rem;
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+
+
+.github-status {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--success-color);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Footer Styles */
+.footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 2rem 0;
+    margin-top: 3rem;
+    text-align: center;
+    border-top: 3px solid var(--semper-red);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--semper-gold);
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.footer-link {
+    color: var(--semper-gold);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    border: 2px solid transparent;
+    border-radius: 0.375rem;
+}
+
+.footer-link:hover {
+    color: white;
+    border-color: var(--semper-gold);
+    background: rgba(255, 215, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Duplicate block removed - canonical definitions exist earlier in file */
+
+/* User Profile Button */
+.user-profile-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    color: var(--semper-gold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.user-profile-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--semper-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.user-icon {
+    font-size: 1rem;
+}
+
+.user-email {
+    font-weight: 600;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Make header-content relative for positioning */
+.header-content {
+    position: relative;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .user-profile-btn {
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.75rem;
+    }
+    
+    .user-email {
+        max-width: 100px;
+    }
+}
+
+/* Duplicate block removed - canonical definitions exist earlier in file */
+
+
+
+.footer-copyright {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 1rem;
+}
+
+
+
+/* Page Layout */
+.page {
+    display: none;
+    background: var(--bg-secondary);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.page.active {
+    display: block;
+}
+
+/* App Content - REMOVE OVERLAY */
+.app-content {
+    display: block !important;
+    opacity: 1 !important;
+    /* Remove any overlay styling */
+}
+
+/* Remove any initial loader styles */
+.initial-loader {
+    display: none !important;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+.loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--semper-navy);
+    font-weight: 600;
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--semper-red);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 600;
+    z-index: 1000;
+    animation: slideIn 0.3s ease;
+}
+
+.toast.success {
+    background: var(--success-color);
+}
+
+.toast.error {
+    background: var(--error-color);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

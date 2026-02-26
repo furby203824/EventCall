@@ -1,0 +1,420 @@
+
+:root {
+    --primary-color: #3a7bd5;
+    --secondary-color: #3a6073;
+    --accent-color: #f5f5f5;
+    --text-color: #333;
+    --white-color: #fff;
+    --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    --border-radius: 10px;
+
+    /* Chocolate Truffle Theme Palette */
+    --truffle-dark-brown: #713600;
+    --truffle-caramel: #C05800;
+    --truffle-cream: #FDFBD4;
+    --truffle-darkest: #38240D;
+
+    /* Re-purposing primary color for the new theme */
+    --primary-color: var(--truffle-caramel);
+}
+
+/* ============================================
+   V2 Login Page Styles
+   ============================================ */
+
+.login-container-v2 {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.login-branding-v2 {
+    flex: 1;
+    background-color: var(--truffle-cream);
+    color: var(--truffle-darkest);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    transition: all 0.5s ease;
+}
+
+.login-branding-v2 .branding-logo-v2 path {
+    stroke: var(--truffle-darkest);
+    fill: none; /* Paths are for strokes, not fills, by default */
+}
+
+.login-branding-v2 .branding-logo-v2 rect {
+    fill: var(--truffle-darkest);
+    stroke: none; /* Rects are for fills, not strokes */
+}
+
+.login-branding-v2 .branding-logo-v2 path:first-of-type {
+    fill: var(--truffle-dark-brown);
+    opacity: 0.1;
+}
+
+.login-branding-v2__content {
+    animation: fadeIn 1s ease-in-out;
+}
+
+.branding-logo-v2 {
+    margin-bottom: 20px;
+}
+
+.login-branding-v2__title {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 1.5px;
+}
+
+.login-branding-v2__subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+.login-form-container-v2 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligns card to the top */
+    background-color: var(--truffle-darkest);
+    color: var(--truffle-cream);
+    overflow-y: auto;
+    padding: 80px 40px;
+}
+
+/* Override for the auth card in the new layout */
+.login-form-container-v2 .auth__card {
+    width: 450px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--truffle-dark-brown);
+    background-color: var(--truffle-dark-brown);
+    border-radius: var(--border-radius);
+    color: var(--truffle-cream);
+}
+
+/* Adjustments to original styles for V2 layout */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    margin: 0;
+    /* Removed flex properties to allow full-page container */
+}
+
+#login-page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+#login-page {
+    background: transparent;
+    position: static;
+    height: auto;
+    width: auto;
+    overflow: visible;
+    padding: 0;
+}
+
+.auth {
+    /* This class is on the card, let's adjust it */
+    background: var(--truffle-dark-brown);
+    border-radius: var(--border-radius);
+    box-shadow: none; /* Shadow is on the container now */
+    overflow: hidden;
+    width: 400px;
+    max-width: 100%;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/* Header within the card - it's empty, but let's style it just in case */
+.auth__header {
+    text-align: center;
+    padding: 0; /* Was 30px, but we removed the content */
+    background: transparent;
+    color: var(--truffle-cream);
+}
+
+.auth__icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.auth__title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.auth__subtitle {
+    margin: 5px 0 0;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+
+/* Tabs */
+.auth__tabs {
+    display: flex;
+    background-color: transparent; /* Was #f0f0f0 */
+    border-bottom: 1px solid var(--truffle-darkest);
+}
+
+.auth__tab {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--truffle-cream);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.auth__tab--active {
+    color: var(--truffle-cream);
+    opacity: 1;
+}
+
+.auth__tab--active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--truffle-caramel); /* Use caramel for active indicator */
+    animation: slideInFromLeft 0.3s ease;
+}
+
+
+@keyframes slideInFromLeft {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Forms */
+.auth__form {
+    padding: 30px;
+    display: none;
+}
+
+
+.auth__form--active {
+    display: block;
+    animation: slideUp 0.5s ease-in-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+
+/* Labels */
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--truffle-cream);
+    opacity: 0.9;
+}
+
+/* Input Fields */
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--truffle-darkest);
+    border: 1px solid var(--truffle-darkest);
+    color: var(--truffle-cream);
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--truffle-caramel);
+    box-shadow: 0 0 5px rgba(192, 88, 0, 0.5); /* Caramel glow */
+}
+
+.form-control::placeholder {
+    color: var(--truffle-cream);
+    opacity: 0.5;
+}
+
+/* Remember me checkbox */
+.auth__remember {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.auth__remember-label {
+    margin-left: 10px;
+    font-size: 14px;
+    color: var(--truffle-cream);
+    opacity: 0.8;
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+/* Buttons */
+.btn--primary {
+    background-color: var(--truffle-caramel);
+    color: var(--truffle-darkest); /* Dark text on bright button for contrast */
+    font-weight: 700;
+}
+
+.btn--primary:hover {
+    filter: brightness(110%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.auth__link-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Link Buttons */
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--truffle-caramel);
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+/* Info Section */
+.auth__info {
+    padding: 20px 30px;
+    background-color: var(--truffle-darkest);
+    font-size: 13px;
+    color: var(--truffle-cream);
+    opacity: 0.8;
+    border-top: 1px solid var(--truffle-darkest);
+}
+
+
+.auth__info-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.auth__info-icon {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+/* Footer */
+.branding-footer {
+    padding: 15px;
+    text-align: center;
+    background-color: transparent;
+    font-size: 12px;
+    color: var(--truffle-cream);
+    opacity: 0.6;
+}
+
+.branding-footer__powered {
+    font-weight: 500;
+}
+
+.branding-footer__brand {
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--truffle-caramel);
+}
+
+#password-strength {
+    margin-top: 10px;
+}
+
+.strength-bar {
+    height: 5px;
+    background-color: var(--truffle-darkest);
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--truffle-darkest);
+}
+
+.strength-bar div {
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.strength-text {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .auth {
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    body {
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+}

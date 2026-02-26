@@ -1,0 +1,57 @@
+
+/* Side-by-Side Power User View Styles */
+
+.power-user-view {
+    display: flex;
+    height: calc(100vh - 60px); /* Full height minus header */
+}
+
+.power-user-view__list-panel {
+    width: 350px;
+    border-right: 1px solid var(--ux2-gold-dark);
+    overflow-y: auto;
+    padding: var(--space-4);
+    background-color: var(--ux2-navy-900-rgba-8);
+}
+
+.power-user-view__detail-panel {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: var(--space-4);
+    background-color: var(--ux2-navy-900-rgba-7);
+}
+
+/* Styles for the event list in the side panel */
+.side-panel-event-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.side-panel-event-item {
+    display: block;
+    padding: var(--space-3);
+    border-radius: var(--border-radius-medium);
+    background-color: var(--ux2-navy-900-rgba-9);
+    border: 1px solid var(--ux2-gold-dark);
+    text-decoration: none;
+    color: var(--ux2-text-light);
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.side-panel-event-item:hover {
+    background-color: var(--ux2-navy-900-rgba-95);
+    border-color: var(--ux2-gold);
+}
+
+.side-panel-event-item__title {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+}
+
+.side-panel-event-item__date {
+    display: block;
+    font-size: 0.9em;
+    color: var(--ux2-text-muted);
+}

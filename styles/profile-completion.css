@@ -1,0 +1,268 @@
+/**
+ * Profile Completion Modal Styles
+ * Styles for the profile completion popup that prompts users to update their info
+ */
+
+/* Modal Overlay */
+.profile-completion-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.profile-completion-modal.modal--visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Content */
+.profile-completion-content {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(212, 175, 55, 0.4);
+    max-width: 480px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.profile-completion-modal.modal--visible .profile-completion-content {
+    transform: scale(1) translateY(0);
+}
+
+/* Shake Animation */
+.profile-completion-content.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+    20%, 40%, 60%, 80% { transform: translateX(8px); }
+}
+
+/* Header */
+.profile-completion-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-completion-icon {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.profile-completion-header h3 {
+    color: var(--semper-gold, #d4af37);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+}
+
+.profile-completion-header p {
+    color: #94a3b8;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Form Styles */
+.profile-completion-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.profile-completion-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.profile-completion-form label {
+    color: var(--semper-gold, #d4af37);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.profile-completion-form input,
+.profile-completion-form select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.875rem 1rem;
+    color: #e2e8f0;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.profile-completion-form input:hover,
+.profile-completion-form select:hover {
+    border-color: rgba(212, 175, 55, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.profile-completion-form input:focus,
+.profile-completion-form select:focus {
+    outline: none;
+    border-color: var(--semper-gold, #d4af37);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.profile-completion-form input::placeholder {
+    color: #64748b;
+}
+
+.profile-completion-form select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+.profile-completion-form select:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.profile-completion-form select option {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 0.5rem;
+}
+
+/* Field Hint */
+.field-hint {
+    color: #64748b;
+    font-size: 0.8125rem;
+    font-style: italic;
+}
+
+/* Error States */
+.profile-completion-form input.input-error,
+.profile-completion-form select.input-error {
+    border-color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.profile-completion-form input.input-error:focus,
+.profile-completion-form select.input-error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.field-error {
+    color: #ef4444;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.field-error::before {
+    content: '!';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    background: #ef4444;
+    color: white;
+    font-size: 0.625rem;
+    font-weight: 700;
+    border-radius: 50%;
+}
+
+/* Action Buttons */
+.profile-completion-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-completion-actions .btn {
+    flex: 1;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.profile-completion-actions .btn-primary {
+    background: linear-gradient(135deg, var(--semper-gold, #d4af37) 0%, #b8941f 100%);
+    border: 2px solid var(--semper-gold, #d4af37);
+    color: var(--semper-navy, #0f172a);
+}
+
+.profile-completion-actions .btn-primary:hover {
+    background: linear-gradient(135deg, #e5c349 0%, var(--semper-gold, #d4af37) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+.profile-completion-actions .btn-primary:active {
+    transform: translateY(0);
+}
+
+.profile-completion-actions .btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: #94a3b8;
+}
+
+.profile-completion-actions .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #e2e8f0;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .profile-completion-content {
+        padding: 1.5rem;
+        margin: 1rem;
+        width: calc(100% - 2rem);
+    }
+
+    .profile-completion-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .profile-completion-icon {
+        font-size: 2.5rem;
+    }
+
+    .profile-completion-actions {
+        flex-direction: column;
+    }
+
+    .profile-completion-actions .btn {
+        width: 100%;
+    }
+}

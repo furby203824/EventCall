@@ -1,0 +1,859 @@
+/**
+ * EventCall Login Interface Styles
+ * Military-themed login experience
+ */
+
+/* Login Container */
+#login-page,
+#login-container {
+    display: flex;
+    align-items: flex-start; /* Start from top to prevent cutoff */
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg,
+        var(--semper-navy) 0%,
+        #0a2540 50%,
+        var(--semper-navy) 100%
+    );
+    z-index: 10000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    padding-top: 1rem; /* Ensure content starts below viewport top */
+}
+
+.login-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start; /* Start from top to prevent cutoff */
+    justify-content: center;
+    padding: 1rem 2rem 2rem 2rem; /* More top padding */
+    width: 100%;
+}
+
+/* Login Box */
+.login-box {
+    background: white;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 100%;
+    padding: 3rem;
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header */
+.login-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.login-logo {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.login-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--semper-navy);
+    margin: 0 0 0.5rem 0;
+    letter-spacing: 2px;
+}
+
+.login-subtitle {
+    color: var(--text-color);
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Login Form */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.login-form .form-group {
+    margin-bottom: 0;
+}
+
+.login-form label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.login-form label .icon {
+    font-size: 1.2rem;
+}
+
+.login-form input[type="email"],
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Courier New', monospace;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: var(--semper-red);
+    box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.1);
+}
+
+.login-form .help-text {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* Checkbox Group */
+.checkbox-group {
+    margin: 0.5rem 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    font-weight: normal;
+    margin: 0;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+}
+
+/* Buttons */
+.login-form .btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    width: 100%;
+    margin-top: 0.5rem;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--semper-red) 0%, #8b1538 100%);
+    color: white;
+    border: 3px solid var(--semper-gold);
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(196, 30, 58, 0.3);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--semper-navy);
+    border: 2px solid var(--semper-navy);
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--semper-navy);
+    color: white;
+}
+
+.btn-text {
+    background: none;
+    border: none;
+    color: var(--semper-navy);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.btn-text:hover {
+    color: var(--semper-red);
+}
+
+.btn-icon {
+    background: var(--semper-gold);
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-icon:hover {
+    background: #e6c200;
+    transform: scale(1.1);
+}
+
+/* Divider */
+.login-divider {
+    text-align: center;
+    position: relative;
+    margin: 2rem 0;
+}
+
+.login-divider::before,
+.login-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background: #e5e7eb;
+}
+
+.login-divider::before {
+    left: 0;
+}
+
+.login-divider::after {
+    right: 0;
+}
+
+.login-divider span {
+    background: white;
+    padding: 0 1rem;
+    color: #9ca3af;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Footer */
+.login-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.login-footer p {
+    margin: 0 0 1rem 0;
+    color: var(--text-color);
+}
+
+/* Help Text */
+.login-help {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-radius: 0.75rem;
+    border-left: 4px solid var(--semper-gold);
+}
+
+.login-help p {
+    margin: 0 0 0.75rem 0;
+    font-weight: 600;
+    color: var(--semper-navy);
+}
+
+.login-help ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.login-help li {
+    padding: 0.5rem 0;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+.login-help code {
+    background: var(--semper-navy);
+    color: var(--semper-gold);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+/* Access Code Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    padding: 1rem;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: white;
+    border-radius: 1rem;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalSlide 0.3s ease-out;
+}
+
+@keyframes modalSlide {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modal-header {
+    padding: 2rem;
+    border-bottom: 2px solid #f3f4f6;
+    text-align: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: var(--semper-navy);
+    font-size: 1.75rem;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.success-message {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #d1fae5;
+    border-radius: 0.75rem;
+    border: 2px solid #10b981;
+}
+
+.success-message p {
+    margin: 0.5rem 0;
+    color: var(--semper-navy);
+}
+
+.access-code-display {
+    margin: 2rem 0;
+}
+
+.access-code-display label {
+    display: block;
+    font-weight: 600;
+    color: var(--semper-navy);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.code-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--semper-navy);
+    border-radius: 0.75rem;
+    border: 3px solid var(--semper-gold);
+}
+
+.code-box code {
+    flex: 1;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--semper-gold);
+    letter-spacing: 2px;
+    font-family: 'Courier New', monospace;
+}
+
+.info-box {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #fef3c7;
+    border-radius: 0.75rem;
+    border-left: 4px solid var(--semper-gold);
+}
+
+.info-box h3 {
+    margin: 0 0 1rem 0;
+    color: var(--semper-navy);
+    font-size: 1.1rem;
+}
+
+.info-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-box li {
+    padding: 0.5rem 0;
+    color: var(--text-color);
+}
+
+.modal-footer {
+    padding: 1.5rem 2rem;
+    border-top: 2px solid #f3f4f6;
+    text-align: center;
+}
+
+/* Spinner */
+.spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+/* Desktop - center the form vertically */
+@media (min-width: 769px) {
+    #login-page,
+    #login-container {
+        align-items: flex-start;; /* Center vertically on desktop */
+        padding-top: 2rem;
+        padding-bottom: 2rem; /* Ensure bottom spacing */
+    }
+
+    .login-wrapper {
+        align-items: flex-start;; /* Center vertically on desktop */
+        min-height: auto; /* Allow wrapper to size to content on desktop */
+    }
+}
+
+@media (max-width: 768px) {
+    .login-wrapper {
+        padding: 1rem 1.5rem 2rem 1.5rem;
+    }
+
+    .login-box {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .login-wrapper {
+        padding: 0.75rem 1rem 1.5rem 1rem;
+    }
+
+    .login-box {
+        padding: 1.5rem;
+        border-radius: 1rem;
+    }
+
+    .login-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .login-logo {
+        font-size: 3rem;
+    }
+
+    .code-box code {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-wrapper {
+        padding: 0.5rem 0.75rem 1rem 0.75rem;
+    }
+
+    .login-box {
+        padding: 1rem;
+    }
+}
+/* User Menu Dropdown */
+/* User Menu Dropdown */
+.user-profile-btn {
+    position: relative;
+    cursor: pointer;
+}
+
+.user-menu-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    min-width: 250px;
+    z-index: 99999;
+    border: 2px solid var(--semper-gold);
+}
+
+.user-menu-header {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.user-menu-header strong {
+    display: block;
+    color: var(--semper-navy);
+    margin-bottom: 0.25rem;
+}
+
+.user-menu-header small {
+    color: #6b7280;
+    font-size: 0.85rem;
+}
+
+.user-menu-item {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.user-menu-item:hover {
+    background: #f3f4f6;
+}
+
+.user-menu-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 0.5rem 0;
+}
+/* User Profile Button - Top Right Position */
+.user-profile-btn {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--semper-navy);
+    color: var(--semper-gold);
+    border-radius: 2rem;
+    cursor: pointer;
+    z-index: 9999;
+    border: 2px solid var(--semper-gold);
+    transition: all 0.3s ease;
+}
+
+.user-profile-btn:hover {
+    background: var(--semper-gold);
+    color: var(--semper-navy);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.user-icon {
+    font-size: 1.2rem;
+}
+
+.user-email {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Password Strength Indicator */
+#password-strength {
+    margin-top: 0.5rem;
+}
+
+.strength-bar {
+    height: 4px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    margin-bottom: 0.5rem;
+}
+
+.strength-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: block;
+}
+
+/* Auth Tab Styling */
+.auth-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+    background: rgba(212, 175, 55, 0.9);
+    color: #1a1f2e;
+}
+
+.tab-btn:not(.active) {
+    background: transparent;
+    color: #94a3b8;
+}
+
+.tab-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Auth Form States */
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+/* Auth Form Header */
+.auth__form-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.auth__form-header h3 {
+    margin-bottom: 0.5rem;
+}
+
+.auth__form-header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Full-width button utility */
+.btn--full {
+    width: 100%;
+}
+
+/* =============================================================================
+   LOGIN PAGE TEXT STYLING
+   White text for login page dark background
+   ============================================================================= */
+
+/* Auth form header - white text on dark background */
+.auth__form-header h3 {
+    color: var(--semper-gold);
+}
+
+.auth__form-header p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Form labels - white text */
+#login-page .form-label,
+.login-box .form-label {
+    color: #e5e7eb;
+}
+
+/* Input fields - light styling on dark background */
+#login-page .form-control,
+.login-box .form-control {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #f3f4f6;
+}
+
+#login-page .form-control::placeholder,
+.login-box .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#login-page .form-control:focus,
+.login-box .form-control:focus {
+    border-color: var(--semper-gold);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+/* Remember me checkbox label */
+#login-page .auth__remember-label,
+#login-page .checkbox-label,
+.login-box .checkbox-label {
+    color: #d1d5db;
+}
+
+/* Tab buttons - inactive state */
+#login-page .tab-btn:not(.active),
+.login-box .tab-btn:not(.active) {
+    color: #d1d5db;
+}
+
+/* Button link styling */
+.auth__form .btn-link,
+#login-page .btn-link,
+.auth__link-container .btn-link {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: var(--semper-gold) !important;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+}
+
+.auth__form .btn-link:hover,
+#login-page .btn-link:hover {
+    opacity: 0.8;
+    color: #f0d060 !important;
+}
+
+/* Reset Password Form headers */
+#forgot-password-form .auth__form-header h3,
+#reset-confirm-form .auth__form-header h3 {
+    color: var(--semper-gold);
+    font-size: 1.5rem;
+}
+
+#forgot-password-form .auth__form-header p,
+#reset-confirm-form .auth__form-header p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* =============================================================================
+   MODAL FORM STYLING - Light mode text contrast
+   Ensures dark text on white modal backgrounds
+   ============================================================================= */
+
+/* Modal form labels - ensure dark text on white background */
+.modal .form-label,
+.modal-body .form-label,
+#user-profile-modal .form-label {
+    color: #1f2937 !important; /* gray-800 */
+    font-weight: 600;
+}
+
+/* Modal form inputs - dark text, light background */
+.modal .form-control,
+.modal-body .form-control,
+#user-profile-modal .form-control {
+    color: #111827 !important; /* gray-900 */
+    background-color: #ffffff !important;
+    border: 2px solid #d1d5db !important; /* gray-300 */
+}
+
+.modal .form-control:focus,
+.modal-body .form-control:focus,
+#user-profile-modal .form-control:focus {
+    border-color: var(--semper-red) !important;
+    box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.1) !important;
+}
+
+/* Disabled/readonly inputs */
+.modal .form-control:disabled,
+.modal .form-control[readonly],
+#user-profile-modal .form-control:disabled,
+#user-profile-modal .form-control[readonly] {
+    background-color: #f3f4f6 !important; /* gray-100 */
+    color: #6b7280 !important; /* gray-500 */
+}
+
+/* Modal form help text */
+.modal .form-help,
+.modal-body .form-help,
+#user-profile-modal .form-help {
+    color: #6b7280 !important; /* gray-500 */
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+/* Modal select dropdowns */
+.modal select.form-control,
+#user-profile-modal select.form-control {
+    color: #111827 !important;
+    background-color: #ffffff !important;
+}
+
+/* Modal form group spacing */
+.modal .form-group,
+#user-profile-modal .form-group {
+    margin-bottom: 1.25rem;
+}
+
+/* Profile password section styling */
+.profile-password-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e5e7eb;
+}
+
+.profile-password-section h4 {
+    margin: 0 0 1rem 0;
+    color: #1f2937;
+    font-size: 1.1rem;
+}
+
+/* Password strength indicator */
+.password-strength-bar {
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 0.5rem;
+    transition: width 0.2s ease, background 0.2s ease;
+}
+
+.password-strength-text {
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 0.25rem;
+}
+
+/* Full width button utility */
+.btn-full-width {
+    width: 100%;
+}
