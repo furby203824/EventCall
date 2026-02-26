@@ -235,25 +235,156 @@
     color: rgba(147, 197, 253, 0.9);
 }
 
-/* Checkbox cards */
+/* ── Custom checkboxes & radios (compact, dark-themed) ── */
+
+/* Reset oversized accessibility defaults inside the form */
+.dashboard-create-form input[type="checkbox"],
+.dashboard-create-form input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    min-height: unset;
+    min-width: unset;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    border: 1.5px solid rgba(152, 134, 134, 0.5);
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    position: relative;
+    vertical-align: middle;
+}
+
+.dashboard-create-form input[type="checkbox"] {
+    border-radius: 3px;
+}
+
+.dashboard-create-form input[type="radio"] {
+    border-radius: 50%;
+}
+
+/* Hover */
+.dashboard-create-form input[type="checkbox"]:hover,
+.dashboard-create-form input[type="radio"]:hover {
+    border-color: rgba(152, 134, 134, 0.8);
+    background: rgba(0, 0, 0, 0.45);
+}
+
+/* Focus */
+.dashboard-create-form input[type="checkbox"]:focus,
+.dashboard-create-form input[type="radio"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(152, 134, 134, 0.2);
+    border-color: rgba(152, 134, 134, 0.7);
+}
+
+/* Checked checkbox — taupe checkmark */
+.dashboard-create-form input[type="checkbox"]:checked {
+    background: rgba(92, 78, 78, 0.8);
+    border-color: rgba(152, 134, 134, 0.7);
+}
+
+.dashboard-create-form input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 5px;
+    height: 9px;
+    border: solid rgba(209, 208, 208, 0.95);
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+}
+
+/* Checked radio — taupe dot */
+.dashboard-create-form input[type="radio"]:checked {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(152, 134, 134, 0.7);
+}
+
+.dashboard-create-form input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(152, 134, 134, 0.9);
+}
+
+/* Checkbox cards — compact layout */
 .dashboard-create-form .checkbox-card {
     background: rgba(0, 0, 0, 0.15);
-    border-color: rgba(152, 134, 134, 0.2);
+    border: 1px solid rgba(152, 134, 134, 0.15);
+    border-radius: 6px;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 0.35rem;
+    transition: background 0.15s ease;
+}
+
+.dashboard-create-form .checkbox-card:hover {
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.dashboard-create-form .checkbox-label {
+    gap: 0.5rem;
+    font-size: 0.875rem;
 }
 
 .dashboard-create-form .checkbox-label span,
 .dashboard-create-form .checkbox-card span {
-    color: rgba(209, 208, 208, 0.9);
+    color: rgba(209, 208, 208, 0.85);
+    font-size: 0.875rem;
+    line-height: 1.3;
 }
 
-/* Invite template options */
+/* Invite template options — card selection with hidden radio */
+.dashboard-create-form .invite-template-selector {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.dashboard-create-form .invite-template-option {
+    flex: 1;
+    cursor: pointer;
+}
+
+.dashboard-create-form .invite-template-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
 .dashboard-create-form .invite-template-option .template-preview {
     background: rgba(0, 0, 0, 0.3);
-    border-color: rgba(152, 134, 134, 0.3);
+    border: 1.5px solid rgba(152, 134, 134, 0.25);
+    border-radius: 8px;
+    padding: 0.75rem;
+    text-align: center;
+    transition: all 0.15s ease;
+}
+
+.dashboard-create-form .invite-template-option .template-preview:hover {
+    border-color: rgba(152, 134, 134, 0.5);
+    background: rgba(0, 0, 0, 0.4);
 }
 
 .dashboard-create-form .invite-template-option input:checked + .template-preview {
     border-color: rgba(152, 134, 134, 0.7);
+    background: rgba(92, 78, 78, 0.2);
+    box-shadow: 0 0 0 1px rgba(152, 134, 134, 0.15);
+}
+
+/* Seating config checkbox override */
+.dashboard-create-form .seating-config-toggle input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
 }
 
 .dashboard-create-form .template-preview__name {
