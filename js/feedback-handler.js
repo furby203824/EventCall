@@ -30,7 +30,7 @@ class FeedbackWidget {
         button.className = 'feedback-button';
         button.setAttribute('aria-label', 'Share Feedback');
         button.setAttribute('title', 'Share Feedback');
-        button.innerHTML = '💬 Feedback';
+        button.innerHTML = 'Feedback';
         document.body.appendChild(button);
 
         // Navigate to Sentinel Directives Hub
@@ -63,10 +63,10 @@ class FeedbackWidget {
                         <label for="feedback-type" class="form-label">Feedback Type *</label>
                         <select id="feedback-type" name="type" class="form-input" required>
                             <option value="">Select type...</option>
-                            <option value="bug">🐛 Bug Report</option>
-                            <option value="feature">✨ Feature Request</option>
-                            <option value="ux">🎨 UX Suggestion</option>
-                            <option value="other">💬 Other</option>
+                            <option value="bug">Bug Report</option>
+                            <option value="feature">Feature Request</option>
+                            <option value="ux">UX Suggestion</option>
+                            <option value="other">Other</option>
                         </select>
                     </div>
 
@@ -110,7 +110,7 @@ class FeedbackWidget {
                             placeholder="your@email.com (visible publicly)"
                             maxlength="200"
                         >
-                        <small class="form-hint feedback-privacy-warning">⚠️ Your email will be visible in the public GitHub issue</small>
+                        <small class="form-hint feedback-privacy-warning">Your email will be visible in the public GitHub issue</small>
                     </div>
 
                     <div class="feedback-form__actions">
@@ -120,7 +120,7 @@ class FeedbackWidget {
                 </form>
 
                 <div id="feedback-success" class="feedback-success" style="display: none;">
-                    <div class="feedback-success__icon">✅</div>
+                    <div class="feedback-success__icon"></div>
                     <h3 class="feedback-success__title">Thank you for your feedback!</h3>
                     <p class="feedback-success__message">Your feedback has been submitted successfully.</p>
                     <button type="button" class="btn btn--primary" id="feedback-close">Close</button>
@@ -227,7 +227,7 @@ class FeedbackWidget {
 
         // Validate
         if (!feedback.type || !feedback.title || !feedback.description) {
-            this.showToast('❌ Please fill in all required fields', 'error');
+            this.showToast('Please fill in all required fields', 'error');
             return;
         }
 
@@ -240,7 +240,7 @@ class FeedbackWidget {
             });
         } catch (error) {
             console.error('Feedback submission failed:', error);
-            this.showToast('❌ Failed to submit feedback: ' + error.message, 'error');
+            this.showToast('Failed to submit feedback: ' + error.message, 'error');
         } finally {
             this.submitting = false;
         }
@@ -251,10 +251,10 @@ class FeedbackWidget {
      */
     async submitFeedback(feedback) {
         const typeLabels = {
-            bug: '🐛 BUG REPORT',
-            feature: '✨ FEATURE REQUEST',
-            ux: '🎨 UX SUGGESTION',
-            other: '💬 FEEDBACK'
+            bug: 'BUG REPORT',
+            feature: 'FEATURE REQUEST',
+            ux: 'UX SUGGESTION',
+            other: 'FEEDBACK'
         };
 
         const issueTitle = `[${typeLabels[feedback.type] || 'FEEDBACK'}] ${feedback.title}`;

@@ -168,7 +168,7 @@ const ProfileCompletion = (function() {
         modal.innerHTML = `
             <div class="modal-content profile-completion-content">
                 <div class="profile-completion-header">
-                    <span class="profile-completion-icon">📋</span>
+                    <span class="profile-completion-icon"></span>
                     <h3>Complete Your Profile</h3>
                     <p>Please update the following information to enhance your experience.</p>
                 </div>

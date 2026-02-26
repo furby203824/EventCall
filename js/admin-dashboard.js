@@ -153,7 +153,7 @@
                 if (content) {
                     content.innerHTML = `
                         <div style="padding: 2rem; text-align: center; color: var(--semper-red);">
-                            <h2>❌ Access Denied</h2>
+                            <h2>Access Denied</h2>
                             <p>You do not have permission to view this page.</p>
                             <button class="btn btn-primary" onclick="showPage('dashboard')">Return to Dashboard</button>
                         </div>
@@ -263,21 +263,21 @@
                 <!-- Admin Header -->
                 <div class="admin-header">
                     <div class="admin-title">
-                        👑 EventCall Admin Control Panel
+                        EventCall Admin Control Panel
                         <span class="admin-badge">Admin</span>
                     </div>
                     <button class="btn btn-primary" onclick="AdminDashboard.refresh()">
-                        🔄 Refresh Data
+                        Refresh Data
                     </button>
                 </div>
 
                 <!-- Admin Tabs -->
                 <div class="dashboard-tabs" style="margin-bottom: 2rem;">
                     <button type="button" class="dashboard-tab dashboard-tab--active" data-tab="statistics" onclick="AdminDashboard.switchTab('statistics')">
-                        📊 App Statistics
+                        App Statistics
                     </button>
                     <button type="button" class="dashboard-tab" data-tab="users" onclick="AdminDashboard.switchTab('users')">
-                        👥 User Management
+                        User Management
                     </button>
                 </div>
 
@@ -286,7 +286,7 @@
                     <!-- KPI Cards -->
                     <div class="kpi-grid">
                         <div class="kpi-card">
-                            <span class="kpi-icon">👥</span>
+                            <span class="kpi-icon"></span>
                             <div class="kpi-label">Total Users</div>
                             <div class="kpi-value">${kpis.totalUsers}</div>
                             <div class="kpi-trend trend-neutral">
@@ -295,7 +295,7 @@
                         </div>
 
                         <div class="kpi-card">
-                            <span class="kpi-icon">📅</span>
+                            <span class="kpi-icon"></span>
                             <div class="kpi-label">Total Events</div>
                             <div class="kpi-value">${kpis.totalEvents}</div>
                             <div class="kpi-trend trend-neutral">
@@ -304,7 +304,7 @@
                         </div>
 
                         <div class="kpi-card">
-                            <span class="kpi-icon">✉️</span>
+                            <span class="kpi-icon"></span>
                             <div class="kpi-label">Total RSVPs</div>
                             <div class="kpi-value">${kpis.totalRsvps}</div>
                             <div class="kpi-trend trend-up">
@@ -313,7 +313,7 @@
                         </div>
 
                         <div class="kpi-card">
-                            <span class="kpi-icon">📊</span>
+                            <span class="kpi-icon"></span>
                             <div class="kpi-label">Engagement Rate</div>
                             <div class="kpi-value">${kpis.engagementRate}%</div>
                             <div class="kpi-trend trend-${kpis.engagementRate >= 70 ? 'up' : 'neutral'}">
@@ -342,7 +342,7 @@
                         <div class="chart-card">
                             <div class="chart-header">
                                 <div class="chart-title">RSVP Status Distribution</div>
-                                <button class="btn btn-sm btn-secondary" onclick="AdminDashboard.exportStatsCSV()">📥 Export</button>
+                                <button class="btn btn-sm btn-secondary" onclick="AdminDashboard.exportStatsCSV()">Export</button>
                             </div>
                             <div class="chart-container">
                                 <canvas id="adminRsvpsChart"></canvas>
@@ -352,7 +352,7 @@
 
                     <!-- App Usage Stats -->
                     <div class="admin-table usage-summary">
-                        <div class="chart-title">📈 App Usage Summary</div>
+                        <div class="chart-title">App Usage Summary</div>
                         <div class="usage-stats-grid">
                             <div class="usage-stat-card usage-stat-card--gold">
                                 <div class="usage-stat-label">Events per User</div>
@@ -380,17 +380,17 @@
                 <div id="admin-users-tab" class="admin-tab-content">
                     <div class="admin-table">
                         <div class="user-management-header">
-                            <div class="chart-title" id="user-count-title">👥 User Accounts (${users.length} total)</div>
+                            <div class="chart-title" id="user-count-title">User Accounts (${users.length} total)</div>
                             <div class="user-actions-row">
                                 <button class="btn btn-secondary" onclick="AdminDashboard.exportUsersCSV()">
-                                    📥 Export CSV
+                                    Export CSV
                                 </button>
                             </div>
                         </div>
 
                         <!-- Filters Row -->
                         <div class="filters-row">
-                            <input type="text" id="user-search" class="user-search-input" placeholder="🔍 Search users..." oninput="AdminDashboard.applyFilters()">
+                            <input type="text" id="user-search" class="user-search-input" placeholder="Search users..." oninput="AdminDashboard.applyFilters()">
                             <select id="role-filter" class="filter-select" onchange="AdminDashboard.applyFilters()">
                                 <option value="all">All Roles</option>
                                 <option value="admin">Admins Only</option>
@@ -439,7 +439,7 @@
                 <!-- Confirmation Modal -->
                 <div id="confirm-modal" class="modal" style="display: none;">
                     <div class="modal-content confirm-modal-content">
-                        <div class="confirm-modal-icon">⚠️</div>
+                        <div class="confirm-modal-icon"></div>
                         <h3 id="confirm-modal-title">Confirm Action</h3>
                         <p id="confirm-modal-message">Are you sure you want to proceed?</p>
                         <div class="confirm-modal-actions">
@@ -453,7 +453,7 @@
                 <div id="edit-user-modal" class="modal" style="display: none;">
                     <div class="modal-content edit-user-modal-content">
                         <div class="edit-user-header">
-                            <h3>✏️ Edit User</h3>
+                            <h3>Edit User</h3>
                             <button class="modal-close-btn" data-action="close-edit-user-modal">&times;</button>
                         </div>
                         <form id="edit-user-form" class="edit-user-form">
@@ -677,7 +677,7 @@
             const visibleCount = Array.from(rows).filter(row => row.style.display !== 'none').length;
             const title = document.querySelector('#admin-users-tab .chart-title');
             if (title) {
-                title.textContent = `👥 User Accounts (${visibleCount} ${searchQuery ? 'matching' : 'total'})`;
+                title.textContent = `User Accounts (${visibleCount} ${searchQuery ? 'matching' : 'total'})`;
             }
         },
 
@@ -1005,9 +1005,9 @@
             const totalUsers = this.allUsers?.length || 0;
             if (titleEl) {
                 if (processedUsers.length === totalUsers) {
-                    titleEl.textContent = `👥 User Accounts (${totalUsers} total)`;
+                    titleEl.textContent = `User Accounts (${totalUsers} total)`;
                 } else {
-                    titleEl.textContent = `👥 User Accounts (${processedUsers.length} of ${totalUsers})`;
+                    titleEl.textContent = `User Accounts (${processedUsers.length} of ${totalUsers})`;
                 }
             }
 
@@ -1291,7 +1291,7 @@
             if (content) {
                 content.innerHTML = `
                     <div style="padding: 2rem; text-align: center; color: var(--semper-red);">
-                        <h2>❌ Error Loading Dashboard</h2>
+                        <h2>Error Loading Dashboard</h2>
                         <p>${this._escapeHtml(message)}</p>
                         <button class="btn btn-primary" onclick="AdminDashboard.refresh()">Retry</button>
                     </div>

@@ -205,11 +205,11 @@ class GitHubAPI {
         
         if (statusIcon && statusText) {
             if (connected) {
-                statusIcon.textContent = '✅';
+                statusIcon.textContent = '';
                 statusText.textContent = 'GitHub Connected';
                 statusText.style.color = '#10b981';
             } else {
-                statusIcon.textContent = '❌';
+                statusIcon.textContent = '';
                 statusText.textContent = 'GitHub Disconnected';
                 statusText.style.color = '#ef4444';
             }
@@ -663,7 +663,7 @@ class GitHubAPI {
         }
 
         try {
-            showToast('🔄 Processing RSVP submissions...', 'success');
+            showToast('Processing RSVP submissions...', 'success');
             
             const issues = await this.loadRSVPIssues();
             const processedCount = { total: 0, success: 0, errors: 0 };
@@ -705,7 +705,7 @@ class GitHubAPI {
                 }
             }
 
-            const message = `✅ Processed ${processedCount.success} RSVPs successfully${processedCount.errors > 0 ? ` (${processedCount.errors} errors)` : ''}`;
+            const message = `${icon('check')} Processed ${processedCount.success} RSVPs successfully${processedCount.errors > 0 ? ` (${processedCount.errors} errors)` : ''}`;
             showToast(message, processedCount.errors > 0 ? 'error' : 'success');
             
             return {
@@ -717,7 +717,7 @@ class GitHubAPI {
 
         } catch (error) {
             console.error('Failed to process RSVP issues:', error);
-            showToast('❌ Failed to process RSVPs: ' + error.message, 'error');
+            showToast('Failed to process RSVPs: ' + error.message, 'error');
             throw error;
         }
     }

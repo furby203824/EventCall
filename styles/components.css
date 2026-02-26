@@ -1,3 +1,10 @@
+/* SVG Icon System – base styles */
+.ec-icon {
+    display: inline-block;
+    vertical-align: -0.15em;
+    flex-shrink: 0;
+}
+
 /*
 ====================================================================================================
     components.css

@@ -64,7 +64,7 @@ if ('serviceWorker' in navigator) {
                     display: flex; align-items: center; gap: 0.75rem;
                 `;
                 banner.innerHTML = window.utils.sanitizeHTML(`
-                    <span>📦 App update available</span>
+                    <span>App update available</span>
                     <button id="sw-refresh-btn" style="
                         background: #10b981; color: #fff; border: none;
                         padding: 0.5rem 0.75rem; border-radius: 0.375rem; cursor: pointer;">
@@ -87,7 +87,7 @@ if ('serviceWorker' in navigator) {
                         console.log('🔄 New Service Worker available');
                         renderUpdateBanner();
                         if (window.showToast) {
-                            window.showToast('📦 App update available! Click Refresh.', 'success');
+                            window.showToast('App update available! Click Refresh.', 'success');
                         }
                     }
                 });
@@ -127,7 +127,7 @@ if ('serviceWorker' in navigator) {
             }
 
             if (window.showToast) {
-                window.showToast('🧹 Cache and service workers cleared!', 'success');
+                window.showToast('Cache and service workers cleared!', 'success');
             }
 
             // Reload after a brief delay
@@ -135,7 +135,7 @@ if ('serviceWorker' in navigator) {
         } catch (error) {
             console.error('Cache clear error:', error);
             if (window.showToast) {
-                window.showToast('⚠️ Cache clear may have failed: ' + error.message, 'error');
+                window.showToast('Cache clear may have failed: ' + error.message, 'error');
             }
         }
     };

@@ -86,7 +86,7 @@ END:VCALENDAR`;
         document.body.removeChild(link);
         URL.revokeObjectURL(url);
 
-        showToast('📅 Calendar file downloaded!', 'success');
+        showToast('Calendar file downloaded!', 'success');
     }
 
     /**
@@ -192,12 +192,12 @@ END:VCALENDAR`;
                 this.downloadICS(event);
                 return;
             default:
-                showToast('❌ Unknown calendar type', 'error');
+                showToast('Unknown calendar type', 'error');
                 return;
         }
 
         window.open(url, '_blank');
-        showToast(`📅 Opening ${this.calendarTypes[type]}...`, 'success');
+        showToast(`Opening ${this.calendarTypes[type]}...`, 'success');
     }
 
     /**
@@ -216,13 +216,13 @@ END:VCALENDAR`;
         return `
             <div class="calendar-export-buttons" style="display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0;" data-event="${escapedEvent}">
                 <button type="button" class="${buttonClass}" onclick="window.calendarExport.openCalendarFromButtons(this, 'google')">
-                    📅 Add to Google Calendar
+                    Add to Google Calendar
                 </button>
                 <button type="button" class="${buttonClass}" onclick="window.calendarExport.openCalendarFromButtons(this, 'outlook')">
-                    📅 Add to Outlook
+                    Add to Outlook
                 </button>
                 <button type="button" class="${buttonClass}" onclick="window.calendarExport.openCalendarFromButtons(this, 'ics')">
-                    📥 Download ICS File
+                    Download ICS File
                 </button>
             </div>
         `;
@@ -237,20 +237,20 @@ END:VCALENDAR`;
         return `
             <div class="calendar-dropdown-container" style="position: relative; display: inline-block;">
                 <button type="button" class="btn" onclick="window.calendarExport.toggleCalendarDropdown(event)">
-                    📅 Add to Calendar ▼
+                    Add to Calendar 
                 </button>
                 <div class="calendar-dropdown" style="display: none; position: absolute; top: 100%; left: 0; min-width: 200px; background: white; border: 1px solid #e5e7eb; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 100; margin-top: 0.25rem;" data-event="${escapedEvent}">
                     <button type="button" class="calendar-dropdown-item" onclick="window.calendarExport.openCalendarFromDropdown(this, 'google')">
-                        📅 Google Calendar
+                        Google Calendar
                     </button>
                     <button type="button" class="calendar-dropdown-item" onclick="window.calendarExport.openCalendarFromDropdown(this, 'outlook')">
-                        📅 Outlook
+                        Outlook
                     </button>
                     <button type="button" class="calendar-dropdown-item" onclick="window.calendarExport.openCalendarFromDropdown(this, 'yahoo')">
-                        📅 Yahoo
+                        Yahoo
                     </button>
                     <button type="button" class="calendar-dropdown-item" onclick="window.calendarExport.openCalendarFromDropdown(this, 'ics')">
-                        📥 Download ICS
+                        Download ICS
                     </button>
                 </div>
             </div>
@@ -321,14 +321,14 @@ END:VCALENDAR`;
         const container = buttonElement.closest(selector);
         if (!container) {
             console.error(`Could not find calendar container: ${selector}`);
-            showToast('❌ Calendar export failed', 'error');
+            showToast('Calendar export failed', 'error');
             return null;
         }
 
         const eventDataStr = container.getAttribute('data-event');
         if (!eventDataStr) {
             console.error(`No event data found in container: ${selector}`);
-            showToast('❌ No event data available', 'error');
+            showToast('No event data available', 'error');
             return null;
         }
 
@@ -336,7 +336,7 @@ END:VCALENDAR`;
             return JSON.parse(eventDataStr);
         } catch (error) {
             console.error('Failed to parse event data:', error);
-            showToast('❌ Invalid event data', 'error');
+            showToast('Invalid event data', 'error');
             return null;
         }
     }
@@ -352,7 +352,7 @@ END:VCALENDAR`;
             }
         } catch (error) {
             console.error('Error opening calendar from buttons:', error);
-            showToast('❌ Calendar export failed', 'error');
+            showToast('Calendar export failed', 'error');
         }
     }
 
@@ -368,7 +368,7 @@ END:VCALENDAR`;
             }
         } catch (error) {
             console.error('Error opening calendar from dropdown:', error);
-            showToast('❌ Calendar export failed', 'error');
+            showToast('Calendar export failed', 'error');
         }
     }
 }

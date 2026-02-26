@@ -117,7 +117,7 @@ class EventManager {
                         const remaining = eventResponses.length - shown;
                         const btn = loadMoreContainer.querySelector('button');
                         if (btn) {
-                            btn.textContent = `📋 Load More RSVPs (${remaining} remaining)`;
+                            btn.textContent = `Load More RSVPs (${remaining} remaining)`;
                         }
                     }
                 }
@@ -125,7 +125,7 @@ class EventManager {
                 // Update stats display
                 const statsEl = document.getElementById(`search-stats-${eventId}`);
                 if (statsEl) {
-                    statsEl.textContent = `📊 Showing ${Math.min(shown, eventResponses.length)} of ${eventResponses.length} responses`;
+                    statsEl.textContent = `Showing ${Math.min(shown, eventResponses.length)} of ${eventResponses.length} responses`;
                 }
             }
         }
@@ -175,14 +175,14 @@ class EventManager {
         } else {
             responseTableHTML = `
                 <div style="text-align: center; padding: 2rem; color: var(--text-color);">
-                    <h3 style="color: var(--semper-navy);">🔭 No RSVPs Yet</h3>
+                    <h3 style="color: var(--semper-navy);">No RSVPs Yet</h3>
                     <p>No RSVPs yet. Share your invite link to start collecting responses!</p>
                     <div style="margin-top: 1rem;">
                         <button class="btn btn-success" onclick="syncWithGitHub()" style="margin-right: 0.5rem;">
-                            🔗 Check for New RSVPs
+                            Check for New RSVPs
                         </button>
                         <button class="btn" onclick="copyInviteLink('${eventId}')">
-                            🔗 Share Invite Link
+                            Share Invite Link
                         </button>
                     </div>
                 </div>
@@ -330,7 +330,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                 <div class="mission-control-title">
                     <h1>${h(event.title)}</h1>
                     <div class="mission-control-subtitle">
-                        ${isPast ? '🔴 Past Event' : '🟢 Active Event'} • Last Updated ${formatRelativeTime(event.updated || event.created)}
+                        ${isPast ? 'Past Event' : 'Active Event'} • Last Updated ${formatRelativeTime(event.updated || event.created)}
                     </div>
                 </div>
                 <div class="mission-control-actions">
@@ -342,16 +342,16 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
 
             <!-- Quick Actions Toolbar -->
             <div class="quick-actions-toolbar" role="toolbar" aria-label="Quick actions">
-                <button class="btn-primary" id="qa-send-reminder">✉️ Send Reminder</button>
-                <button class="btn-primary" id="qa-export-list">📤 Export List</button>
-                <button class="btn-primary" id="qa-add-guest">➕ Add Guest</button>
+                <button class="btn-primary" id="qa-send-reminder">Send Reminder</button>
+                <button class="btn-primary" id="qa-export-list">Export List</button>
+                <button class="btn-primary" id="qa-add-guest">Add Guest</button>
                 <div class="btn-group more-group">
                     <button class="btn-secondary" id="qa-more" aria-haspopup="true" aria-expanded="false">⋯ More</button>
                     <div class="dropdown" id="qa-more-menu" hidden>
-                        <button class="btn-tertiary" data-action="edit-event">⚙️ Edit Event</button>
-                        <button class="btn-tertiary" data-action="copy-link">🔗 Copy Invite Link</button>
-                        <button class="btn-tertiary" data-action="sync-rsvps">🔄 Sync RSVPs</button>
-                        <button class="btn-tertiary danger" data-action="delete-event">🗑️ Delete Event</button>
+                        <button class="btn-tertiary" data-action="edit-event">Edit Event</button>
+                        <button class="btn-tertiary" data-action="copy-link">Copy Invite Link</button>
+                        <button class="btn-tertiary" data-action="sync-rsvps">Sync RSVPs</button>
+                        <button class="btn-tertiary danger" data-action="delete-event">Delete Event</button>
                     </div>
                 </div>
             </div>
@@ -377,28 +377,28 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                     <div class="event-details-left">
                         <div class="event-meta-grid">
                             <div class="meta-item-v2">
-                                <span class="meta-icon-v2">📅</span>
+                                <span class="meta-icon-v2"></span>
                                 <div class="meta-content">
                                     <div class="meta-label">Date</div>
                                     <div class="meta-value">${formatDate(event.date)}</div>
                                 </div>
                             </div>
                             <div class="meta-item-v2">
-                                <span class="meta-icon-v2">⏰</span>
+                                <span class="meta-icon-v2"></span>
                                 <div class="meta-content">
                                     <div class="meta-label">Time</div>
                                     <div class="meta-value">${formatTime(event.time)}</div>
                                 </div>
                             </div>
                             <div class="meta-item-v2">
-                                <span class="meta-icon-v2">📍</span>
+                                <span class="meta-icon-v2"></span>
                                 <div class="meta-content">
                                     <div class="meta-label">Location</div>
                                     <div class="meta-value">${h(event.location) || 'Not specified'}</div>
                                 </div>
                             </div>
                             <div class="meta-item-v2">
-                                <span class="meta-icon-v2">${isPast ? '⏱️' : '⏳'}</span>
+                                <span class="meta-icon-v2">${isPast ? '' : ''}</span>
                                 <div class="meta-content">
                                     <div class="meta-label">${isPast ? 'Status' : 'Time Until'}</div>
                                     <div class="meta-value">${isPast ? 'Event Passed' : h(timeUntil)}</div>
@@ -407,7 +407,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                         </div>
                         ${event.description ? `
                             <div class="meta-item-v2" style="grid-column: 1 / -1;">
-                                <span class="meta-icon-v2">📝</span>
+                                <span class="meta-icon-v2"></span>
                                 <div class="meta-content">
                                     <div class="meta-label">Description</div>
                                     <div class="meta-value">${h(event.description)}</div>
@@ -416,14 +416,14 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                         ` : ''}
                         ${(event.askReason || event.allowGuests || event.requiresMealChoice) ? `
                             <div class="meta-item-v2" style="grid-column: 1 / -1;">
-                                <span class="meta-icon-v2">⚙️</span>
+                                <span class="meta-icon-v2"></span>
                                 <div class="meta-content">
                                     <div class="meta-label">RSVP Settings</div>
                                     <div class="meta-value">
                                         <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-                                            ${event.askReason ? `<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .5rem;border-radius:999px;background:#e0f2fe;color:#0c4a6e;border:1px solid #7dd3fc;">💬 Ask why attending</span>` : ''}
-                                            ${event.allowGuests ? `<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .5rem;border-radius:999px;background:#f0fdf4;color:#064e3b;border:1px solid #86efac;">👥 Allow additional guests</span>` : ''}
-                                            ${event.requiresMealChoice ? `<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .5rem;border-radius:999px;background:#fff7ed;color:#7c2d12;border:1px solid #fdba74;">🍽️ Meal/dietary choices required</span>` : ''}
+                                            ${event.askReason ? `<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .5rem;border-radius:999px;background:#e0f2fe;color:#0c4a6e;border:1px solid #7dd3fc;">${icon('message-sq')} Ask why attending</span>` : ''}
+                                            ${event.allowGuests ? `<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .5rem;border-radius:999px;background:#f0fdf4;color:#064e3b;border:1px solid #86efac;">${icon('users')} Allow additional guests</span>` : ''}
+                                            ${event.requiresMealChoice ? `<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .5rem;border-radius:999px;background:#fff7ed;color:#7c2d12;border:1px solid #fdba74;">${icon('utensils')} Meal/dietary choices required</span>` : ''}
                                         </div>
                                     </div>
                                 </div>
@@ -433,14 +433,14 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                             if (!event.customQuestions || event.customQuestions.length === 0) return '';
 
                             const typeLabels = {
-                                'text': '📝 Text',
-                                'choice': '☑️ Multiple Choice',
-                                'date': '📅 Date',
-                                'datetime': '🕐 Date & Time'
+                                'text': 'Text',
+                                'choice': 'Multiple Choice',
+                                'date': 'Date',
+                                'datetime': 'Date & Time'
                             };
 
                             const questionsHtml = event.customQuestions.map((q, index) => {
-                                const typeLabel = typeLabels[q.type] || '📝 Text';
+                                const typeLabel = typeLabels[q.type] || 'Text';
                                 const requiredLabel = q.required ? '<span class="question-required-label">*Required</span>' : '<span class="question-optional-label">Optional</span>';
 
                                 return `
@@ -461,7 +461,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
 
                             return `
                             <div class="meta-item-v2 meta-item-full-width">
-                                <span class="meta-icon-v2">❓</span>
+                                <span class="meta-icon-v2"></span>
                                 <div class="meta-content">
                                     <div class="meta-label">Custom RSVP Questions</div>
                                     <div class="meta-value">
@@ -475,7 +475,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                         })()}
                         ${event.eventDetails && Object.keys(event.eventDetails).length ? `
                             <div class="meta-item-v2" style="grid-column: 1 / -1;">
-                                <span class="meta-icon-v2">ℹ️</span>
+                                <span class="meta-icon-v2"></span>
                                 <div class="meta-content">
                                     <div class="meta-label">Event Details</div>
                                     <div class="meta-value">
@@ -500,18 +500,18 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
 
                 <!-- Event Timeline -->
                 <div class="timeline-section" id="sub-timeline" hidden>
-                    <h2>⏱️ Event Timeline</h2>
+                    <h2>Event Timeline</h2>
                     <div id="timeline-list" class="timeline-list"></div>
                 </div>
 
                 <!-- RSVP Dashboard -->
                 <div class="rsvp-dashboard-section">
-                <h2 class="rsvp-dashboard-title">📊 RSVP Dashboard</h2>
+                <h2 class="rsvp-dashboard-title">RSVP Dashboard</h2>
                 
                 <!-- Big Stat Cards -->
                 <div class="rsvp-stats-cards">
                     <div class="stat-card-large stat-card-headcount">
-                        <div class="stat-card-icon">👥</div>
+                        <div class="stat-card-icon"></div>
                         <div class="stat-card-number">${stats.totalHeadcount}</div>
                         <div class="stat-card-label">Total Headcount</div>
                         ${event.allowGuests ? `
@@ -521,17 +521,17 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                         ` : ''}
                     </div>
                     <div class="stat-card-large stat-card-attending">
-                        <div class="stat-card-icon">✅</div>
+                        <div class="stat-card-icon"></div>
                         <div class="stat-card-number">${stats.attending}</div>
                         <div class="stat-card-label">Attending</div>
                     </div>
                     <div class="stat-card-large stat-card-declined">
-                        <div class="stat-card-icon">❌</div>
+                        <div class="stat-card-icon"></div>
                         <div class="stat-card-number">${stats.notAttending}</div>
                         <div class="stat-card-label">Declined</div>
                     </div>
                     <div class="stat-card-large stat-card-pending">
-                        <div class="stat-card-icon">⏳</div>
+                        <div class="stat-card-icon"></div>
                         <div class="stat-card-number">${pending}</div>
                         <div class="stat-card-label">Pending</div>
                     </div>
@@ -580,7 +580,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
             <div class="attendee-list-section">
                 <!-- Invite Roster -->
                 <div class="invite-roster-section" hidden>
-                    <h3 class="invite-link-title">📥 Invite Roster</h3>
+                    <h3 class="invite-link-title">Invite Roster</h3>
                     <div class="invite-link-actions" style="margin-bottom: 0.75rem;">
                         <input type="file"
                                id="roster-import-file-${eventId}"
@@ -588,7 +588,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                                style="display:none"
                                onchange="window.csvImporter.handleRosterUpload(event, '${eventId}')">
                         <button class="btn-action" onclick="document.getElementById('roster-import-file-${eventId}').click()">
-                            📤 Upload Roster CSV
+                            Upload Roster CSV
                         </button>
                         <a href="#" onclick="window.csvImporter.downloadTemplate(); return false;" style="margin-left: 0.75rem; color: #60a5fa;">
                             Download CSV Template
@@ -598,12 +598,12 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                 </div>
 
                 <div class="attendee-list-header">
-                    <h3 class="attendee-list-title">📋 Attendee List (${eventResponses.length + roster.filter(r => r.email && !respondedEmails.has(r.email.toLowerCase().trim())).length})</h3>
+                    <h3 class="attendee-list-title">Attendee List (${eventResponses.length + roster.filter(r => r.email && !respondedEmails.has(r.email.toLowerCase().trim())).length})</h3>
                     <div class="attendee-controls">
                         <input
                             type="text"
                             class="search-input"
-                            placeholder="🔍 Search attendees..."
+                            placeholder="Search attendees..."
                             id="attendee-search"
                             data-filter-action="search-attendees"
                         >
@@ -982,7 +982,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
         }
 
         if (!window.githubAPI || !window.githubAPI.hasToken()) {
-            showToast('🔐 GitHub token required to send email reminders', 'error');
+            showToast('GitHub token required to send email reminders', 'error');
             return;
         }
 
@@ -991,7 +991,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
         if (!reminderType) return; // User cancelled
 
         try {
-            showToast('📧 Sending email reminders...', 'info');
+            showToast('Sending email reminders...', 'info');
 
             // Filter attendees based on reminder type
             let recipients = [];
@@ -1029,9 +1029,9 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
             }
 
             if (successCount > 0) {
-                showToast(`✅ Sent ${successCount} reminder email${successCount > 1 ? 's' : ''}`, 'success');
+                showToast(`Sent ${successCount} reminder email${successCount > 1 ? 's' : ''}`, 'success');
             } else {
-                showToast('❌ Failed to send reminder emails', 'error');
+                showToast('Failed to send reminder emails', 'error');
             }
 
         } catch (error) {
@@ -1056,7 +1056,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
             modal.innerHTML = window.utils.sanitizeHTML(`
                 <div class="modal-content" style="max-width: 500px;">
                     <div class="modal-header">
-                        <h3>📧 Send Event Reminder</h3>
+                        <h3>Send Event Reminder</h3>
                         <button class="modal-close" onclick="this.closest('.modal-overlay').remove(); resolve(null);">×</button>
                     </div>
                     <div class="modal-body">
@@ -1137,7 +1137,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
         const h = window.utils.escapeHTML;
         
         // Create email content using the template structure
-        const emailSubject = `⏰ Reminder: ${event.title} - ${daysText}`;
+        const emailSubject = `${icon('clock')} Reminder: ${event.title} - ${daysText}`;
         const emailBody = `
             <!DOCTYPE html>
             <html>
@@ -1159,7 +1159,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                                 </tr>
                                 <tr>
                                     <td style="padding: 40px 30px;">
-                                        <h2 style="color: #000000; margin: 0 0 20px 0;">⏰ Event Reminder</h2>
+                                        <h2 style="color: #000000; margin: 0 0 20px 0;">Event Reminder</h2>
                                         <p style="color: #4b5563; font-size: 16px; line-height: 1.6; margin: 0 0 20px 0;">
                                             Hello <strong>${h(recipient.name || 'there')}</strong>,
                                         </p>
@@ -1169,7 +1169,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                                         <table width="100%" cellpadding="15" cellspacing="0" style="background-color: #fff7ed; border-left: 4px solid #f59e0b; border-radius: 4px; margin: 20px 0;">
                                             <tr>
                                                 <td>
-                                                    <h3 style="color: #92400e; margin: 0 0 15px 0; font-size: 18px;">📅 Event Details</h3>
+                                                    <h3 style="color: #92400e; margin: 0 0 15px 0; font-size: 18px;">Event Details</h3>
                                                     <p style="margin: 5px 0; color: #374151;"><strong>Event:</strong> ${h(event.title)}</p>
                                                     <p style="margin: 5px 0; color: #374151;"><strong>Date:</strong> ${formatDate(event.date)}</p>
                                                     <p style="margin: 5px 0; color: #374151;"><strong>Time:</strong> ${formatTime(event.time)}</p>
@@ -1181,7 +1181,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                                             <table width="100%" cellpadding="15" cellspacing="0" style="background-color: #dcfce7; border-left: 4px solid #16a34a; border-radius: 4px; margin: 20px 0;">
                                                 <tr>
                                                     <td>
-                                                        <h3 style="color: #166534; margin: 0 0 10px 0;">✅ Your RSVP Status</h3>
+                                                        <h3 style="color: #166534; margin: 0 0 10px 0;">Your RSVP Status</h3>
                                                         <p style="margin: 0; color: #374151;">You are <strong>attending</strong> this event.</p>
                                                     </td>
                                                 </tr>
@@ -1190,7 +1190,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                                             <table width="100%" cellpadding="15" cellspacing="0" style="background-color: #fee2e2; border-left: 4px solid #dc2626; border-radius: 4px; margin: 20px 0;">
                                                 <tr>
                                                     <td>
-                                                        <h3 style="color: #991b1b; margin: 0 0 10px 0;">❌ Your RSVP Status</h3>
+                                                        <h3 style="color: #991b1b; margin: 0 0 10px 0;">Your RSVP Status</h3>
                                                         <p style="margin: 0; color: #374151;">You indicated you will <strong>not be attending</strong> this event.</p>
                                                     </td>
                                                 </tr>
@@ -1199,7 +1199,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                                             <table width="100%" cellpadding="15" cellspacing="0" style="background-color: #fef3c7; border-left: 4px solid #f59e0b; border-radius: 4px; margin: 20px 0;">
                                                 <tr>
                                                     <td>
-                                                        <h3 style="color: #92400e; margin: 0 0 10px 0;">⏳ RSVP Needed</h3>
+                                                        <h3 style="color: #92400e; margin: 0 0 10px 0;">RSVP Needed</h3>
                                                         <p style="margin: 0; color: #374151;">Please respond to let us know if you'll be attending.</p>
                                                     </td>
                                                 </tr>
@@ -1258,7 +1258,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
         }
 
         try {
-            showToast('📱 Generating QR code...', 'info');
+            showToast('Generating QR code...', 'info');
 
             // Generate invite URL
             const inviteURL = generateInviteURL(event);
@@ -1297,7 +1297,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
         modal.innerHTML = window.utils.sanitizeHTML(`
             <div class="modal-content qr-modal" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title" tabindex="0" style="max-width: 500px;">
                 <div class="modal-header">
-                    <h3 id="qr-modal-title">📱 Event QR Code</h3>
+                    <h3 id="qr-modal-title">Event QR Code</h3>
                     <button id="qr-close-btn" class="modal-close" aria-label="Close QR code modal">×</button>
                 </div>
                 <div class="modal-body" style="text-align: center;">
@@ -1312,18 +1312,18 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                     
                     <div class="qr-actions" style="display: flex; flex-direction: column; gap: 0.75rem;">
                         <button id="qr-download-btn" class="btn btn-primary" aria-label="Download QR code image">
-                            💾 Download QR Code
+                            Download QR Code
                         </button>
                         <button id="qr-copy-link-btn" class="btn btn-secondary" aria-label="Copy event invite link">
-                            🔗 Copy Invite Link
+                            Copy Invite Link
                         </button>
                         <button id="qr-share-btn" class="btn btn-secondary" aria-label="Share event invite">
-                            📤 Share Event
+                            Share Event
                         </button>
                     </div>
                     
                     <div class="qr-info" style="margin-top: 1.5rem; padding: 1rem; background-color: #f9fafb; border-radius: 8px; text-align: left;">
-                        <h5 style="margin: 0 0 0.5rem 0; color: #374151; font-size: 14px;">💡 How to use:</h5>
+                        <h5 style="margin: 0 0 0.5rem 0; color: #374151; font-size: 14px;">How to use:</h5>
                         <ul style="margin: 0; padding-left: 1.25rem; color: #6b7280; font-size: 13px; line-height: 1.5;">
                             <li>Print and display at your event location</li>
                             <li>Share digitally via social media or messaging</li>
@@ -1410,7 +1410,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
             link.click();
             document.body.removeChild(link);
             
-            showToast('✅ QR code downloaded successfully', 'success');
+            showToast('QR code downloaded successfully', 'success');
         } catch (error) {
             console.error('Download failed:', error);
             showToast('Failed to download QR code', 'error');
@@ -1424,7 +1424,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
     async copyInviteLink(inviteURL) {
         try {
             await navigator.clipboard.writeText(inviteURL);
-            showToast('✅ Invite link copied to clipboard', 'success');
+            showToast('Invite link copied to clipboard', 'success');
         } catch (error) {
             console.error('Copy failed:', error);
             // Fallback for older browsers
@@ -1434,7 +1434,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
             textArea.select();
             try {
                 document.execCommand('copy');
-                showToast('✅ Invite link copied to clipboard', 'success');
+                showToast('Invite link copied to clipboard', 'success');
             } catch (fallbackError) {
                 showToast('Failed to copy link. Please copy manually: ' + inviteURL, 'error');
             }
@@ -1457,11 +1457,11 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
         try {
             if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
                 await navigator.share(shareData);
-                showToast('✅ Event shared successfully', 'success');
+                showToast('Event shared successfully', 'success');
             } else {
                 // Fallback: Copy to clipboard and show share options
                 await this.copyInviteLink(inviteURL);
-                showToast('📋 Link copied! You can now paste it in your preferred app', 'info');
+                showToast('Link copied! You can now paste it in your preferred app', 'info');
             }
         } catch (error) {
             if (error.name !== 'AbortError') {
@@ -1547,57 +1547,57 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                                 isInvited ? 'status-invited' :
                                 (isAttending ? 'status-attending' : 'status-declined')
                             }">
-                                ${isInvited ? '📧 Invited' :
-                                  (isAttending ? '✅ Attending' : '❌ Declined')}
+                                ${isInvited ? 'Invited' :
+                                  (isAttending ? 'Attending' : 'Declined')}
                             </span>
                         </div>
                     </div>
                     <div class="attendee-details">
                         ${response.email ? `
                             <div class="attendee-detail-item">
-                                <span class="attendee-detail-icon">📧</span>
+                                <span class="attendee-detail-icon"></span>
                                 <span>${h(response.email)}</span>
                             </div>
                         ` : ''}
                         ${response.phone ? `
                             <div class="attendee-detail-item">
-                                <span class="attendee-detail-icon">📱</span>
+                                <span class="attendee-detail-icon"></span>
                                 <span>${h(response.phone)}</span>
                             </div>
                         ` : ''}
                         ${response.guestCount > 0 ? `
                             <div class="attendee-detail-item">
-                                <span class="attendee-detail-icon">👥</span>
+                                <span class="attendee-detail-icon"></span>
                                 <span>+${parseInt(response.guestCount)} guest${response.guestCount > 1 ? 's' : ''}</span>
                             </div>
                         ` : ''}
                         ${response.reason ? `
                             <div class="attendee-detail-item">
-                                <span class="attendee-detail-icon">💬</span>
+                                <span class="attendee-detail-icon"></span>
                                 <span>${h(response.reason)}</span>
                             </div>
                         ` : ''}
                         ${(response.dietaryRestrictions && response.dietaryRestrictions.length) ? `
                             <div class="attendee-detail-item">
-                                <span class="attendee-detail-icon">🍽️</span>
+                                <span class="attendee-detail-icon"></span>
                                 <span>${response.dietaryRestrictions.map(r => h(r)).join(', ')}</span>
                             </div>
                         ` : ''}
                         ${response.allergyDetails ? `
                             <div class="attendee-detail-item">
-                                <span class="attendee-detail-icon">⚠️</span>
+                                <span class="attendee-detail-icon"></span>
                                 <span>${h(response.allergyDetails)}</span>
                             </div>
                         ` : ''}
                         ${response.rank ? `
                             <div class="attendee-detail-item">
-                                <span class="attendee-detail-icon">⭐</span>
+                                <span class="attendee-detail-icon"></span>
                                 <span>${h(response.rank)}</span>
                             </div>
                         ` : ''}
                         ${response.unit ? `
                             <div class="attendee-detail-item">
-                                <span class="attendee-detail-icon">🎖️</span>
+                                <span class="attendee-detail-icon"></span>
                                 <span>${h(response.unit)}</span>
                             </div>
                         ` : ''}
@@ -1609,13 +1609,13 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                         ` : ''}
                     </div>
                     
-                    <!-- ✅ UPDATED: Actions with Email Button -->
+                    <!-- UPDATED: Actions with Email Button -->
                     <div class="attendee-actions">
                         <button 
                             class="btn-attendee-action" 
                             onclick="alert('Edit feature coming soon!')"
                             title="Edit this RSVP">
-                            ✏️ Edit
+                            Edit
                         </button>
                         
                         <button
@@ -1624,14 +1624,14 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                             data-rsvp-id="${response.rsvpId}"
                             data-event-id="${eventId}"
                             ${!response.email ? 'disabled title="No email address available"' : 'title="Send email to attendee"'}>
-                            📧 Email
+                            Email
                         </button>
                         
                         <button 
                             class="btn-attendee-action btn-danger-attendee" 
                             onclick="if(confirm('${response.isInvitedOnly ? 'Remove from invite roster?' : 'Remove this RSVP?'}')) alert('Remove feature coming soon!')"
                             title="${response.isInvitedOnly ? 'Remove from invite roster' : 'Remove this RSVP'}">
-                            🗑️ Remove
+                            Remove
                         </button>
                     </div>
                 </div>
@@ -1823,7 +1823,7 @@ Best regards`;
         try {
             window.open(mailtoUrl, '_blank');
             console.log(`📧 Opening email client for: ${emailTo}`);
-            showToast(`📧 Opening email to ${guestName}`, 'success');
+            showToast(`Opening email to ${guestName}`, 'success');
         } catch (error) {
             console.error('Failed to open email client:', error);
             showToast('Failed to open email client', 'error');
@@ -1837,7 +1837,7 @@ Best regards`;
      */
     async syncEventRSVPs(eventId) {
         if (!window.githubAPI || !window.githubAPI.hasToken()) {
-            showToast('🔐 GitHub token required to sync RSVPs', 'error');
+            showToast('GitHub token required to sync RSVPs', 'error');
             return;
         }
 
@@ -1851,7 +1851,7 @@ Best regards`;
                 syncBtn.disabled = true;
             }
 
-            showToast('🔗 Syncing RSVPs for this event...', 'success');
+            showToast('Syncing RSVPs for this event...', 'success');
 
             // Process RSVP issues for all events (GitHub doesn't allow filtering by event easily)
             const result = await window.githubAPI.processRSVPIssues();
@@ -1940,17 +1940,17 @@ Best regards`;
                         <div class="stat-card-label">Seated Guests</div>
                     </div>
                     <div class="stat-card-large stat-card-unassigned">
-                        <div class="stat-card-icon">📋</div>
+                        <div class="stat-card-icon"></div>
                         <div class="stat-card-number">${stats.unassigned}</div>
                         <div class="stat-card-label">Unassigned</div>
                     </div>
                     <div class="stat-card-large stat-card-available">
-                        <div class="stat-card-icon">✨</div>
+                        <div class="stat-card-icon"></div>
                         <div class="stat-card-number">${stats.available}</div>
                         <div class="stat-card-label">Available Seats</div>
                     </div>
                     <div class="stat-card-large stat-card-capacity">
-                        <div class="stat-card-icon">📊</div>
+                        <div class="stat-card-icon"></div>
                         <div class="stat-card-number">${stats.percentFilled}%</div>
                         <div class="stat-card-label">Capacity Used</div>
                     </div>
@@ -1959,13 +1959,13 @@ Best regards`;
                 <!-- Seating Actions -->
                 <div class="invite-actions-section">
                     <button class="btn-action" data-action="auto-assign-seats" data-event-id="${eventId}">
-                        🎯 Auto-Assign All
+                        Auto-Assign All
                     </button>
                     <button class="btn-action" data-action="export-seating" data-event-id="${eventId}">
-                        📥 Export Seating Chart
+                        Export Seating Chart
                     </button>
                     <button class="btn-action" data-action="refresh-seating" data-event-id="${eventId}">
-                        🔄 Refresh
+                        Refresh
                     </button>
                 </div>
 
@@ -1973,7 +1973,7 @@ Best regards`;
                     <!-- Unassigned Guests Section -->
                     <div class="unassigned-section">
                         <h3>
-                            📋 Unassigned Guests
+                            Unassigned Guests
                             <span class="unassigned-count">${unassignedGuestsDetails.length}</span>
                         </h3>
                         <div class="unassigned-guests-list">
@@ -1995,7 +1995,7 @@ Best regards`;
                                                 const guestCount = 1 + (guest.guestCount || 0);
                                                 const canFit = available >= guestCount;
                                                 return `<option value="${table.tableNumber}" ${!canFit ? 'disabled' : ''}>
-                                                    Table ${table.tableNumber} ${table.vipTable ? '⭐' : ''} (${available}/${table.capacity} available)
+                                                    Table ${table.tableNumber} ${table.vipTable ? '' : ''} (${available}/${table.capacity} available)
                                                 </option>`;
                                             }).join('')}
                                         </select>
@@ -2006,7 +2006,7 @@ Best regards`;
                     </div>
                 ` : `
                     <div class="seating-empty-state">
-                        <h3>✅ All Attending Guests Assigned</h3>
+                        <h3>All Attending Guests Assigned</h3>
                         <p>All guests have been assigned to tables.</p>
                     </div>
                 `}
@@ -2023,7 +2023,7 @@ Best regards`;
                             <div class="table-card ${table.vipTable ? 'vip-table' : ''} ${isFull ? 'full' : ''}">
                                 <div class="table-header">
                                     <div class="table-number">
-                                        ${table.vipTable ? '⭐ ' : ''}Table ${table.tableNumber}
+                                        ${table.vipTable ? '' : ''}Table ${table.tableNumber}
                                     </div>
                                     <div class="table-capacity ${isFull ? 'full' : isAlmostFull ? 'almost-full' : ''}">
                                         ${occupancy}/${table.capacity}
@@ -2049,12 +2049,12 @@ Best regards`;
                                                         const tAvailable = t.capacity - tOccupancy;
                                                         const canFit = tAvailable >= totalGuestCount;
                                                         return `<option value="${t.tableNumber}" ${!canFit ? 'disabled' : ''}>
-                                                            Table ${t.tableNumber} ${t.vipTable ? '⭐' : ''} (${tAvailable}/${t.capacity} avail)
+                                                            Table ${t.tableNumber} ${t.vipTable ? '' : ''} (${tAvailable}/${t.capacity} avail)
                                                         </option>`;
                                                     }).join('')}
                                                 </select>
                                                 <button class="table-guest-remove" data-event-id="${eventId}" data-rsvp-id="${guest.rsvpId}" title="Remove from table">
-                                                    ✖
+                                                    
                                                 </button>
                                             </div>
                                         </div>
@@ -2092,7 +2092,7 @@ Best regards`;
                 <div class="response-stats">
                     <div class="stat">
                         <div class="stat-number" style="color: var(--semper-navy); font-size: 2rem; font-weight: 900;">${stats.totalHeadcount}</div>
-                        <div class="stat-label">🎖️ TOTAL HEADCOUNT</div>
+                        <div class="stat-label"> TOTAL HEADCOUNT</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number" style="color: var(--success-color);">${stats.attending}</div>
@@ -2104,7 +2104,7 @@ Best regards`;
                     </div>
                     <div class="stat">
                         <div class="stat-number" style="color: var(--semper-navy);">${stats.total}</div>
-                        <div class="stat-label">📊 Total RSVPs</div>
+                        <div class="stat-label">Total RSVPs</div>
                     </div>
                 </div>
             </div>
@@ -2112,7 +2112,7 @@ Best regards`;
             <div class="search-controls">
                 <div class="search-row">
                     <input type="text" id="response-search" class="search-input" 
-                           placeholder="🔗 Search responses by name, email, phone, or any field..."
+                           placeholder=" Search responses by name, email, phone, or any field..."
                            onkeyup="eventManager.filterResponses('${eventId}')">
                     
                     <select id="attendance-filter" class="search-filter" onchange="eventManager.filterResponses('${eventId}')">
@@ -2123,12 +2123,12 @@ Best regards`;
                     
                     <button class="clear-search" onclick="eventManager.clearSearch('${eventId}')">Clear</button>
                     <button class="btn btn-success" onclick="eventManager.syncEventRSVPs('${eventId}')" style="margin-left: 0.5rem;">
-                        🔗 Refresh
+                        Refresh
                     </button>
                 </div>
                 
                 <div class="search-stats" id="search-stats-${eventId}">
-                    📊 Showing ${shownCount} of ${eventResponses.length} responses
+                    Showing ${shownCount} of ${eventResponses.length} responses
                 </div>
             </div>
 
@@ -2138,13 +2138,13 @@ Best regards`;
                         <span id="selected-count-${eventId}">0</span> selected
                     </span>
                     <button class="btn-small" onclick="eventManager.bulkExportSelected('${eventId}')" title="Export selected responses to CSV">
-                        📤 Export Selected
+                        Export Selected
                     </button>
                     <button class="btn-small" onclick="eventManager.bulkEmailSelected('${eventId}')" title="Email selected attendees">
-                        📧 Email Selected
+                        Email Selected
                     </button>
                     <button class="btn-small btn-danger" onclick="eventManager.bulkDeleteSelected('${eventId}')" title="Delete selected responses">
-                        🗑️ Delete Selected
+                        Delete Selected
                     </button>
                 </div>
             </div>
@@ -2179,7 +2179,7 @@ Best regards`;
             const email = response.email || 'N/A';
             const phone = response.phone || 'N/A';
             const source = response.issueNumber ? `GitHub Issue #${response.issueNumber}` : 'Direct Entry';
-            const sourceIcon = response.issueNumber ? '🔗' : '📝';
+            const sourceIcon = response.issueNumber ? '' : '';
 
             html += `
                 <tr class="response-row" data-response-index="${index}"
@@ -2222,10 +2222,10 @@ Best regards`;
                     <td>
                         <button class="btn btn-danger" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;" 
                                 onclick="eventManager.deleteResponse('${eventId}', ${index})" 
-                                title="Delete this RSVP">🗑️</button>
+                                title="Delete this RSVP"></button>
                         ${response.issueUrl ? `
                             <a href="${response.issueUrl}" target="_blank" class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; margin-left: 0.25rem;" title="View GitHub Issue">
-                                🔗
+                                
                             </a>
                         ` : ''}
                     </td>
@@ -2241,7 +2241,7 @@ Best regards`;
             html += `
                 <div id="rsvp-load-more-${eventId}" class="load-more-btn" style="text-align: center; margin-top: 1.5rem;">
                     <button class="btn btn-secondary" onclick="eventManager.loadMoreRsvps('${eventId}')">
-                        📋 Load More RSVPs (${remaining} remaining)
+                        Load More RSVPs (${remaining} remaining)
                     </button>
                 </div>
             `;
@@ -2271,7 +2271,7 @@ Best regards`;
             const email = response.email || 'N/A';
             const phone = response.phone || 'N/A';
             const source = response.issueNumber ? `GitHub Issue #${response.issueNumber}` : 'Direct Entry';
-            const sourceIcon = response.issueNumber ? '🔗' : '📝';
+            const sourceIcon = response.issueNumber ? '' : '';
 
             html += `
                 <tr class="response-row" data-response-index="${index}"
@@ -2291,7 +2291,7 @@ Best regards`;
                     <td data-priority="low"><a href="mailto:${email}" style="color: var(--semper-red); text-decoration: none;">${email}</a></td>
                     <td data-priority="low">${phone !== 'N/A' ? `<a href="tel:${phone}" style="color: var(--semper-red); text-decoration: none;">${phone}</a>` : phone}</td>
                     <td class="${response.attending ? 'attending-yes' : 'attending-no'}">
-                        ${response.attending ? '✅ Yes' : '❌ No'}
+                        ${response.attending ? 'Yes' : 'No'}
                     </td>
                     ${event.askReason ? `<td style="max-width: 200px; word-wrap: break-word;">${response.reason || '-'}</td>` : ''}
                     ${event.allowGuests ? `<td><strong>${response.guestCount || 0}</strong> ${(response.guestCount || 0) === 1 ? 'guest' : 'guests'}</td>` : ''}
@@ -2310,10 +2310,10 @@ Best regards`;
                     <td>
                         <button class="btn btn-danger" style="padding: 0.25rem 0.5rem; font-size: 0.75rem;"
                                 onclick="eventManager.deleteResponse('${eventId}', ${index})"
-                                title="Delete this RSVP">🗑️</button>
+                                title="Delete this RSVP"></button>
                         ${response.issueUrl ? `
                             <a href="${response.issueUrl}" target="_blank" class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; margin-left: 0.25rem;" title="View GitHub Issue">
-                                🔗
+                                
                             </a>
                         ` : ''}
                     </td>
@@ -2377,12 +2377,12 @@ Best regards`;
         });
         
         if (searchTerm || attendanceFilter) {
-            statsElement.innerHTML = window.utils.sanitizeHTML(`🔗 Showing ${visibleCount} of ${totalCount} responses`);
+            statsElement.innerHTML = window.utils.sanitizeHTML(`${icon('link')} Showing ${visibleCount} of ${totalCount} responses`);
             if (visibleCount === 0) {
                 statsElement.innerHTML = window.utils.sanitizeHTML(statsElement.innerHTML + ' - <span style="color: var(--error-color);">No matches found</span>');
             }
         } else {
-            statsElement.innerHTML = window.utils.sanitizeHTML(`📊 Showing ${totalCount} of ${totalCount} responses`);
+            statsElement.innerHTML = window.utils.sanitizeHTML(`${icon('bar-chart')} Showing ${totalCount} of ${totalCount} responses`);
         }
     }
 
@@ -2400,9 +2400,9 @@ Best regards`;
         });
         
         const statsElement = document.getElementById(`search-stats-${eventId}`);
-        statsElement.innerHTML = window.utils.sanitizeHTML(`📊 Showing ${rows.length} of ${rows.length} responses`);
+        statsElement.innerHTML = window.utils.sanitizeHTML(`${icon('bar-chart')} Showing ${rows.length} of ${rows.length} responses`);
 
-        showToast('🧹 Search cleared', 'success');
+        showToast('Search cleared', 'success');
     }
 
     /**
@@ -2421,7 +2421,7 @@ Best regards`;
             const success = await copyToClipboard(link);
             
             if (success) {
-                showToast('🔗 Invite link copied to clipboard!', 'success');
+                showToast('Invite link copied to clipboard!', 'success');
                 
                 // Briefly highlight the input field
                 const input = document.getElementById('invite-link-input');
@@ -2508,7 +2508,7 @@ Best regards`;
 
                 const p1 = document.createElement('p');
                 p1.classList.add('cover-upload-message', 'cover-upload-message--success');
-                p1.textContent = '✅ Current image loaded';
+                p1.textContent = 'Current image loaded';
 
                 const p2 = document.createElement('p');
                 p2.classList.add('cover-upload-message', 'cover-upload-message--hint');
@@ -2518,7 +2518,7 @@ Best regards`;
                 const deleteBtn = document.createElement('button');
                 deleteBtn.type = 'button';
                 deleteBtn.className = 'cover-delete-btn';
-                deleteBtn.textContent = '🗑️ Remove Cover Image';
+                deleteBtn.textContent = 'Remove Cover Image';
                 deleteBtn.onclick = (e) => {
                     e.stopPropagation();
                     this.removeCoverImage();
@@ -2574,7 +2574,7 @@ Best regards`;
 
         // Change form submission behavior
         const submitBtn = document.querySelector('#event-form button[type="submit"]');
-        submitBtn.textContent = '🛠️ Update Event';
+        submitBtn.textContent = 'Update Event';
         submitBtn.style.background = 'linear-gradient(135deg, var(--success-color) 0%, #059669 100%)';
 
         // Add cancel button
@@ -2583,7 +2583,7 @@ Best regards`;
             cancelBtn.type = 'button';
             cancelBtn.id = 'cancel-edit-btn';
             cancelBtn.className = 'btn btn-secondary';
-            cancelBtn.textContent = '❌ Cancel Edit';
+            cancelBtn.textContent = 'Cancel Edit';
             cancelBtn.style.marginLeft = '0.5rem';
             cancelBtn.onclick = () => this.cancelEdit();
             submitBtn.parentNode.insertBefore(cancelBtn, submitBtn.nextSibling);
@@ -2620,7 +2620,7 @@ Best regards`;
                 // Escape dynamic attribute value to prevent injection.
                 questionItem.innerHTML = `
                     <input type="text" placeholder="Enter your question..." class="custom-question-input" value="${window.utils.escapeHTML(q.question || '')}">
-                    <button type="button" class="btn btn-danger" onclick="removeCustomQuestion(this)">🗑️</button>
+                    <button type="button" class="btn btn-danger" onclick="removeCustomQuestion(this)"></button>
                 `;
                 container.appendChild(questionItem);
             });
@@ -2678,7 +2678,7 @@ Best regards`;
 
         // Reset submit button
         const submitBtn = document.querySelector('#event-form button[type="submit"]');
-        submitBtn.textContent = '🚀 Deploy Event';
+        submitBtn.textContent = 'Deploy Event';
         submitBtn.style.background = '';
 
         // Remove cancel button
@@ -2739,7 +2739,7 @@ Best regards`;
                 window.events[eventData.id] = eventData;
             }
 
-            showToast('✅ Event updated successfully!', 'success');
+            showToast('Event updated successfully!', 'success');
 
             // Reset edit mode
             this.cancelEdit();
@@ -2796,7 +2796,7 @@ Best regards`;
         this.populateCustomQuestions(duplicatedEvent.customQuestions || []);
 
         showPage('create');
-        showToast('📋 Event duplicated - modify details and deploy', 'success');
+        showToast('Event duplicated - modify details and deploy', 'success');
     }
 
     /**
@@ -3181,9 +3181,9 @@ async assignGuestToTable(eventId, rsvpId, tableNumberStr) {
             await this.saveEventSeatingData(event);
 
             if (result.failed > 0) {
-                showToast(`✅ Assigned ${result.assigned} guests. ⚠️ ${result.failed} could not be assigned (insufficient capacity)`, 'warning');
+                showToast(`Assigned ${result.assigned} guests. ${result.failed} could not be assigned (insufficient capacity)`, 'warning');
             } else {
-                showToast(`✅ Successfully assigned ${result.assigned} guests to tables`, 'success');
+                showToast(`Successfully assigned ${result.assigned} guests to tables`, 'success');
             }
 
             // Refresh the seating chart display
@@ -3244,7 +3244,7 @@ async assignGuestToTable(eventId, rsvpId, tableNumberStr) {
                 window.URL.revokeObjectURL(url);
             }, 100);
 
-            showToast('📥 Seating chart exported successfully', 'success');
+            showToast('Seating chart exported successfully', 'success');
         } catch (error) {
             console.error('Export seating chart error:', error);
             showToast('Failed to export seating chart', 'error');
@@ -3324,7 +3324,7 @@ async assignGuestToTable(eventId, rsvpId, tableNumberStr) {
         const filename = `${generateSafeFilename(event.title)}_selected_rsvps.csv`;
 
         downloadFile(csvContent, filename, 'text/csv');
-        showToast(`📊 Exported ${selectedResponses.length} responses`, 'success');
+        showToast(`Exported ${selectedResponses.length} responses`, 'success');
     }
 
     /**
@@ -3360,10 +3360,10 @@ async assignGuestToTable(eventId, rsvpId, tableNumberStr) {
         if (mailtoLink.length > MAX_MAILTO_LENGTH) {
             // Fallback: Display emails in a modal for manual copy
             this.showEmailListModal(emails);
-            showToast(`⚠️ Too many recipients for mailto link. Showing list instead.`, 'warning');
+            showToast(`Too many recipients for mailto link. Showing list instead.`, 'warning');
         } else {
             window.location.href = mailtoLink;
-            showToast(`📧 Opening email client for ${emails.length} recipients`, 'success');
+            showToast(`Opening email client for ${emails.length} recipients`, 'success');
         }
     }
 
@@ -3404,11 +3404,11 @@ async assignGuestToTable(eventId, rsvpId, tableNumberStr) {
         // Create copy button
         const copyButton = document.createElement('button');
         copyButton.className = 'btn';
-        copyButton.textContent = '📋 Copy to Clipboard';
+        copyButton.textContent = 'Copy to Clipboard';
         copyButton.addEventListener('click', async () => {
             try {
                 await navigator.clipboard.writeText(emailList);
-                showToast('📋 Copied to clipboard', 'success');
+                showToast('Copied to clipboard', 'success');
             } catch (error) {
                 console.error('Failed to copy to clipboard:', error);
                 showToast('Failed to copy to clipboard', 'error');
@@ -3563,7 +3563,7 @@ async assignGuestToTable(eventId, rsvpId, tableNumberStr) {
                     <img src="${window.utils && window.utils.escapeHTML ? window.utils.escapeHTML(photo.url) : photo.url}" alt="Event photo" class="photo-card-img" loading="lazy">
                     <div class="photo-card-overlay">
                         <button class="btn-delete-photo" onclick="window.eventManager.deletePhoto('${photo.id}', '${eventId}')" title="Delete photo">
-                            🗑️
+                            
                         </button>
                     </div>
                     ${photo.caption ? `<div class="photo-card-caption">${window.utils && window.utils.escapeHTML ? window.utils.escapeHTML(photo.caption) : photo.caption}</div>` : ''}
@@ -3603,21 +3603,21 @@ async assignGuestToTable(eventId, rsvpId, tableNumberStr) {
                 caption: '' // Could add a prompt for caption later
             });
 
-            showToast('✅ Photo uploaded successfully!', 'success');
+            showToast('Photo uploaded successfully!', 'success');
             
             // Refresh gallery
             this.renderPhotoGallery(eventId);
 
         } catch (error) {
             console.error('Photo upload failed:', error);
-            showToast('❌ Upload failed: ' + error.message, 'error');
+            showToast('Upload failed: ' + error.message, 'error');
         } finally {
             // Reset upload area
             if (uploadArea) {
                 uploadArea.classList.remove('loading');
                 uploadArea.innerHTML = `
                     <input type="file" id="gallery-upload-input-${eventId}" accept="image/*" style="display:none" onchange="window.eventManager.handlePhotoUpload(event, '${eventId}')">
-                    <span class="photo-upload-icon">☁️</span>
+                    <span class="photo-upload-icon"></span>
                     <div class="photo-upload-text">Click or drag photos here to upload</div>
                     <div class="photo-upload-subtext">Supports JPG, PNG, GIF, WEBP</div>
                 `;
@@ -3636,14 +3636,14 @@ async assignGuestToTable(eventId, rsvpId, tableNumberStr) {
             }
 
             await window.BackendAPI.deletePhoto(photoId);
-            showToast('✅ Photo deleted', 'success');
+            showToast('Photo deleted', 'success');
             
             // Refresh gallery
             this.renderPhotoGallery(eventId);
 
         } catch (error) {
             console.error('Delete photo failed:', error);
-            showToast('❌ Delete failed: ' + error.message, 'error');
+            showToast('Delete failed: ' + error.message, 'error');
         }
     }
 }

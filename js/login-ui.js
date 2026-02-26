@@ -42,7 +42,7 @@ class LoginUI {
                     <!-- Header -->
                     <div class="login-header">
                         <div class="login-logo">
-                            🎖️
+                            
                         </div>
                         <h1>EVENTCALL</h1>
                         <p class="login-subtitle">Manager Access Portal</p>
@@ -52,7 +52,7 @@ class LoginUI {
                     <form id="${this.loginFormId}" class="login-form">
                         <div class="form-group">
                             <label for="login-email">
-                                <span class="icon">📧</span>
+                                <span class="icon"></span>
                                 Email Address
                             </label>
                             <input 
@@ -66,7 +66,7 @@ class LoginUI {
 
                         <div class="form-group">
                             <label for="login-code">
-                                <span class="icon">🔑</span>
+                                <span class="icon"></span>
                                 Access Code
                             </label>
                             <input 
@@ -90,7 +90,7 @@ class LoginUI {
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-large">
-                            🔓 ACCESS EVENTS
+                            ACCESS EVENTS
                         </button>
                     </form>
 
@@ -103,7 +103,7 @@ class LoginUI {
                     <div class="login-footer">
                         <p>First time using EventCall?</p>
                         <button class="btn btn-secondary" onclick="loginUI.showRegisterForm()">
-                            ✨ Create Manager Account
+                            Create Manager Account
                         </button>
                     </div>
 
@@ -136,7 +136,7 @@ class LoginUI {
                     <!-- Header -->
                     <div class="login-header">
                         <div class="login-logo">
-                            ✨
+                            
                         </div>
                         <h1>CREATE MANAGER ACCOUNT</h1>
                         <p class="login-subtitle">Register to manage military events</p>
@@ -146,7 +146,7 @@ class LoginUI {
                     <form id="${this.registerFormId}" class="login-form">
                         <div class="form-group">
                             <label for="register-name">
-                                <span class="icon">👤</span>
+                                <span class="icon"></span>
                                 Full Name
                             </label>
                             <input 
@@ -159,7 +159,7 @@ class LoginUI {
 
                         <div class="form-group">
                             <label for="register-email">
-                                <span class="icon">📧</span>
+                                <span class="icon"></span>
                                 Email Address
                             </label>
                             <input 
@@ -174,7 +174,7 @@ class LoginUI {
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-large">
-                            🚀 CREATE ACCOUNT
+                            CREATE ACCOUNT
                         </button>
                     </form>
 
@@ -278,7 +278,7 @@ class LoginUI {
             
         } finally {
             submitBtn.disabled = false;
-        submitBtn.innerHTML = window.utils.sanitizeHTML('🔓 ACCESS EVENTS');
+        submitBtn.innerHTML = window.utils.sanitizeHTML('ACCESS EVENTS');
         }
     }
 
@@ -307,7 +307,7 @@ class LoginUI {
             
         } finally {
             submitBtn.disabled = false;
-        submitBtn.innerHTML = window.utils.sanitizeHTML('🚀 CREATE ACCOUNT');
+        submitBtn.innerHTML = window.utils.sanitizeHTML('CREATE ACCOUNT');
         }
     }
 
@@ -320,7 +320,7 @@ class LoginUI {
         modal.innerHTML = window.utils.sanitizeHTML(`
             <div class="modal access-code-modal">
                 <div class="modal-header">
-                    <h2>✅ Account Created Successfully!</h2>
+                    <h2>Account Created Successfully!</h2>
                 </div>
                 <div class="modal-body">
                     <div class="success-message">
@@ -329,11 +329,11 @@ class LoginUI {
                     </div>
 
                     <div class="access-code-display">
-                        <label>🔑 Your Manager Access Code:</label>
+                        <label>Your Manager Access Code:</label>
                         <div class="code-box">
                             <code id="manager-code-display">${window.utils.escapeHTML(masterCode)}</code>
                             <button id="copy-code-btn" class="btn btn-icon" title="Copy to clipboard">
-                                📋
+                                
                             </button>
                         </div>
                         <small class="help-text">
@@ -342,12 +342,12 @@ class LoginUI {
                     </div>
 
                     <div class="info-box">
-                        <h3>📌 Important Information:</h3>
+                        <h3>Important Information:</h3>
                         <ul>
-                            <li>✅ Save this code in a secure location</li>
-                            <li>✅ Use this code to log in from any device</li>
-                            <li>✅ You'll also receive event-specific codes when you create events</li>
-                            <li>✅ Share event codes (not this master code) with co-managers</li>
+                            <li>Save this code in a secure location</li>
+                            <li>Use this code to log in from any device</li>
+                            <li>You'll also receive event-specific codes when you create events</li>
+                            <li>Share event codes (not this master code) with co-managers</li>
                         </ul>
                     </div>
                 </div>
@@ -371,9 +371,9 @@ class LoginUI {
      */
     copyCode(code) {
         navigator.clipboard.writeText(code).then(() => {
-            showToast('✅ Code copied to clipboard!', 'success');
+            showToast('Code copied to clipboard!', 'success');
         }).catch(() => {
-            showToast('❌ Failed to copy code', 'error');
+            showToast('Failed to copy code', 'error');
         });
     }
 
@@ -390,7 +390,7 @@ class LoginUI {
             const result = await window.managerAuth.login(email, masterCode, true);
             
             if (result.success) {
-                showToast('Welcome to EventCall! 🎉', 'success');
+                showToast('Welcome to EventCall! ', 'success');
 
                 // PERFORMANCE: Show UI immediately
                 // Hide login screen
@@ -447,14 +447,14 @@ class LoginUI {
                 <small>${window.utils.escapeHTML(manager.email)}</small>
             </div>
             <div class="user-menu-item" data-action="dashboard">
-                📊 Dashboard
+                Dashboard
             </div>
             <div class="user-menu-item" data-action="create">
-                ➕ Create Event
+                Create Event
             </div>
             <div class="user-menu-divider"></div>
             <div class="user-menu-item" data-action="logout">
-                🚪 Logout
+                Logout
             </div>
         `);
 

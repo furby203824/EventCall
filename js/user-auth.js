@@ -175,7 +175,7 @@ const userAuth = {
         // Hide dashboard header and welcome banner
         const dashboardHeader = document.querySelector('.dashboard-header h2');
         if (dashboardHeader) {
-            dashboardHeader.textContent = '👑 Admin Control Panel';
+            dashboardHeader.textContent = 'Admin Control Panel';
         }
 
         const welcomeBanner = document.querySelector('.welcome-banner');
@@ -281,7 +281,7 @@ const userAuth = {
         // Client-side validation
         const isFormValid = await window.ux.validateFormOnSubmit(form);
         if (!isFormValid) {
-            showToast('❌ Please fix the errors before submitting', 'error');
+            showToast('Please fix the errors before submitting', 'error');
             return;
         }
 
@@ -348,7 +348,7 @@ const userAuth = {
                 }
 
                 console.log(`⏱️ [T+${Date.now() - startTime}ms] Showing success toast and updating UI...`);
-                showToast(`✅ Account created! Welcome, ${userData.name}!`, 'success');
+                showToast(`Account created! Welcome, ${userData.name}!`, 'success');
 
                 // Save user to storage (without password)
                 this.currentUser = userData;
@@ -394,7 +394,7 @@ const userAuth = {
             }
         } catch (error) {
             console.error(`⏱️ [T+${Date.now() - startTime}ms] ❌ Registration failed:`, error);
-            showToast('❌ Registration failed: ' + error.message, 'error');
+            showToast('Registration failed: ' + error.message, 'error');
 
             // Hide app loader on error
             console.log(`⏱️ [T+${Date.now() - startTime}ms] Hiding loader due to error`);
@@ -424,7 +424,7 @@ const userAuth = {
         // Client-side validation
         const isFormValid = await window.ux.validateFormOnSubmit(form);
         if (!isFormValid) {
-            showToast('❌ Please fix the errors before submitting', 'error');
+            showToast('Please fix the errors before submitting', 'error');
             return;
         }
 
@@ -494,7 +494,7 @@ const userAuth = {
                 }
 
                 console.log(`⏱️ [T+${Date.now() - startTime}ms] Showing success toast and updating UI...`);
-                showToast(`✅ Welcome back, ${userData.name}!`, 'success');
+                showToast(`Welcome back, ${userData.name}!`, 'success');
 
                 // Save user to storage (without password)
                 this.currentUser = userData;
@@ -543,7 +543,7 @@ const userAuth = {
             }
         } catch (error) {
             console.error(`⏱️ [T+${Date.now() - startTime}ms] ❌ Login failed:`, error);
-            showToast('❌ Login failed: ' + error.message, 'error');
+            showToast('Login failed: ' + error.message, 'error');
 
             // Hide app loader on error
             console.log(`⏱️ [T+${Date.now() - startTime}ms] Hiding loader due to error`);
