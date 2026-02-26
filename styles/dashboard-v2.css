@@ -518,7 +518,8 @@ body::before {
     display: none; /* Hide scrollbar for Chrome/Safari */
 }
 
-.dashboard-tab {
+/* Scoped to .dashboard-tabs bar only — avoids overriding nav-link in hamburger menu */
+.dashboard-tabs .dashboard-tab {
     padding: 0.75rem 1.25rem !important;
     font-size: 1rem !important;
     font-weight: 600 !important;
@@ -535,12 +536,12 @@ body::before {
     letter-spacing: normal !important;
 }
 
-.dashboard-tab:hover {
+.dashboard-tabs .dashboard-tab:hover {
     color: #5C4E4E !important;
     background: rgba(92, 78, 78, 0.05) !important;
 }
 
-.dashboard-tab--active {
+.dashboard-tabs .dashboard-tab--active {
     color: #5C4E4E !important;
     border-bottom-color: #5C4E4E !important;
     background: rgba(92, 78, 78, 0.1) !important;
@@ -565,7 +566,7 @@ body::before {
         padding: 0;
     }
 
-    .dashboard-tab {
+    .dashboard-tabs .dashboard-tab {
         padding: 0.5rem 0.75rem !important;
         font-size: 0.875rem !important;
         border-bottom: 3px solid transparent !important;
@@ -573,7 +574,7 @@ body::before {
         bottom: -2px;
     }
 
-    .dashboard-tab--active {
+    .dashboard-tabs .dashboard-tab--active {
         border-bottom-color: #5C4E4E !important;
     }
 }
