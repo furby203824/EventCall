@@ -9,7 +9,7 @@
     --envelope-dark: #e5e7eb;
     --flap-color: #f9fafb;
     --envelope-card-color: #ffffff;
-    --envelope-accent: var(--semper-gold, #d4af37);
+    --envelope-accent: #5C4E4E;
 }
 
 /* Container for the envelope interaction */
@@ -102,7 +102,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--envelope-accent) 0%, #c4a030 100%);
+    background: linear-gradient(135deg, var(--envelope-accent) 0%, #000000 100%);
     color: white;
     font-size: 2rem;
 }
@@ -175,7 +175,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #1e3a5f 0%, #0f2744 100%);
+    background: linear-gradient(135deg, #5C4E4E 0%, #000000 100%);
     color: var(--envelope-accent);
     opacity: 0;
     transition: opacity 0.5s ease 1.5s;
@@ -351,7 +351,7 @@
 .envelope-rsvp-form textarea:focus {
     outline: none;
     border-color: var(--envelope-accent);
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+    box-shadow: 0 0 0 3px rgba(92, 78, 78, 0.15);
 }
 
 .envelope-rsvp-form textarea {
@@ -394,7 +394,7 @@
 
 .envelope-attending-option input[type="radio"]:checked + .option-label {
     border-color: var(--envelope-accent);
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+    background: linear-gradient(135deg, rgba(92, 78, 78, 0.1) 0%, rgba(92, 78, 78, 0.05) 100%);
 }
 
 .envelope-attending-option .option-icon {
@@ -432,16 +432,16 @@
 
 /* Primary Button - Gold/Accent */
 .envelope-btn--primary {
-    background: linear-gradient(135deg, var(--envelope-accent, #d4af37) 0%, #c4a030 100%);
+    background: linear-gradient(135deg, #5C4E4E 0%, #000000 100%);
     color: white;
-    box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+    box-shadow: 0 4px 14px rgba(92, 78, 78, 0.35);
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
 
 .envelope-btn--primary:hover {
-    background: linear-gradient(135deg, #e5c04a 0%, #d4af37 100%);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
+    background: linear-gradient(135deg, #988686 0%, #5C4E4E 100%);
+    box-shadow: 0 6px 20px rgba(92, 78, 78, 0.45);
     transform: translateY(-2px);
 }
 
@@ -473,7 +473,7 @@
 
 /* Legacy Submit button (kept for backwards compatibility) */
 .envelope-btn-rsvp {
-    background: linear-gradient(135deg, var(--envelope-accent, #d4af37) 0%, #c4a030 100%);
+    background: linear-gradient(135deg, #5C4E4E 0%, #000000 100%);
     color: white;
     padding: 14px 28px;
     border: none;
@@ -487,12 +487,12 @@
     letter-spacing: 2px;
     font-size: 0.9rem;
     font-family: 'Poppins', sans-serif;
-    box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+    box-shadow: 0 4px 14px rgba(92, 78, 78, 0.35);
 }
 
 .envelope-btn-rsvp:hover {
-    background: linear-gradient(135deg, #e5c04a 0%, #d4af37 100%);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
+    background: linear-gradient(135deg, #988686 0%, #5C4E4E 100%);
+    box-shadow: 0 6px 20px rgba(92, 78, 78, 0.45);
     transform: translateY(-2px);
 }
 
@@ -581,7 +581,7 @@
 
 .envelope-meal-option input[type="radio"]:checked + label {
     border-color: var(--envelope-accent);
-    background: rgba(212, 175, 55, 0.1);
+    background: rgba(92, 78, 78, 0.1);
 }
 
 /* =============================================================================
@@ -736,7 +736,7 @@
 /* Full page wrapper for envelope invite */
 .envelope-invite-page {
     min-height: 100vh;
-    background: linear-gradient(135deg, #faf9f6 0%, #f5f5f0 100%);
+    background: linear-gradient(135deg, #D1D0D0 0%, #e0dfdf 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -747,7 +747,7 @@
 
 /* Override default invite page styles when using envelope */
 #invite.envelope-style {
-    background: linear-gradient(135deg, #faf9f6 0%, #f5f5f0 100%);
+    background: linear-gradient(135deg, #D1D0D0 0%, #e0dfdf 100%);
 }
 
 #invite.envelope-style .invite-content {

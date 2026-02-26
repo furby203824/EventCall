@@ -19,23 +19,23 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 [tabindex]:focus-visible {
-    outline: 3px solid #d4af37; /* Semper gold */
+    outline: 3px solid #5C4E4E; /* Semper gold */
     outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 0 4px rgba(92, 78, 78, 0.2);
 }
 
 /* Enhanced focus for primary buttons */
 .btn:focus-visible,
 .btn-primary-action:focus-visible {
-    outline: 3px solid #d4af37;
+    outline: 3px solid #5C4E4E;
     outline-offset: 3px;
-    box-shadow: 0 0 0 6px rgba(212, 175, 55, 0.3), 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 0 6px rgba(92, 78, 78, 0.3), 0 4px 12px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
 }
 
 /* Focus for event cards */
 .event-card-v2:focus-within {
-    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 8px 24px rgba(92, 78, 78, 0.2);
     transform: translateY(-2px);
 }
 
@@ -48,8 +48,8 @@ select:focus-visible,
     position: absolute;
     top: -40px;
     left: 0;
-    background: #d4af37;
-    color: #1a1f2e;
+    background: #5C4E4E;
+    color: #000000;
     padding: 0.75rem 1.5rem;
     font-weight: 700;
     text-decoration: none;
@@ -63,8 +63,8 @@ select:focus-visible,
 
 /* Improve keyboard navigation visibility */
 .nav button:focus-visible {
-    background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
-    color: #1a1f2e;
+    background: linear-gradient(135deg, #5C4E4E 0%, #000000 100%);
+    color: #000000;
 }
 
 /* ============================================
@@ -77,7 +77,7 @@ select:focus-visible,
     }
 
     .event-card-v2 {
-        border: 2px solid #d4af37;
+        border: 2px solid #5C4E4E;
     }
 
     a {
@@ -101,7 +101,7 @@ select:focus-visible,
 
     .spinner {
         animation: none;
-        border: 3px solid #d4af37;
+        border: 3px solid #5C4E4E;
     }
 }
 
@@ -150,12 +150,12 @@ select:focus-visible,
 
 /* Link colors with sufficient contrast */
 a {
-    color: #b91c1c; /* Darker red for better contrast */
+    color: #5C4E4E; /* Dark taupe for Gothic Noir */
     text-decoration-skip-ink: auto;
 }
 
 a:hover {
-    color: #991b1b;
+    color: #000000;
     text-decoration: underline;
 }
 
@@ -205,8 +205,8 @@ input:invalid:not(:focus):not(:placeholder-shown),
 
 /* Loading spinner with accessibility label */
 .spinner {
-    border: 3px solid rgba(212, 175, 55, 0.2);
-    border-top-color: #d4af37;
+    border: 3px solid rgba(92, 78, 78, 0.2);
+    border-top-color: #5C4E4E;
     border-radius: 50%;
     width: 1.5rem;
     height: 1.5rem;

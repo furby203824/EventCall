@@ -7,8 +7,8 @@
     background: linear-gradient(135deg, white 0%, var(--gray-50) 100%);
     border-radius: 1.5rem;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(196, 30, 58, 0.15);
-    border: 3px solid var(--semper-gold);
+    box-shadow: 0 20px 40px rgba(92, 78, 78, 0.15);
+    border: 3px solid #988686;
 }
 
 .invite-display-split {
@@ -17,8 +17,8 @@
     background: linear-gradient(135deg, white 0%, var(--gray-50) 100%);
     border-radius: 1.5rem;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(196, 30, 58, 0.15);
-    border: 3px solid var(--semper-gold);
+    box-shadow: 0 20px 40px rgba(92, 78, 78, 0.15);
+    border: 3px solid #988686;
     display: flex;
     min-height: 600px;
 }
@@ -26,7 +26,7 @@
 .invite-header {
     position: relative;
     height: 200px;
-    background: linear-gradient(135deg, var(--semper-navy) 0%, var(--primary-color) 50%, var(--semper-red) 100%);
+    background: linear-gradient(135deg, #000000 0%, #5C4E4E 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -40,7 +40,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: var(--semper-gold);
+    background: #988686;
 }
 
 .invite-cover {
@@ -51,7 +51,7 @@
 
 .invite-image-section {
     flex: 1;
-    background: linear-gradient(135deg, var(--semper-navy) 0%, var(--primary-color) 50%, var(--semper-red) 100%);
+    background: linear-gradient(135deg, #000000 0%, #5C4E4E 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +81,7 @@
     right: 0;
     bottom: 0;
     width: 4px;
-    background: var(--semper-gold);
+    background: #988686;
     z-index: 3;
 }
 
@@ -110,7 +110,7 @@
 .invite-title {
     font-size: 2rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: #000000;
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -118,7 +118,7 @@
 .invite-title-main {
     font-size: 1.75rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: #000000;
     margin-bottom: 1.5rem;
     text-align: center;
 }
@@ -138,7 +138,7 @@
 
 .invite-detail strong {
     min-width: 80px;
-    color: var(--primary-color);
+    color: #000000;
 }
 
 /* RSVP Form */
@@ -150,7 +150,7 @@
 }
 
 .rsvp-form h3 {
-    color: var(--semper-navy);
+    color: #000000;
     margin-bottom: 1rem;
     text-align: center;
     font-size: 1.25rem;
@@ -176,17 +176,17 @@
 }
 
 .rsvp-option:hover {
-    border-color: var(--secondary-color);
+    border-color: #5C4E4E;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(196, 30, 58, 0.1);
+    box-shadow: 0 4px 8px rgba(92, 78, 78, 0.1);
 }
 
 .rsvp-option.selected {
-    border-color: var(--secondary-color);
-    background: var(--secondary-color);
+    border-color: #5C4E4E;
+    background: #5C4E4E;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(196, 30, 58, 0.2);
+    box-shadow: 0 4px 8px rgba(92, 78, 78, 0.2);
 }
 
 .rsvp-form .btn {
@@ -216,9 +216,9 @@
 }
 
 .rsvp-radio-option:hover {
-    border-color: var(--secondary-color);
+    border-color: #5C4E4E;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(196, 30, 58, 0.1);
+    box-shadow: 0 4px 8px rgba(92, 78, 78, 0.1);
 }
 
 .rsvp-radio-option input[type="radio"] {
@@ -227,7 +227,7 @@
 }
 
 .rsvp-radio-option input[type="radio"]:checked + span {
-    color: var(--secondary-color);
+    color: #5C4E4E;
     font-weight: 700;
 }
 
@@ -288,7 +288,7 @@
 }
 
 .powered-by-link {
-    color: var(--semper-red);
+    color: #5C4E4E;
     font-weight: 700;
     text-decoration: none;
     font-size: 0.875rem;
@@ -296,7 +296,7 @@
 }
 
 .powered-by-link:hover {
-    color: var(--semper-navy);
+    color: #000000;
 }
 
 /* Error States */
@@ -346,14 +346,14 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(152, 134, 134, 0.2), transparent);
     transition: left 0.5s;
 }
 
 .rsvp-option:hover {
-    border-color: var(--semper-gold);
+    border-color: #988686;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(196, 30, 58, 0.15);
+    box-shadow: 0 8px 25px rgba(92, 78, 78, 0.15);
 }
 
 .rsvp-option:hover::before {
@@ -361,11 +361,11 @@
 }
 
 .rsvp-option.selected {
-    border-color: var(--semper-red);
-    background: linear-gradient(135deg, var(--semper-red) 0%, #8b1538 100%);
+    border-color: #5C4E4E;
+    background: linear-gradient(135deg, #5C4E4E 0%, #000000 100%);
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(196, 30, 58, 0.3);
+    box-shadow: 0 8px 25px rgba(92, 78, 78, 0.3);
 }
 
 .rsvp-option.selected::before {
@@ -388,36 +388,36 @@
 .rsvp-form .form-group select:focus,
 .rsvp-form .form-group textarea:focus {
     outline: none;
-    border-color: var(--semper-red);
-    box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.1);
+    border-color: #5C4E4E;
+    box-shadow: 0 0 0 3px rgba(92, 78, 78, 0.1);
     transform: translateY(-1px);
 }
 
 .rsvp-form .form-group label {
     font-weight: 600;
-    color: var(--semper-navy);
+    color: #000000;
     margin-bottom: 0.5rem;
     display: block;
 }
 
 /* Guest count section styling */
 #guest-count-group {
-    background: linear-gradient(135deg, #fef3c7 0%, #fef7df 100%);
-    border: 2px solid var(--semper-gold);
+    background: linear-gradient(135deg, #D1D0D0 0%, #e0dfdf 100%);
+    border: 2px solid #988686;
     border-radius: 1rem;
     padding: 1.5rem;
     margin-top: 1rem;
 }
 
 #guest-count-group label {
-    color: var(--semper-navy) !important;
+    color: #000000 !important;
     font-size: 1.1rem;
     margin-bottom: 1rem;
 }
 
 #guest-count {
     width: 100%;
-    border: 2px solid var(--semper-gold) !important;
+    border: 2px solid #988686 !important;
     border-radius: 0.5rem;
     padding: 1rem;
     font-size: 1rem;
@@ -427,8 +427,8 @@
 
 /* Submit button enhancement */
 .rsvp-form .btn {
-    background: linear-gradient(135deg, var(--semper-red) 0%, #8b1538 100%);
-    border: 3px solid var(--semper-gold);
+    background: linear-gradient(135deg, #5C4E4E 0%, #000000 100%);
+    border: 3px solid #988686;
     border-radius: 1rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -445,7 +445,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(152, 134, 134, 0.3), transparent);
     transition: left 0.5s;
 }
 
@@ -455,8 +455,8 @@
 
 .rsvp-form .btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(196, 30, 58, 0.4);
-    border-color: #e6c200;
+    box-shadow: 0 10px 30px rgba(92, 78, 78, 0.4);
+    border-color: #5C4E4E;
 }
 
 /* Responsive design */

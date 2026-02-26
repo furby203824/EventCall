@@ -108,15 +108,15 @@
 }
 
 .btn--primary {
-    background-color: var(--semper-red);
-    color: #fff;
-    border-color: var(--semper-red);
+    background-color: #5C4E4E;
+    color: #D1D0D0;
+    border-color: #5C4E4E;
 }
 
 .btn--primary:hover {
-    background-color: #a0172d;
-    border-color: #a0172d;
-    box-shadow: 0 0 10px rgba(196, 30, 58, 0.4);
+    background-color: #000000;
+    border-color: #000000;
+    box-shadow: 0 0 10px rgba(92, 78, 78, 0.3);
 }
 
 .btn--secondary {
@@ -165,13 +165,13 @@
 
 .btn--link {
     background-color: transparent;
-    color: var(--semper-red);
+    color: #5C4E4E;
     border-color: transparent;
     text-decoration: underline;
 }
 
 .btn--link:hover {
-    color: #a0172d;
+    color: #000000;
 }
 
 .btn--icon {
@@ -218,12 +218,12 @@
 
 .form-control:focus {
     outline: none;
-    border-color: var(--semper-red);
-    box-shadow: 0 0 0 3px rgba(196, 30, 58, 0.1);
+    border-color: #5C4E4E;
+    box-shadow: 0 0 0 3px rgba(92, 78, 78, 0.1);
 }
 
 .form-control:hover {
-    border-color: var(--semper-red);
+    border-color: #5C4E4E;
 }
 
 .form-control::placeholder {
@@ -340,12 +340,12 @@
 }
 
 .custom-checkbox:hover .custom-checkbox__box {
-    border-color: var(--semper-red);
+    border-color: #5C4E4E;
 }
 
 .custom-checkbox__input:checked + .custom-checkbox__box {
-    background-color: var(--semper-red);
-    border-color: var(--semper-red);
+    background-color: #5C4E4E;
+    border-color: #5C4E4E;
 }
 
 .custom-checkbox__input:checked + .custom-checkbox__box .custom-checkbox__tick {
@@ -421,7 +421,7 @@
 }
 
 .badge--primary {
-    background-color: var(--semper-red);
+    background-color: #5C4E4E;
 }
 
 .badge--secondary {
@@ -494,13 +494,13 @@
 }
 
 .alert-primary {
-    color: var(--semper-red);
-    background-color: #fce8ec;
-    border-color: #f9c6d1;
+    color: #5C4E4E;
+    background-color: #E8E7E7;
+    border-color: #D1D0D0;
 }
 
 .alert-primary .alert-link {
-    color: #a0172d;
+    color: #000000;
 }
 
 .alert-secondary {
@@ -604,9 +604,9 @@
     flex-direction: column;
     width: 100%;
     pointer-events: auto;
-    background-color: var(--ux2-navy-900-rgba-8);
+    background-color: #ffffff;
     background-clip: padding-box;
-    border: 1px solid var(--ux2-gold-dark);
+    border: 1px solid #988686;
     border-radius: var(--card-border-radius);
     outline: 0;
 }
@@ -617,7 +617,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1rem;
-    border-bottom: 1px solid var(--ux2-gold-dark);
+    border-bottom: 1px solid #988686;
     border-top-left-radius: var(--card-border-radius);
     border-top-right-radius: var(--card-border-radius);
 }
@@ -640,7 +640,7 @@
     align-items: center;
     justify-content: flex-end;
     padding: 0.75rem;
-    border-top: 1px solid var(--ux2-gold-dark);
+    border-top: 1px solid #988686;
     border-bottom-right-radius: var(--card-border-radius);
     border-bottom-left-radius: var(--card-border-radius);
 }
@@ -678,12 +678,12 @@
 */
 
  .welcome-card {
-     background: var(--ux2-navy-900-rgba-8);
-     border: 1px solid var(--ux2-gold-dark);
+     background: #ffffff;
+     border: 1px solid #988686;
      border-radius: 12px;
      padding: 2rem;
      margin-bottom: 1.5rem;
-     box-shadow: 0 4px 20px var(--ux2-shadow-medium);
+     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
  }
 
  .welcome-banner {
@@ -699,7 +699,7 @@
      gap: 0.75rem;
      font-size: 1.75rem;
      font-weight: 700;
-     color: var(--ux2-text-light);
+     color: #000000;
  }
 
  .welcome-title .icon-medal {

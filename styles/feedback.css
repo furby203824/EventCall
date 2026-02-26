@@ -7,7 +7,7 @@
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background: linear-gradient(135deg, #d4af37 0%, #c5a028 100%);
+    background: linear-gradient(135deg, #5C4E4E 0%, #000000 100%);
     color: white;
     border: none;
     padding: 0.75rem 1.25rem;
@@ -15,7 +15,7 @@
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 4px 12px rgba(92, 78, 78, 0.4);
     transition: all 0.3s ease;
     z-index: 1000;
     display: flex;
@@ -25,8 +25,8 @@
 }
 
 .feedback-button:hover {
-    background: linear-gradient(135deg, #c5a028 0%, #b8941f 100%);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+    background: linear-gradient(135deg, #000000 0%, #000000 100%);
+    box-shadow: 0 6px 20px rgba(92, 78, 78, 0.6);
     transform: translateY(-2px);
 }
 
@@ -85,7 +85,7 @@
 .feedback-modal__title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1a1f2e;
+    color: #000000;
     margin: 0;
 }
 
@@ -137,8 +137,8 @@
 
 .feedback-form .form-input:focus {
     outline: none;
-    border-color: #d4af37;
-    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+    border-color: #5C4E4E;
+    box-shadow: 0 0 0 3px rgba(92, 78, 78, 0.1);
 }
 
 .feedback-form textarea.form-input {
@@ -176,13 +176,13 @@
 }
 
 .feedback-form__actions .btn--primary {
-    background: linear-gradient(135deg, #d4af37, #c5a028);
+    background: linear-gradient(135deg, #5C4E4E, #000000);
     color: white;
 }
 
 .feedback-form__actions .btn--primary:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 4px 12px rgba(92, 78, 78, 0.4);
 }
 
 .feedback-form__actions .btn--secondary {
@@ -208,7 +208,7 @@
 .feedback-success__title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #1a1f2e;
+    color: #000000;
     margin-bottom: 0.5rem;
 }
 
@@ -225,13 +225,13 @@
     transition: all 0.2s ease;
     border: none;
     font-size: 1rem;
-    background: linear-gradient(135deg, #d4af37, #c5a028);
+    background: linear-gradient(135deg, #5C4E4E, #000000);
     color: white;
 }
 
 .feedback-success .btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 4px 12px rgba(92, 78, 78, 0.4);
 }
 
 /* Animations */
@@ -303,58 +303,58 @@
     }
 }
 
-/* Dark mode support (if app has dark mode) */
+/* Dark mode support */
 @media (prefers-color-scheme: dark) {
     .feedback-modal__content {
-        background: #1f2937;
+        background: #000000;
     }
 
     .feedback-modal__header {
-        border-bottom-color: #374151;
+        border-bottom-color: #5C4E4E;
     }
 
     .feedback-modal__title {
-        color: #f9fafb;
+        color: #D1D0D0;
     }
 
     .feedback-modal__close:hover {
-        background: #374151;
-        color: #f9fafb;
+        background: #5C4E4E;
+        color: #D1D0D0;
     }
 
     .feedback-form .form-label {
-        color: #e5e7eb;
+        color: #D1D0D0;
     }
 
     .feedback-form .form-input {
-        background: #374151;
-        border-color: #4b5563;
-        color: #f9fafb;
+        background: #5C4E4E;
+        border-color: #988686;
+        color: #D1D0D0;
     }
 
     .feedback-form .form-input:focus {
-        border-color: #d4af37;
-        background: #374151;
+        border-color: #988686;
+        background: #5C4E4E;
     }
 
     .feedback-form .form-hint {
-        color: #9ca3af;
+        color: #988686;
     }
 
     .feedback-form__actions .btn--secondary {
-        background: #374151;
-        color: #e5e7eb;
+        background: #5C4E4E;
+        color: #D1D0D0;
     }
 
     .feedback-form__actions .btn--secondary:hover {
-        background: #4b5563;
+        background: #988686;
     }
 
     .feedback-success__title {
-        color: #f9fafb;
+        color: #D1D0D0;
     }
 
     .feedback-success__message {
-        color: #9ca3af;
+        color: #988686;
     }
 }

@@ -419,7 +419,7 @@ Bob Johnson,bob@example.com,555-0102,No,,,Civilian,,,Personal conflict,0`;
     generateRosterPreviewHTML(stats, eventId) {
         return `
             <div style="padding: 1rem; background: #1e293b; border-radius: 0.5rem; margin: 1rem 0;">
-                <div style="color:#d4af37; font-weight:700; margin-bottom:0.5rem;">📋 Invite Roster Preview</div>
+                <div style="color:#5C4E4E; font-weight:700; margin-bottom:0.5rem;">📋 Invite Roster Preview</div>
                 <div style="color:#e2e8f0; font-size:0.9rem;">${stats.valid} valid • ${stats.invalid} errors • ${stats.total} total</div>
                 ${stats.valid ? `<button class="btn-action" style="margin-top:0.75rem;" onclick="window.csvImporter.importRoster('${eventId}')">✅ Save ${stats.valid} to roster</button>` : ''}
             </div>

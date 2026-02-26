@@ -731,18 +731,18 @@ function createEventDetailsHTML(eventDetails) {
     };
 
     const detailsHTML = validDetails.map(detail => `
-        <div class="invite-detail" style="display: flex; align-items: start; gap: 0.75rem; padding: 0.75rem; background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(212, 175, 55, 0.02)); border-radius: 0.5rem; margin-bottom: 0.75rem; border-left: 3px solid #d4af37;">
+        <div class="invite-detail" style="display: flex; align-items: start; gap: 0.75rem; padding: 0.75rem; background: linear-gradient(135deg, rgba(92, 78, 78, 0.08), rgba(92, 78, 78, 0.02)); border-radius: 0.5rem; margin-bottom: 0.75rem; border-left: 3px solid #5C4E4E;">
             <span style="font-size: 1.25rem; flex-shrink: 0;">${getIcon(detail.label)}</span>
             <div style="flex: 1;">
                 <div style="font-weight: 600; color: #86efac; font-size: 0.875rem; margin-bottom: 0.25rem;">${escapeHTML(detail.label)}</div>
-                <div style="color: #d4af37; font-size: 1rem; font-weight: 600;">${escapeHTMLPreserveNewlines(detail.value)}</div>
+                <div style="color: #5C4E4E; font-size: 1rem; font-weight: 600;">${escapeHTMLPreserveNewlines(detail.value)}</div>
             </div>
         </div>
     `).join('');
     
     return `
         <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid #e5e7eb;">
-            <div style="font-weight: 700; color: #d4af37; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+            <div style="font-weight: 700; color: #5C4E4E; font-size: 1.1rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
                 <span>ℹ️</span>
                 <span>Event Details</span>
             </div>
@@ -1461,7 +1461,7 @@ function createRSVPSettingsHTML(event) {
     if (badges.length === 0) return '';
     return `
         <div style="margin-top:1rem;">
-            <div style="font-weight:700;color:#1a1f2e;font-size:1rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;">
+            <div style="font-weight:700;color:#000000;font-size:1rem;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;">
                 <span>⚙️</span><span>RSVP Settings</span>
             </div>
             <div style="display:flex;gap:.5rem;flex-wrap:wrap;">${badges.join(' ')}</div>

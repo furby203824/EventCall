@@ -489,7 +489,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                     
                     <!-- Cover Image Upload -->
                     <div class="form-group" style="margin-top: 1rem;">
-                        <label for="manage-cover-input" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #ffd700;">Cover Image</label>
+                        <label for="manage-cover-input" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #5C4E4E;">Cover Image</label>
                         <div class="image-upload" id="manage-cover-upload" role="button" tabindex="0" aria-label="Change cover image">
                             <p>${event.coverImage ? 'Click or drag to change image' : 'Click or drag to upload cover image'}</p>
                             <input type="file" id="manage-cover-input" accept="image/*" class="file-input">
@@ -1153,14 +1153,14 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                         <td align="center">
                             <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                                 <tr>
-                                    <td style="background: linear-gradient(135deg, #0f1419, #1f2937); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
-                                        <h1 style="color: #ffd700; margin: 0; font-size: 28px;">EventCall</h1>
+                                    <td style="background: linear-gradient(135deg, #5C4E4E, #000000); padding: 30px; text-align: center; border-radius: 8px 8px 0 0;">
+                                        <h1 style="color: #D1D0D0; margin: 0; font-size: 28px;">EventCall</h1>
                                         <p style="color: #ffffff; margin: 5px 0 0 0; font-size: 14px;">Where Every Event Matters</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="padding: 40px 30px;">
-                                        <h2 style="color: #0f1419; margin: 0 0 20px 0;">⏰ Event Reminder</h2>
+                                        <h2 style="color: #000000; margin: 0 0 20px 0;">⏰ Event Reminder</h2>
                                         <p style="color: #4b5563; font-size: 16px; line-height: 1.6; margin: 0 0 20px 0;">
                                             Hello <strong>${h(recipient.name || 'there')}</strong>,
                                         </p>
@@ -1207,7 +1207,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                                             </table>
                                         `}
                                         <div style="text-align: center; margin: 30px 0;">
-                                            <a href="${generateInviteURL(event)}" style="display: inline-block; background: linear-gradient(135deg, #0f1419, #1f2937); color: #ffd700; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 600;">
+                                            <a href="${generateInviteURL(event)}" style="display: inline-block; background: linear-gradient(135deg, #5C4E4E, #000000); color: #D1D0D0; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 600;">
                                                 View Event Details
                                             </a>
                                         </div>
@@ -1269,7 +1269,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                 width: 300,
                 margin: 2,
                 color: {
-                    dark: '#0f1419',
+                    dark: '#000000',
                     light: '#ffffff'
                 },
                 errorCorrectionLevel: 'M'

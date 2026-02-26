@@ -124,7 +124,7 @@ async function displayUserRSVPs() {
             container.innerHTML = `
                 <div style="text-align: center; padding: 3rem; background: rgba(255, 255, 255, 0.05); border-radius: 0.5rem; border: 2px dashed rgba(212, 175, 55, 0.3);">
                     <div style="font-size: 3rem; margin-bottom: 1rem;">📭</div>
-                    <h3 style="margin: 0 0 0.5rem 0; color: #d4af37;">No RSVPs Yet</h3>
+                    <h3 style="margin: 0 0 0.5rem 0; color: #5C4E4E;">No RSVPs Yet</h3>
                     <p style="margin: 0; color: #9ca3af;">Your RSVPs to events will appear here</p>
                 </div>
             `;
@@ -194,7 +194,7 @@ function createRSVPCard(rsvp, event) {
         <div class="rsvp-card" style="background: linear-gradient(135deg, rgba(31, 41, 55, 0.8), rgba(17, 24, 39, 0.8)); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 0.75rem; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
             <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
                 <div style="flex: 1;">
-                    <h3 style="margin: 0 0 0.5rem 0; color: #d4af37; font-size: 1.25rem;">
+                    <h3 style="margin: 0 0 0.5rem 0; color: #5C4E4E; font-size: 1.25rem;">
                         ${event ? utils.escapeHTML(event.title) : 'Event Not Found'}
                     </h3>
                     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem;">
@@ -320,7 +320,7 @@ async function openEditRSVPModal(rsvpId, eventId) {
     const eventInfoEl = document.getElementById('edit-rsvp-event-info');
     if (eventInfoEl && event) {
         eventInfoEl.innerHTML = `
-            <h3 style="margin: 0 0 0.5rem 0; color: #d4af37; font-size: 1.1rem;">${window.utils?.escapeHTML(event.title) || event.title}</h3>
+            <h3 style="margin: 0 0 0.5rem 0; color: #5C4E4E; font-size: 1.1rem;">${window.utils?.escapeHTML(event.title) || event.title}</h3>
             <div style="color: #9ca3af; font-size: 0.9rem;">
                 📅 ${formatDate(event.date)} at ${formatTime(event.time)}
                 ${event.location ? `<br>📍 ${window.utils?.escapeHTML(event.location) || event.location}` : ''}
