@@ -227,6 +227,23 @@
         min-width: 48px;
     }
 
+    /* Table inline action buttons - ensure touch target despite small visual size */
+    .response-table .btn,
+    .response-table button {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 0.5rem;
+    }
+
+    /* Navigation links inside header/footer */
+    nav a,
+    .nav a,
+    .nav button {
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+    }
+
     /* Dashboard cards - Better mobile stacking */
     .events-grid {
         grid-template-columns: 1fr;
