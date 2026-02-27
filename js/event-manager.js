@@ -207,19 +207,9 @@ class EventManager {
             }, { once: true });
         }
 
-        // Wire Quick Actions
-        const qaReminder = document.getElementById('qa-send-reminder');
-        const qaExport = document.getElementById('qa-export-list');
-        const qaAddGuest = document.getElementById('qa-add-guest');
+        // Wire More menu (all actions consolidated here)
         const qaMore = document.getElementById('qa-more');
         const qaMoreMenu = document.getElementById('qa-more-menu');
-        if (qaReminder) qaReminder.addEventListener('click', () => this.showReminderOptionsModal(event, eventResponses));
-        if (qaExport) qaExport.addEventListener('click', () => {
-            if (window.exportEventData) { window.exportEventData(eventId); }
-            else if (window.calendarExport && window.calendarExport.exportEvent) { window.calendarExport.exportEvent(eventId); }
-            else showToast('Export not available', 'warning');
-        });
-        if (qaAddGuest) qaAddGuest.addEventListener('click', () => this.promptAddGuest(eventId));
         if (qaMore && qaMoreMenu) {
             qaMore.addEventListener('click', () => {
                 const expanded = qaMore.getAttribute('aria-expanded') === 'true';
@@ -230,8 +220,14 @@ class EventManager {
                 btn.addEventListener('click', () => {
                     const act = btn.dataset.action;
                     if (act === 'edit-event') this.editEvent(eventId);
+                    if (act === 'send-reminder') this.showReminderOptionsModal(event, eventResponses);
                     if (act === 'copy-link') this.copyInviteLink(eventId);
                     if (act === 'sync-rsvps') syncWithGitHub();
+                    if (act === 'export-list') {
+                        if (window.exportEventData) { window.exportEventData(eventId); }
+                        else if (window.calendarExport && window.calendarExport.exportEvent) { window.calendarExport.exportEvent(eventId); }
+                        else showToast('Export not available', 'warning');
+                    }
                     if (act === 'delete-event') deleteEvent(eventId);
                     qaMoreMenu.hidden = true;
                     qaMore.setAttribute('aria-expanded', 'false');
@@ -245,25 +241,30 @@ class EventManager {
             });
         }
 
-        // Setup primary tabs
+        // Wire Add Guest button (in People tab toolbar)
+        const qaAddGuest = document.getElementById('qa-add-guest');
+        if (qaAddGuest) qaAddGuest.addEventListener('click', () => this.promptAddGuest(eventId));
+
+        // Setup flat tabs (At a Glance / People / Seating)
         this.setupManageTabs();
 
-        // Setup overview subtabs mapping existing sections
-        this.setupOverviewSubtabs(event, eventResponses);
+        // Populate recent activity timeline
+        this.populateTimeline(event, eventResponses);
 
         // Setup event delegation for remove buttons in seating chart
         this.setupSeatingChartEventDelegation();
 
-        // Initialize filter controls for Guest List tab
+        // Initialize filter controls for People tab
         this.initFilterControls();
 
-        // Render charts if available (async, non-blocking)
+        // Render charts (async, non-blocking)
         this._renderChartSafe(() => this.renderAttendanceChart(stats), 'attendance chart');
         this._renderChartSafe(() => this.renderResponsesChart(eventResponses), 'responses chart');
         const rangeSel = document.getElementById('time-range');
         if (rangeSel) rangeSel.addEventListener('change', () => {
             this._renderChartSafe(() => this.renderResponsesChart(eventResponses), 'responses chart');
         });
+
         // Initialize photo upload for manage page
         if (window.setupPhotoUpload) {
             window.setupPhotoUpload();
@@ -271,7 +272,6 @@ class EventManager {
 
         // Setup infinite scroll for RSVP list
         if (eventResponses.length > this.rsvpPagination.pageSize) {
-            // Use requestAnimationFrame to ensure DOM is ready
             requestAnimationFrame(() => this.observeLoadMore(eventId));
         }
     }
@@ -325,199 +325,50 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
 
     return `
         <div class="mission-control-container">
-            <!-- Header -->
+            <!-- Compact Header -->
             <div class="mission-control-header">
                 <div class="mission-control-title">
                     <h1>${h(event.title)}</h1>
                     <div class="mission-control-subtitle">
-                        ${isPast ? 'Past Event' : 'Active Event'} • Last Updated ${formatRelativeTime(event.updated || event.created)}
+                        ${isPast ? 'Past Event' : 'Active Event'} · ${formatDate(event.date)} · ${formatTime(event.time)} · ${h(event.location) || 'No location'}
                     </div>
                 </div>
                 <div class="mission-control-actions">
                     <button class="btn-back" onclick="goToDashboard()">
-                        ← Back to Dashboard
+                        ← Back
                     </button>
-                </div>
-            </div>
-
-            <!-- Quick Actions Toolbar -->
-            <div class="quick-actions-toolbar" role="toolbar" aria-label="Quick actions">
-                <button class="btn-primary" id="qa-send-reminder">Send Reminder</button>
-                <button class="btn-primary" id="qa-export-list">Export List</button>
-                <button class="btn-primary" id="qa-add-guest">Add Guest</button>
-                <div class="btn-group more-group">
-                    <button class="btn-secondary" id="qa-more" aria-haspopup="true" aria-expanded="false">⋯ More</button>
-                    <div class="dropdown" id="qa-more-menu" hidden>
-                        <button class="btn-tertiary" data-action="edit-event">Edit Event</button>
-                        <button class="btn-tertiary" data-action="copy-link">Copy Invite Link</button>
-                        <button class="btn-tertiary" data-action="sync-rsvps">Sync RSVPs</button>
-                        <button class="btn-tertiary danger" data-action="delete-event">Delete Event</button>
+                    <div class="btn-group more-group">
+                        <button class="btn-more" id="qa-more" aria-haspopup="true" aria-expanded="false">&#x22EF; More</button>
+                        <div class="dropdown" id="qa-more-menu" hidden>
+                            <button class="btn-tertiary" data-action="edit-event">Edit Event</button>
+                            <button class="btn-tertiary" data-action="send-reminder">Send Reminder</button>
+                            <button class="btn-tertiary" data-action="copy-link">Copy Invite Link</button>
+                            <button class="btn-tertiary" data-action="sync-rsvps">Sync RSVPs</button>
+                            <button class="btn-tertiary" data-action="export-list">Export List</button>
+                            <div class="dropdown-divider"></div>
+                            <button class="btn-tertiary danger" data-action="delete-event">Delete Event</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Primary Tabs -->
+            <!-- Flat Tabs: At a Glance / People / Seating -->
             <div class="manage-tabs" role="tablist" aria-label="Manage tabs">
-                <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-overview" id="tab-overview-btn">Overview</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-guests" id="tab-guests-btn">Guest List</button>
-                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-special" id="tab-special-btn">Special</button>
+                <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-glance" id="tab-glance-btn">At a Glance</button>
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-people" id="tab-people-btn">People</button>
+                ${event.seatingChart && event.seatingChart.enabled ? `<button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-seating" id="tab-seating-btn">Seating</button>` : ''}
             </div>
 
-            <!-- Overview Secondary Tabs -->
-            <div class="overview-subtabs" role="tablist" aria-label="Overview sections">
-                <button class="subtab-btn active" role="tab" aria-selected="true" aria-controls="sub-attendance" id="sub-attendance-btn">Attendance Stats</button>
-                <button class="subtab-btn" role="tab" aria-selected="false" aria-controls="sub-timeline" id="sub-timeline-btn">Event Timeline</button>
-                <button class="subtab-btn" role="tab" aria-selected="false" aria-controls="sub-venue" id="sub-venue-btn">Venue Details</button>
-            </div>
-
-            
-            <!-- Event Overview -->
-            <div class="event-overview-section">
-                <div class="event-overview-grid">
-                    <div class="event-details-left">
-                        <div class="event-meta-grid">
-                            <div class="meta-item-v2">
-                                <span class="meta-icon-v2"></span>
-                                <div class="meta-content">
-                                    <div class="meta-label">Date</div>
-                                    <div class="meta-value">${formatDate(event.date)}</div>
-                                </div>
-                            </div>
-                            <div class="meta-item-v2">
-                                <span class="meta-icon-v2"></span>
-                                <div class="meta-content">
-                                    <div class="meta-label">Time</div>
-                                    <div class="meta-value">${formatTime(event.time)}</div>
-                                </div>
-                            </div>
-                            <div class="meta-item-v2">
-                                <span class="meta-icon-v2"></span>
-                                <div class="meta-content">
-                                    <div class="meta-label">Location</div>
-                                    <div class="meta-value">${h(event.location) || 'Not specified'}</div>
-                                </div>
-                            </div>
-                            <div class="meta-item-v2">
-                                <span class="meta-icon-v2">${isPast ? '' : ''}</span>
-                                <div class="meta-content">
-                                    <div class="meta-label">${isPast ? 'Status' : 'Time Until'}</div>
-                                    <div class="meta-value">${isPast ? 'Event Passed' : h(timeUntil)}</div>
-                                </div>
-                            </div>
-                        </div>
-                        ${event.description ? `
-                            <div class="meta-item-v2" style="grid-column: 1 / -1;">
-                                <span class="meta-icon-v2"></span>
-                                <div class="meta-content">
-                                    <div class="meta-label">Description</div>
-                                    <div class="meta-value">${h(event.description)}</div>
-                                </div>
-                            </div>
-                        ` : ''}
-                        ${(event.askReason || event.allowGuests || event.requiresMealChoice) ? `
-                            <div class="meta-item-v2" style="grid-column: 1 / -1;">
-                                <span class="meta-icon-v2"></span>
-                                <div class="meta-content">
-                                    <div class="meta-label">RSVP Settings</div>
-                                    <div class="meta-value">
-                                        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
-                                            ${event.askReason ? `<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .5rem;border-radius:999px;background:#e0f2fe;color:#0c4a6e;border:1px solid #7dd3fc;">${icon('message-sq')} Ask why attending</span>` : ''}
-                                            ${event.allowGuests ? `<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .5rem;border-radius:999px;background:#f0fdf4;color:#064e3b;border:1px solid #86efac;">${icon('users')} Allow additional guests</span>` : ''}
-                                            ${event.requiresMealChoice ? `<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .5rem;border-radius:999px;background:#fff7ed;color:#7c2d12;border:1px solid #fdba74;">${icon('utensils')} Meal/dietary choices required</span>` : ''}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        ` : ''}
-                        ${(() => {
-                            if (!event.customQuestions || event.customQuestions.length === 0) return '';
-
-                            const typeLabels = {
-                                'text': 'Text',
-                                'choice': 'Multiple Choice',
-                                'date': 'Date',
-                                'datetime': 'Date & Time'
-                            };
-
-                            const questionsHtml = event.customQuestions.map((q, index) => {
-                                const typeLabel = typeLabels[q.type] || 'Text';
-                                const requiredLabel = q.required ? '<span class="question-required-label">*Required</span>' : '<span class="question-optional-label">Optional</span>';
-
-                                return `
-                                    <div class="custom-question-item">
-                                        <div class="custom-question-header">
-                                            <div class="custom-question-title">Q${index + 1}: ${h(q.question)}</div>
-                                            <div class="custom-question-required">${requiredLabel}</div>
-                                        </div>
-                                        <div class="custom-question-meta">
-                                            <span>${typeLabel}</span>
-                                            ${q.type === 'choice' && q.options && q.options.length > 0 ? `
-                                                <span class="custom-question-options">• Options: ${q.options.map(opt => h(opt)).join(', ')}</span>
-                                            ` : ''}
-                                        </div>
-                                    </div>
-                                `;
-                            }).join('');
-
-                            return `
-                            <div class="meta-item-v2 meta-item-full-width">
-                                <span class="meta-icon-v2"></span>
-                                <div class="meta-content">
-                                    <div class="meta-label">Custom RSVP Questions</div>
-                                    <div class="meta-value">
-                                        <div class="custom-questions-list">
-                                            ${questionsHtml}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                        })()}
-                        ${event.eventDetails && Object.keys(event.eventDetails).length ? `
-                            <div class="meta-item-v2" style="grid-column: 1 / -1;">
-                                <span class="meta-icon-v2"></span>
-                                <div class="meta-content">
-                                    <div class="meta-label">Event Details</div>
-                                    <div class="meta-value">
-                                        ${createEventDetailsHTML(event.eventDetails)}
-                                    </div>
-                                </div>
-                            </div>
-                        ` : ''}
-                    </div>
-                    
-                    <!-- Cover Image Upload -->
-                    <div class="form-group" style="margin-top: 1rem;">
-                        <label for="manage-cover-input" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #5C4E4E;">Cover Image</label>
-                        <div class="image-upload" id="manage-cover-upload" role="button" tabindex="0" aria-label="Change cover image">
-                            <p>${event.coverImage ? 'Click or drag to change image' : 'Click or drag to upload cover image'}</p>
-                            <input type="file" id="manage-cover-input" accept="image/*" class="file-input">
-                        </div>
-                        <img id="manage-cover-preview" class="image-preview ${event.coverImage ? '' : 'hidden'}" src="${h(event.coverImage || '')}" alt="Event cover image">
-                        <input type="hidden" id="manage-cover-image-url" value="${h(event.coverImage || '')}">
-                    </div>
-                </div>
-
-                <!-- Event Timeline -->
-                <div class="timeline-section" id="sub-timeline" hidden>
-                    <h2>Event Timeline</h2>
-                    <div id="timeline-list" class="timeline-list"></div>
-                </div>
-
-                <!-- RSVP Dashboard -->
-                <div class="rsvp-dashboard-section">
-                <h2 class="rsvp-dashboard-title">RSVP Dashboard</h2>
-                
-                <!-- Big Stat Cards -->
+            <!-- ============ AT A GLANCE TAB ============ -->
+            <div class="tab-panel tab-panel--glance" id="tab-glance">
+                <!-- Stat Cards -->
                 <div class="rsvp-stats-cards">
                     <div class="stat-card-large stat-card-headcount">
                         <div class="stat-card-icon"></div>
                         <div class="stat-card-number">${stats.totalHeadcount}</div>
                         <div class="stat-card-label">Total Headcount</div>
                         ${event.allowGuests ? `
-                            <div style="font-size: 0.75rem; color: #6b7280; margin-top: 0.5rem; font-weight: 500;">
-                                ${stats.attending} attendees + ${stats.attendingWithGuests} guests
-                            </div>
+                            <div class="stat-card-detail">${stats.attending} attendees + ${stats.attendingWithGuests} guests</div>
                         ` : ''}
                     </div>
                     <div class="stat-card-large stat-card-attending">
@@ -553,10 +404,10 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                     </div>
                 </div>
 
-                <!-- Attendance Charts -->
+                <!-- Charts -->
                 <div class="charts-grid">
                     <div class="chart-card">
-                        <h3 style="margin-bottom:0.5rem">Attendance Breakdown</h3>
+                        <h3>Attendance Breakdown</h3>
                         <canvas id="attendanceChart" aria-label="Attendance breakdown chart"></canvas>
                     </div>
                     <div class="chart-card">
@@ -569,218 +420,245 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                                 <option value="90">90 days</option>
                             </select>
                         </div>
-                        <h3 style="margin-bottom:0.5rem">Responses Over Time</h3>
+                        <h3>Responses Over Time</h3>
                         <canvas id="responsesOverTimeChart" aria-label="Responses over time chart"></canvas>
                     </div>
                 </div>
-            </div>
-            </div>
 
-            <!-- Attendee List -->
-            <div class="attendee-list-section">
-                <!-- Invite Roster -->
-                <div class="invite-roster-section" hidden>
-                    <h3 class="invite-link-title">Invite Roster</h3>
-                    <div class="invite-link-actions" style="margin-bottom: 0.75rem;">
-                        <input type="file"
-                               id="roster-import-file-${eventId}"
-                               accept=".csv"
-                               style="display:none"
-                               onchange="window.csvImporter.handleRosterUpload(event, '${eventId}')">
-                        <button class="btn-action" onclick="document.getElementById('roster-import-file-${eventId}').click()">
-                            Upload Roster CSV
-                        </button>
-                        <a href="#" onclick="window.csvImporter.downloadTemplate(); return false;" style="margin-left: 0.75rem; color: #60a5fa;">
-                            Download CSV Template
-                        </a>
-                    </div>
-                    <div id="roster-import-preview"></div>
+                <!-- Recent Activity (inline, compact) -->
+                <div class="recent-activity-section">
+                    <h3 class="recent-activity-title">Recent Activity</h3>
+                    <div id="timeline-list" class="timeline-list"></div>
                 </div>
 
-                <div class="attendee-list-header">
-                    <h3 class="attendee-list-title">Attendee List (${eventResponses.length + roster.filter(r => r.email && !respondedEmails.has(r.email.toLowerCase().trim())).length})</h3>
-                    <div class="attendee-controls">
-                        <input
-                            type="text"
-                            class="search-input"
-                            placeholder="Search attendees..."
-                            id="attendee-search"
-                            data-filter-action="search-attendees"
-                        >
-                        <select class="filter-select" id="attendee-filter" data-filter-action="filter-attendees">
-                            <option value="all">All People</option>
-                            <option value="attending">Attending Only</option>
-                            <option value="declined">Declined Only</option>
-                            <option value="invited">Invited Only</option>
-                        </select>
+                <!-- Event Info (collapsible details) -->
+                <details class="event-info-details">
+                    <summary class="event-info-summary">Event Details</summary>
+                    <div class="event-info-body">
+                        <div class="event-meta-grid">
+                            <div class="meta-item-v2">
+                                <span class="meta-icon-v2"></span>
+                                <div class="meta-content">
+                                    <div class="meta-label">Date</div>
+                                    <div class="meta-value">${formatDate(event.date)}</div>
+                                </div>
+                            </div>
+                            <div class="meta-item-v2">
+                                <span class="meta-icon-v2"></span>
+                                <div class="meta-content">
+                                    <div class="meta-label">Time</div>
+                                    <div class="meta-value">${formatTime(event.time)}</div>
+                                </div>
+                            </div>
+                            <div class="meta-item-v2">
+                                <span class="meta-icon-v2"></span>
+                                <div class="meta-content">
+                                    <div class="meta-label">Location</div>
+                                    <div class="meta-value">${h(event.location) || 'Not specified'}</div>
+                                </div>
+                            </div>
+                            <div class="meta-item-v2">
+                                <span class="meta-icon-v2">${isPast ? '' : ''}</span>
+                                <div class="meta-content">
+                                    <div class="meta-label">${isPast ? 'Status' : 'Time Until'}</div>
+                                    <div class="meta-value">${isPast ? 'Event Passed' : h(timeUntil)}</div>
+                                </div>
+                            </div>
+                        </div>
+                        ${event.description ? `
+                            <div class="meta-item-v2" style="grid-column: 1 / -1; margin-top: 1rem;">
+                                <span class="meta-icon-v2"></span>
+                                <div class="meta-content">
+                                    <div class="meta-label">Description</div>
+                                    <div class="meta-value">${h(event.description)}</div>
+                                </div>
+                            </div>
+                        ` : ''}
+                        ${(event.askReason || event.allowGuests || event.requiresMealChoice) ? `
+                            <div class="meta-item-v2" style="grid-column: 1 / -1; margin-top: 1rem;">
+                                <span class="meta-icon-v2"></span>
+                                <div class="meta-content">
+                                    <div class="meta-label">RSVP Settings</div>
+                                    <div class="meta-value">
+                                        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+                                            ${event.askReason ? `<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .5rem;border-radius:999px;background:#e0f2fe;color:#0c4a6e;border:1px solid #7dd3fc;">${icon('message-sq')} Ask why attending</span>` : ''}
+                                            ${event.allowGuests ? `<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .5rem;border-radius:999px;background:#f0fdf4;color:#064e3b;border:1px solid #86efac;">${icon('users')} Allow additional guests</span>` : ''}
+                                            ${event.requiresMealChoice ? `<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.25rem .5rem;border-radius:999px;background:#fff7ed;color:#7c2d12;border:1px solid #fdba74;">${icon('utensils')} Meal/dietary choices required</span>` : ''}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        ` : ''}
+                        ${(() => {
+                            if (!event.customQuestions || event.customQuestions.length === 0) return '';
+                            const typeLabels = { 'text': 'Text', 'choice': 'Multiple Choice', 'date': 'Date', 'datetime': 'Date & Time' };
+                            const questionsHtml = event.customQuestions.map((q, index) => {
+                                const typeLabel = typeLabels[q.type] || 'Text';
+                                const requiredLabel = q.required ? '<span class="question-required-label">*Required</span>' : '<span class="question-optional-label">Optional</span>';
+                                return `
+                                    <div class="custom-question-item">
+                                        <div class="custom-question-header">
+                                            <div class="custom-question-title">Q${index + 1}: ${h(q.question)}</div>
+                                            <div class="custom-question-required">${requiredLabel}</div>
+                                        </div>
+                                        <div class="custom-question-meta">
+                                            <span>${typeLabel}</span>
+                                            ${q.type === 'choice' && q.options && q.options.length > 0 ? `
+                                                <span class="custom-question-options">&bull; Options: ${q.options.map(opt => h(opt)).join(', ')}</span>
+                                            ` : ''}
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('');
+                            return `
+                            <div class="meta-item-v2 meta-item-full-width" style="margin-top: 1rem;">
+                                <span class="meta-icon-v2"></span>
+                                <div class="meta-content">
+                                    <div class="meta-label">Custom RSVP Questions</div>
+                                    <div class="meta-value">
+                                        <div class="custom-questions-list">${questionsHtml}</div>
+                                    </div>
+                                </div>
+                            </div>`;
+                        })()}
+                        ${event.eventDetails && Object.keys(event.eventDetails).length ? `
+                            <div class="meta-item-v2" style="grid-column: 1 / -1; margin-top: 1rem;">
+                                <span class="meta-icon-v2"></span>
+                                <div class="meta-content">
+                                    <div class="meta-label">Event Details</div>
+                                    <div class="meta-value">${createEventDetailsHTML(event.eventDetails)}</div>
+                                </div>
+                            </div>
+                        ` : ''}
+                        <!-- Cover Image Upload -->
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label for="manage-cover-input" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #5C4E4E;">Cover Image</label>
+                            <div class="image-upload" id="manage-cover-upload" role="button" tabindex="0" aria-label="Change cover image">
+                                <p>${event.coverImage ? 'Click or drag to change image' : 'Click or drag to upload cover image'}</p>
+                                <input type="file" id="manage-cover-input" accept="image/*" class="file-input">
+                            </div>
+                            <img id="manage-cover-preview" class="image-preview ${event.coverImage ? '' : 'hidden'}" src="${h(event.coverImage || '')}" alt="Event cover image">
+                            <input type="hidden" id="manage-cover-image-url" value="${h(event.coverImage || '')}">
+                        </div>
                     </div>
-                </div>
-
-                ${this.generateAttendeeCards(eventResponses, eventId)}
+                </details>
             </div>
 
-            <!-- Photos Gallery (Removed) -->
-            ${event.seatingChart && event.seatingChart.enabled ? this.generateSeatingChartSection(event, eventId, eventResponses) : ''}
+            <!-- ============ PEOPLE TAB ============ -->
+            <div class="tab-panel tab-panel--people hidden" id="tab-people">
+                <div class="attendee-list-section">
+                    <!-- Invite Roster -->
+                    <div class="invite-roster-section" hidden>
+                        <h3 class="invite-link-title">Invite Roster</h3>
+                        <div class="invite-link-actions" style="margin-bottom: 0.75rem;">
+                            <input type="file"
+                                   id="roster-import-file-${eventId}"
+                                   accept=".csv"
+                                   style="display:none"
+                                   onchange="window.csvImporter.handleRosterUpload(event, '${eventId}')">
+                            <button class="btn-action" onclick="document.getElementById('roster-import-file-${eventId}').click()">
+                                Upload Roster CSV
+                            </button>
+                            <a href="#" onclick="window.csvImporter.downloadTemplate(); return false;" style="margin-left: 0.75rem; color: #60a5fa;">
+                                Download CSV Template
+                            </a>
+                        </div>
+                        <div id="roster-import-preview"></div>
+                    </div>
+
+                    <!-- People toolbar: search + filter + add guest -->
+                    <div class="attendee-list-header">
+                        <div class="attendee-controls">
+                            <input
+                                type="text"
+                                class="search-input"
+                                placeholder="Search attendees..."
+                                id="attendee-search"
+                                data-filter-action="search-attendees"
+                            >
+                            <select class="filter-select" id="attendee-filter" data-filter-action="filter-attendees">
+                                <option value="all">All People</option>
+                                <option value="attending">Attending Only</option>
+                                <option value="declined">Declined Only</option>
+                                <option value="invited">Invited Only</option>
+                            </select>
+                            <button class="btn-add-guest" id="qa-add-guest">+ Add Guest</button>
+                        </div>
+                        <div class="attendee-count" id="attendee-count-display">
+                            ${eventResponses.length + roster.filter(r => r.email && !respondedEmails.has(r.email.toLowerCase().trim())).length} people
+                        </div>
+                    </div>
+
+                    ${this.generateAttendeeCards(eventResponses, eventId)}
+                </div>
+            </div>
+
+            <!-- ============ SEATING TAB ============ -->
+            ${event.seatingChart && event.seatingChart.enabled ? `
+            <div class="tab-panel tab-panel--seating hidden" id="tab-seating">
+                ${this.generateSeatingChartSection(event, eventId, eventResponses)}
+            </div>
+            ` : ''}
         </div>
     `;
 }
 
-    // ----- UX-008 Helpers -----
+    // ----- Concept B: Flat Tab Helpers -----
     setupManageTabs() {
-        const btnOverview = document.getElementById('tab-overview-btn');
-        const btnGuests = document.getElementById('tab-guests-btn');
-        const btnSpecial = document.getElementById('tab-special-btn');
-        
-        const overviewSelectors = ['.overview-subtabs', '.event-overview-section'];
-        const guestSelectors = ['.attendee-list-section'];
-        const specialSelectors = ['.dashboard-actions', '.seating-chart-section'];
+        const btnGlance = document.getElementById('tab-glance-btn');
+        const btnPeople = document.getElementById('tab-people-btn');
+        const btnSeating = document.getElementById('tab-seating-btn');
 
-        const showElems = (selectors) => selectors.forEach(sel => {
-            const el = document.querySelector(sel);
-            if (el) { el.classList.remove('hidden'); el.removeAttribute('hidden'); el.style.display = ''; }
-        });
-        const hideElems = (selectors) => selectors.forEach(sel => {
-            const el = document.querySelector(sel);
-            if (el) { el.classList.add('hidden'); el.setAttribute('hidden', ''); el.style.display = 'none'; }
-        });
+        const panels = {
+            glance: document.getElementById('tab-glance'),
+            people: document.getElementById('tab-people'),
+            seating: document.getElementById('tab-seating')
+        };
 
-        const setActive = (activeBtn) => {
-            [btnOverview, btnGuests, btnSpecial].forEach(btn => {
-                if (!btn) return;
+        const allBtns = [btnGlance, btnPeople, btnSeating].filter(Boolean);
+
+        const activate = (activeBtn, panelKey) => {
+            allBtns.forEach(btn => {
                 const isActive = btn === activeBtn;
                 btn.classList.toggle('active', isActive);
                 btn.setAttribute('aria-selected', String(isActive));
             });
+            Object.entries(panels).forEach(([key, panel]) => {
+                if (!panel) return;
+                if (key === panelKey) {
+                    panel.classList.remove('hidden');
+                    panel.removeAttribute('hidden');
+                    panel.style.display = '';
+                } else {
+                    panel.classList.add('hidden');
+                    panel.setAttribute('hidden', '');
+                    panel.style.display = 'none';
+                }
+            });
         };
 
-        const activateOverview = () => {
-            setActive(btnOverview);
-            showElems(overviewSelectors);
-            hideElems(guestSelectors);
-            hideElems(specialSelectors);
-        };
-        const activateGuests = () => {
-            setActive(btnGuests);
-            hideElems(overviewSelectors);
-            showElems(guestSelectors);
-            hideElems(specialSelectors);
-        };
-        const activateSpecial = () => {
-            setActive(btnSpecial);
-            hideElems(overviewSelectors);
-            hideElems(guestSelectors);
-            showElems(specialSelectors);
-            hideElems(['.invite-link-section']);
-        };
+        if (btnGlance) btnGlance.addEventListener('click', () => activate(btnGlance, 'glance'));
+        if (btnPeople) btnPeople.addEventListener('click', () => activate(btnPeople, 'people'));
+        if (btnSeating) btnSeating.addEventListener('click', () => activate(btnSeating, 'seating'));
 
-        if (btnOverview) btnOverview.addEventListener('click', activateOverview);
-        if (btnGuests) btnGuests.addEventListener('click', activateGuests);
-        if (btnSpecial) btnSpecial.addEventListener('click', activateSpecial);
-
+        // Keyboard navigation
         const tabs = Array.from(document.querySelectorAll('.manage-tabs .tab-btn'));
         tabs.forEach((btn, idx) => {
             btn.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight') { (tabs[idx + 1] || tabs[0]).focus(); }
-                if (e.key === 'ArrowLeft') { (tabs[idx - 1] || tabs[tabs.length - 1]).focus(); }
+                if (e.key === 'ArrowRight') { e.preventDefault(); (tabs[(idx + 1) % tabs.length]).focus(); }
+                if (e.key === 'ArrowLeft') { e.preventDefault(); (tabs[(idx - 1 + tabs.length) % tabs.length]).focus(); }
             });
         });
 
-        activateOverview();
+        // Default to At a Glance
+        activate(btnGlance, 'glance');
     }
 
-    setupOverviewSubtabs(event, eventResponses) {
-        const btnAttendance = document.getElementById('sub-attendance-btn');
-        const btnTimeline = document.getElementById('sub-timeline-btn');
-        const btnVenue = document.getElementById('sub-venue-btn');
-        const attendanceSelectors = ['.rsvp-dashboard-section', '.charts-grid'];
-        // Keep the overall overview section visible across all subtabs
-        const overviewSection = document.querySelector('.event-overview-section');
-        const timelineSection = document.getElementById('sub-timeline');
-        const venueGrid = document.querySelector('.event-overview-grid');
-        const inviteLinkSection = document.querySelector('.invite-link-section');
-
-        const showElems = (selectors) => selectors.forEach(sel => {
-            const el = document.querySelector(sel);
-            if (el) { el.classList.remove('hidden'); el.removeAttribute('hidden'); el.style.display = ''; }
-        });
-        const hideElems = (selectors) => selectors.forEach(sel => {
-            const el = document.querySelector(sel);
-            if (el) { el.classList.add('hidden'); el.setAttribute('hidden', ''); el.style.display = 'none'; }
-        });
-        const clearActive = () => {
-            [btnAttendance, btnTimeline, btnVenue].forEach(btn => {
-                if (!btn) return;
-                btn.classList.remove('active');
-                btn.setAttribute('aria-selected', 'false');
-            });
-        };
-        const setActive = (activeBtn) => {
-            if (!activeBtn) return;
-            clearActive();
-            activeBtn.classList.add('active');
-            activeBtn.setAttribute('aria-selected', 'true');
-        };
-        const hideInvite = () => hideElems(['.invite-link-section']);
-        const showInvite = () => {
-            if (inviteLinkSection) {
-                inviteLinkSection.classList.remove('hidden');
-                inviteLinkSection.removeAttribute('hidden');
-                inviteLinkSection.style.display = '';
-            }
-        };
-
-        const activateAttendance = () => {
-            setActive(btnAttendance);
-            showElems(attendanceSelectors);
-            if (overviewSection) { overviewSection.classList.remove('hidden'); overviewSection.removeAttribute('hidden'); overviewSection.style.display = ''; }
-            if (timelineSection) { timelineSection.hidden = true; timelineSection.classList.add('hidden'); timelineSection.style.display = 'none'; }
-            if (venueGrid) { venueGrid.classList.add('hidden'); venueGrid.setAttribute('hidden', ''); venueGrid.style.display = 'none'; }
-            hideInvite();
-            // Render charts if available (async, non-blocking)
-            try {
-                const stats = this.calculateAttendanceStats ? this.calculateAttendanceStats(eventResponses) : null;
-                if (stats) {
-                    this._renderChartSafe(() => this.renderAttendanceChart(stats), 'attendance chart');
-                }
-                this._renderChartSafe(() => this.renderResponsesChart(eventResponses), 'responses chart');
-            } catch (e) {
-                console.error('Error in chart rendering:', e);
-            }
-        };
-
-        const activateTimeline = () => {
-            setActive(btnTimeline);
-            hideElems(attendanceSelectors);
-            if (overviewSection) { overviewSection.classList.remove('hidden'); overviewSection.removeAttribute('hidden'); overviewSection.style.display = ''; }
-            if (timelineSection) { timelineSection.hidden = false; timelineSection.classList.remove('hidden'); timelineSection.style.display = ''; this.populateTimeline(event, eventResponses); }
-            if (venueGrid) { venueGrid.classList.add('hidden'); venueGrid.setAttribute('hidden', ''); venueGrid.style.display = 'none'; }
-            showInvite();
-        };
-
-        const activateVenue = () => {
-            setActive(btnVenue);
-            hideElems(attendanceSelectors);
-            if (overviewSection) { overviewSection.classList.remove('hidden'); overviewSection.removeAttribute('hidden'); overviewSection.style.display = ''; }
-            if (timelineSection) { timelineSection.hidden = true; timelineSection.classList.add('hidden'); timelineSection.style.display = 'none'; }
-            if (venueGrid) { venueGrid.classList.remove('hidden'); venueGrid.removeAttribute('hidden'); venueGrid.style.display = ''; }
-            hideInvite();
-        };
-
-        if (btnAttendance) btnAttendance.addEventListener('click', activateAttendance);
-        if (btnTimeline) btnTimeline.addEventListener('click', activateTimeline);
-        if (btnVenue) btnVenue.addEventListener('click', activateVenue);
-
-        // Keyboard navigation between subtabs
-        const subtabs = [btnAttendance, btnTimeline, btnVenue].filter(Boolean);
-        subtabs.forEach((btn, idx) => {
-            btn.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight') { e.preventDefault(); const nxt = subtabs[(idx + 1) % subtabs.length]; nxt && nxt.focus(); }
-                if (e.key === 'ArrowLeft') { e.preventDefault(); const prv = subtabs[(idx - 1 + subtabs.length) % subtabs.length]; prv && prv.focus(); }
-            });
-        });
-
-        // Default to Attendance Stats
-        activateAttendance();
+    /**
+     * @deprecated Sub-tabs removed in Concept B redesign. Kept as no-op for compatibility.
+     */
+    setupOverviewSubtabs() {
+        // No-op: sub-tabs removed in Concept B flat-tab redesign.
     }
 
     /**

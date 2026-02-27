@@ -52,6 +52,7 @@
 .mission-control-actions {
     display: flex;
     gap: 0.75rem;
+    align-items: center;
 }
 
 .btn-back {
@@ -464,7 +465,7 @@
 .attendee-list-section {
     background: #ffffff;
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 1.5rem;
     border: 2px solid #988686;
 }
 
@@ -473,13 +474,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
-}
-
-.attendee-list-title {
-    color: #5C4E4E;
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-shadow: none;
+    gap: 1rem;
 }
 
 .attendee-controls {
@@ -529,80 +524,168 @@
     display: none;
 }
 
-/* ===== UX-008: Tabs, Quick Actions, Charts, Timeline ===== */
-.quick-actions-toolbar .dropdown[hidden],
+/* ===== Concept B: More Menu, Tab Panels, Activity ===== */
 [hidden] {
   display: none !important;
 }
-.quick-actions-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: var(--bg-color, #E8E7E7);
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #988686;
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  margin-bottom: 0.75rem;
-}
-.quick-actions-toolbar .btn-primary,
-.quick-actions-toolbar .btn-secondary,
-.quick-actions-toolbar .btn-tertiary {
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.5rem;
-  border: 1px solid #988686;
-  font-weight: 600;
-}
-.quick-actions-toolbar .btn-primary {
-    background: #5C4E4E;
+
+/* More menu button in header */
+.btn-more {
+    background: rgba(255, 255, 255, 0.1);
     color: #ffffff;
-    border-color: #5C4E4E;
-    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
-.quick-actions-toolbar .btn-secondary {
-    background: #ffffff;
-    color: #000000;
+.btn-more:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
 }
-.quick-actions-toolbar .btn-tertiary {
-    background: transparent;
-    color: #5C4E4E;
-}
-.quick-actions-toolbar .btn-tertiary.danger {
-    color: #dc2626;
-    border-color: #ef4444;
-}
-.quick-actions-toolbar .more-group { position: relative; }
-.quick-actions-toolbar .dropdown {
+
+.more-group { position: relative; }
+.more-group .dropdown {
   position: absolute;
   top: 110%;
-  left: 0;
+  right: 0;
   background: #ffffff;
   border: 1px solid #988686;
   border-radius: 0.5rem;
   padding: 0.5rem;
   display: grid;
   gap: 0.25rem;
-  min-width: 180px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  min-width: 200px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  z-index: 100;
 }
-
-.quick-actions-toolbar .dropdown button {
+.more-group .dropdown[hidden] {
+  display: none !important;
+}
+.more-group .dropdown .btn-tertiary {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #5C4E4E;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
   text-align: left;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
-
-.quick-actions-toolbar .dropdown button:hover {
+.more-group .dropdown .btn-tertiary:hover {
   background: rgba(92, 78, 78, 0.1);
-  border-color: #5C4E4E;
   color: #5C4E4E;
-  transform: translateX(4px);
+}
+.more-group .dropdown .btn-tertiary.danger {
+  color: #dc2626;
+}
+.more-group .dropdown .btn-tertiary.danger:hover {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+}
+.dropdown-divider {
+  height: 1px;
+  background: #e5e5e5;
+  margin: 0.25rem 0;
 }
 
-.quick-actions-toolbar .dropdown button.danger:hover {
-  background: rgba(239, 68, 68, 0.15);
-  border-color: #ef4444;
-  color: #dc2626;
+/* Tab panels */
+.tab-panel {
+  margin-top: 1.5rem;
+}
+.tab-panel.hidden {
+  display: none !important;
+}
+
+/* Add Guest button (People tab) */
+.btn-add-guest {
+  background: #5C4E4E;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+.btn-add-guest:hover {
+  background: #4a3e3e;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(92, 78, 78, 0.3);
+}
+
+/* People tab: count badge */
+.attendee-count {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #988686;
+  white-space: nowrap;
+}
+
+/* Stat card detail line */
+.stat-card-detail {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+/* Recent Activity section (At a Glance tab) */
+.recent-activity-section {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border: 2px solid #988686;
+}
+.recent-activity-title {
+  color: #5C4E4E;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+}
+
+/* Event Info collapsible (At a Glance tab) */
+.event-info-details {
+  background: #ffffff;
+  border-radius: 1rem;
+  border: 2px solid #988686;
+  margin-top: 1.5rem;
+  overflow: hidden;
+}
+.event-info-summary {
+  padding: 1rem 1.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #5C4E4E;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.2s ease;
+}
+.event-info-summary:hover {
+  background: rgba(92, 78, 78, 0.05);
+}
+.event-info-summary::before {
+  content: '\\25B6';
+  font-size: 0.7rem;
+  transition: transform 0.2s ease;
+}
+.event-info-details[open] .event-info-summary::before {
+  transform: rotate(90deg);
+}
+/* Hide default marker */
+.event-info-summary::-webkit-details-marker {
+  display: none;
+}
+.event-info-body {
+  padding: 0 1.5rem 1.5rem;
 }
 
 .manage-tabs {
@@ -630,27 +713,7 @@
     font-weight: 700;
 }
 
-.overview-subtabs {
-  display: flex;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: #E8E7E7;
-  border-bottom: 1px solid #988686;
-}
-.overview-subtabs .subtab-btn {
-  background: transparent;
-  border: none;
-  padding: 0.4rem 0.6rem;
-  border-bottom: 2px solid transparent;
-  color: #988686;
-  cursor: pointer;
-  font-weight: 600;
-}
-.overview-subtabs .subtab-btn.active {
-    border-color: #5C4E4E;
-    color: #5C4E4E;
-    font-weight: 700;
-}
+/* overview-subtabs removed in Concept B redesign */
 
 .charts-grid {
   display: grid;
@@ -772,7 +835,8 @@
   .chart-card h3 {
     font-size: 0.9rem;
   }
-  .quick-actions-toolbar { flex-wrap: wrap; }
+  .attendee-list-header { flex-direction: column; align-items: stretch; }
+  .attendee-controls { flex-direction: column; }
 }
 
 @media (max-width: 640px) {
@@ -999,7 +1063,8 @@
 
     .mission-control-actions {
         width: 100%;
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: flex-end;
     }
 
     .rsvp-stats-cards {
