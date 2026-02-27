@@ -80,8 +80,8 @@
         display: flex; /* Show hamburger on mobile */
     }
 
-    .nav-brand {
-        display: block; /* Show brand title on mobile */
+    .nav-search {
+        max-width: none;
     }
 
     .main-nav {
