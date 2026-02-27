@@ -965,6 +965,8 @@ function showInlineCreateForm() {
             accordion.classList.remove('template-accordion--open');
             var toggle = accordion.querySelector('.template-accordion__toggle');
             if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            var body = accordion.querySelector('.template-accordion__body');
+            if (body) { body.style.maxHeight = '0'; body.style.overflow = 'hidden'; }
         }
     }
     if (window.setupPhotoUpload) window.setupPhotoUpload();
