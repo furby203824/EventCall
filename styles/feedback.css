@@ -85,7 +85,7 @@
 .feedback-modal__title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #000000;
+    color: var(--ux2-navy-900);
     margin: 0;
 }
 
@@ -137,7 +137,7 @@
 
 .feedback-form .form-input:focus {
     outline: none;
-    border-color: #5C4E4E;
+    border-color: var(--ux2-gold);
     box-shadow: 0 0 0 3px rgba(92, 78, 78, 0.1);
 }
 
@@ -208,7 +208,7 @@
 .feedback-success__title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #000000;
+    color: var(--ux2-navy-900);
     margin-bottom: 0.5rem;
 }
 
@@ -306,55 +306,55 @@
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
     .feedback-modal__content {
-        background: #000000;
+        background: var(--ux2-navy-900);
     }
 
     .feedback-modal__header {
-        border-bottom-color: #5C4E4E;
+        border-bottom-color: var(--ux2-gold);
     }
 
     .feedback-modal__title {
-        color: #D1D0D0;
+        color: var(--ux2-text-light);
     }
 
     .feedback-modal__close:hover {
-        background: #5C4E4E;
-        color: #D1D0D0;
+        background: var(--ux2-gold);
+        color: var(--ux2-text-light);
     }
 
     .feedback-form .form-label {
-        color: #D1D0D0;
+        color: var(--ux2-text-light);
     }
 
     .feedback-form .form-input {
-        background: #5C4E4E;
-        border-color: #988686;
-        color: #D1D0D0;
+        background: var(--ux2-gold);
+        border-color: var(--ux2-text-muted);
+        color: var(--ux2-text-light);
     }
 
     .feedback-form .form-input:focus {
-        border-color: #988686;
-        background: #5C4E4E;
+        border-color: var(--ux2-text-muted);
+        background: var(--ux2-gold);
     }
 
     .feedback-form .form-hint {
-        color: #988686;
+        color: var(--ux2-text-muted);
     }
 
     .feedback-form__actions .btn--secondary {
-        background: #5C4E4E;
-        color: #D1D0D0;
+        background: var(--ux2-gold);
+        color: var(--ux2-text-light);
     }
 
     .feedback-form__actions .btn--secondary:hover {
-        background: #988686;
+        background: var(--ux2-text-muted);
     }
 
     .feedback-success__title {
-        color: #D1D0D0;
+        color: var(--ux2-text-light);
     }
 
     .feedback-success__message {
-        color: #988686;
+        color: var(--ux2-text-muted);
     }
 }

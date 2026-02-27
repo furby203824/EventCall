@@ -14,7 +14,7 @@
 
 .seating-config-section h3 {
     margin: 0 0 1rem 0;
-    color: var(--semper-navy, #000000);
+    color: var(--semper-navy, var(--ux2-navy-900));
     font-size: 1.1rem;
     display: flex;
     align-items: center;
@@ -106,7 +106,7 @@
 .seating-stat-card .stat-value {
     font-size: 2rem;
     font-weight: bold;
-    color: var(--semper-navy, #000000);
+    color: var(--semper-navy, var(--ux2-navy-900));
     margin: 0.5rem 0;
 }
 
@@ -158,17 +158,17 @@
 }
 
 .table-card:hover {
-    border-color: var(--semper-navy, #000000);
+    border-color: var(--semper-navy, var(--ux2-navy-900));
     box-shadow: 0 4px 12px rgba(92, 78, 78, 0.1);
 }
 
 .table-card.vip-table {
-    border-color: var(--semper-gold, #988686);
+    border-color: var(--semper-gold, var(--ux2-text-muted));
     background: linear-gradient(135deg, #f0efef 0%, #ffffff 100%);
 }
 
 .table-card.vip-table .table-header {
-    color: var(--semper-gold, #5C4E4E);
+    color: var(--semper-gold, var(--ux2-gold));
 }
 
 .table-card.full {
@@ -188,7 +188,7 @@
 .table-number {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--semper-navy, #000000);
+    color: var(--semper-navy, var(--ux2-navy-900));
 }
 
 .table-capacity {
@@ -264,7 +264,7 @@
 }
 
 .table-move-select:hover {
-    border-color: var(--semper-navy, #000000);
+    border-color: var(--semper-navy, var(--ux2-navy-900));
 }
 
 .table-guest-remove {
@@ -300,7 +300,7 @@
 
 .unassigned-section h3 {
     margin: 0 0 1rem 0;
-    color: var(--semper-navy, #000000);
+    color: var(--semper-navy, var(--ux2-navy-900));
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -334,7 +334,7 @@
 }
 
 .unassigned-guest-item:hover {
-    border-color: var(--semper-navy, #000000);
+    border-color: var(--semper-navy, var(--ux2-navy-900));
     box-shadow: 0 2px 8px rgba(92, 78, 78, 0.1);
 }
 
@@ -369,8 +369,8 @@
 
 .assign-btn {
     padding: 0.5rem 1rem;
-    background: var(--semper-navy, #000000);
-    color: #D1D0D0;
+    background: var(--semper-navy, var(--ux2-navy-900));
+    color: var(--ux2-text-light);
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -395,15 +395,15 @@
 }
 
 .seating-empty-state h3 {
-    color: var(--semper-navy, #000000);
+    color: var(--semper-navy, var(--ux2-navy-900));
     margin-bottom: 0.5rem;
 }
 
 /* Seating Chart in Attendee List */
 .attendee-table-badge {
     display: inline-block;
-    background: var(--semper-navy, #000000);
-    color: #D1D0D0;
+    background: var(--semper-navy, var(--ux2-navy-900));
+    color: var(--ux2-text-light);
     padding: 0.25rem 0.75rem;
     border-radius: 12px;
     font-size: 0.8rem;
@@ -412,7 +412,7 @@
 }
 
 .attendee-table-badge.vip {
-    background: var(--semper-gold, #5C4E4E);
+    background: var(--semper-gold, var(--ux2-gold));
 }
 
 .attendee-table-badge.unassigned {
