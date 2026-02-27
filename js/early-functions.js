@@ -959,6 +959,13 @@ function showInlineCreateForm() {
         if (tplContainer && !tplContainer.hasChildNodes()) {
             tplContainer.innerHTML = window.eventTemplates.generateTemplateSelectorHTML();
         }
+        // Ensure accordion starts collapsed each time the form is shown
+        var accordion = tplContainer && tplContainer.querySelector('.template-accordion');
+        if (accordion) {
+            accordion.classList.remove('template-accordion--open');
+            var toggle = accordion.querySelector('.template-accordion__toggle');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+        }
     }
     if (window.setupPhotoUpload) window.setupPhotoUpload();
     if (window.setupEventForm) window.setupEventForm();
