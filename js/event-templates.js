@@ -272,14 +272,15 @@ class EventTemplates {
                     <span class="template-accordion__hint">Quick-start from a template</span>
                 </button>
                 <div class="template-accordion__body">
-                    <div class="template-accordion__grid">
+                    <div class="template-accordion__grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem;padding:0.75rem 0.85rem 0.85rem;">
                         ${templates.map(template => `
                             <div class="template-card" role="button" tabindex="0"
+                                 style="display:flex;flex-direction:column;padding:0.75rem 0.85rem;background:rgba(255,255,255,0.92);border:1.5px solid #5B9BD5;border-radius:8px;cursor:pointer;color:#2C2C2C;line-height:1.4;"
                                  onclick="window.eventTemplates.applyTemplate('${template.id}')"
                                  onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
-                                <div class="template-card__icon">${template.icon}</div>
-                                <div class="template-card__name">${template.name}</div>
-                                <div class="template-card__desc">${template.description}</div>
+                                <div style="font-size:1.25rem;margin-bottom:0.35rem;line-height:1;">${template.icon}</div>
+                                <div style="font-weight:600;font-size:0.85rem;color:#2C2C2C;margin-bottom:0.2rem;">${template.name}</div>
+                                <div style="font-size:0.75rem;color:#555;">${template.description}</div>
                             </div>
                         `).join('')}
                     </div>
