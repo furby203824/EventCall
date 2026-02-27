@@ -1940,6 +1940,18 @@ document.addEventListener('DOMContentLoaded', () => {
         profilePasswordForm.addEventListener('submit', handleProfilePasswordChange);
     }
 
+    // Event search — filter dashboard on input
+    var eventSearchInput = document.getElementById('event-search');
+    if (eventSearchInput) {
+        var searchTimer = null;
+        eventSearchInput.addEventListener('input', function () {
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(function () {
+                if (typeof renderDashboard === 'function') renderDashboard();
+            }, 250);
+        });
+    }
+
     // Add password strength indicator for profile password change
     const profileNewPassword = document.getElementById('profile-new-password');
     const profilePasswordStrength = document.getElementById('profile-password-strength');

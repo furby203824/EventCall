@@ -944,7 +944,29 @@ function renderDashboard() {
         return;
     }
 
-    const eventArray = Object.values(window.events);
+    let eventArray = Object.values(window.events);
+
+    // Apply search filter if active
+    const searchQuery = (document.getElementById('event-search')?.value || '').trim().toLowerCase();
+    if (searchQuery) {
+        eventArray = eventArray.filter(function (evt) {
+            const fields = [
+                evt.title, evt.description, evt.location,
+                evt.date, evt.time, evt.createdByName
+            ];
+            // Also search eventDetails values
+            if (evt.eventDetails) {
+                Object.values(evt.eventDetails).forEach(function (d) {
+                    if (d && d.value) fields.push(d.value);
+                    if (d && d.label) fields.push(d.label);
+                });
+            }
+            return fields.some(function (f) {
+                return f && f.toLowerCase().indexOf(searchQuery) !== -1;
+            });
+        });
+    }
+
     console.log('📊 Rendering dashboard with ' + eventArray.length + ' events');
 
     // Separate active and past events
