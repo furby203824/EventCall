@@ -1,86 +1,224 @@
 /* UX-002: BEM-based stylesheet for index.html (removes inline styles) */
 
-/* CSS Variables */
+/* ============================================
+   SINGLE SOURCE OF TRUTH: All CSS Custom Properties
+   Consolidated from styles.css, main.min.css, components.css,
+   redesign.css, loading.css, app-loader.css, invite-envelope.css
+   ============================================ */
 :root {
-  /* Gothic Noir - Primary Accent (Dark Taupe) */
+  /* === Gothic Noir Core Palette === */
+  --primary-color: #5C4E4E;
+  --secondary-color: #5C4E4E;
+  --accent-gold: #988686;
+  --accent-color: #E8E7E7;
+  --navy-blue: #000000;
+  --text-color: #000000;
+  --text-muted: #5C4E4E;
+  --bg-color: #D1D0D0;
+  --bg-secondary: #E0DFDF;
+  --border-color: #988686;
+  --white-color: #fff;
+  --card-bg: #ffffff;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --input-bg: #ffffff;
+  --input-border: #988686;
+  --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  --border-radius: 10px;
+
+  /* Functional colors */
+  --success-color: #10b981;
+  --error-color: #ef4444;
+
+  /* Gray scale */
+  --gray-50: #E8E7E7;
+  --gray-100: #E0DFDF;
+  --gray-200: #D1D0D0;
+
+  /* Truffle / Semper aliases (same palette, legacy names) */
+  --truffle-dark-brown: #5C4E4E;
+  --truffle-caramel: #988686;
+  --truffle-cream: #D1D0D0;
+  --truffle-darkest: #000000;
+  --semper-red: #5C4E4E;
+  --semper-gold: #988686;
+  --semper-navy: #000000;
+  --semper-red-alpha: rgba(92, 78, 78, 0.8);
+  --semper-red-dark: #000000;
+
+  /* === UX2 Design Tokens === */
+  /* Primary accent (Dark Taupe) */
   --ux2-gold: #5C4E4E;
   --ux2-gold-dark: #000000;
+  --ux2-gold-light: #988686;
   --ux2-gold-rgba-05: rgba(92, 78, 78, 0.05);
   --ux2-gold-rgba-1: rgba(92, 78, 78, 0.1);
   --ux2-gold-rgba-2: rgba(92, 78, 78, 0.2);
+  --ux2-gold-rgba-25: rgba(92, 78, 78, 0.25);
   --ux2-gold-rgba-3: rgba(92, 78, 78, 0.3);
   --ux2-gold-rgba-4: rgba(92, 78, 78, 0.4);
   --ux2-gold-rgba-5: rgba(92, 78, 78, 0.5);
   --ux2-gold-rgba-9: rgba(92, 78, 78, 0.9);
-  /* Gothic Noir - Dark shades */
+
+  /* Dark shades */
   --ux2-navy-900: #000000;
   --ux2-navy-800: #5C4E4E;
   --ux2-navy-700: #5C4E4E;
-  /* Gothic Noir - Text */
+  --ux2-navy-600: #988686;
+  --ux2-navy-800-rgba-1: rgba(92, 78, 78, 0.1);
+  --ux2-navy-900-rgba-7: rgba(0, 0, 0, 0.7);
+  --ux2-navy-900-rgba-8: rgba(0, 0, 0, 0.8);
+  --ux2-navy-900-rgba-85: rgba(0, 0, 0, 0.85);
+  --ux2-navy-900-rgba-9: rgba(0, 0, 0, 0.9);
+  --ux2-navy-900-rgba-92: rgba(0, 0, 0, 0.92);
+  --ux2-navy-900-rgba-95: rgba(0, 0, 0, 0.95);
+  --ux2-navy-900-rgba-98: rgba(0, 0, 0, 0.98);
+
+  /* Text */
   --ux2-text-light: #D1D0D0;
   --ux2-text-muted: #988686;
   --ux2-text-dark-muted: #988686;
-  /* Functional colors (preserved) */
+  --ux2-text-light-darker: #B0AEAE;
+  --ux2-text-light-rgba-05: rgba(209, 208, 208, 0.05);
+  --ux2-text-light-rgba-06: rgba(209, 208, 208, 0.06);
+  --ux2-text-light-rgba-08: rgba(209, 208, 208, 0.08);
+  --ux2-text-light-rgba-1: rgba(209, 208, 208, 0.1);
+  --ux2-text-light-rgba-12: rgba(209, 208, 208, 0.12);
+  --ux2-text-light-rgba-15: rgba(209, 208, 208, 0.15);
+  --ux2-text-light-rgba-2: rgba(209, 208, 208, 0.2);
+  --ux2-text-light-rgba-6: rgba(209, 208, 208, 0.6);
+  --ux2-text-light-rgba-7: rgba(209, 208, 208, 0.7);
+  --ux2-text-light-rgba-9: rgba(209, 208, 208, 0.9);
+
+  /* Success */
   --ux2-success: #10b981;
+  --ux2-success-dark: #059669;
+  --ux2-success-light: #6ee7b7;
+  --ux2-success-rgba-08: rgba(16, 185, 129, 0.08);
   --ux2-success-rgba-1: rgba(16, 185, 129, 0.1);
+  --ux2-success-rgba-15: rgba(16, 185, 129, 0.15);
+  --ux2-success-rgba-3: rgba(16, 185, 129, 0.3);
+  --ux2-success-rgba-4: rgba(16, 185, 129, 0.4);
+
+  /* Info */
   --ux2-info: #3b82f6;
+  --ux2-info-light: #bfdbfe;
+  --ux2-info-rgba-05: rgba(59, 130, 246, 0.05);
+  --ux2-info-rgba-08: rgba(59, 130, 246, 0.08);
   --ux2-info-rgba-1: rgba(59, 130, 246, 0.1);
+  --ux2-info-rgba-15: rgba(59, 130, 246, 0.15);
+  --ux2-info-rgba-2: rgba(59, 130, 246, 0.2);
+  --ux2-info-rgba-3: rgba(59, 130, 246, 0.3);
+
+  /* Danger */
   --ux2-danger: #dc2626;
-          /* Gothic Noir - Light text RGBA variants */
-          --ux2-text-light-rgba-05: rgba(209, 208, 208, 0.05);
-          --ux2-text-light-rgba-1: rgba(209, 208, 208, 0.1);
-          --ux2-text-light-rgba-7: rgba(209, 208, 208, 0.7);
-          --ux2-text-light-rgba-9: rgba(209, 208, 208, 0.9);
-          --ux2-text-light-darker: #B0AEAE;
-          --ux2-danger-rgba-1: rgba(220, 38, 38, 0.1);
-          --ux2-danger-rgba-2: rgba(220, 38, 38, 0.2);
-          --ux2-navy-800-rgba-1: rgba(92, 78, 78, 0.1);
-          --ux2-text-light-rgba-6: rgba(209, 208, 208, 0.6);
-          --ux2-info-rgba-05: rgba(59, 130, 246, 0.05);
-          --ux2-info-rgba-2: rgba(59, 130, 246, 0.2);
-          --ux2-info-rgba-3: rgba(59, 130, 246, 0.3);
-          --ux2-danger-rgba-3: rgba(220, 38, 38, 0.3);
-          --ux2-danger-dark: #8b1538;
-          --ux2-danger-rgba-4: rgba(220, 38, 38, 0.4);
-          --ux2-gold-light: #988686;
-          --ux2-navy-600: #988686;
-          --ux2-text-light-rgba-08: rgba(209, 208, 208, 0.08);
-          --ux2-info-rgba-15: rgba(59, 130, 246, 0.15);
-          --ux2-info-rgba-08: rgba(59, 130, 246, 0.08);
-          --ux2-success-rgba-15: rgba(16, 185, 129, 0.15);
-          --ux2-success-rgba-08: rgba(16, 185, 129, 0.08);
-          --ux2-card-bg-dark: rgba(0, 0, 0, 0.8);
-          --ux2-purple: #d946ef;
-          --ux2-purple-rgba-15: rgba(217, 70, 239, 0.15);
-          --ux2-purple-rgba-08: rgba(168, 85, 247, 0.08);
-          --ux2-danger-rgba-15: rgba(220, 38, 38, 0.15);
-          --ux2-danger-rgba-08: rgba(220, 38, 38, 0.08);
-          --ux2-warning: #fbbf24;
-          --ux2-warning-rgba-15: rgba(251, 191, 36, 0.15);
-          --ux2-warning-rgba-08: rgba(245, 158, 11, 0.08);
-          --ux2-text-light-rgba-15: rgba(209, 208, 208, 0.15);
-          --ux2-text-light-rgba-2: rgba(209, 208, 208, 0.2);
-          --ux2-success-dark: #059669;
-          --ux2-success-light: #6ee7b7;
-          --ux2-success-rgba-3: rgba(16, 185, 129, 0.3);
-          --ux2-success-rgba-4: rgba(16, 185, 129, 0.4);
-          --ux2-warning-rgba-2: rgba(251, 191, 36, 0.2);
-          --ux2-warning-light: #fcd34d;
-          --ux2-warning-rgba-3: rgba(251, 191, 36, 0.3);
-          --ux2-navy-900-rgba-92: rgba(0, 0, 0, 0.92);
-          --ux2-text-light-rgba-06: rgba(209, 208, 208, 0.06);
-          --ux2-navy-900-rgba-98: rgba(0, 0, 0, 0.98);
-          --ux2-gold-rgba-25: rgba(92, 78, 78, 0.25);
-          --ux2-danger-light: #fca5a5;
-          --ux2-text-light-rgba-12: rgba(209, 208, 208, 0.12);
-          --ux2-navy-900-rgba-85: rgba(0, 0, 0, 0.85);
-          --ux2-navy-900-rgba-95: rgba(0, 0, 0, 0.95);
-          --ux2-navy-900-rgba-9: rgba(0, 0, 0, 0.9);
-          --ux2-navy-900-rgba-8: rgba(0, 0, 0, 0.8);
-          --ux2-navy-900-rgba-7: rgba(0, 0, 0, 0.7);
-          --ux2-info-light: #bfdbfe;
-          --ux2-shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.25);
-  --ux2-shadow-medium: 0 4px 12px var(--ux2-gold-rgba-3);
+  --ux2-danger-dark: #8b1538;
+  --ux2-danger-light: #fca5a5;
+  --ux2-danger-rgba-08: rgba(220, 38, 38, 0.08);
+  --ux2-danger-rgba-1: rgba(220, 38, 38, 0.1);
+  --ux2-danger-rgba-15: rgba(220, 38, 38, 0.15);
+  --ux2-danger-rgba-2: rgba(220, 38, 38, 0.2);
+  --ux2-danger-rgba-3: rgba(220, 38, 38, 0.3);
+  --ux2-danger-rgba-4: rgba(220, 38, 38, 0.4);
+
+  /* Warning */
+  --ux2-warning: #fbbf24;
+  --ux2-warning-light: #fcd34d;
+  --ux2-warning-rgba-15: rgba(251, 191, 36, 0.15);
+  --ux2-warning-rgba-08: rgba(245, 158, 11, 0.08);
+  --ux2-warning-rgba-2: rgba(251, 191, 36, 0.2);
+  --ux2-warning-rgba-3: rgba(251, 191, 36, 0.3);
+
+  /* Purple */
+  --ux2-purple: #d946ef;
+  --ux2-purple-rgba-15: rgba(217, 70, 239, 0.15);
+  --ux2-purple-rgba-08: rgba(168, 85, 247, 0.08);
+
+  /* Shadows */
+  --ux2-card-bg-dark: rgba(0, 0, 0, 0.8);
+  --ux2-shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.25);
+  --ux2-shadow-medium: 0 4px 12px rgba(92, 78, 78, 0.3);
+
+  /* === Spacing Scale === */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* === Typography === */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+
+  /* === Breakpoints === */
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+
+  /* === Z-Index Scale === */
+  --z-base: 1;
+  --z-header: 100;
+  --z-dropdown: 500;
+  --z-sticky: 600;
+  --z-nav-overlay: 899;
+  --z-nav-menu: 900;
+  --z-modal-backdrop: 1000;
+  --z-modal: 1010;
+  --z-toast: 1100;
+  --z-loading: 5000;
+  --z-login: 9000;
+  --z-login-modal: 9010;
+  --z-profile-btn: 9500;
+  --z-profile-menu: 9510;
+  --z-app-loader: 10000;
+
+  /* === Component Tokens === */
+  --button-border-radius: 8px;
+  --button-padding: 0.75rem 1.5rem;
+  --button-font-size: 1rem;
+  --button-font-weight: 600;
+  --button-line-height: 1.5;
+  --button-transition: all 0.2s ease-in-out;
+  --form-control-border-radius: 8px;
+  --form-control-padding: 0.75rem 1rem;
+  --form-control-font-size: 1rem;
+  --form-control-font-weight: 400;
+  --form-control-line-height: 1.5;
+  --form-control-transition: all 0.2s ease-in-out;
+  --card-border-radius: 12px;
+  --card-padding: 1.5rem;
+  --checkbox-border-radius: 4px;
+  --checkbox-size: 1.25rem;
+  --checkbox-tick-size: 0.5rem;
+
+  /* === Loading / Spinner === */
+  --spinner-size: 16px;
+  --spinner-border: 2px;
+  --spinner-color: #2563eb;
+  --spinner-track: #c7d2fe;
+  --skeleton-bg: #e5e7eb;
+  --skeleton-shimmer: #f3f4f6;
+  --progress-bg: #e5e7eb;
+  --progress-fill: #10b981;
+  --progress-text: #111827;
+
+  /* === Envelope Invitation === */
+  --envelope-color: #f3f4f6;
+  --envelope-dark: #e5e7eb;
+  --flap-color: #f9fafb;
+  --envelope-card-color: #ffffff;
+  --envelope-accent: #5C4E4E;
 }
 
 .hidden { display: none !important; }
@@ -88,7 +226,7 @@
 
 /* Auth Block */
 .auth { width: 100%; max-width: 550px; min-height: max-content; margin: 0 auto; box-sizing: border-box; }
-.auth__card { background: #ffffff; border-radius: 1.5rem; padding: 3rem; box-shadow: var(--ux2-shadow-strong); border: 2px solid #988686; box-sizing: border-box; }
+.auth__card { background: #ffffff; border-radius: 1.5rem; padding: 3rem; box-shadow: var(--ux2-shadow-strong); border: 2px solid var(--ux2-text-muted); box-sizing: border-box; }
 
 .auth__header { text-align: center; margin-bottom: 2rem; display: block; visibility: visible; }
 .auth__icon { font-size: 4rem; margin-bottom: 1rem; }
@@ -109,15 +247,15 @@
 
 .auth__tabs { display: flex; gap: 0.5rem; margin-bottom: 2rem; background: rgba(0, 0, 0, 0.2); padding: 0.25rem; border-radius: 0.5rem; }
 .auth__tab { flex: 1; padding: 0.75rem; background: transparent; border: none; border-radius: 0.375rem; color: var(--ux2-text-muted); font-weight: 700; cursor: pointer; transition: all 0.2s ease; }
-.auth__tab--active { background: #5C4E4E; color: #ffffff; }
+.auth__tab--active { background: var(--ux2-gold); color: #ffffff; }
 
 .auth__form { display: none; }
 .auth__form--active { display: block; }
 
 .form-group { margin-bottom: 1.5rem; }
-.form-label { display: block; color: #5C4E4E; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; }
-.auth .form-control { width: 100%; padding: 1rem; background: #ffffff; border: 1px solid #988686; border-radius: 0.5rem; color: #000000; font-size: 1rem; transition: all 0.2s ease; }
-.auth .form-control:focus { outline: none; border-color: #5C4E4E; background: #ffffff; }
+.form-label { display: block; color: var(--ux2-gold); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.95rem; }
+.auth .form-control { width: 100%; padding: 1rem; background: #ffffff; border: 1px solid var(--ux2-text-muted); border-radius: 0.5rem; color: var(--ux2-navy-900); font-size: 1rem; transition: all 0.2s ease; }
+.auth .form-control:focus { outline: none; border-color: var(--ux2-gold); background: #ffffff; }
 .form-help { color: var(--ux2-text-muted); font-size: 0.8rem; display: block; margin-top: 0.25rem; }
 .form-help--inline { display: inline; margin-top: 0; }
 .text-danger { color: var(--ux2-danger); }
@@ -126,10 +264,10 @@
 .auth__remember-checkbox { width: 1.25rem; height: 1.25rem; cursor: pointer; }
 .auth__remember-label { color: var(--ux2-text-muted); font-size: 0.9rem; cursor: pointer; user-select: none; }
 
-.btn { display: inline-block; padding: 0.5rem 1rem; border-radius: 0.5rem; border: none; cursor: pointer; transition: all 0.2s ease; }
-.btn--primary { width: 100%; padding: 1rem 2rem; background: linear-gradient(135deg, #5C4E4E 0%, #000000 100%); color: #D1D0D0; font-size: 1rem; font-weight: 700; box-shadow: var(--ux2-shadow-medium); }
-.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--ux2-gold-rgba-4); }
-.btn--primary:active { transform: translateY(0); box-shadow: var(--ux2-shadow-medium); }
+/* Auth-scoped button overrides (base .btn defined in components.css) */
+.auth .btn--primary { width: 100%; padding: 1rem 2rem; background: linear-gradient(135deg, var(--ux2-gold) 0%, var(--ux2-navy-900) 100%); color: var(--ux2-text-light); font-size: 1rem; font-weight: 700; box-shadow: var(--ux2-shadow-medium); }
+.auth .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px var(--ux2-gold-rgba-4); }
+.auth .btn--primary:active { transform: translateY(0); box-shadow: var(--ux2-shadow-medium); }
 
 #password-strength { margin-bottom: 2rem; min-height: 1.5rem; }
 
@@ -138,13 +276,13 @@
 .auth__info-line--muted { color: var(--ux2-text-muted); margin-bottom: 0; }
 .auth__info-icon { font-size: 1.25rem; }
 
-.branding-footer { text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #988686; }
-.branding-footer__powered { color: #988686; font-size: 0.875rem; margin-bottom: 0.5rem; }
-.branding-footer__brand { color: #5C4E4E; font-weight: 700; font-size: 1rem; cursor: pointer; }
+.branding-footer { text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--ux2-text-muted); }
+.branding-footer__powered { color: var(--ux2-text-muted); font-size: 0.875rem; margin-bottom: 0.5rem; }
+.branding-footer__brand { color: var(--ux2-gold); font-weight: 700; font-size: 1rem; cursor: pointer; }
 
 /* Header user button */
 .user-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 0.5rem; color: var(--ux2-text-light); cursor: pointer; transition: all 0.2s ease; }
-.user-avatar { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: #5C4E4E; color: #D1D0D0; border-radius: 50%; font-weight: 700; font-size: 0.875rem; }
+.user-avatar { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; background: var(--ux2-gold); color: var(--ux2-text-light); border-radius: 50%; font-weight: 700; font-size: 0.875rem; }
 
 /* Navigation active state */
 .nav button.active { color: var(--ux2-gold); border-bottom: 2px solid var(--ux2-gold); }
@@ -160,7 +298,7 @@
 
 /* Profile dropdown */
 .profile-dropdown { position: absolute; top: 3.5rem; right: 1rem; width: 300px; background: white; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: var(--z-dropdown); border: 2px solid var(--semper-gold); }
-.profile-dropdown__header { padding: 1rem; background: linear-gradient(135deg, #000000, #5C4E4E); color: #D1D0D0; border-radius: 1rem 1rem 0 0; }
+.profile-dropdown__header { padding: 1rem; background: linear-gradient(135deg, #000000, #5C4E4E); color: var(--ux2-text-light); border-radius: 1rem 1rem 0 0; }
 .profile-dropdown__header-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.25rem; }
 .profile-dropdown__header-email { font-size: 0.85rem; opacity: 0.9; }
 .profile-dropdown__header-subtitle { font-size: 0.75rem; opacity: 0.7; margin-top: 0.25rem; }
@@ -188,14 +326,14 @@
 select optgroup {
   font-weight: 700;
   font-style: normal;
-  color: #5C4E4E;
-  background: #E8E7E7;
+  color: var(--ux2-gold);
+  background: var(--gray-50);
   padding: 0.5rem;
 }
 
 select option {
   background: #ffffff;
-  color: #000000;
+  color: var(--ux2-navy-900);
   padding: 0.5rem;
 }
 
@@ -265,7 +403,7 @@ select option {
   .auth__subtitle { font-size: 0.875rem; }
   .auth__tabs { margin-bottom: 1rem; }
   .form-control { padding: 0.75rem; font-size: 0.95rem; }
-  .btn--primary { padding: 0.875rem 1.5rem; font-size: 0.95rem; }
+  .auth .btn--primary { padding: 0.875rem 1.5rem; font-size: 0.95rem; }
   .auth__info { padding: 1rem; margin-top: 1rem; }
   .branding-footer { margin-top: 1rem; padding-top: 1rem; }
 }
@@ -309,7 +447,7 @@ select option {
 /* Main Navigation */
 .main-nav {
     background-color: #ffffff;
-    border-bottom: 1px solid #988686;
+    border-bottom: 1px solid var(--ux2-text-muted);
     padding: 0.5rem 0;
 }
 
@@ -325,7 +463,7 @@ select option {
 .nav-link {
     background: none;
     border: none;
-    color: #5C4E4E;
+    color: var(--ux2-gold);
     cursor: pointer;
     font-size: 1rem;
     font-weight: 500;
@@ -335,13 +473,13 @@ select option {
 }
 
 .nav-link:hover {
-    background-color: #E8E7E7;
-    color: #000000;
+    background-color: var(--gray-50);
+    color: var(--ux2-navy-900);
 }
 
 .nav-link.active {
-    background-color: #D1D0D0;
-    color: #000000;
+    background-color: var(--ux2-text-light);
+    color: var(--ux2-navy-900);
     font-weight: 600;
 }
 
@@ -362,14 +500,14 @@ select option {
 .nav-search__icon {
     position: absolute;
     left: 0.6rem;
-    color: #988686;
+    color: var(--ux2-text-muted);
     pointer-events: none;
 }
 
 .nav-search__input {
     width: 100%;
     padding: 0.4rem 0.6rem 0.4rem 2rem;
-    border: 1px solid #D1D0D0;
+    border: 1px solid var(--ux2-text-light);
     border-radius: 6px;
     font-size: 0.85rem;
     font-family: inherit;
@@ -379,7 +517,7 @@ select option {
 }
 
 .nav-search__input::placeholder {
-    color: #988686;
+    color: var(--ux2-text-muted);
 }
 
 .nav-search__input:focus {
@@ -406,14 +544,14 @@ select option {
 }
 
 .nav-hamburger:hover {
-    background-color: #E8E7E7;
+    background-color: var(--gray-50);
 }
 
 .nav-hamburger__line {
     display: block;
     width: 22px;
     height: 2px;
-    background-color: #5C4E4E;
+    background-color: var(--ux2-gold);
     border-radius: 1px;
     transition: transform 0.3s ease, opacity 0.3s ease;
 }

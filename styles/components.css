@@ -19,11 +19,11 @@
 /* Page header text */
 .dashboard-create-form .page-header__title,
 .dashboard-create-form h2 {
-    color: var(--ux2-text-light, #D1D0D0);
+    color: var(--ux2-text-light, var(--ux2-text-light));
 }
 
 .dashboard-create-form .page-header__badge {
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 /* Form section headers */
@@ -40,11 +40,11 @@
 }
 
 .dashboard-create-form .form-section__title {
-    color: var(--ux2-text-light, #D1D0D0);
+    color: var(--ux2-text-light, var(--ux2-text-light));
 }
 
 .dashboard-create-form .form-section__optional {
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 /* Labels */
@@ -64,7 +64,7 @@
 .dashboard-create-form select {
     background-color: rgba(0, 0, 0, 0.4);
     border-color: rgba(152, 134, 134, 0.4);
-    color: var(--ux2-text-light, #D1D0D0);
+    color: var(--ux2-text-light, var(--ux2-text-light));
 }
 
 .dashboard-create-form .form-control:focus,
@@ -86,7 +86,7 @@
 .dashboard-create-form .form-text,
 .dashboard-create-form .form-help,
 .dashboard-create-form small {
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 /* Progress bar */
@@ -99,7 +99,7 @@
 
 .dashboard-create-form .form-progress__status,
 .dashboard-create-form .form-progress__required {
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 .dashboard-create-form .form-progress__bar {
@@ -112,7 +112,7 @@
 }
 
 .dashboard-create-form .form-progress-label {
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 .dashboard-create-form .form-progress-text {
@@ -143,7 +143,7 @@
     background: rgba(0, 0, 0, 0.25);
     border: none;
     border-bottom: 1px solid rgba(152, 134, 134, 0.15);
-    color: var(--ux2-text-light, #D1D0D0);
+    color: var(--ux2-text-light, var(--ux2-text-light));
     cursor: pointer;
     font-size: 0.875rem;
     font-family: inherit;
@@ -160,7 +160,7 @@
 #dashboard-create-form .template-accordion__chevron {
     flex-shrink: 0;
     transition: transform 0.2s ease;
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 /* Rotate chevron when open */
@@ -179,7 +179,7 @@
 #dashboard-create-form .template-accordion__hint {
     margin-left: auto;
     font-size: 0.75rem;
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
     opacity: 0.8;
 }
 
@@ -254,7 +254,7 @@
 /* Buttons */
 .dashboard-create-form .btn-back,
 .dashboard-create-form .btn-secondary {
-    color: var(--ux2-text-light, #D1D0D0);
+    color: var(--ux2-text-light, var(--ux2-text-light));
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(152, 134, 134, 0.3);
 }
@@ -269,12 +269,12 @@
 .dashboard-create-form #cover-upload {
     background: rgba(0, 0, 0, 0.3);
     border-color: rgba(152, 134, 134, 0.3);
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 .dashboard-create-form .upload-area p,
 .dashboard-create-form #cover-upload p {
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 /* Checkbox and toggle labels */
@@ -308,7 +308,7 @@
 }
 
 .dashboard-create-form .seating-config-section h3 {
-    color: var(--ux2-text-light, #D1D0D0);
+    color: var(--ux2-text-light, var(--ux2-text-light));
 }
 
 .dashboard-create-form .seating-config-toggle {
@@ -323,11 +323,11 @@
 .dashboard-create-form .seating-config-field input {
     background: rgba(0, 0, 0, 0.4);
     border-color: rgba(152, 134, 134, 0.4);
-    color: var(--ux2-text-light, #D1D0D0);
+    color: var(--ux2-text-light, var(--ux2-text-light));
 }
 
 .dashboard-create-form .seating-config-field small {
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 .dashboard-create-form .seating-config-info {
@@ -488,25 +488,25 @@
 }
 
 .dashboard-create-form .template-preview__name {
-    color: var(--ux2-text-light, #D1D0D0);
+    color: var(--ux2-text-light, var(--ux2-text-light));
 }
 
 .dashboard-create-form .template-preview__desc {
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 .dashboard-create-form .template-preview__icon {
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 /* Form help text */
 .dashboard-create-form .form-help-text {
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 /* Label optional badge */
 .dashboard-create-form .label-optional {
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 /* Required field marker */
@@ -527,7 +527,7 @@
 }
 
 .dashboard-create-form .image-upload p {
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 /* Event details fields from templates */
@@ -540,13 +540,13 @@
 .dashboard-create-form .event-details-fields select {
     background: rgba(0, 0, 0, 0.4);
     border-color: rgba(152, 134, 134, 0.4);
-    color: var(--ux2-text-light, #D1D0D0);
+    color: var(--ux2-text-light, var(--ux2-text-light));
 }
 
 /* SVG icons inside form */
 .dashboard-create-form .ec-icon,
 .dashboard-create-form svg {
-    color: var(--ux2-text-muted, #988686);
+    color: var(--ux2-text-muted, var(--ux2-text-muted));
 }
 
 /* Override focus-within label color for dark bg */
@@ -557,7 +557,7 @@
 /* Custom question add/remove buttons */
 .dashboard-create-form .btn-add-question,
 .dashboard-create-form .btn-remove-question {
-    color: var(--ux2-text-light, #D1D0D0);
+    color: var(--ux2-text-light, var(--ux2-text-light));
 }
 
 /* Form row spacing (for date/time side-by-side) */
@@ -618,29 +618,7 @@
 ================================E====================================================================
 */
 
-:root {
-    --button-border-radius: 8px;
-    --button-padding: 0.75rem 1.5rem;
-    --button-font-size: 1rem;
-    --button-font-weight: 600;
-    --button-line-height: 1.5;
-    --button-transition: all 0.2s ease-in-out;
-
-    --form-control-border-radius: 8px;
-    --form-control-padding: 0.75rem 1rem;
-    --form-control-font-size: 1rem;
-    --form-control-font-weight: 400;
-    --form-control-line-height: 1.5;
-    --form-control-transition: all 0.2s ease-in-out;
-
-    --card-border-radius: 12px;
-    --card-padding: 1.5rem;
-    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-    --checkbox-border-radius: 4px;
-    --checkbox-size: 1.25rem;
-    --checkbox-tick-size: 0.5rem;
-}
+/* Component tokens consolidated into styles.css :root */
 
 
 /*

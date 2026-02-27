@@ -1,22 +1,4 @@
-
-:root {
-    --primary-color: #000000;
-    --secondary-color: #5C4E4E;
-    --accent-color: #E8E7E7;
-    --text-color: #000000;
-    --white-color: #fff;
-    --box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-    --border-radius: 10px;
-
-    /* Gothic Noir Theme Palette */
-    --truffle-dark-brown: #5C4E4E;
-    --truffle-caramel: #988686;
-    --truffle-cream: #D1D0D0;
-    --truffle-darkest: #000000;
-
-    /* Re-purposing primary color for the new theme */
-    --primary-color: var(--truffle-dark-brown);
-}
+/* Variables consolidated into styles.css */
 
 /* ============================================
    V2 Login Page Styles
@@ -31,8 +13,8 @@
 
 .login-branding-v2 {
     flex: 1;
-    background-color: #D1D0D0;
-    color: #000000;
+    background-color: var(--ux2-text-light);
+    color: var(--ux2-navy-900);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,8 +65,8 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    background-color: #E8E7E7;
-    color: #000000;
+    background-color: var(--gray-50);
+    color: var(--ux2-navy-900);
     overflow-y: auto;
     padding: 80px 40px;
 }
@@ -93,10 +75,10 @@
 .login-form-container-v2 .auth__card {
     width: 450px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-    border: 1px solid #988686;
+    border: 1px solid var(--ux2-text-muted);
     background-color: #ffffff;
     border-radius: var(--border-radius);
-    color: #000000;
+    color: var(--ux2-navy-900);
 }
 
 /* Adjustments to original styles for V2 layout */
@@ -150,7 +132,7 @@ body {
     text-align: center;
     padding: 0;
     background: transparent;
-    color: #000000;
+    color: var(--ux2-navy-900);
 }
 
 .auth__icon {
@@ -175,7 +157,7 @@ body {
 .auth__tabs {
     display: flex;
     background-color: transparent;
-    border-bottom: 1px solid #D1D0D0;
+    border-bottom: 1px solid var(--ux2-text-light);
 }
 
 .auth__tab {
@@ -186,14 +168,14 @@ body {
     cursor: pointer;
     font-size: 16px;
     font-weight: 500;
-    color: #988686;
+    color: var(--ux2-text-muted);
     opacity: 0.7;
     transition: all 0.3s ease;
     position: relative;
 }
 
 .auth__tab--active {
-    color: #000000;
+    color: var(--ux2-navy-900);
     opacity: 1;
 }
 
@@ -204,7 +186,7 @@ body {
     left: 0;
     width: 100%;
     height: 3px;
-    background-color: #5C4E4E;
+    background-color: var(--ux2-gold);
     animation: slideInFromLeft 0.3s ease;
 }
 
@@ -252,7 +234,7 @@ body {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
-    color: #5C4E4E;
+    color: var(--ux2-gold);
     opacity: 0.9;
 }
 
@@ -261,8 +243,8 @@ body {
     width: 100%;
     padding: 12px 15px;
     background-color: #ffffff;
-    border: 1px solid #988686;
-    color: #000000;
+    border: 1px solid var(--ux2-text-muted);
+    color: var(--ux2-navy-900);
     border-radius: 5px;
     font-size: 14px;
     transition: all 0.3s ease;
@@ -270,12 +252,12 @@ body {
 
 .form-control:focus {
     outline: none;
-    border-color: #5C4E4E;
+    border-color: var(--ux2-gold);
     box-shadow: 0 0 5px rgba(92, 78, 78, 0.3);
 }
 
 .form-control::placeholder {
-    color: #988686;
+    color: var(--ux2-text-muted);
     opacity: 0.7;
 }
 
@@ -289,33 +271,25 @@ body {
 .auth__remember-label {
     margin-left: 10px;
     font-size: 14px;
-    color: #5C4E4E;
+    color: var(--ux2-gold);
     opacity: 0.8;
 }
 
-.btn {
-    display: inline-block;
+/* Login-scoped button overrides (base .btn defined in components.css) */
+.auth .btn {
     width: 100%;
     padding: 15px;
-    border: none;
     border-radius: 5px;
     font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-align: center;
-    text-decoration: none;
 }
 
-
-/* Buttons */
-.btn--primary {
-    background-color: #5C4E4E;
-    color: #D1D0D0;
+.auth .btn--primary {
+    background-color: var(--ux2-gold);
+    color: var(--ux2-text-light);
     font-weight: 700;
 }
 
-.btn--primary:hover {
+.auth .btn--primary:hover {
     filter: brightness(110%);
     transform: translateY(-2px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -330,7 +304,7 @@ body {
 .btn-link {
     background: none;
     border: none;
-    color: #5C4E4E;
+    color: var(--ux2-gold);
     font-size: 14px;
     cursor: pointer;
     text-decoration: none;
@@ -343,11 +317,11 @@ body {
 /* Info Section */
 .auth__info {
     padding: 20px 30px;
-    background-color: #E8E7E7;
+    background-color: var(--gray-50);
     font-size: 13px;
-    color: #5C4E4E;
+    color: var(--ux2-gold);
     opacity: 0.8;
-    border-top: 1px solid #D1D0D0;
+    border-top: 1px solid var(--ux2-text-light);
 }
 
 
@@ -368,7 +342,7 @@ body {
     text-align: center;
     background-color: transparent;
     font-size: 12px;
-    color: #988686;
+    color: var(--ux2-text-muted);
     opacity: 0.6;
 }
 
@@ -379,7 +353,7 @@ body {
 .branding-footer__brand {
     font-weight: 700;
     cursor: pointer;
-    color: #5C4E4E;
+    color: var(--ux2-gold);
 }
 
 #password-strength {
@@ -388,10 +362,10 @@ body {
 
 .strength-bar {
     height: 5px;
-    background-color: #D1D0D0;
+    background-color: var(--ux2-text-light);
     border-radius: 5px;
     overflow: hidden;
-    border: 1px solid #D1D0D0;
+    border: 1px solid var(--ux2-text-light);
 }
 
 .strength-bar div {

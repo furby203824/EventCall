@@ -1,10 +1,6 @@
 /* EventCall App Loader - Military Themed Loading Screen */
 
-/* Color Variables for Loader */
-:root {
-    --semper-red-alpha: rgba(92, 78, 78, 0.8);
-    --semper-red-dark: #000000;
-}
+/* Loader tokens consolidated into styles.css :root */
 
 /* Loader Overlay */
 .app-loader {
@@ -74,7 +70,7 @@
 
 /* Book Loader Animation */
 .book-loader {
-    background-color: #5C4E4E;
+    background-color: var(--ux2-gold);
     border-radius: 0.25em;
     box-shadow:
         0 0.25em 0.5em rgba(0, 0, 0, 0.5),
@@ -212,11 +208,11 @@
 @keyframes book-cover {
     from, 5%, 45%, 55%, 95%, to {
         animation-timing-function: ease-out;
-        background-color: #5C4E4E;
+        background-color: var(--ux2-gold);
     }
     10%, 40%, 60%, 90% {
         animation-timing-function: ease-in;
-        background-color: #000000;
+        background-color: var(--ux2-navy-900);
     }
 }
 

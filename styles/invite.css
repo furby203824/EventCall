@@ -8,7 +8,7 @@
     border-radius: 1.5rem;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(92, 78, 78, 0.15);
-    border: 3px solid #988686;
+    border: 3px solid var(--ux2-text-muted);
 }
 
 .invite-display-split {
@@ -18,7 +18,7 @@
     border-radius: 1.5rem;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(92, 78, 78, 0.15);
-    border: 3px solid #988686;
+    border: 3px solid var(--ux2-text-muted);
     display: flex;
     min-height: 600px;
 }
@@ -40,7 +40,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: #988686;
+    background: var(--ux2-text-muted);
 }
 
 .invite-cover {
@@ -81,7 +81,7 @@
     right: 0;
     bottom: 0;
     width: 4px;
-    background: #988686;
+    background: var(--ux2-text-muted);
     z-index: 3;
 }
 
@@ -110,7 +110,7 @@
 .invite-title {
     font-size: 2rem;
     font-weight: bold;
-    color: #000000;
+    color: var(--ux2-navy-900);
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -118,7 +118,7 @@
 .invite-title-main {
     font-size: 1.75rem;
     font-weight: bold;
-    color: #000000;
+    color: var(--ux2-navy-900);
     margin-bottom: 1.5rem;
     text-align: center;
 }
@@ -138,7 +138,7 @@
 
 .invite-detail strong {
     min-width: 80px;
-    color: #000000;
+    color: var(--ux2-navy-900);
 }
 
 /* RSVP Form */
@@ -150,7 +150,7 @@
 }
 
 .rsvp-form h3 {
-    color: #000000;
+    color: var(--ux2-navy-900);
     margin-bottom: 1rem;
     text-align: center;
     font-size: 1.25rem;
@@ -176,14 +176,14 @@
 }
 
 .rsvp-option:hover {
-    border-color: #5C4E4E;
+    border-color: var(--ux2-gold);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(92, 78, 78, 0.1);
 }
 
 .rsvp-option.selected {
-    border-color: #5C4E4E;
-    background: #5C4E4E;
+    border-color: var(--ux2-gold);
+    background: var(--ux2-gold);
     color: white;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(92, 78, 78, 0.2);
@@ -216,7 +216,7 @@
 }
 
 .rsvp-radio-option:hover {
-    border-color: #5C4E4E;
+    border-color: var(--ux2-gold);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(92, 78, 78, 0.1);
 }
@@ -227,7 +227,7 @@
 }
 
 .rsvp-radio-option input[type="radio"]:checked + span {
-    color: #5C4E4E;
+    color: var(--ux2-gold);
     font-weight: 700;
 }
 
@@ -288,7 +288,7 @@
 }
 
 .powered-by-link {
-    color: #5C4E4E;
+    color: var(--ux2-gold);
     font-weight: 700;
     text-decoration: none;
     font-size: 0.875rem;
@@ -296,7 +296,7 @@
 }
 
 .powered-by-link:hover {
-    color: #000000;
+    color: var(--ux2-navy-900);
 }
 
 /* Error States */
@@ -351,7 +351,7 @@
 }
 
 .rsvp-option:hover {
-    border-color: #988686;
+    border-color: var(--ux2-text-muted);
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(92, 78, 78, 0.15);
 }
@@ -361,7 +361,7 @@
 }
 
 .rsvp-option.selected {
-    border-color: #5C4E4E;
+    border-color: var(--ux2-gold);
     background: linear-gradient(135deg, #5C4E4E 0%, #000000 100%);
     color: white;
     transform: translateY(-3px);
@@ -388,14 +388,14 @@
 .rsvp-form .form-group select:focus,
 .rsvp-form .form-group textarea:focus {
     outline: none;
-    border-color: #5C4E4E;
+    border-color: var(--ux2-gold);
     box-shadow: 0 0 0 3px rgba(92, 78, 78, 0.1);
     transform: translateY(-1px);
 }
 
 .rsvp-form .form-group label {
     font-weight: 600;
-    color: #000000;
+    color: var(--ux2-navy-900);
     margin-bottom: 0.5rem;
     display: block;
 }
@@ -403,21 +403,21 @@
 /* Guest count section styling */
 #guest-count-group {
     background: linear-gradient(135deg, #D1D0D0 0%, #e0dfdf 100%);
-    border: 2px solid #988686;
+    border: 2px solid var(--ux2-text-muted);
     border-radius: 1rem;
     padding: 1.5rem;
     margin-top: 1rem;
 }
 
 #guest-count-group label {
-    color: #000000 !important;
+    color: var(--ux2-navy-900) !important;
     font-size: 1.1rem;
     margin-bottom: 1rem;
 }
 
 #guest-count {
     width: 100%;
-    border: 2px solid #988686 !important;
+    border: 2px solid var(--ux2-text-muted) !important;
     border-radius: 0.5rem;
     padding: 1rem;
     font-size: 1rem;
@@ -428,7 +428,7 @@
 /* Submit button enhancement */
 .rsvp-form .btn {
     background: linear-gradient(135deg, #5C4E4E 0%, #000000 100%);
-    border: 3px solid #988686;
+    border: 3px solid var(--ux2-text-muted);
     border-radius: 1rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -456,7 +456,7 @@
 .rsvp-form .btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(92, 78, 78, 0.4);
-    border-color: #5C4E4E;
+    border-color: var(--ux2-gold);
 }
 
 /* Responsive design */

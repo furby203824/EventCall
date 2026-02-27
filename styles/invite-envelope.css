@@ -3,14 +3,7 @@
    Premium animated envelope-style RSVP invitation
    ============================================================================= */
 
-/* CSS Variables for Envelope Theme */
-:root {
-    --envelope-color: #f3f4f6;
-    --envelope-dark: #e5e7eb;
-    --flap-color: #f9fafb;
-    --envelope-card-color: #ffffff;
-    --envelope-accent: #5C4E4E;
-}
+/* Envelope tokens consolidated into styles.css :root */
 
 /* Container for the envelope interaction */
 .envelope-container {

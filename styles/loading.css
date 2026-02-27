@@ -4,17 +4,7 @@
    - Progress bar: accessible, consistent
    WCAG AA compliant visual contrast and focus outlines */
 
-:root {
-  --spinner-size: 16px;
-  --spinner-border: 2px;
-  --spinner-color: #2563eb; /* indigo-600 */
-  --spinner-track: #c7d2fe; /* indigo-200 */
-  --skeleton-bg: #e5e7eb; /* gray-200 */
-  --skeleton-shimmer: #f3f4f6; /* gray-100 */
-  --progress-bg: #e5e7eb;
-  --progress-fill: #10b981; /* emerald-500 */
-  --progress-text: #111827; /* gray-900 */
-}
+/* Spinner/skeleton tokens consolidated into styles.css :root */
 
 .spinner {
   width: var(--spinner-size);
