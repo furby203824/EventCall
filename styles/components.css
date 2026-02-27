@@ -653,14 +653,14 @@
 }
 
 .btn--primary {
-    background-color: #5C4E4E;
-    color: #D1D0D0;
-    border-color: #5C4E4E;
+    background-color: var(--ux2-gold);
+    color: var(--ux2-text-light);
+    border-color: var(--ux2-gold);
 }
 
 .btn--primary:hover {
-    background-color: #000000;
-    border-color: #000000;
+    background-color: var(--ux2-navy-900);
+    border-color: var(--ux2-navy-900);
     box-shadow: 0 0 10px rgba(92, 78, 78, 0.3);
 }
 
@@ -710,13 +710,13 @@
 
 .btn--link {
     background-color: transparent;
-    color: #5C4E4E;
+    color: var(--ux2-gold);
     border-color: transparent;
     text-decoration: underline;
 }
 
 .btn--link:hover {
-    color: #000000;
+    color: var(--ux2-navy-900);
 }
 
 .btn--icon {
@@ -763,12 +763,12 @@
 
 .form-control:focus {
     outline: none;
-    border-color: #5C4E4E;
+    border-color: var(--ux2-gold);
     box-shadow: 0 0 0 3px rgba(92, 78, 78, 0.1);
 }
 
 .form-control:hover {
-    border-color: #5C4E4E;
+    border-color: var(--ux2-gold);
 }
 
 .form-control::placeholder {
@@ -885,12 +885,12 @@
 }
 
 .custom-checkbox:hover .custom-checkbox__box {
-    border-color: #5C4E4E;
+    border-color: var(--ux2-gold);
 }
 
 .custom-checkbox__input:checked + .custom-checkbox__box {
-    background-color: #5C4E4E;
-    border-color: #5C4E4E;
+    background-color: var(--ux2-gold);
+    border-color: var(--ux2-gold);
 }
 
 .custom-checkbox__input:checked + .custom-checkbox__box .custom-checkbox__tick {
@@ -966,7 +966,7 @@
 }
 
 .badge--primary {
-    background-color: #5C4E4E;
+    background-color: var(--ux2-gold);
 }
 
 .badge--secondary {
