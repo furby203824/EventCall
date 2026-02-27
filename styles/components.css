@@ -120,7 +120,9 @@
 }
 
 /* ── Template accordion ── */
-#create .template-accordion {
+/* Selectors cover both the #create page and the inline dashboard form */
+#create .template-accordion,
+#dashboard-create-form .template-accordion {
     margin: 1rem 0 1.25rem;
     border: 1px solid rgba(152, 134, 134, 0.2);
     border-radius: 8px;
@@ -128,7 +130,8 @@
     background: rgba(0, 0, 0, 0.15);
 }
 
-#create .template-accordion__toggle {
+#create .template-accordion__toggle,
+#dashboard-create-form .template-accordion__toggle {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -148,27 +151,32 @@
     transition: background 0.15s ease;
 }
 
-#create .template-accordion__toggle:hover {
+#create .template-accordion__toggle:hover,
+#dashboard-create-form .template-accordion__toggle:hover {
     background: rgba(0, 0, 0, 0.35);
 }
 
-#create .template-accordion__chevron {
+#create .template-accordion__chevron,
+#dashboard-create-form .template-accordion__chevron {
     flex-shrink: 0;
     transition: transform 0.2s ease;
     color: var(--ux2-text-muted, #988686);
 }
 
 /* Rotate chevron when open */
-#create .template-accordion--open .template-accordion__chevron {
+#create .template-accordion--open .template-accordion__chevron,
+#dashboard-create-form .template-accordion--open .template-accordion__chevron {
     transform: rotate(180deg);
 }
 
-#create .template-accordion__title {
+#create .template-accordion__title,
+#dashboard-create-form .template-accordion__title {
     font-weight: 600;
     color: rgba(147, 197, 253, 0.9);
 }
 
-#create .template-accordion__hint {
+#create .template-accordion__hint,
+#dashboard-create-form .template-accordion__hint {
     margin-left: auto;
     font-size: 0.75rem;
     color: var(--ux2-text-muted, #988686);
@@ -176,17 +184,20 @@
 }
 
 /* Collapsible body */
-#create .template-accordion__body {
+#create .template-accordion__body,
+#dashboard-create-form .template-accordion__body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
 }
 
-#create .template-accordion--open .template-accordion__body {
+#create .template-accordion--open .template-accordion__body,
+#dashboard-create-form .template-accordion--open .template-accordion__body {
     max-height: 800px;
 }
 
-#create .template-accordion__grid {
+#create .template-accordion__grid,
+#dashboard-create-form .template-accordion__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 0.75rem;
@@ -194,7 +205,8 @@
 }
 
 /* Template cards */
-#create .template-card {
+#create .template-card,
+#dashboard-create-form .template-card {
     display: flex;
     flex-direction: column;
     padding: 0.75rem 0.85rem;
@@ -207,20 +219,23 @@
     line-height: 1.4;
 }
 
-#create .template-card:hover {
+#create .template-card:hover,
+#dashboard-create-form .template-card:hover {
     border-color: #3A7CC6;
     background: #ffffff;
     box-shadow: 0 2px 8px rgba(91, 155, 213, 0.3);
 }
 
-#create .template-card__icon {
+#create .template-card__icon,
+#dashboard-create-form .template-card__icon {
     display: block;
     font-size: 1.25rem;
     margin-bottom: 0.35rem;
     line-height: 1;
 }
 
-#create .template-card__name {
+#create .template-card__name,
+#dashboard-create-form .template-card__name {
     display: block;
     font-weight: 600;
     font-size: 0.85rem;
@@ -228,7 +243,8 @@
     margin-bottom: 0.2rem;
 }
 
-#create .template-card__desc {
+#create .template-card__desc,
+#dashboard-create-form .template-card__desc {
     display: block;
     font-size: 0.75rem;
     color: #555;
