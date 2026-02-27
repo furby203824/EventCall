@@ -1039,13 +1039,13 @@
 }
 
 .alert-primary {
-    color: #5C4E4E;
-    background-color: #E8E7E7;
-    border-color: #D1D0D0;
+    color: var(--ux2-gold);
+    background-color: var(--gray-50);
+    border-color: var(--ux2-text-light);
 }
 
 .alert-primary .alert-link {
-    color: #000000;
+    color: var(--ux2-navy-900);
 }
 
 .alert-secondary {
@@ -1151,7 +1151,7 @@
     pointer-events: auto;
     background-color: #ffffff;
     background-clip: padding-box;
-    border: 1px solid #988686;
+    border: 1px solid var(--ux2-text-muted);
     border-radius: var(--card-border-radius);
     outline: 0;
 }
@@ -1162,7 +1162,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1rem;
-    border-bottom: 1px solid #988686;
+    border-bottom: 1px solid var(--ux2-text-muted);
     border-top-left-radius: var(--card-border-radius);
     border-top-right-radius: var(--card-border-radius);
 }
@@ -1185,7 +1185,7 @@
     align-items: center;
     justify-content: flex-end;
     padding: 0.75rem;
-    border-top: 1px solid #988686;
+    border-top: 1px solid var(--ux2-text-muted);
     border-bottom-right-radius: var(--card-border-radius);
     border-bottom-left-radius: var(--card-border-radius);
 }
@@ -1224,7 +1224,7 @@
 
  .welcome-card {
      background: #ffffff;
-     border: 1px solid #988686;
+     border: 1px solid var(--ux2-text-muted);
      border-radius: 12px;
      padding: 2rem;
      margin-bottom: 1.5rem;
@@ -1244,7 +1244,7 @@
      gap: 0.75rem;
      font-size: 1.75rem;
      font-weight: 700;
-     color: #000000;
+     color: var(--ux2-navy-900);
  }
 
  .welcome-title .icon-medal {
@@ -1261,7 +1261,7 @@
  .welcome-disclaimer {
      font-size: 0.75rem;
      line-height: 1.4;
-     color: #988686;
+     color: var(--ux2-text-muted);
      margin-top: 0.5rem;
  }
 
