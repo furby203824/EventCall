@@ -350,6 +350,15 @@ select option {
     position: relative;
 }
 
+.nav-brand {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2C2C2C;
+    letter-spacing: -0.02em;
+    display: none; /* Shown only on mobile alongside hamburger */
+}
+
 .nav-hamburger {
     display: none; /* Hidden on desktop */
     background: none;

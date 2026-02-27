@@ -80,6 +80,10 @@
         display: flex; /* Show hamburger on mobile */
     }
 
+    .nav-brand {
+        display: block; /* Show brand title on mobile */
+    }
+
     .main-nav {
         position: relative;
         z-index: var(--z-nav-menu, 900);
