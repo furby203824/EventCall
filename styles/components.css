@@ -198,19 +198,19 @@
     display: flex;
     flex-direction: column;
     padding: 0.75rem 0.85rem;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1.5px solid rgba(152, 134, 134, 0.25);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1.5px solid #5B9BD5;
     border-radius: 8px;
     cursor: pointer;
     transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
-    color: var(--ux2-text-light, #D1D0D0);
+    color: #2C2C2C;
     line-height: 1.4;
 }
 
 #create .template-card:hover {
-    border-color: rgba(152, 134, 134, 0.55);
-    background: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    border-color: #3A7CC6;
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(91, 155, 213, 0.3);
 }
 
 #create .template-card__icon {
@@ -224,14 +224,14 @@
     display: block;
     font-weight: 600;
     font-size: 0.85rem;
-    color: var(--ux2-text-light, #D1D0D0);
+    color: #2C2C2C;
     margin-bottom: 0.2rem;
 }
 
 #create .template-card__desc {
     display: block;
     font-size: 0.75rem;
-    color: var(--ux2-text-muted, #988686);
+    color: #555;
     line-height: 1.35;
 }
 
