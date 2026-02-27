@@ -127,7 +127,7 @@ class EventTemplates {
             familyDay: {
                 id: 'familyDay',
                 name: 'Family Day',
-                icon: icon('users'),
+                icon: '',
                 description: 'Family-friendly unit event',
                 defaultTitle: 'Family Day Event',
                 defaultDescription: 'Bring your families to celebrate and build camaraderie outside of duty hours.',
@@ -143,7 +143,7 @@ class EventTemplates {
             memorial: {
                 id: 'memorial',
                 name: 'Memorial Service',
-                icon: icon('sparkles'),
+                icon: '',
                 description: 'Honor fallen Marines',
                 defaultTitle: 'Memorial Service',
                 defaultDescription: 'We gather to honor and remember those who made the ultimate sacrifice.',
@@ -266,19 +266,18 @@ class EventTemplates {
 
         return `
             <div class="template-accordion">
-                <button type="button" class="template-accordion__toggle" aria-expanded="false" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'); this.parentElement.classList.toggle('template-accordion--open');">
+                <button type="button" class="template-accordion__toggle" aria-expanded="false" onclick="var open=this.parentElement.classList.toggle('template-accordion--open');this.setAttribute('aria-expanded',open);var body=this.nextElementSibling;if(open){body.style.maxHeight=body.scrollHeight+'px';body.style.overflow='hidden';}else{body.style.maxHeight='0';body.style.overflow='hidden';}">
                     <svg class="template-accordion__chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     <span class="template-accordion__title">Event Templates</span>
                     <span class="template-accordion__hint">Quick-start from a template</span>
                 </button>
-                <div class="template-accordion__body">
+                <div class="template-accordion__body" style="max-height:0;overflow:hidden;">
                     <div class="template-accordion__grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem;padding:0.75rem 0.85rem 0.85rem;">
                         ${templates.map(template => `
                             <div class="template-card" role="button" tabindex="0"
                                  style="display:flex;flex-direction:column;padding:0.75rem 0.85rem;background:rgba(255,255,255,0.92);border:1.5px solid #5B9BD5;border-radius:8px;cursor:pointer;color:#2C2C2C;line-height:1.4;"
                                  onclick="window.eventTemplates.applyTemplate('${template.id}')"
                                  onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
-                                <div style="font-size:1.25rem;margin-bottom:0.35rem;line-height:1;">${template.icon}</div>
                                 <div style="font-weight:600;font-size:0.85rem;color:#2C2C2C;margin-bottom:0.2rem;">${template.name}</div>
                                 <div style="font-size:0.75rem;color:#555;">${template.description}</div>
                             </div>
