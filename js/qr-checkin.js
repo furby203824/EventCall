@@ -61,20 +61,20 @@ class QRCheckIn {
         }
 
         return `
-            <div style="margin: 2rem 0; padding: 1.5rem; background: white; border: 2px solid #3b82f6; border-radius: 1rem; text-align: center;">
-                <div style="font-weight: 700; font-size: 1.25rem; color: #1e40af; margin-bottom: 1rem;">
+            <div class="checkin-qr-card">
+                <div class="checkin-qr-card__heading">
                     Mobile Check-In QR Code
                 </div>
-                <div style="margin: 1.5rem 0;">
-                    <img src="${qrDataURL}" alt="Check-in QR Code" style="max-width: 250px; height: auto; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <div class="checkin-qr-card__image">
+                    <img src="${qrDataURL}" alt="Check-in QR Code">
                 </div>
-                <div style="font-size: 0.875rem; color: #4b5563; margin-top: 1rem; line-height: 1.6;">
+                <div class="checkin-qr-card__instructions">
                     <strong>For Event Day:</strong><br>
                     Save or screenshot this QR code and present it at check-in.<br>
                     Event organizers will scan it for fast entry.
                 </div>
-                <div style="margin-top: 1rem; padding: 0.75rem; background: #f0f9ff; border-radius: 0.5rem; font-size: 0.75rem; color: #1e40af;">
-                    <strong>Check-in ID:</strong> <code style="background: white; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-family: monospace;">${checkInToken.substring(0, 8)}</code>
+                <div class="checkin-qr-card__token">
+                    <strong>Check-in ID:</strong> <code>${checkInToken.substring(0, 8)}</code>
                 </div>
             </div>
         `;
@@ -195,37 +195,35 @@ class QRCheckIn {
      */
     generateCheckInInterfaceHTML(eventId) {
         return `
-            <div class="check-in-interface" style="padding: 2rem; background: white; border-radius: 1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                <h2 style="color: #1e40af; margin-bottom: 1.5rem;">Event Check-In</h2>
+            <div class="check-in-interface">
+                <h2>Event Check-In</h2>
 
                 <!-- Manual Check-in -->
-                <div style="margin-bottom: 2rem; padding: 1.5rem; background: #f0f9ff; border-radius: 0.5rem;">
-                    <h3 style="margin-bottom: 1rem;">Manual Check-In</h3>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <div class="checkin-section">
+                    <h3>Manual Check-In</h3>
+                    <div class="checkin-form-row">
                         <input type="text"
                                id="manual-checkin-id"
-                               placeholder="Enter RSVP ID or Check-in Token..."
-                               style="flex: 1; min-width: 200px; padding: 0.75rem; border: 2px solid #e5e7eb; border-radius: 0.5rem; font-size: 1rem;">
+                               placeholder="Enter RSVP ID or Check-in Token...">
                         <button onclick="window.qrCheckIn.manualCheckIn('${eventId}')"
-                                class="btn"
-                                style="padding: 0.75rem 1.5rem;">
+                                class="btn">
                             Check In
                         </button>
                     </div>
                 </div>
 
                 <!-- Check-in Statistics -->
-                <div id="checkin-stats-${eventId}" style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 1rem;">Check-In Statistics</h3>
-                    <div id="checkin-stats-content-${eventId}" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                <div id="checkin-stats-${eventId}" class="checkin-section">
+                    <h3>Check-In Statistics</h3>
+                    <div id="checkin-stats-content-${eventId}" class="checkin-stats-grid">
                         <!-- Stats will be populated here -->
                     </div>
                 </div>
 
                 <!-- Recent Check-Ins -->
                 <div id="recent-checkins-${eventId}">
-                    <h3 style="margin-bottom: 1rem;">Recent Check-Ins</h3>
-                    <div id="recent-checkins-list-${eventId}" style="max-height: 400px; overflow-y: auto;">
+                    <h3>Recent Check-Ins</h3>
+                    <div id="recent-checkins-list-${eventId}" class="checkin-recent-list">
                         <!-- Recent check-ins will be populated here -->
                     </div>
                 </div>
@@ -282,9 +280,9 @@ class QRCheckIn {
 
         if (statsContainer) {
             statsContainer.innerHTML = window.utils.sanitizeHTML(`
-                <div style="padding: 1rem; background: #dcfce7; border-radius: 0.5rem; text-align: center;">
-                    <div style="font-size: 2rem; font-weight: 700; color: #16a34a;">${window.utils.escapeHTML(String(checkIns.length))}</div>
-                    <div style="font-size: 0.875rem; color: #15803d;">Checked In</div>
+                <div class="checkin-stat-card">
+                    <div class="checkin-stat-card__number">${window.utils.escapeHTML(String(checkIns.length))}</div>
+                    <div class="checkin-stat-card__label">Checked In</div>
                 </div>
             `);
         }
@@ -292,15 +290,15 @@ class QRCheckIn {
         if (recentContainer) {
             if (checkIns.length === 0) {
                 recentContainer.innerHTML = window.utils.sanitizeHTML(`
-                    <div style="padding: 2rem; text-align: center; color: #6b7280;">
+                    <div class="checkin-empty">
                         No check-ins yet
                     </div>
                 `);
             } else {
                 recentContainer.innerHTML = window.utils.sanitizeHTML(checkIns.reverse().slice(0, 10).map(checkIn => `
-                    <div style="padding: 1rem; margin-bottom: 0.5rem; background: #f9fafb; border-left: 4px solid #10b981; border-radius: 0.5rem;">
-                        <div style="font-weight: 600;">RSVP ID: ${window.utils.escapeHTML(checkIn.rsvpId.substring(0, 8))}...</div>
-                        <div style="font-size: 0.875rem; color: #6b7280; margin-top: 0.25rem;">
+                    <div class="checkin-entry">
+                        <div class="checkin-entry__id">RSVP ID: ${window.utils.escapeHTML(checkIn.rsvpId.substring(0, 8))}...</div>
+                        <div class="checkin-entry__time">
                             ${new Date(checkIn.checkInTime).toLocaleString()}
                         </div>
                     </div>

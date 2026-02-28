@@ -1368,3 +1368,216 @@
     background: rgba(92, 78, 78, 0.05);
     transform: translateY(-2px);
 }
+
+/* ============================================
+   QR CODE MODAL
+   ============================================ */
+
+.qr-modal {
+    max-width: 500px;
+}
+
+.qr-modal .modal-body {
+    text-align: center;
+}
+
+.qr-modal__title {
+    margin: 0 0 1rem 0;
+    color: var(--ui-gray-700);
+}
+
+.qr-modal__desc {
+    color: var(--ui-gray-500);
+    margin: 0 0 1.5rem 0;
+    font-size: 0.875rem;
+}
+
+.qr-code-container {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 0 1.5rem 0;
+    display: inline-block;
+}
+
+.qr-code-container img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.qr-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.qr-info {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: var(--ui-gray-50);
+    border-radius: 0.5rem;
+    text-align: left;
+}
+
+.qr-info h5 {
+    margin: 0 0 0.5rem 0;
+    color: var(--ui-gray-700);
+    font-size: 0.875rem;
+}
+
+.qr-info ul {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: var(--ui-gray-500);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+}
+
+/* ============================================
+   QR CHECK-IN COMPONENTS
+   ============================================ */
+
+/* Guest-facing QR card */
+.checkin-qr-card {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: white;
+    border: 2px solid var(--ux2-info);
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.checkin-qr-card__heading {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--ux2-info-dark);
+    margin-bottom: 1rem;
+}
+
+.checkin-qr-card__image {
+    margin: 1.5rem 0;
+}
+
+.checkin-qr-card__image img {
+    max-width: 250px;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.checkin-qr-card__instructions {
+    font-size: 0.875rem;
+    color: var(--ui-gray-500);
+    margin-top: 1rem;
+    line-height: 1.6;
+}
+
+.checkin-qr-card__token {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: var(--ux2-info-bg);
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--ux2-info-dark);
+}
+
+.checkin-qr-card__token code {
+    background: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-family: monospace;
+}
+
+/* Organizer check-in interface */
+.check-in-interface {
+    padding: 2rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.check-in-interface h2 {
+    color: var(--ux2-info-dark);
+    margin-bottom: 1.5rem;
+}
+
+.checkin-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--ux2-info-bg);
+    border-radius: 0.5rem;
+}
+
+.checkin-section h3 {
+    margin-bottom: 1rem;
+}
+
+.checkin-form-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.checkin-form-row input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.75rem;
+    border: 2px solid var(--ui-gray-200);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.checkin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.checkin-stat-card {
+    padding: 1rem;
+    background: var(--ux2-success-bg-medium);
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.checkin-stat-card__number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--ux2-success-dark);
+}
+
+.checkin-stat-card__label {
+    font-size: 0.875rem;
+    color: #15803d;
+}
+
+.checkin-recent-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.checkin-entry {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    background: var(--ui-gray-50);
+    border-left: 4px solid var(--ux2-success);
+    border-radius: 0.5rem;
+}
+
+.checkin-entry__id {
+    font-weight: 600;
+}
+
+.checkin-entry__time {
+    font-size: 0.875rem;
+    color: var(--ui-gray-500);
+    margin-top: 0.25rem;
+}
+
+.checkin-empty {
+    padding: 2rem;
+    text-align: center;
+    color: var(--ui-gray-500);
+}

@@ -298,6 +298,23 @@ body {
     color: #92400e;
 }
 
+#sync-status-banner > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#sync-status-banner .sync-icon {
+    font-size: 1.2rem;
+}
+
+#sync-status-banner .btn {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
 /* Edit Mode Banner — shown on RSVP edit */
 .edit-mode-banner {
     background: linear-gradient(135deg, var(--ux2-warning), #f59e0b);
