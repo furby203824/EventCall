@@ -119,20 +119,20 @@
         width: 100%;
     }
 
-    /* All nav links uniform in mobile menu */
+    /* All nav links uniform in mobile menu — specificity via .main-nav .nav-link (0-2-0+) beats base .nav-link (0-1-0) */
     .main-nav .nav-link,
     .main-nav .nav-link.dashboard-tab,
     .main-nav .nav-link.dashboard-tab--active {
         width: 100%;
         text-align: left;
-        padding: 0.875rem 1.5rem !important;
-        font-size: 1rem !important;
-        font-weight: 500 !important;
-        color: var(--ux2-gold) !important;
-        background: transparent !important;
-        border: none !important;
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: var(--ux2-gold);
+        background: transparent;
+        border: none;
         border-radius: 0;
-        border-bottom: none !important;
+        border-bottom: none;
         min-height: 48px;
         display: flex;
         align-items: center;
@@ -140,14 +140,14 @@
 
     .main-nav .nav-link:hover,
     .main-nav .nav-link.dashboard-tab:hover {
-        background-color: var(--gray-50) !important;
+        background-color: var(--gray-50);
     }
 
     .main-nav .nav-link.active,
     .main-nav .nav-link.dashboard-tab--active {
-        background-color: var(--gray-50) !important;
-        border-left: 3px solid var(--ux2-gold) !important;
-        font-weight: 600 !important;
+        background-color: var(--gray-50);
+        border-left: 3px solid var(--ux2-gold);
+        font-weight: 600;
     }
     
     /* Page Content */

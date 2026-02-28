@@ -137,30 +137,30 @@
     height: 300px;
 }
 
-/* Filter Select (time range, attendee filter) */
-.filter-select {
+/* Filter Select (time range, attendee filter) — #admin scope beats base .filter-select */
+#admin .filter-select {
     background: #ffffff;
     border: 1px solid rgba(152, 134, 134, 0.3);
     border-radius: 0.5rem;
     padding: 0.5rem 1rem;
-    color: var(--ux2-gold) !important;
+    color: var(--ux2-gold);
     font-size: 0.875rem;
     font-weight: 600;
     cursor: pointer;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.filter-select:hover {
+#admin .filter-select:hover {
     border-color: var(--ux2-gold);
 }
 
-.filter-select:focus {
+#admin .filter-select:focus {
     outline: none;
     border-color: var(--ux2-gold);
     box-shadow: 0 0 0 2px rgba(92, 78, 78, 0.2);
 }
 
-.filter-select option {
+#admin .filter-select option {
     background: #ffffff;
     color: var(--ux2-gold);
 }
@@ -401,10 +401,11 @@
     flex-wrap: nowrap;
 }
 
-.empty-table-message {
+/* td.empty-table-message beats .response-table td for padding override */
+td.empty-table-message {
     text-align: center;
     color: var(--ux2-text-muted);
-    padding: 2rem !important;
+    padding: 2rem;
     font-style: italic;
 }
 

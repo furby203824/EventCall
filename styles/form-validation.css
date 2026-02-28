@@ -15,14 +15,20 @@
     gap: 0.5rem;
 }
 
-/* Invalid field styling */
-.is-invalid {
-    border-color: var(--truffle-caramel) !important;
-    border-width: 2px !important;
+/* Invalid field styling — compound selectors beat .form-control base (0-2-0 > 0-1-0) */
+.form-control.is-invalid,
+input.is-invalid,
+select.is-invalid,
+textarea.is-invalid {
+    border-color: var(--truffle-caramel);
+    border-width: 2px;
 }
 
-.is-valid {
-    border-color: var(--ux2-success) !important;
+.form-control.is-valid,
+input.is-valid,
+select.is-valid,
+textarea.is-valid {
+    border-color: var(--ux2-success);
 }
 
 /* Focus state for invalid fields */
@@ -89,10 +95,11 @@ input[type="checkbox"]:focus {
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
-button:focus-visible {
+button:focus-visible,
+.form-control:focus-visible {
     outline: none;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
-    border-color: var(--ux2-info) !important;
+    border-color: var(--ux2-info);
 }
 
 /* Button interactions */
