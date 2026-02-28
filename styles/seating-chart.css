@@ -206,7 +206,7 @@
 
 .table-capacity.almost-full {
     background: var(--warning-color, #ffc107);
-    color: #333;
+    color: var(--ui-gray-900);
 }
 
 .table-guests-list {
@@ -242,7 +242,7 @@
 .table-guest-count {
     color: var(--text-muted, #666);
     font-size: 0.8rem;
-    background: #e0e7ff;
+    background: var(--ux2-info-bg);
     padding: 0.1rem 0.4rem;
     border-radius: 10px;
 }
@@ -417,7 +417,7 @@
 
 .attendee-table-badge.unassigned {
     background: var(--warning-color, #ffc107);
-    color: #333;
+    color: var(--ui-gray-900);
 }
 
 /* Responsive Design */

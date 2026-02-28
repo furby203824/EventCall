@@ -544,7 +544,7 @@
     
     .event-card {
         box-shadow: none;
-        border: 1px solid #ccc;
+        border: 1px solid var(--ui-gray-300);
         page-break-inside: avoid;
     }
     
@@ -555,6 +555,6 @@
     .response-table th,
     .response-table td {
         padding: 0.25rem;
-        border: 1px solid #ccc;
+        border: 1px solid var(--ui-gray-300);
     }
 }

@@ -12,10 +12,10 @@
     width: 45%;
     min-width: 340px;
     max-width: 560px;
-    border-right: 1px solid #D9D5D5;
+    border-right: 1px solid var(--gray-200);
     overflow-y: auto;
     padding: var(--space-4);
-    background-color: #f9f8f8;
+    background-color: var(--ui-gray-50);
 }
 
 /* Right column – welcome card / event detail */
@@ -38,7 +38,7 @@
         max-width: none;
         min-width: 0;
         border-right: none;
-        border-bottom: 1px solid #D9D5D5;
+        border-bottom: 1px solid var(--gray-200);
         max-height: 50vh;
     }
 

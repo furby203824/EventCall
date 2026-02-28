@@ -598,7 +598,7 @@ body::before {
     border-radius: 0.75rem;
     overflow: hidden;
     background: var(--gray-50);
-    border: 1px solid #D9D5D5;
+    border: 1px solid var(--gray-200);
 }
 
 .skeleton-cover {
