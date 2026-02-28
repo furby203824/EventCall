@@ -497,16 +497,7 @@ function updateDashboardSyncStatus(pendingCount) {
     if (pendingCount > 0) {
         const syncBanner = document.createElement('div');
         syncBanner.id = 'sync-status-banner';
-        syncBanner.style.cssText = `
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px solid #f59e0b;
-            border-radius: 0.75rem;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            text-center: center;
-            font-weight: 600;
-            color: #92400e;
-        `;
+        /* Styling via #sync-status-banner in main.css */
         // Keep inline onclick; escape dynamic pieces
         syncBanner.innerHTML = `
             <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
@@ -770,7 +761,7 @@ async function loadManagerData() {
                     console.log(`✅ Loaded responses for ${Object.keys(window.responses).length} events from backend`);
 
                     if (typeof updatePendingRSVPCount === 'function' && window.githubAPI) {
-                        updatePendingRSVPCount().catch(() => {});
+                        updatePendingRSVPCount().catch(err => console.warn('Pending RSVP count update failed:', err));
                     }
 
                 } catch (error) {
@@ -1162,7 +1153,7 @@ function updateLoadMoreButton(container, listType, shown, total) {
         // Create new button with proper event listener (not inline onclick)
         const buttonContainer = document.createElement('div');
         buttonContainer.className = 'load-more-btn';
-        buttonContainer.style.cssText = 'text-align: center; margin-top: 1.5rem;';
+        /* Styling via .load-more-btn in main.css */
 
         const button = document.createElement('button');
         button.className = 'btn btn-secondary';

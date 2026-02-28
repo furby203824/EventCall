@@ -161,16 +161,7 @@ class RSVPHandler {
 
         const banner = document.createElement('div');
         banner.className = 'edit-mode-banner';
-        banner.style.cssText = `
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            color: #78350f;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-            text-align: center;
-            border: 2px solid #fcd34d;
-        `;
+        /* Styling via .edit-mode-banner in main.css */
         banner.innerHTML = window.utils.sanitizeHTML('<strong>Edit Mode:</strong> You are updating your existing RSVP');
 
         const firstChild = inviteContent.firstChild;

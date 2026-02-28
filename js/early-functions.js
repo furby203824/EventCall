@@ -1413,32 +1413,7 @@ function showToast(message, type = 'success') {
     toast.className = `toast ${type}`;
     toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
     toast.setAttribute('aria-live', type === 'error' ? 'assertive' : 'polite');
-    toast.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 1rem 1.5rem;
-        border-radius: 0.5rem;
-        color: white;
-        font-weight: 600;
-        z-index: 10000;
-        animation: slideIn 0.3s ease;
-        ${type === 'success' ? 'background: #10b981;' : type === 'warning' ? 'background: #f59e0b;' : 'background: #ef4444;'}
-    `;
     toast.textContent = message;
-    
-    // Add animation styles if not present
-    if (!document.querySelector('#toast-styles')) {
-        const style = document.createElement('style');
-        style.id = 'toast-styles';
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(100%); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-        `;
-        document.head.appendChild(style);
-    }
     
     document.body.appendChild(toast);
     

@@ -101,7 +101,9 @@ async function getEventForRSVP(eventId) {
         try {
             const all = await window.BackendAPI.loadEvents();
             return all[eventId] || null;
-        } catch (_) {}
+        } catch (err) {
+            console.warn('Failed to load event from backend:', err);
+        }
     }
 
     return null;

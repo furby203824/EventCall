@@ -339,12 +339,7 @@
     if (!indicator) {
       indicator = document.createElement('div');
       indicator.id = 'event-autosave-indicator';
-      indicator.style.cssText = `
-        position: fixed; bottom: 20px; right: 20px; padding: 8px 16px;
-        background: rgba(16, 185, 129, 0.9); color: white; border-radius: 8px;
-        font-size: 14px; z-index: 1000; opacity: 0; transition: opacity 0.3s ease;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      `;
+      /* Styling via #event-autosave-indicator in main.css */
       indicator.textContent = 'Draft saved';
       document.body.appendChild(indicator);
     }
