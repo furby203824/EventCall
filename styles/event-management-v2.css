@@ -382,13 +382,13 @@
 
 .btn-reminder {
     background: rgba(96, 165, 250, 0.15);
-    color: #3b82f6;
-    border: 1px solid #60a5fa;
+    color: var(--ux2-info);
+    border: 1px solid var(--ux2-info-light);
 }
 
 .btn-reminder:hover {
     background: rgba(96, 165, 250, 0.25);
-    border-color: #3b82f6;
+    border-color: var(--ux2-info);
 }
 
 .btn-export {
@@ -580,11 +580,11 @@
   color: var(--ux2-gold);
 }
 .more-group .dropdown .btn-tertiary.danger {
-  color: #dc2626;
+  color: var(--ux2-danger);
 }
 .more-group .dropdown .btn-tertiary.danger:hover {
   background: rgba(239, 68, 68, 0.12);
-  color: #dc2626;
+  color: var(--ux2-danger);
 }
 .dropdown-divider {
   height: 1px;
@@ -629,7 +629,7 @@
 /* Stat card detail line */
 .stat-card-detail {
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--ui-gray-500);
   margin-top: 0.5rem;
   font-weight: 500;
 }
@@ -928,7 +928,7 @@
 
 .status-declined {
     background: rgba(248, 113, 113, 0.15);
-    color: #dc2626;
+    color: var(--ux2-danger);
     border: 1px solid #f87171;
 }
 
@@ -986,7 +986,7 @@
 }
 
 .btn-danger-attendee {
-    color: #dc2626;
+    color: var(--ux2-danger);
     border-color: #f87171;
     background: rgba(239, 68, 68, 0.1);
 }
@@ -1305,7 +1305,7 @@
 
 .custom-question-title {
     font-weight: 600;
-    color: #1e40af;
+    color: var(--ux2-info-dark);
 }
 
 .custom-question-required {
@@ -1320,19 +1320,19 @@
 }
 
 .question-optional-label {
-    color: #6b7280;
+    color: var(--ui-gray-500);
 }
 
 .custom-question-meta {
     font-size: 0.875rem;
-    color: #475569;
+    color: var(--ui-gray-500);
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
 .custom-question-options {
-    color: #6b7280;
+    color: var(--ui-gray-500);
 }
 
 /* ============================================

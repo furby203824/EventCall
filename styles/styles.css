@@ -202,21 +202,49 @@
   --checkbox-size: 1.25rem;
   --checkbox-tick-size: 0.5rem;
 
+  /* === UI Neutral Grays (for light-background contexts) === */
+  --ui-gray-50: #f9fafb;
+  --ui-gray-100: #f3f4f6;
+  --ui-gray-200: #e5e7eb;
+  --ui-gray-300: #d1d5db;
+  --ui-gray-400: #9ca3af;
+  --ui-gray-500: #6b7280;
+  --ui-gray-700: #374151;
+  --ui-gray-800: #1f2937;
+  --ui-gray-900: #111827;
+
+  /* === Status Background Tints === */
+  --ux2-danger-bg: #fef2f2;
+  --ux2-success-bg: #f0fdf4;
+  --ux2-success-bg-medium: #d1fae5;
+  --ux2-warning-bg: #fef3c7;
+  --ux2-info-bg: #f0f9ff;
+  --ux2-info-border: #bae6fd;
+  --ux2-info-dark: #1e40af;
+
+  /* === Button Hover Variants === */
+  --ux2-success-hover: #0f9b6b;
+  --ux2-danger-hover: #d63232;
+
+  /* === Template / Accent Blues === */
+  --template-blue: #5B9BD5;
+  --template-blue-hover: #3A7CC6;
+
   /* === Loading / Spinner === */
   --spinner-size: 16px;
   --spinner-border: 2px;
   --spinner-color: #2563eb;
   --spinner-track: #c7d2fe;
-  --skeleton-bg: #e5e7eb;
-  --skeleton-shimmer: #f3f4f6;
-  --progress-bg: #e5e7eb;
-  --progress-fill: #10b981;
-  --progress-text: #111827;
+  --skeleton-bg: var(--ui-gray-200);
+  --skeleton-shimmer: var(--ui-gray-100);
+  --progress-bg: var(--ui-gray-200);
+  --progress-fill: var(--ux2-success);
+  --progress-text: var(--ui-gray-900);
 
   /* === Envelope Invitation === */
-  --envelope-color: #f3f4f6;
-  --envelope-dark: #e5e7eb;
-  --flap-color: #f9fafb;
+  --envelope-color: var(--ui-gray-100);
+  --envelope-dark: var(--ui-gray-200);
+  --flap-color: var(--ui-gray-50);
   --envelope-card-color: #ffffff;
   --envelope-accent: #5C4E4E;
 }
@@ -272,7 +300,7 @@
 #password-strength { margin-bottom: 2rem; min-height: 1.5rem; }
 
 .auth__info { margin-top: 2rem; padding: 1.5rem; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 0.75rem; }
-.auth__info-line { color: #059669; font-size: 0.875rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+.auth__info-line { color: var(--ux2-success-dark); font-size: 0.875rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
 .auth__info-line--muted { color: var(--ux2-text-muted); margin-bottom: 0; }
 .auth__info-icon { font-size: 1.25rem; }
 
@@ -294,7 +322,7 @@
 /* Info panel */
 .panel { margin: 1.5rem 0; padding: 1rem; border-radius: 0.5rem; }
 .panel--info { background: var(--ux2-info-bg); border-left: 4px solid var(--ux2-info); }
-.panel__title { font-weight: 600; margin-bottom: 0.75rem; color: #1e40af; }
+.panel__title { font-weight: 600; margin-bottom: 0.75rem; color: var(--ux2-info-dark); }
 
 /* Profile dropdown */
 .profile-dropdown { position: absolute; top: 3.5rem; right: 1rem; width: 300px; background: white; border-radius: 1rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: var(--z-dropdown); border: 2px solid var(--semper-gold); }
@@ -303,21 +331,21 @@
 .profile-dropdown__header-email { font-size: 0.85rem; opacity: 0.9; }
 .profile-dropdown__header-subtitle { font-size: 0.75rem; opacity: 0.7; margin-top: 0.25rem; }
 
-.profile-dropdown__status { padding: 1rem; background: #f9fafb; border-bottom: 1px solid #e5e7eb; }
+.profile-dropdown__status { padding: 1rem; background: var(--ui-gray-50); border-bottom: 1px solid var(--ui-gray-200); }
 .profile-dropdown__status-line { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
 .profile-dropdown__status-text { color: var(--ux2-success); font-weight: 600; }
-.profile-dropdown__status-note { font-size: 0.75rem; color: #6b7280; margin-top: 0.25rem; }
+.profile-dropdown__status-note { font-size: 0.75rem; color: var(--ui-gray-500); margin-top: 0.25rem; }
 
 .profile-dropdown__actions { padding: 0.75rem; }
 .profile-dropdown__action { padding: 0.75rem 1rem; border-radius: 0.5rem; color: var(--semper-navy); font-weight: 500; display: flex; align-items: center; gap: 0.5rem; cursor: pointer; transition: all 0.2s ease; border: 1px solid transparent; }
-.profile-dropdown__action:hover { background: #f0f9ff; border-color: #bae6fd; }
-.profile-dropdown__action--danger { color: #dc2626; font-weight: 600; }
-.profile-dropdown__action--danger:hover { background: #fef2f2; border-color: #fecaca; }
+.profile-dropdown__action:hover { background: var(--ux2-info-bg); border-color: var(--ux2-info-border); }
+.profile-dropdown__action--danger { color: var(--ux2-danger); font-weight: 600; }
+.profile-dropdown__action--danger:hover { background: var(--ux2-danger-bg); border-color: var(--ux2-danger-light); }
 .profile-dropdown__icon { font-size: 1.1rem; display: inline-flex; align-items: center; }
 
-.profile-dropdown__footer { padding: 0.5rem; text-align: center; background: #f9fafb; border-top: 1px solid #e5e7eb; border-radius: 0 0 1rem 1rem; }
-.profile-dropdown__cancel { background: none; border: none; color: #6b7280; font-size: 0.875rem; cursor: pointer; padding: 0.25rem 0.5rem; border-radius: 0.25rem; transition: all 0.2s ease; }
-.profile-dropdown__cancel:hover { color: #374151; background: #f3f4f6; }
+.profile-dropdown__footer { padding: 0.5rem; text-align: center; background: var(--ui-gray-50); border-top: 1px solid var(--ui-gray-200); border-radius: 0 0 1rem 1rem; }
+.profile-dropdown__cancel { background: none; border: none; color: var(--ui-gray-500); font-size: 0.875rem; cursor: pointer; padding: 0.25rem 0.5rem; border-radius: 0.25rem; transition: all 0.2s ease; }
+.profile-dropdown__cancel:hover { color: var(--ui-gray-700); background: var(--ui-gray-100); }
 
 /* Upload input */
 .file-input { display: none; }
@@ -418,7 +446,7 @@ select option {
 .modal-body .form-label,
 #user-profile-modal .form-label,
 #edit-rsvp-modal .form-label {
-  color: #1f2937;
+  color: var(--ui-gray-800);
 }
 
 /* Dark text and proper styling for modal inputs */
@@ -426,21 +454,21 @@ select option {
 .modal-body .form-control,
 #user-profile-modal .form-control,
 #edit-rsvp-modal .form-control {
-  color: #111827;
+  color: var(--ui-gray-900);
   background: #ffffff;
-  border: 2px solid #d1d5db;
+  border: 2px solid var(--ui-gray-300);
 }
 
 /* Modal help text */
 .modal .form-help,
 .modal-body .form-help,
 #user-profile-modal .form-help {
-  color: #6b7280;
+  color: var(--ui-gray-500);
 }
 
 /* Password section header */
 .profile-password-section h4 {
-  color: #1f2937;
+  color: var(--ui-gray-800);
 }
 
 
@@ -511,8 +539,8 @@ select option {
     border-radius: 6px;
     font-size: 0.85rem;
     font-family: inherit;
-    background: #f9f9f9;
-    color: #2C2C2C;
+    background: var(--ui-gray-50);
+    color: var(--ui-gray-900);
     transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -522,7 +550,7 @@ select option {
 
 .nav-search__input:focus {
     outline: none;
-    border-color: #5B9BD5;
+    border-color: var(--template-blue);
     box-shadow: 0 0 0 2px rgba(91, 155, 213, 0.25);
     background: #ffffff;
 }

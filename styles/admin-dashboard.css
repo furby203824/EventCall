@@ -551,14 +551,14 @@
 }
 
 .btn-danger {
-    background: #ef4444;
-    border-color: #ef4444;
+    background: var(--error-color);
+    border-color: var(--error-color);
     color: #fff;
 }
 
 .btn-danger:hover {
-    background: #dc2626;
-    border-color: #dc2626;
+    background: var(--ux2-danger);
+    border-color: var(--ux2-danger);
 }
 
 .btn-sm {

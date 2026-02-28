@@ -211,17 +211,17 @@
     flex-direction: column;
     padding: 0.75rem 0.85rem;
     background: rgba(255, 255, 255, 0.92);
-    border: 1.5px solid #5B9BD5;
+    border: 1.5px solid var(--template-blue);
     border-radius: 8px;
     cursor: pointer;
     transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
-    color: #2C2C2C;
+    color: var(--ui-gray-900);
     line-height: 1.4;
 }
 
 #create .template-card:hover,
 #dashboard-create-form .template-card:hover {
-    border-color: #3A7CC6;
+    border-color: var(--template-blue-hover);
     background: #ffffff;
     box-shadow: 0 2px 8px rgba(91, 155, 213, 0.3);
 }
@@ -239,7 +239,7 @@
     display: block;
     font-weight: 600;
     font-size: 0.85rem;
-    color: #2C2C2C;
+    color: var(--ui-gray-900);
     margin-bottom: 0.2rem;
 }
 
@@ -247,7 +247,7 @@
 #dashboard-create-form .template-card__desc {
     display: block;
     font-size: 0.75rem;
-    color: #555;
+    color: var(--ui-gray-500);
     line-height: 1.35;
 }
 
@@ -693,8 +693,8 @@
 }
 
 .btn--success:hover {
-    background-color: #0f9b6b;
-    border-color: #0f9b6b;
+    background-color: var(--ux2-success-hover);
+    border-color: var(--ux2-success-hover);
 }
 
 .btn--danger {
@@ -704,8 +704,8 @@
 }
 
 .btn--danger:hover {
-    background-color: #d63232;
-    border-color: #d63232;
+    background-color: var(--ux2-danger-hover);
+    border-color: var(--ux2-danger-hover);
 }
 
 .btn--link {

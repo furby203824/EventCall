@@ -269,7 +269,7 @@
 
 .confirmation-note {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: var(--ui-gray-500);
     margin-top: 0.5rem;
 }
 
@@ -283,7 +283,7 @@
 
 .powered-by-text {
     font-size: 0.75rem;
-    color: #6b7280;
+    color: var(--ui-gray-500);
     margin-bottom: 0.5rem;
 }
 

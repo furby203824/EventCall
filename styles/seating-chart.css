@@ -77,10 +77,10 @@
 .seating-config-info {
     margin-top: 1rem;
     padding: 0.75rem;
-    background: #f0f9ff;
+    background: var(--ux2-info-bg);
     border-radius: 6px;
     font-size: 0.875rem;
-    color: #1e40af;
+    color: var(--ux2-info-dark);
 }
 
 /* Seating Chart Management View */

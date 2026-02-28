@@ -104,7 +104,7 @@
 .envelope-instruction {
     margin-top: 30px;
     font-size: 0.9rem;
-    color: #6b7280;
+    color: var(--ui-gray-500);
     white-space: nowrap;
     animation: pulse-text 2s ease-in-out infinite;
     text-align: center;
@@ -134,7 +134,7 @@
         z-index 0s 0.4s;
     box-sizing: border-box;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    border: 1px solid #f0f0f0;
+    border: 1px solid var(--ui-gray-100);
     border-radius: 8px;
     overflow: hidden;
     display: flex;
@@ -145,7 +145,7 @@
 .envelope-card-photo {
     width: 0;
     height: 100%;
-    background-color: #f3f4f6;
+    background-color: var(--ui-gray-100);
     transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1) 1s;
     overflow: hidden;
     position: relative;
@@ -266,7 +266,7 @@
     text-transform: uppercase;
     font-size: 0.8rem;
     margin-bottom: 30px;
-    color: #666;
+    color: var(--ui-gray-500);
     position: relative;
 }
 
@@ -277,18 +277,18 @@
     left: 25%;
     width: 50%;
     height: 1px;
-    background: #e5e7eb;
+    background: var(--ui-gray-200);
 }
 
 .envelope-details {
     font-size: 1rem;
-    color: #555;
+    color: var(--ui-gray-500);
     line-height: 1.8;
     margin-bottom: 20px;
 }
 
 .envelope-details strong {
-    color: #111;
+    color: var(--ui-gray-900);
     display: block;
     margin-top: 15px;
     font-size: 1.2rem;
@@ -306,7 +306,7 @@
 .envelope-rsvp-form {
     margin-top: 30px;
     padding-top: 30px;
-    border-top: 1px solid #f3f4f6;
+    border-top: 1px solid var(--ui-gray-100);
     width: 100%;
     max-width: 360px;
 }
@@ -320,7 +320,7 @@
     display: block;
     margin-bottom: 6px;
     font-weight: 500;
-    color: #374151;
+    color: var(--ui-gray-700);
     font-size: 0.9rem;
 }
 
@@ -331,7 +331,7 @@
 .envelope-rsvp-form textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--ui-gray-200);
     border-radius: 8px;
     font-size: 0.95rem;
     background: #fcfcfc;
@@ -373,7 +373,7 @@
 .envelope-attending-option .option-label {
     display: block;
     padding: 1rem;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--ui-gray-200);
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
@@ -398,7 +398,7 @@
 
 .envelope-attending-option .option-text {
     font-size: 0.85rem;
-    color: #374151;
+    color: var(--ui-gray-700);
 }
 
 /* Modern Button Base */
@@ -448,20 +448,20 @@
 /* Secondary Button - Outline style */
 .envelope-btn--secondary {
     background: white;
-    color: #374151;
-    border: 2px solid #e5e7eb;
+    color: var(--ui-gray-700);
+    border: 2px solid var(--ui-gray-200);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .envelope-btn--secondary:hover {
-    background: #f9fafb;
-    border-color: #d1d5db;
+    background: var(--ui-gray-50);
+    border-color: var(--ui-gray-300);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transform: translateY(-1px);
 }
 
 .envelope-btn--secondary:active {
-    background: #f3f4f6;
+    background: var(--ui-gray-100);
 }
 
 /* Legacy Submit button (kept for backwards compatibility) */
@@ -503,11 +503,11 @@
 /* Success message */
 .envelope-success-message {
     display: none;
-    color: #166534;
+    color: var(--ux2-success-dark);
     font-weight: 600;
     margin-top: 20px;
     padding: 20px;
-    background: #f0fdf4;
+    background: var(--ux2-success-bg);
     border-radius: 10px;
     border: 1px solid #bbf7d0;
     text-align: center;
@@ -540,7 +540,7 @@
 .envelope-guest-fields {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px dashed #e5e7eb;
+    border-top: 1px dashed var(--ui-gray-200);
 }
 
 /* Meal choice styling */
@@ -564,7 +564,7 @@
 .envelope-meal-option label {
     display: block;
     padding: 0.75rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--ui-gray-200);
     border-radius: 8px;
     text-align: center;
     cursor: pointer;
@@ -595,7 +595,7 @@
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    color: #6b7280;
+    color: var(--ui-gray-500);
     transition: all 0.2s;
     opacity: 0;
     pointer-events: none;
@@ -609,7 +609,7 @@
 
 .envelope-close-btn:hover {
     background: rgba(0, 0, 0, 0.1);
-    color: #374151;
+    color: var(--ui-gray-700);
 }
 
 /* =============================================================================
@@ -620,7 +620,7 @@
     margin-top: auto;
     padding-top: 20px;
     font-size: 0.75rem;
-    color: #9ca3af;
+    color: var(--ui-gray-400);
 }
 
 .envelope-powered-by a {
