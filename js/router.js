@@ -63,7 +63,9 @@
         btn.classList.add('active');
         btn.setAttribute('aria-current', 'page');
       }
-    } catch (_) {}
+    } catch (err) {
+      console.warn('Failed to update active nav:', err);
+    }
   }
 
   // Centralized route handler to ensure consistent behavior

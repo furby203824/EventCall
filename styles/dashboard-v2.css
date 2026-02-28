@@ -499,18 +499,17 @@ body::before {
    ============================================ */
 
 .dashboard-tabs {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    height: 56px !important;
+    height: 56px;
     margin-bottom: 2rem;
     border-bottom: 2px solid var(--ux2-text-muted);
     padding-bottom: 0;
-    overflow-x: auto !important;
-    overflow-y: visible !important;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overflow-y: visible;
     scrollbar-width: none; /* Hide scrollbar for Firefox */
 }
 
@@ -520,31 +519,31 @@ body::before {
 
 /* Scoped to .dashboard-tabs bar only — avoids overriding nav-link in hamburger menu */
 .dashboard-tabs .dashboard-tab {
-    padding: 0.75rem 1.25rem !important;
-    font-size: 1rem !important;
-    font-weight: 600 !important;
-    color: var(--ux2-text-muted) !important;
-    background: transparent !important;
-    border: none !important;
-    border-bottom: 3px solid transparent !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease !important;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ux2-text-muted);
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
     white-space: nowrap;
     position: relative;
     bottom: -2px;
-    text-transform: none !important;
-    letter-spacing: normal !important;
+    text-transform: none;
+    letter-spacing: normal;
 }
 
 .dashboard-tabs .dashboard-tab:hover {
-    color: var(--ux2-gold) !important;
-    background: rgba(92, 78, 78, 0.05) !important;
+    color: var(--ux2-gold);
+    background: rgba(92, 78, 78, 0.05);
 }
 
 .dashboard-tabs .dashboard-tab--active {
-    color: var(--ux2-gold) !important;
-    border-bottom-color: var(--ux2-gold) !important;
-    background: rgba(92, 78, 78, 0.1) !important;
+    color: var(--ux2-gold);
+    border-bottom-color: var(--ux2-gold);
+    background: rgba(92, 78, 78, 0.1);
 }
 
 .dashboard-tab-content {
@@ -561,21 +560,21 @@ body::before {
     .dashboard-tabs {
         justify-content: flex-start;
         gap: 0;
-        height: auto !important;
+        height: auto;
         border-bottom: 2px solid var(--ux2-text-muted);
         padding: 0;
     }
 
     .dashboard-tabs .dashboard-tab {
-        padding: 0.5rem 0.75rem !important;
-        font-size: 0.875rem !important;
-        border-bottom: 3px solid transparent !important;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        border-bottom: 3px solid transparent;
         flex-shrink: 0;
         bottom: -2px;
     }
 
     .dashboard-tabs .dashboard-tab--active {
-        border-bottom-color: var(--ux2-gold) !important;
+        border-bottom-color: var(--ux2-gold);
     }
 }
 
@@ -598,7 +597,7 @@ body::before {
     border-radius: 0.75rem;
     overflow: hidden;
     background: var(--gray-50);
-    border: 1px solid #D9D5D5;
+    border: 1px solid var(--gray-200);
 }
 
 .skeleton-cover {

@@ -334,7 +334,7 @@
     border: 1px solid var(--ui-gray-200);
     border-radius: 8px;
     font-size: 0.95rem;
-    background: #fcfcfc;
+    background: var(--ui-gray-50);
     transition: border-color 0.2s, box-shadow 0.2s;
     font-family: 'Poppins', sans-serif;
 }

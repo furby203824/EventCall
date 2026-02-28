@@ -410,14 +410,14 @@
 }
 
 #guest-count-group label {
-    color: var(--ux2-navy-900) !important;
+    color: var(--ux2-navy-900);
     font-size: 1.1rem;
     margin-bottom: 1rem;
 }
 
 #guest-count {
     width: 100%;
-    border: 2px solid var(--ux2-text-muted) !important;
+    border: 2px solid var(--ux2-text-muted);
     border-radius: 0.5rem;
     padding: 1rem;
     font-size: 1rem;

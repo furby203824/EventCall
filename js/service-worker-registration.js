@@ -57,19 +57,10 @@ if ('serviceWorker' in navigator) {
 
                 const banner = document.createElement('div');
                 banner.id = 'sw-update-banner';
-                banner.style.cssText = `
-                    position: fixed; bottom: 16px; right: 16px; z-index: 9999;
-                    background: #1f2937; color: #fff; padding: 0.75rem 1rem;
-                    border-radius: 0.5rem; box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-                    display: flex; align-items: center; gap: 0.75rem;
-                `;
+                /* Styling via #sw-update-banner in main.css */
                 banner.innerHTML = window.utils.sanitizeHTML(`
                     <span>App update available</span>
-                    <button id="sw-refresh-btn" style="
-                        background: #10b981; color: #fff; border: none;
-                        padding: 0.5rem 0.75rem; border-radius: 0.375rem; cursor: pointer;">
-                        Refresh now
-                    </button>
+                    <button id="sw-refresh-btn">Refresh now</button>
                 `);
                 document.body.appendChild(banner);
 
