@@ -7,8 +7,9 @@
    FOCUS INDICATORS
    ============================================ */
 
-/* Remove default outline and add custom focus styles */
-*:focus {
+/* Remove default outline only when :focus-visible is supported,
+   so keyboard-only focus indicators still work in older browsers */
+*:focus:not(:focus-visible) {
     outline: none;
 }
 
@@ -139,7 +140,7 @@ select:focus-visible,
 /* Ensure sufficient contrast for text */
 .meta-text,
 .stat-label {
-    color: #475569; /* Darker for better contrast */
+    color: var(--ui-gray-500); /* Darker for better contrast */
 }
 
 /* Button text contrast */
@@ -168,26 +169,26 @@ label {
     display: block;
     font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #1e293b;
+    color: var(--ui-gray-800);
 }
 
 /* Required field indicator */
 input:required + label::after,
 label.required::after {
     content: " *";
-    color: #dc2626;
+    color: var(--ux2-danger);
     font-weight: 700;
 }
 
 /* Error states */
 input:invalid:not(:focus):not(:placeholder-shown),
 .input-error {
-    border-color: #dc2626;
-    background-color: #fef2f2;
+    border-color: var(--ux2-danger);
+    background-color: var(--ux2-danger-bg);
 }
 
 .error-message {
-    color: #dc2626;
+    color: var(--ux2-danger);
     font-size: 0.875rem;
     margin-top: 0.25rem;
     font-weight: 500;
@@ -195,8 +196,8 @@ input:invalid:not(:focus):not(:placeholder-shown),
 
 /* Success states */
 .input-success {
-    border-color: #16a34a;
-    background-color: #f0fdf4;
+    border-color: var(--ux2-success);
+    background-color: var(--ux2-success-bg);
 }
 
 /* ============================================
@@ -316,7 +317,7 @@ select {
 }
 /* UX-004: Standardized inline errors and valid/invalid states */
 .form-error {
-  color: #e74c3c;
+  color: var(--ux2-danger);
   font-size: 0.85rem;
   margin-top: 0.5rem;
   display: flex;
@@ -325,13 +326,13 @@ select {
 }
 
 input.is-invalid, select.is-invalid, textarea.is-invalid {
-  border-color: #ef4444 !important;
+  border-color: var(--error-color) !important;
   outline: none;
   box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
 }
 
 input.is-valid, select.is-valid, textarea.is-valid {
-  border-color: #22c55e !important;
+  border-color: var(--ux2-success) !important;
   box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.15);
 }
 
@@ -350,6 +351,6 @@ input.is-valid, select.is-valid, textarea.is-valid {
   grid-column: 1 / -1;
   margin: 0.25rem 0 0;
   padding-left: 1rem;
-  color: #64748b;
+  color: var(--ui-gray-500);
   font-size: 0.8rem;
 }

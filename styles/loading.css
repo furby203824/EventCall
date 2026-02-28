@@ -34,7 +34,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #374151;
+  color: var(--ui-gray-700);
 }
 
 /* Skeleton */
@@ -131,7 +131,7 @@ button:disabled { opacity: 0.85; cursor: not-allowed; }
 .loading-overlay .loading-text {
   margin-top: 16px;
   font-size: 14px;
-  color: #4b5563;
+  color: var(--ui-gray-500);
 }
 
 /* Button spinner alignment fix */

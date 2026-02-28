@@ -79,7 +79,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 1.5rem;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--ui-gray-200);
 }
 
 .feedback-modal__title {
@@ -93,7 +93,7 @@
     background: none;
     border: none;
     font-size: 2rem;
-    color: #6b7280;
+    color: var(--ui-gray-500);
     cursor: pointer;
     width: 40px;
     height: 40px;
@@ -105,8 +105,8 @@
 }
 
 .feedback-modal__close:hover {
-    background: #f3f4f6;
-    color: #1f2937;
+    background: var(--ui-gray-100);
+    color: var(--ui-gray-800);
 }
 
 /* Form */
@@ -121,14 +121,14 @@
 .feedback-form .form-label {
     display: block;
     font-weight: 600;
-    color: #374151;
+    color: var(--ui-gray-700);
     margin-bottom: 0.5rem;
 }
 
 .feedback-form .form-input {
     width: 100%;
     padding: 0.75rem;
-    border: 2px solid #d1d5db;
+    border: 2px solid var(--ui-gray-300);
     border-radius: 0.5rem;
     font-size: 1rem;
     transition: all 0.2s ease;
@@ -149,12 +149,12 @@
 .feedback-form .form-hint {
     display: block;
     font-size: 0.875rem;
-    color: #6b7280;
+    color: var(--ui-gray-500);
     margin-top: 0.25rem;
 }
 
 .feedback-privacy-warning {
-    color: #f59e0b !important;
+    color: var(--ux2-warning);
     font-weight: 600;
 }
 
@@ -186,12 +186,12 @@
 }
 
 .feedback-form__actions .btn--secondary {
-    background: #f3f4f6;
-    color: #374151;
+    background: var(--ui-gray-100);
+    color: var(--ui-gray-700);
 }
 
 .feedback-form__actions .btn--secondary:hover {
-    background: #e5e7eb;
+    background: var(--ui-gray-200);
 }
 
 /* Success Message */
@@ -213,7 +213,7 @@
 }
 
 .feedback-success__message {
-    color: #6b7280;
+    color: var(--ui-gray-500);
     margin-bottom: 2rem;
 }
 

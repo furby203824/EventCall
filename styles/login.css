@@ -23,7 +23,7 @@
     z-index: var(--z-login);
     overflow-y: auto;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
+    /* -webkit-overflow-scrolling removed — deprecated, no longer needed */
     padding-top: 1rem;
     padding-bottom: 2rem; /* Extra room at bottom for keyboard */
 }
@@ -121,7 +121,7 @@
 .login-form input[type="password"] {
     width: 100%;
     padding: 1rem;
-    border: 2px solid #e5e7eb;
+    border: 2px solid var(--ui-gray-200);
     border-radius: 0.75rem;
     font-size: 1rem;
     transition: all 0.3s ease;
@@ -138,7 +138,7 @@
     display: block;
     margin-top: 0.5rem;
     font-size: 0.85rem;
-    color: #6b7280;
+    color: var(--ui-gray-500);
 }
 
 /* Checkbox Group */
@@ -263,7 +263,7 @@
 .login-divider span {
     background: white;
     padding: 0 1rem;
-    color: #9ca3af;
+    color: var(--ui-gray-400);
     font-size: 0.9rem;
     font-weight: 600;
 }
@@ -283,7 +283,7 @@
 .login-help {
     margin-top: 2rem;
     padding: 1.5rem;
-    background: #f9fafb;
+    background: var(--ui-gray-50);
     border-radius: 0.75rem;
     border-left: 4px solid var(--ux2-text-muted);
 }
@@ -357,7 +357,7 @@
 
 .modal-header {
     padding: 2rem;
-    border-bottom: 2px solid #f3f4f6;
+    border-bottom: 2px solid var(--ui-gray-100);
     text-align: center;
 }
 
@@ -375,9 +375,9 @@
     text-align: center;
     margin-bottom: 2rem;
     padding: 1.5rem;
-    background: #d1fae5;
+    background: var(--ux2-success-bg-medium);
     border-radius: 0.75rem;
-    border: 2px solid #10b981;
+    border: 2px solid var(--ux2-success);
 }
 
 .success-message p {
@@ -419,7 +419,7 @@
 .info-box {
     margin-top: 2rem;
     padding: 1.5rem;
-    background: #fef3c7;
+    background: var(--ux2-warning-bg);
     border-radius: 0.75rem;
     border-left: 4px solid var(--ux2-text-muted);
 }
@@ -443,7 +443,7 @@
 
 .modal-footer {
     padding: 1.5rem 2rem;
-    border-top: 2px solid #f3f4f6;
+    border-top: 2px solid var(--ui-gray-100);
     text-align: center;
 }
 
@@ -467,13 +467,13 @@
 @media (min-width: 769px) {
     #login-page,
     #login-container {
-        align-items: flex-start;; /* Center vertically on desktop */
+        align-items: flex-start; /* Align to top on desktop */
         padding-top: 2rem;
         padding-bottom: 2rem; /* Ensure bottom spacing */
     }
 
     .login-wrapper {
-        align-items: flex-start;; /* Center vertically on desktop */
+        align-items: flex-start; /* Align to top on desktop */
         min-height: auto; /* Allow wrapper to size to content on desktop */
     }
 }
@@ -521,11 +521,6 @@
     }
 }
 /* User Menu Dropdown */
-/* User Menu Dropdown */
-.user-profile-btn {
-    position: relative;
-    cursor: pointer;
-}
 
 .user-menu-dropdown {
     position: absolute;
@@ -541,7 +536,7 @@
 
 .user-menu-header {
     padding: 1rem;
-    border-bottom: 1px solid #e5e7eb;
+    border-bottom: 1px solid var(--ui-gray-200);
 }
 
 .user-menu-header strong {
@@ -551,7 +546,7 @@
 }
 
 .user-menu-header small {
-    color: #6b7280;
+    color: var(--ui-gray-500);
     font-size: 0.85rem;
 }
 
@@ -562,12 +557,12 @@
 }
 
 .user-menu-item:hover {
-    background: #f3f4f6;
+    background: var(--ui-gray-100);
 }
 
 .user-menu-divider {
     height: 1px;
-    background: #e5e7eb;
+    background: var(--ui-gray-200);
     margin: 0.5rem 0;
 }
 /* User Profile Button - Top Right Position */
@@ -649,7 +644,7 @@
 
 .tab-btn:not(.active) {
     background: transparent;
-    color: #94a3b8;
+    color: var(--ui-gray-400);
 }
 
 .tab-btn:hover:not(.active) {
@@ -737,14 +732,14 @@
     color: var(--ux2-gold);
 }
 
-/* Button link styling */
+/* Button link styling — specificity via compound selectors avoids !important */
 .auth__form .btn-link,
 #login-page .btn-link,
 .auth__link-container .btn-link {
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    color: var(--ux2-gold) !important;
+    background: none;
+    border: none;
+    box-shadow: none;
+    color: var(--ux2-gold);
     text-decoration: underline;
     font-size: 0.9rem;
     padding: 0.25rem 0.5rem;
@@ -754,7 +749,7 @@
 .auth__form .btn-link:hover,
 #login-page .btn-link:hover {
     opacity: 0.8;
-    color: var(--ux2-navy-900) !important;
+    color: var(--ux2-navy-900);
 }
 
 /* Reset Password Form headers */
@@ -778,7 +773,7 @@
 .modal .form-label,
 .modal-body .form-label,
 #user-profile-modal .form-label {
-    color: #1f2937 !important; /* gray-800 */
+    color: var(--ui-gray-800);
     font-weight: 600;
 }
 
@@ -786,16 +781,16 @@
 .modal .form-control,
 .modal-body .form-control,
 #user-profile-modal .form-control {
-    color: #111827 !important; /* gray-900 */
-    background-color: #ffffff !important;
-    border: 2px solid #d1d5db !important; /* gray-300 */
+    color: var(--ui-gray-900);
+    background-color: #ffffff;
+    border: 2px solid var(--ui-gray-300);
 }
 
 .modal .form-control:focus,
 .modal-body .form-control:focus,
 #user-profile-modal .form-control:focus {
-    border-color: var(--ux2-gold) !important;
-    box-shadow: 0 0 0 3px rgba(92, 78, 78, 0.1) !important;
+    border-color: var(--ux2-gold);
+    box-shadow: 0 0 0 3px rgba(92, 78, 78, 0.1);
 }
 
 /* Disabled/readonly inputs */
@@ -803,15 +798,15 @@
 .modal .form-control[readonly],
 #user-profile-modal .form-control:disabled,
 #user-profile-modal .form-control[readonly] {
-    background-color: #f3f4f6 !important; /* gray-100 */
-    color: #6b7280 !important; /* gray-500 */
+    background-color: var(--ui-gray-100);
+    color: var(--ui-gray-500);
 }
 
 /* Modal form help text */
 .modal .form-help,
 .modal-body .form-help,
 #user-profile-modal .form-help {
-    color: #6b7280 !important; /* gray-500 */
+    color: var(--ui-gray-500);
     font-size: 0.85rem;
     margin-top: 0.25rem;
 }
@@ -819,8 +814,8 @@
 /* Modal select dropdowns */
 .modal select.form-control,
 #user-profile-modal select.form-control {
-    color: #111827 !important;
-    background-color: #ffffff !important;
+    color: var(--ui-gray-900);
+    background-color: #ffffff;
 }
 
 /* Modal form group spacing */
@@ -833,12 +828,12 @@
 .profile-password-section {
     margin-top: 2rem;
     padding-top: 1.5rem;
-    border-top: 2px solid #e5e7eb;
+    border-top: 2px solid var(--ui-gray-200);
 }
 
 .profile-password-section h4 {
     margin: 0 0 1rem 0;
-    color: #1f2937;
+    color: var(--ui-gray-800);
     font-size: 1.1rem;
 }
 

@@ -319,7 +319,6 @@
     /* Tables - Horizontal scroll on mobile instead of hiding columns */
     .response-table-wrap {
         overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
         margin: 0 -0.5rem;
         padding: 0 0.5rem;
     }

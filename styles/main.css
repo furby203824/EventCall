@@ -141,7 +141,7 @@ body {
     padding: 0.5rem 1rem;
     border-radius: 2rem;
     font-size: 0.875rem;
-    color: #D1D0D0;
+    color: var(--ux2-text-light);
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -153,7 +153,7 @@ body {
 
 .user-profile-btn:hover {
     background: rgba(255, 255, 255, 0.25);
-    border-color: #988686;
+    border-color: var(--ux2-text-muted);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(92, 78, 78, 0.3);
 }
@@ -170,10 +170,7 @@ body {
     white-space: nowrap;
 }
 
-/* Make header-content relative for positioning */
-.header-content {
-    position: relative;
-}
+/* Duplicate .header-content block removed — defined at line 35 */
 
 /* Mobile responsive */
 @media (max-width: 768px) {
@@ -242,7 +239,7 @@ body {
 .spinner {
     width: 16px;
     height: 16px;
-    border: 2px solid #f3f3f3;
+    border: 2px solid var(--gray-100);
     border-top: 2px solid var(--secondary-color);
     border-radius: 50%;
     animation: spin 1s linear infinite;
