@@ -500,10 +500,10 @@ function updateDashboardSyncStatus(pendingCount) {
         /* Styling via #sync-status-banner in main.css */
         // Keep inline onclick; escape dynamic pieces
         syncBanner.innerHTML = `
-            <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
-                <span style="font-size: 1.2rem;"></span>
+            <div>
+                <span class="sync-icon"></span>
                 <span>${window.utils.escapeHTML(String(pendingCount))} new RSVP${pendingCount > 1 ? 's' : ''} ready to sync!</span>
-                <button class="btn" onclick="syncWithGitHub()" style="margin-left: 1rem; padding: 0.5rem 1rem; font-size: 0.875rem;">
+                <button class="btn" onclick="syncWithGitHub()">
                     Sync Now
                 </button>
             </div>

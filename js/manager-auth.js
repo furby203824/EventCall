@@ -396,15 +396,14 @@ class ManagerAuth {
         }
     }
 
-    // ==================== DATA PERSISTENCE (To be implemented with GitHub Actions) ====================
+    // ==================== DATA PERSISTENCE (Local-only — pending BackendAPI migration) ====================
 
     /**
      * Save manager data to repository
+     * @todo Migrate to BackendAPI — persist via GitHub Action webhook instead of localStorage
      */
     async saveManagerData(manager) {
-        // TODO: Implement with GitHub Action webhook
         console.log('💾 Saving manager data:', manager.id);
-        // For now, store in secure session storage for development
         if (this.storage) {
             const managers = this.storage.get('managers') || {};
             managers[manager.id] = manager;
@@ -419,10 +418,9 @@ class ManagerAuth {
 
     /**
      * Find manager by master code
+     * @todo Migrate to BackendAPI — query backend instead of local storage
      */
     async findManagerByMasterCode(email, masterCode) {
-        // TODO: Implement with GitHub API
-        console.log('🔍 Finding manager by master code:', email);
         const managers = this.storage ? (this.storage.get('managers') || {}) : JSON.parse(localStorage.getItem('managers') || '{}');
         return Object.values(managers).find(m => 
             m.email === email && m.masterCode === masterCode
@@ -431,38 +429,35 @@ class ManagerAuth {
 
     /**
      * Find manager by email
+     * @todo Migrate to BackendAPI — query backend instead of local storage
      */
     async findManagerByEmail(email) {
-        // TODO: Implement with GitHub API
         const managers = this.storage ? (this.storage.get('managers') || {}) : JSON.parse(localStorage.getItem('managers') || '{}');
         return Object.values(managers).find(m => m.email === email);
     }
 
     /**
      * Find manager by ID
+     * @todo Migrate to BackendAPI — query backend instead of local storage
      */
     async findManagerById(managerId) {
-        // TODO: Implement with GitHub API
         const managers = this.storage ? (this.storage.get('managers') || {}) : JSON.parse(localStorage.getItem('managers') || '{}');
         return managers[managerId];
     }
 
     /**
      * Find event by code
+     * @todo Migrate to BackendAPI.loadEvents() with code filter
      */
     async findEventByCode(email, eventCode) {
-        // TODO: Implement with GitHub API
-        console.log('🔍 Finding event by code:', eventCode);
-        // For now, return null (will implement after event system update)
         return null;
     }
 
     /**
      * Process invite code
+     * @todo Implement invite system — validate code via BackendAPI and grant access
      */
     async processInviteCode(email, inviteCode) {
-        // TODO: Implement invite system
-        console.log('📨 Processing invite code:', inviteCode);
         return null;
     }
 
@@ -479,19 +474,17 @@ class ManagerAuth {
 
     /**
      * Add manager to event's authorized list
+     * @todo Migrate to BackendAPI.updateEvent() — add manager to event's authorized array
      */
     async addManagerToEvent(eventId, managerId, email) {
-        // TODO: Implement with event data structure
-        console.log('➕ Adding manager to event:', managerId, eventId);
         return true;
     }
 
     /**
      * Save invite data
+     * @todo Migrate to BackendAPI — persist invite via GitHub Action webhook
      */
     async saveInviteData(inviteData) {
-        // TODO: Implement with GitHub Action
-        console.log('💾 Saving invite data:', inviteData.code);
         if (this.storage) {
             const invites = this.storage.get('invites') || {};
             invites[inviteData.code] = inviteData;

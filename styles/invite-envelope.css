@@ -75,7 +75,7 @@
     background-color: white;
     padding: 4px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    border: 1px dashed #ccc;
+    border: 1px dashed var(--ui-gray-300);
     transform: rotate(5deg);
     z-index: 31;
     transition: opacity 0.3s;

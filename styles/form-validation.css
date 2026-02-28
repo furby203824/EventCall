@@ -41,7 +41,7 @@ textarea.is-valid {
 .attending-decision-box {
     margin-bottom: 2rem;
     padding: 1.5rem;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    background: linear-gradient(135deg, var(--ux2-info-bg) 0%, #e0f2fe 100%);
     border-radius: 1rem;
     border: 3px solid var(--ux2-info);
 }
@@ -171,7 +171,7 @@ button:active:not(:disabled) {
 .form-progress-bar {
     width: 0%;
     height: 100%;
-    background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(90deg, var(--ux2-success) 0%, var(--ux2-success-dark) 100%);
     transition: width 0.3s ease;
     border-radius: 4px;
 }

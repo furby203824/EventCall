@@ -1173,22 +1173,22 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
         const modal = document.createElement('div');
         modal.className = 'modal-overlay';
         modal.innerHTML = window.utils.sanitizeHTML(`
-            <div class="modal-content qr-modal" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title" tabindex="0" style="max-width: 500px;">
+            <div class="modal-content qr-modal" role="dialog" aria-modal="true" aria-labelledby="qr-modal-title" tabindex="0">
                 <div class="modal-header">
                     <h3 id="qr-modal-title">Event QR Code</h3>
                     <button id="qr-close-btn" class="modal-close" aria-label="Close QR code modal">×</button>
                 </div>
-                <div class="modal-body" style="text-align: center;">
-                    <h4 style="margin: 0 0 1rem 0; color: #374151;">${h(event.title)}</h4>
-                    <p style="color: #6b7280; margin: 0 0 1.5rem 0; font-size: 14px;">
+                <div class="modal-body">
+                    <h4 class="qr-modal__title">${h(event.title)}</h4>
+                    <p class="qr-modal__desc">
                         Scan this QR code to quickly access the event RSVP page
                     </p>
-                    
-                    <div class="qr-code-container" style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin: 0 0 1.5rem 0; display: inline-block;">
-                        <img src="${qrDataURL}" alt="Event QR Code" style="display: block; max-width: 100%; height: auto;">
+
+                    <div class="qr-code-container">
+                        <img src="${qrDataURL}" alt="Event QR Code">
                     </div>
-                    
-                    <div class="qr-actions" style="display: flex; flex-direction: column; gap: 0.75rem;">
+
+                    <div class="qr-actions">
                         <button id="qr-download-btn" class="btn btn-primary" aria-label="Download QR code image">
                             Download QR Code
                         </button>
@@ -1199,10 +1199,10 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                             Share Event
                         </button>
                     </div>
-                    
-                    <div class="qr-info" style="margin-top: 1.5rem; padding: 1rem; background-color: #f9fafb; border-radius: 8px; text-align: left;">
-                        <h5 style="margin: 0 0 0.5rem 0; color: #374151; font-size: 14px;">How to use:</h5>
-                        <ul style="margin: 0; padding-left: 1.25rem; color: #6b7280; font-size: 13px; line-height: 1.5;">
+
+                    <div class="qr-info">
+                        <h5>How to use:</h5>
+                        <ul>
                             <li>Print and display at your event location</li>
                             <li>Share digitally via social media or messaging</li>
                             <li>Include in event flyers or promotional materials</li>
