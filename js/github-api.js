@@ -117,13 +117,14 @@ class GitHubAPI {
             options.body = JSON.stringify(data);
         }
 
-        const response = await (window.rateLimiter
-            ? window.rateLimiter.fetch(url, options, {
+        const fetchFn = window.rateLimiter
+            ? (u, o) => window.rateLimiter.fetch(u, o, {
                 endpointKey: 'github_contents',
                 retry: { maxAttempts: 5, baseDelayMs: 800, jitter: true }
               })
-            : window.safeFetchGitHub ? window.safeFetchGitHub(url, options, 'GitHub API request')
-            : fetch(url, options));
+            : window.safeFetchGitHub ? (u, o) => window.safeFetchGitHub(u, o, 'GitHub API request')
+            : fetch;
+        const response = await fetchFn(url, options);
         return await this.handleResponse(response);
     }
 
@@ -167,17 +168,18 @@ class GitHubAPI {
         }
 
         try {
-            const response = await window.safeFetchGitHub(
-                `https://api.github.com/repos/${this.config.owner}/${this.config.repo}`,
-                {
-                    headers: {
-                        'Authorization': `token ${token}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'User-Agent': 'EventCall-App'
-                    }
-                },
-                'GitHub connection test'
-            );
+            const testUrl = `https://api.github.com/repos/${this.config.owner}/${this.config.repo}`;
+            const testOpts = {
+                headers: {
+                    'Authorization': `token ${token}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'User-Agent': 'EventCall-App'
+                }
+            };
+            const response = await (window.rateLimiter
+                ? window.rateLimiter.fetch(testUrl, testOpts, { endpointKey: 'github_contents' })
+                : window.safeFetchGitHub ? window.safeFetchGitHub(testUrl, testOpts, 'GitHub connection test')
+                : fetch(testUrl, testOpts));
             
             if (response.ok) {
                 const repoData = await response.json();
@@ -797,11 +799,11 @@ class GitHubAPI {
                 if (existingIndex !== -1) {
                     // Update existing RSVP
                     existingResponses[existingIndex] = rsvpData;
-                    console.log(`Updated existing RSVP for ${rsvpData.email}`);
+                    console.log('Updated existing RSVP');
                 } else {
                     // Add new RSVP
                     existingResponses.push(rsvpData);
-                    console.log(`Added new RSVP for ${rsvpData.email}`);
+                    console.log('Added new RSVP');
                 }
             }
             
@@ -1411,7 +1413,7 @@ class GitHubAPI {
         }
 
         try {
-            console.log('🔍 Searching for user by email:', email);
+            console.log('🔍 Searching for user by email');
 
             // Load user files from EventCall-Data
             const treeResponse = await window.safeFetchGitHub(
@@ -1462,7 +1464,7 @@ class GitHubAPI {
                         const userData = JSON.parse(this.safeBase64Decode(fileData.content));
 
                         if (userData.email && userData.email.toLowerCase() === email.toLowerCase()) {
-                            console.log('✅ Found user:', userData.email);
+                            console.log('✅ Found user by email');
                             return userData;
                         }
                     }
@@ -1471,7 +1473,7 @@ class GitHubAPI {
                 }
             }
 
-            console.log('User not found with email:', email);
+            console.log('User not found with provided email');
             return null;
 
         } catch (error) {

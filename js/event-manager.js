@@ -902,7 +902,7 @@ generateEventDetailsHTML(event, eventId, responseTableHTML) {
                     await this.sendIndividualReminder(event, recipient, daysText);
                     successCount++;
                 } catch (error) {
-                    console.error(`Failed to send reminder to ${recipient.email}:`, error);
+                    console.error('Failed to send reminder to recipient:', error);
                 }
             }
 
@@ -1700,7 +1700,7 @@ Best regards`;
         // 3. Open the Email Client
         try {
             window.open(mailtoUrl, '_blank');
-            console.log(`📧 Opening email client for: ${emailTo}`);
+            console.log('📧 Opening email client');
             showToast(`Opening email to ${guestName}`, 'success');
         } catch (error) {
             console.error('Failed to open email client:', error);

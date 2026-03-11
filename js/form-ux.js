@@ -268,7 +268,7 @@
             });
           }
         }
-      } catch {}
+      } catch (e) { console.warn('Failed to parse response body for autosave:', e.message); }
     }
   }
 

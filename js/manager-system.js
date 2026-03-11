@@ -703,7 +703,7 @@ async function loadManagerData() {
                         const usernamePromises = usernameLike.map(uname =>
                             window.BackendAPI.loadUserByUsername(String(uname).trim().toLowerCase())
                                 .then(u => u && u.id ? { id: u.id, username: u.username, name: u.name, email: u.email } : null)
-                                .catch(() => null)
+                                .catch(e => { console.warn('Failed to load user by username:', e.message); return null; })
                         );
                         userLoadPromises.push(
                             Promise.all(usernamePromises)

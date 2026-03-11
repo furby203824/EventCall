@@ -620,7 +620,7 @@ function enforceLogin() {
         return false;
     }
     
-    console.log('✅ User authenticated:', window.userAuth.getCurrentUser().email);
+    console.log('✅ User authenticated');
 
     const loginPage = document.getElementById('login-page');
     const appContent = document.querySelector('.app-content');
@@ -708,7 +708,7 @@ function showPage(pageId, param) {
             showToast('Access denied - Admin privileges required', 'error');
             pageId = 'dashboard';
         }
-        console.log(`✅ Access granted to ${pageId} for user: ${user?.email}`);
+        console.log(`✅ Access granted to ${pageId}`);
     }
 
     showPageContent(pageId, param);
@@ -1544,8 +1544,8 @@ function mailAttendee(email, eventTitle = 'EventCall Event') {
     
     window.location.href = mailtoLink;
     
-    console.log(`📧 Opening email client for: ${email}`);
-    showToast(`Opening email to ${email}`, 'success');
+    console.log('📧 Opening email client');
+    showToast('Opening email client', 'success');
 }
 
 /**

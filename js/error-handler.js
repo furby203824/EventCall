@@ -113,7 +113,7 @@ class ErrorHandler {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload),
                         keepalive: true
-                    }).catch(() => {}); // Silent fail for logging
+                    }).catch((e) => { console.warn('Error logging fetch failed:', e.message); });
                 }
             }
         } catch (loggingError) {

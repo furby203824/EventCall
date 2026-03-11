@@ -23,9 +23,7 @@
         }
 
         console.log('✅ User logged in:', currentUser.username);
-        console.log('   Name:', currentUser.name);
         console.log('   Role:', currentUser.role);
-        console.log('   Full user object:', currentUser);
 
         // Check if user has admin role
         console.log('\n2️⃣ ADMIN ROLE CHECK:');

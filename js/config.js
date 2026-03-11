@@ -171,7 +171,7 @@ const MESSAGES = {
 
 // Validation Patterns
 const VALIDATION = {
-    email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    email: /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/,
     phone: /^[\+]?[1-9][\d]{0,15}$/,
     managerCode: /^MGR-[A-Z0-9-]+$/,
     eventCode: /^EVT-[A-Z0-9-]+$/,

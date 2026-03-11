@@ -115,7 +115,10 @@ class CSVImporter {
      * Validate email
      */
     isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (window.EventCallValidation && window.EventCallValidation.validateEmail) {
+            return window.EventCallValidation.validateEmail(email).valid;
+        }
+        return /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(email);
     }
 
     /**

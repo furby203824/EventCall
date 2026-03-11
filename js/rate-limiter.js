@@ -105,7 +105,7 @@
       if (!isNaN(remaining) && remaining > 0) {
         // Only log every 10 requests to avoid spam
         if (remaining % 10 === 0 || remaining <= 10) {
-          console.log(`📊 GitHub API: ${remaining}/${limit || '?'} requests remaining`);
+          console.log('📊 GitHub API rate limit status checked');
         }
       }
     }
@@ -117,7 +117,7 @@
 
         // Warning threshold - start warning when less than 10 requests remaining
         if (this.githubState.remaining <= 10 && this.githubState.remaining > 1) {
-          console.warn(`⚠️ GitHub rate limit low: ${this.githubState.remaining} requests remaining`);
+          console.warn('⚠️ GitHub rate limit low');
           console.warn(`ℹ️ Rate limit resets in ${Math.ceil(waitMs/1000)}s`);
         }
 

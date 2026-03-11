@@ -354,7 +354,8 @@ class RSVPHandler {
             } else {
                 const existing = localStorage.getItem(storageKey);
                 if (existing) {
-                    pendingRSVPs = JSON.parse(existing);
+                    const parsed = JSON.parse(existing);
+                    if (Array.isArray(parsed)) pendingRSVPs = parsed;
                 }
             }
         } catch (e) {
@@ -760,18 +761,27 @@ class RSVPHandler {
         const phone = urlParams.get('phone');
 
         if (name) {
-            const nameInput = document.getElementById('rsvp-name');
-            if (nameInput) nameInput.value = decodeURIComponent(name);
+            const decoded = sanitizeText(decodeURIComponent(name));
+            if (decoded && isValidName(decoded)) {
+                const nameInput = document.getElementById('rsvp-name');
+                if (nameInput) nameInput.value = decoded;
+            }
         }
 
         if (email) {
-            const emailInput = document.getElementById('rsvp-email');
-            if (emailInput) emailInput.value = decodeURIComponent(email);
+            const decoded = sanitizeText(decodeURIComponent(email));
+            if (decoded && isValidEmail(decoded)) {
+                const emailInput = document.getElementById('rsvp-email');
+                if (emailInput) emailInput.value = decoded;
+            }
         }
 
         if (phone) {
-            const phoneInput = document.getElementById('rsvp-phone');
-            if (phoneInput) phoneInput.value = decodeURIComponent(phone);
+            const decoded = sanitizeText(decodeURIComponent(phone));
+            if (decoded && isValidPhone(decoded)) {
+                const phoneInput = document.getElementById('rsvp-phone');
+                if (phoneInput) phoneInput.value = decoded;
+            }
         }
     }
 
@@ -848,7 +858,10 @@ class RSVPHandler {
 }
 
 function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (window.EventCallValidation && window.EventCallValidation.validateEmail) {
+        return window.EventCallValidation.validateEmail(email).valid;
+    }
+    return /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(email);
 }
 
 function isValidPhone(phone) {
