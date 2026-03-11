@@ -18,7 +18,19 @@
   // Basic disposable domain list (extendable)
   const DISPOSABLE_DOMAINS = new Set([
     'mailinator.com', '10minutemail.com', 'guerrillamail.com', 'yopmail.com',
-    'temp-mail.org', 'trashmail.com', 'dispostable.com', 'fakeinbox.com'
+    'temp-mail.org', 'trashmail.com', 'dispostable.com', 'fakeinbox.com',
+    'tempmail.com', 'throwaway.email', 'getnada.com', 'maildrop.cc',
+    'sharklasers.com', 'grr.la', 'guerrillamailblock.com', 'pokemail.net',
+    'spam4.me', 'bccto.me', 'chacuo.net', 'discard.email',
+    'discardmail.com', 'discardmail.de', 'emailondeck.com', 'getairmail.com',
+    'guerrillamail.info', 'harakirimail.com', 'jetable.org', 'mailcatch.com',
+    'mailexpire.com', 'mailnesia.com', 'mailscrap.com', 'minutemail.com',
+    'mytemp.email', 'nada.email', 'shortmail.net', 'tempail.com',
+    'tempomail.fr', 'throwam.com', 'trash-mail.com', 'trashmail.me',
+    'tmail.ws', 'tmpmail.net', 'tmpmail.org', 'wegwerfmail.de',
+    'guerrillamail.net', 'guerrillamail.org', 'guerrillamail.de',
+    'mohmal.com', 'burnermail.io', 'inboxkitten.com', 'tempinbox.com',
+    'mailnator.com', 'spamgourmet.com', 'mytrashmail.com'
   ]);
 
   async function checkDNSMX(domain) {

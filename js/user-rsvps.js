@@ -70,12 +70,12 @@ async function getUserRSVPs() {
                     }
                 }
             } catch (e) {
-                console.error(`Error parsing RSVPs from ${key}:`, e);
+                console.error(`Error parsing RSVPs from localStorage key "${key}":`, e.message);
             }
         }
     }
 
-    console.log(`📊 Total RSVPs found for user (${userEmail}): ${allRSVPs.length}`);
+    console.log(`📊 Total RSVPs found for user: ${allRSVPs.length}`);
     return allRSVPs;
 }
 

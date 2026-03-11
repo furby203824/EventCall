@@ -274,7 +274,9 @@ class LoginUI {
 
         } catch (error) {
             console.error('Login error:', error);
-            showToast(error.message || 'Login failed. Please check your credentials.', 'error');
+            const msg = error.name === 'TypeError' ? 'Network error. Please check your connection.' :
+                        error.message || 'Login failed. Please check your credentials.';
+            showToast(msg, 'error');
             
         } finally {
             submitBtn.disabled = false;

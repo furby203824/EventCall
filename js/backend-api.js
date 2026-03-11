@@ -402,7 +402,7 @@ class BackendAPI {
             })
         }, { endpointKey: 'submit_rsvp' });
         if (!resp.ok) {
-            const err = await resp.json().catch(() => ({}));
+            const err = await resp.json().catch(() => ({ error: `HTTP ${resp.status} ${resp.statusText}` }));
             throw new Error(err.error || 'RSVP submission failed');
         }
         return await resp.json();
@@ -569,7 +569,7 @@ class BackendAPI {
             body: JSON.stringify(payload)
         }, { endpointKey: 'create_event' });
         if (!resp.ok) {
-            const err = await resp.json().catch(() => ({}));
+            const err = await resp.json().catch(() => ({ error: `HTTP ${resp.status} ${resp.statusText}` }));
             throw new Error(err.error || 'Event creation failed');
         }
         return await resp.json();
@@ -592,7 +592,7 @@ class BackendAPI {
         const url = base + '/api/images/upload';
         const currentUser = (window.userAuth && window.userAuth.getCurrentUser && window.userAuth.getCurrentUser()) || window.userAuth?.currentUser || null;
         const payload = {
-            file_name: String(fileName || '').trim(),
+            file_name: String(fileName || '').trim().replace(/[\/\\\.]{2,}/g, '').replace(/^\.+/, ''),
             content_base64: contentBase64,
             event_id: options.eventId || null,
             caption: options.caption || '',
@@ -606,7 +606,7 @@ class BackendAPI {
             body: JSON.stringify(payload)
         }, { endpointKey: 'upload_image' });
         if (!resp.ok) {
-            const err = await resp.json().catch(() => ({}));
+            const err = await resp.json().catch(() => ({ error: `HTTP ${resp.status} ${resp.statusText}` }));
             throw new Error(err.error || 'Image upload failed');
         }
         const data = await resp.json();
@@ -620,7 +620,7 @@ class BackendAPI {
         const url = base + '/api/events/' + encodeURIComponent(String(eventId)) + '/photos';
         const resp = await this._fetch(url, { method: 'GET' }, { endpointKey: 'load_photos' });
         if (!resp.ok) {
-            const err = await resp.json().catch(() => ({}));
+            const err = await resp.json().catch(() => ({ error: `HTTP ${resp.status} ${resp.statusText}` }));
             throw new Error(err.error || 'Failed to load photos');
         }
         return await resp.json();
@@ -637,7 +637,7 @@ class BackendAPI {
             body: JSON.stringify({ storagePath: String(storagePath) })
         }, { endpointKey: 'delete_photo' });
         if (!resp.ok) {
-            const err = await resp.json().catch(() => ({}));
+            const err = await resp.json().catch(() => ({ error: `HTTP ${resp.status} ${resp.statusText}` }));
             throw new Error(err.error || 'Failed to delete photo');
         }
         return await resp.json();
@@ -654,7 +654,7 @@ class BackendAPI {
         const url = base + '/api/events' + (q.toString() ? ('?' + q.toString()) : '');
         const resp = await this._fetch(url, { method: 'GET' }, { endpointKey: 'load_events' });
         if (!resp.ok) {
-            const err = await resp.json().catch(() => ({}));
+            const err = await resp.json().catch(() => ({ error: `HTTP ${resp.status} ${resp.statusText}` }));
             throw new Error(err.error || 'Failed to load events');
         }
         const data = await resp.json();
@@ -701,7 +701,7 @@ class BackendAPI {
         const url = base + '/api/users' + (q.toString() ? ('?' + q.toString()) : '');
         const resp = await this._fetch(url, { method: 'GET' }, { endpointKey: 'load_users' });
         if (!resp.ok) {
-            const err = await resp.json().catch(() => ({}));
+            const err = await resp.json().catch(() => ({ error: `HTTP ${resp.status} ${resp.statusText}` }));
             throw new Error(err.error || 'Failed to load users');
         }
         const data = await resp.json();
@@ -729,7 +729,7 @@ class BackendAPI {
         const url = base + '/api/users/by-username/' + encodeURIComponent(uname);
         const resp = await this._fetch(url, { method: 'GET' }, { endpointKey: 'load_users' });
         if (!resp.ok) {
-            const err = await resp.json().catch(() => ({}));
+            const err = await resp.json().catch(() => ({ error: `HTTP ${resp.status} ${resp.statusText}` }));
             throw new Error(err.error || 'Failed to load user');
         }
         const data = await resp.json();
@@ -755,7 +755,7 @@ class BackendAPI {
         const url = base + '/api/rsvps' + (q.toString() ? ('?' + q.toString()) : '');
         const resp = await this._fetch(url, { method: 'GET' }, { endpointKey: 'load_rsvps' });
         if (!resp.ok) {
-            const err = await resp.json().catch(() => ({}));
+            const err = await resp.json().catch(() => ({ error: `HTTP ${resp.status} ${resp.statusText}` }));
             throw new Error(err.error || 'Failed to load RSVPs');
         }
         const data = await resp.json();
@@ -817,7 +817,7 @@ class BackendAPI {
             body: JSON.stringify(payload)
         }, { endpointKey: 'update_event' });
         if (!resp.ok) {
-            const err = await resp.json().catch(() => ({}));
+            const err = await resp.json().catch(() => ({ error: `HTTP ${resp.status} ${resp.statusText}` }));
             throw new Error(err.error || 'Failed to update event');
         }
         return await resp.json();
@@ -830,7 +830,7 @@ class BackendAPI {
         const url = base + '/api/events/' + encodeURIComponent(String(eventId));
         const resp = await this._fetch(url, { method: 'DELETE' }, { endpointKey: 'delete_event' });
         if (!resp.ok) {
-            const err = await resp.json().catch(() => ({}));
+            const err = await resp.json().catch(() => ({ error: `HTTP ${resp.status} ${resp.statusText}` }));
             throw new Error(err.error || 'Failed to delete event');
         }
         return await resp.json();
@@ -856,7 +856,7 @@ class BackendAPI {
             })
         }, { endpointKey: 'update_profile' });
         if (!resp.ok) {
-            const err = await resp.json().catch(() => ({}));
+            const err = await resp.json().catch(() => ({ error: `HTTP ${resp.status} ${resp.statusText}` }));
             throw new Error(err.error || 'Failed to update profile');
         }
         const data = await resp.json();
@@ -875,7 +875,7 @@ class BackendAPI {
         const url = base + '/api/rsvps/' + encodeURIComponent(String(rsvpId));
         const resp = await this._fetch(url, { method: 'DELETE' }, { endpointKey: 'delete_rsvp' });
         if (!resp.ok) {
-            const err = await resp.json().catch(() => ({}));
+            const err = await resp.json().catch(() => ({ error: `HTTP ${resp.status} ${resp.statusText}` }));
             throw new Error(err.error || 'Failed to delete RSVP');
         }
         return await resp.json();
